@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:orientation="horizontal"
     tools:context="net.jaegerbox.sbriciolonetest2.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:text="Hello World!"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.62"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -65,6 +67,7 @@
 
     <TextView
         android:id="@+id/textView"
+        android:textSize="35sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="261dp"
@@ -77,6 +80,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="35sp"
         android:layout_marginLeft="67dp"
         android:layout_marginTop="145dp"
         android:text="assdfg"
