@@ -1,5 +1,8 @@
 package net.jaegerbox.sbriciolonetest2;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,10 +15,15 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView tv1;
-    TextView tv2;
-    Switch eyeSwitch;
-    Switch mouthSwitch;
+    private TextView tv1;
+    private TextView tv2;
+    private Switch eyeSwitch;
+    private Switch mouthSwitch;
+
+
+    private BluetoothManager btManager;
+    private BluetoothAdapter btAdapter;
+    private BluetoothLeScanner bluetoothLeScanner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         tv2 = (TextView) findViewById(R.id.textView2);
         eyeSwitch = (Switch) findViewById(R.id.switch1);
         eyeSwitch = (Switch) findViewById(R.id.switch2);
+
+        btManager = (BluetoothManager)getSystemService(Context.BLUETOOTH_SERVICE);
+        btAdapter = btManager.getAdapter();
+        bluetoothLeScanner = btAdapter.getBluetoothLeScanner();
+
     }
 
     @Override

@@ -2,15 +2,16 @@
 
 unsigned long nextPalpebre = 0;
 
-const byte channelPalpebraSinistra = 8;
-const byte channelPalpebraDestra = 9;
+const byte channelPalpebraSinistra = 5;
+const byte channelPalpebraDestra = 6;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
+bool autoOcchi = true;
+const int minOcchiValue = 80;
+const int maxOcchiValue = 920;
 
-
-enum  statiOcchi {
-  APERTI, INCHIUSURA
-};
+enum  statiOcchi {APERTI, INCHIUSURA, MANUAL
+                 };
 
 statiOcchi sitOcchi = APERTI;
 
@@ -32,6 +33,10 @@ SoftwareSerial maestroSerial(10, 11);
 MiniMaestro maestro(maestroSerial);
 
 
+
+const byte testAnalog0 = A0;
+const byte testAnalog1 = A1;
+
 void setup() {
 
   /* setTarget takes the channel number you want to control, and
@@ -43,11 +48,7 @@ void setup() {
   Serial.begin(9600);
   maestroSerial.begin(9600);
   Serial.setTimeout(20);
-
-  /*
-    maestro.setSpeed(11, 0);
-    maestro.setAcceleration(11,0);
-  */
+  nextPalpebre = random(2000, 10000) + millis();
 }
 
 void loop() {
@@ -59,60 +60,51 @@ void loop() {
     maestro.setTarget(17, value);
   }
 
+
+  gestisciOcchi();
   //Serial.println(asd);
+  int sensorValue01 = analogRead(testAnalog1);
+  int sensorValue0 = analogRead(testAnalog0);
+  //maestro.setTarget(17, analogConversionMotor(sensorValue0));
 
-  // Set the target of channel 0 to 1500 us, and wait 2 seconds.
-  // maestro.setTarget(17, 4000);
-  // maestro.setTarget(11, 1000);
-  //maestro.setTarget(5, 2000);
-  // Serial.println("1");
-  //delay(2000);
-
-  // Set the target of channel 0 to 1750 us, and wait 2 seconds.
-  //  maestro.setTarget(17, 6000);
-  //maestro.setTarget(11, 3000);
-  //maestro.setTarget(5, 12000);
-  // Serial.println("2");
-  // delay(2000);
-
-  // Set the target of channel 0 to 1250 us, and wait 2 seconds.
-  //maestro.setTarget(17, 8000);
-  //maestro.setTarget(11, 5600);
-  //maestro.setTarget(5, 1000);
-  //Serial.println("3");
-  //delay(2000);
-  //Serial.println("bshbshbdhbdh");
-
-  delay(30);
+  delay(25);
 }
 
 
 void gestisciOcchi()
 {
+  if (sitOcchi == MANUAL)
+  {
+    return;
+  }
+
   if (sitOcchi == APERTI)
-    if (nextPalpebre > millis())
+  {
+    if (millis() > nextPalpebre)
     {
       nextPalpebre = random(2000, 10000) + millis();
       sitOcchi = INCHIUSURA;
       contatoreOcchi = 0;
-      //maestro.setTarget(channelPalpebraSinistra, 8000);
-      //maestro.setTarget(channelPalpebraDestra, 8000);
-      return;
+      maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(minOcchiValue));
+      maestro.setTarget(channelPalpebraDestra, analogConversionMotor(minOcchiValue));
     }
-    else
+    return;
+  }
+  if (sitOcchi == INCHIUSURA)
+  {
+    contatoreOcchi++;
+    if (contatoreOcchi == limiteOcchi)
     {
-      contatoreOcchi++;
-      if (contatoreOcchi == limiteOcchi)
-      {
-        //maestro.setTarget(channelPalpebraSinistra, 4000);
-        //maestro.setTarget(channelPalpebraDestra, 4000);
-        
-      }
-
-      
+      maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(maxOcchiValue));
+      maestro.setTarget(channelPalpebraDestra, analogConversionMotor(maxOcchiValue));
+      sitOcchi = APERTI;
     }
-
-
+    return;
+  }
 }
 
+int analogConversionMotor(int analogValue)
+{
+  return map(analogValue, 0, 1023, 1700, 9200);
+}
 
