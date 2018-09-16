@@ -231,8 +231,8 @@ public class MainActivity extends AppCompatActivity {
 
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         for(BluetoothDevice bt : pairedDevices)
-            if(bt.getAddress().equals(Constants.macMouthBT))
-            {
+        {
+            if (bt.getAddress().equals(Constants.macMouthBT)) {
                 Log.d(TAG, "TROVATO");
                 Log.d(TAG, bt.getName());
 
@@ -240,20 +240,21 @@ public class MainActivity extends AppCompatActivity {
                 mBluetoothConnection = new BluetoothConnectionService(MainActivity.this);
                 startConnection();
             }
+        }
     }
 
 
 
     public void startConnection(){
-        startBTConnection(mBTDevice,MY_UUID_INSECURE);
+        startBTConnection(mBTDevice);
     }
 
 
 
-    public void startBTConnection(BluetoothDevice device, UUID uuid){
+    public void startBTConnection(BluetoothDevice device){
         Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
 
-        mBluetoothConnection.startClient(device,uuid);
+        mBluetoothConnection.startClient(device);
     }
 
     BroadcastReceiver mReceiver = new BroadcastReceiver() {

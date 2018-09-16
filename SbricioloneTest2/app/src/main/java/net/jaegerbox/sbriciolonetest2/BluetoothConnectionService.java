@@ -214,14 +214,14 @@ public class BluetoothConnectionService {
      Then ConnectThread starts and attempts to make a connection with the other devices AcceptThread.
      **/
 
-    public void startClient(BluetoothDevice device, UUID uuid){
+    public void startClient(BluetoothDevice device){
         Log.d(TAG, "startClient: Started.");
 
         //initprogress dialog
         mProgressDialog = ProgressDialog.show(mContext,"Connecting Bluetooth"
                 ,"Please Wait...",true);
 
-        mConnectThread = new ConnectThread(device, uuid);
+        mConnectThread = new ConnectThread(device, BTMODULEUUID);
         mConnectThread.start();
     }
 
@@ -233,6 +233,8 @@ public class BluetoothConnectionService {
         private final BluetoothSocket mmSocket;
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
+        private final char endPacket = '\n';
+
 
         public ConnectedThread(BluetoothSocket socket) {
             Log.d(TAG, "ConnectedThread: Starting.");
@@ -271,8 +273,18 @@ public class BluetoothConnectionService {
             while (true) {
                 // Read from the InputStream
                 try {
-                    bytes = mmInStream.read(buffer);
-                    String incomingMessage = new String(buffer, 0, bytes);
+
+                    //mmInStream.read();
+                    char c = '0';
+                    int index = 0;
+                    while ((c = (char)mmInStream.read()) != endPacket)
+                    {
+                        buffer[index] = (byte) c;
+                        index++;
+                    }
+
+                    //bytes = mmInStream.read(buffer);
+                    String incomingMessage = new String(buffer, 0, index);
                     Log.d(TAG, "InputStream: " + incomingMessage);
 
                     Intent incomingMessageIntent = new Intent(Constants.incomingMessageIntent);
