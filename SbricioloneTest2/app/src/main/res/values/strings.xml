@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SbricioloneTest2</string>
     <string name="Backup">Backup</string>
+    <string name="IncomingMessageIntent">incomingMessage</string>
 </resources>
