@@ -2,6 +2,9 @@
 
 unsigned long nextPalpebre = 0;
 
+const byte pinOcchioDXX = 5;
+const byte pinOcchioDXY = 11;
+
 const byte channelPalpebraSinistra = 5;
 const byte channelPalpebraDestra = 6;
 byte contatoreOcchi = 0;
@@ -51,6 +54,11 @@ void setup() {
   nextPalpebre = random(2000, 10000) + millis();
 }
 
+
+  int sensorValue01Old = 0;
+  int sensorValue0Old = 0;
+
+
 void loop() {
   //Serial.println("mannaggia a...teee");
   String asd = Serial.readString();
@@ -61,12 +69,24 @@ void loop() {
   }
 
 
-  gestisciOcchi();
+  //gestisciOcchi();
   //Serial.println(asd);
   int sensorValue01 = analogRead(testAnalog1);
   int sensorValue0 = analogRead(testAnalog0);
-  //maestro.setTarget(17, analogConversionMotor(sensorValue0));
+  if(abs(sensorValue01Old - sensorValue01) > 10)
+  {
+    maestro.setTarget(pinOcchioDXY, analogConversionMotor(sensorValue01));
+    
+  }
 
+    if(abs(sensorValue0Old - sensorValue0) > 10)
+  {
+    maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));  
+  }
+  sensorValue01Old = sensorValue01;
+  sensorValue0Old = sensorValue0;
+  //maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));
+  
   delay(25);
 }
 
