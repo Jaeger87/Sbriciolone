@@ -15,21 +15,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    private static final UUID MY_UUID_INSECURE =
-            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private static final String TAG = "MainActivity";
 
@@ -40,20 +35,20 @@ public class MainActivity extends AppCompatActivity {
     ListView lvNewDevices;
 
 
-    BluetoothAdapter mBluetoothAdapter;
+    private BluetoothAdapter mBluetoothAdapter;
 
 
-    BluetoothConnectionService mBluetoothConnection;
-    BluetoothDevice mBTDevice;
+    private BluetoothConnectionService mBluetoothConnectionMouth;
+    private BluetoothDevice mBTMouthDevice;
 
 
     /*
     Ne servono 3 di questi
      */
-    BluetoothConnectionService mBluetoothConnectionHead;
-    BluetoothConnectionService mBluetoothConnectionEyes;
-    BluetoothDevice mBTDeviceHead;
-    BluetoothDevice mBTDeviceEyes;
+    private BluetoothConnectionService mBluetoothConnectionHead;
+    private BluetoothConnectionService mBluetoothConnectionEyes;
+    private BluetoothDevice mBTDeviceHead;
+    private BluetoothDevice mBTDeviceEyes;
 
 
     private TextView tv1;
@@ -165,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
                     Log.d(TAG, "BroadcastReceiver: BOND_BONDED.");
                     //inside BroadcastReceiver4
-                    mBTDevice = mDevice;
+                    mBTMouthDevice = mDevice;
                 }
                 //case2: creating a bone
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDING) {
@@ -200,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         tv1 = (TextView) findViewById(R.id.textView);
         tv2 = (TextView) findViewById(R.id.textView2);
         eyeSwitch = (Switch) findViewById(R.id.switch1);
-        eyeSwitch = (Switch) findViewById(R.id.switch2);
+        mouthSwitch = (Switch) findViewById(R.id.switch2);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter((Constants.incomingMessageIntent)));
 
@@ -232,36 +227,77 @@ public class MainActivity extends AppCompatActivity {
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         for(BluetoothDevice bt : pairedDevices)
         {
+
+
+            if (bt.getAddress().equals(Constants.macEyesBT)) {
+                Log.d(TAG, bt.getName());
+                Log.d("btTest1", "eyes");
+                mBTDeviceEyes = bt;
+                mBluetoothConnectionEyes = new BluetoothConnectionService(MainActivity.this, Constants.eyesID);
+                startBTConnection(mBTDeviceEyes, mBluetoothConnectionEyes);
+            }
+
+
             if (bt.getAddress().equals(Constants.macMouthBT)) {
+                Log.d("btTest1", "mouth");
                 Log.d(TAG, "TROVATO");
                 Log.d(TAG, bt.getName());
 
-                mBTDevice = bt;
-                mBluetoothConnection = new BluetoothConnectionService(MainActivity.this);
-                startConnection();
+                mBTMouthDevice = bt;
+                mBluetoothConnectionMouth = new BluetoothConnectionService(MainActivity.this, Constants.MouthID);
+                startBTConnection(mBTMouthDevice, mBluetoothConnectionMouth);
             }
+
+
+
+
+
+
+            if (bt.getAddress().equals(Constants.macHead01BT)) {
+                Log.d(TAG, bt.getName());
+
+                mBTDeviceHead = bt;
+                mBluetoothConnectionHead = new BluetoothConnectionService(MainActivity.this, Constants.HeadID);
+                startBTConnection(mBTDeviceHead, mBluetoothConnectionHead);
+            }
+
+
         }
     }
 
 
-
-    public void startConnection(){
-        startBTConnection(mBTDevice);
-    }
-
-
-
-    public void startBTConnection(BluetoothDevice device){
+    public void startBTConnection(BluetoothDevice device, BluetoothConnectionService connection){
         Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
 
-        mBluetoothConnection.startClient(device);
+        connection.startClient(device);
     }
 
     BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            int id = intent.getIntExtra(Constants.intentIDProp, 0);
             String text = intent.getStringExtra("Message");
-            tv1.setText(text);
+            byte[] bytes;
+
+            switch (id){
+                case Constants.MouthID:
+                    tv1.setText(text);
+                    bytes = text.getBytes(Charset.defaultCharset());
+                    mBluetoothConnectionHead.write(bytes);
+                    break;
+                case Constants.eyesID:
+                    tv2.setText(text);
+                    bytes = text.getBytes(Charset.defaultCharset());
+                    mBluetoothConnectionHead.write(bytes);
+                    break;
+                case Constants.HeadID:
+                    //IMPOSSIBLE
+                    break;
+                default:
+                    break;
+            }
+
+
         }
     };
 

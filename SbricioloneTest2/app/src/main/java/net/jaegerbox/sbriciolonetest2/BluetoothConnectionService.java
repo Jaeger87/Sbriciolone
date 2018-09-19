@@ -46,9 +46,12 @@ public class BluetoothConnectionService {
 
     private ConnectedThread mConnectedThread;
 
-    public BluetoothConnectionService(Context context) {
+    private int myName;
+
+    public BluetoothConnectionService(Context context, int whoAmI) {
         mContext = context;
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        myName = whoAmI;
         start();
     }
 
@@ -283,12 +286,16 @@ public class BluetoothConnectionService {
                         index++;
                     }
 
+                    buffer[index] = endPacket;
+                    index++;
+
                     //bytes = mmInStream.read(buffer);
                     String incomingMessage = new String(buffer, 0, index);
                     Log.d(TAG, "InputStream: " + incomingMessage);
 
                     Intent incomingMessageIntent = new Intent(Constants.incomingMessageIntent);
                     incomingMessageIntent.putExtra("Message", incomingMessage);
+                    incomingMessageIntent.putExtra(Constants.intentIDProp, myName);
                     LocalBroadcastManager.getInstance(mContext).sendBroadcast(incomingMessageIntent);
 
 
@@ -301,8 +308,8 @@ public class BluetoothConnectionService {
 
         //Call this from the main activity to send data to the remote device
         public void write(byte[] bytes) {
-            String text = new String(bytes, Charset.defaultCharset());
-            Log.d(TAG, "write: Writing to outputstream: " + text);
+            //String text = new String(bytes, Charset.defaultCharset());
+            //Log.d(TAG, "write: Writing to outputstream: " + text);
             try {
                 mmOutStream.write(bytes);
             } catch (IOException e) {

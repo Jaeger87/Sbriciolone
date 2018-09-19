@@ -55,38 +55,48 @@ void setup() {
 }
 
 
-  int sensorValue01Old = 0;
-  int sensorValue0Old = 0;
+int sensorValue01Old = 0;
+int sensorValue0Old = 0;
 
 
 void loop() {
-  //Serial.println("mannaggia a...teee");
-  String asd = Serial.readString();
+  String asd = Serial.readStringUntil('\n');
   if (asd.length() > 0)
   {
-    int value = asd.toInt();
-    maestro.setTarget(17, value);
-  }
+    if (asd.charAt(0) == 'A')
+    {
+      String pin = getValueStringSplitter(asd, ';', 1);
+      String value = getValueStringSplitter(asd, ';', 2);
+      maestro.setTarget(pin.toInt(), analogConversionMotor(value.toInt()));
+    }
+    else
+    {
+      String pin = getValueStringSplitter(asd, ';', 1);
+      maestro.setTarget(pin.toInt(),analogConversionMotor(random(0,1023)));
+    }
 
+  }
 
   //gestisciOcchi();
   //Serial.println(asd);
-  int sensorValue01 = analogRead(testAnalog1);
-  int sensorValue0 = analogRead(testAnalog0);
-  if(abs(sensorValue01Old - sensorValue01) > 10)
-  {
+
+  /*
+    int sensorValue01 = analogRead(testAnalog1);
+    int sensorValue0 = analogRead(testAnalog0);
+    if(abs(sensorValue01Old - sensorValue01) > 10)
+    {
     maestro.setTarget(pinOcchioDXY, analogConversionMotor(sensorValue01));
-    
-  }
+
+    }
 
     if(abs(sensorValue0Old - sensorValue0) > 10)
-  {
-    maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));  
-  }
-  sensorValue01Old = sensorValue01;
-  sensorValue0Old = sensorValue0;
-  //maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));
-  
+    {
+    maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));
+    }
+    sensorValue01Old = sensorValue01;
+    sensorValue0Old = sensorValue0;
+    //maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));
+  */
   delay(25);
 }
 
@@ -128,3 +138,21 @@ int analogConversionMotor(int analogValue)
   return map(analogValue, 0, 1023, 1700, 9200);
 }
 
+
+
+String getValueStringSplitter(String data, char separator, int index)
+{
+  int found = 0;
+  int strIndex[] = {0, -1};
+  int maxIndex = data.length() - 1;
+
+  for (int i = 0; i <= maxIndex && found <= index; i++) {
+    if (data.charAt(i) == separator || i == maxIndex) {
+      found++;
+      strIndex[0] = strIndex[1] + 1;
+      strIndex[1] = (i == maxIndex) ? i + 1 : i;
+    }
+  }
+
+  return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
