@@ -2,6 +2,9 @@ const byte pinButton = 12;
 int buttonState12 = 0;
 int oldButtonState12 = 0;
 
+int aliveCounter = 0;
+const byte aliveTrigger = 10;
+
 void setup()
 {
   Serial.begin(9600);
@@ -19,6 +22,20 @@ void loop() {
 
   oldButtonState12 = buttonState12;
 
+  deadManButton();
+
   delay(50);
 
 }
+
+
+
+void deadManButton()
+{
+  if (aliveCounter % aliveTrigger == 0)
+    Serial.println("ALIVE");
+
+  aliveCounter++;
+}
+
+

@@ -18,6 +18,10 @@ enum  statiOcchi {APERTI, INCHIUSURA, MANUAL
 
 statiOcchi sitOcchi = APERTI;
 
+
+
+int aliveCounter = 0;
+const byte aliveTrigger = 10;
 /* On boards with a hardware serial port available for use, use
   that port to communicate with the Maestro. For other boards,
   create a SoftwareSerial object using pin 10 to receive (RX) and
@@ -78,25 +82,7 @@ void loop() {
   }
 
   //gestisciOcchi();
-  //Serial.println(asd);
-
-  /*
-    int sensorValue01 = analogRead(testAnalog1);
-    int sensorValue0 = analogRead(testAnalog0);
-    if(abs(sensorValue01Old - sensorValue01) > 10)
-    {
-    maestro.setTarget(pinOcchioDXY, analogConversionMotor(sensorValue01));
-
-    }
-
-    if(abs(sensorValue0Old - sensorValue0) > 10)
-    {
-    maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));
-    }
-    sensorValue01Old = sensorValue01;
-    sensorValue0Old = sensorValue0;
-    //maestro.setTarget(pinOcchioDXX, analogConversionMotor(sensorValue0));
-  */
+  deadManButton();
   delay(25);
 }
 
@@ -156,3 +142,13 @@ String getValueStringSplitter(String data, char separator, int index)
 
   return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
+
+
+void deadManButton()
+{
+  if (aliveCounter % aliveTrigger == 0)
+    Serial.println("ALIVE");
+
+  aliveCounter++;
+}
+
