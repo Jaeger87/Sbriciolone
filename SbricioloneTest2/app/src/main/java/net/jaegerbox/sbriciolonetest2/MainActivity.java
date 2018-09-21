@@ -277,6 +277,10 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             int id = intent.getIntExtra(Constants.intentIDProp, 0);
             String text = intent.getStringExtra("Message");
+
+            if(text.equals(Constants.DEADBUTTONWORD))
+                return;
+
             byte[] bytes;
 
             switch (id){
