@@ -2,16 +2,15 @@
 
 unsigned long nextPalpebre = 0;
 
-const byte pinOcchioDXX = 5;
-const byte pinOcchioDXY = 11;
+const byte pinOcchioDXX = 21;
+const byte pinOcchioDXY = 22;
 
 const byte channelPalpebraSinistra = 5;
 const byte channelPalpebraDestra = 23;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
-bool autoOcchi = true;
-const int minOcchiValue = 80;
-const int maxOcchiValue = 920;
+const int minOcchiValue = 920;
+const int maxOcchiValue = 80;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
@@ -37,11 +36,6 @@ SoftwareSerial maestroSerial(10, 11);
   on which one you have. */
 //MicroMaestro maestro(maestroSerial);
 MiniMaestro maestro(maestroSerial);
-
-
-
-const byte testAnalog0 = A0;
-const byte testAnalog1 = A1;
 
 void setup() {
 
@@ -70,7 +64,13 @@ void loop() {
     {
       String pin = getValueStringSplitter(asd, ';', 1);
       String value = getValueStringSplitter(asd, ';', 2);
-      maestro.setTarget(pin.toInt(), analogConversionMotor(value.toInt()));
+      if (pin == pinOcchioDXX)
+        maestro.setTarget(pin.toInt(), analogConversionMotorOcchioX(value.toInt()));
+      else if (pin == pinOcchioDXY)
+        maestro.setTarget(pin.toInt(), analogConversionMotorOcchioY(value.toInt()));
+      else
+        maestro.setTarget(pin.toInt(), analogConversionMotor180(value.toInt()));
+
     }
     if (asd.charAt(0) == 'E')
     {
@@ -78,14 +78,24 @@ void loop() {
     }
     if (asd.charAt(0) == 'S')
     {
-      String pin = getValueStringSplitter(asd, ';', 1);
-      
+      if (asd.charAt(2) == 'P')
+      {
+        if (asd.charAt(4) == '1')
+        {
+          sitOcchi = MANUAL;
+        }
+
+        else
+        {
+          sitOcchi = APERTI;
+        }
+      }
     }
-    
+
 
   }
 
-  //gestisciOcchi();
+  gestisciOcchi();
   deadManButton();
   delay(25);
 }
@@ -98,8 +108,8 @@ void eventoPalpebre()
   {
     sitOcchi = CHIUSMANUAL;
     contatoreOcchi = 0;
-    maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(minOcchiValue));
-    maestro.setTarget(channelPalpebraDestra, analogConversionMotor(minOcchiValue));
+    maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(minOcchiValue));
+    maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(minOcchiValue));
   }
   else
   {
@@ -111,7 +121,7 @@ void gestisciOcchi()
 {
   if (sitOcchi == MANUAL)
   {
-    
+
     return;
   }
 
@@ -122,8 +132,8 @@ void gestisciOcchi()
       nextPalpebre = random(2000, 10000) + millis();
       sitOcchi = INCHIUSURA;
       contatoreOcchi = 0;
-      maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(minOcchiValue));
-      maestro.setTarget(channelPalpebraDestra, analogConversionMotor(minOcchiValue));
+      maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(minOcchiValue));
+      maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(minOcchiValue));
     }
     return;
   }
@@ -132,8 +142,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
-      maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(maxOcchiValue));
-      maestro.setTarget(channelPalpebraDestra, analogConversionMotor(maxOcchiValue));
+      maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(maxOcchiValue));
+      maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(maxOcchiValue));
       sitOcchi = APERTI;
     }
     return;
@@ -144,19 +154,33 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
-      maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(maxOcchiValue));
-      maestro.setTarget(channelPalpebraDestra, analogConversionMotor(maxOcchiValue));
+      maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(maxOcchiValue));
+      maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(maxOcchiValue));
       sitOcchi = MANUAL;
     }
     return;
   }
 }
 
-int analogConversionMotor(int analogValue)
+int analogConversionMotor180(int analogValue)
 {
   return map(analogValue, 0, 1023, 1700, 9200);
 }
 
+int analogConversionMotorPalpebra(int analogValue)
+{
+  return map(analogValue, 0, 1023, 1787, 8212);
+}
+
+int analogConversionMotorOcchioX(int analogValue)
+{
+  return map(analogValue, 0, 1023, 3705, 8644);
+}
+
+int analogConversionMotorOcchioY(int analogValue)
+{
+  return map(analogValue, 0, 1023, 2397, 8459);
+}
 
 
 String getValueStringSplitter(String data, char separator, int index)
