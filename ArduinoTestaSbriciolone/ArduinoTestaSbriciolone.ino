@@ -6,15 +6,14 @@ const byte pinOcchioDXX = 5;
 const byte pinOcchioDXY = 11;
 
 const byte channelPalpebraSinistra = 5;
-const byte channelPalpebraDestra = 6;
+const byte channelPalpebraDestra = 23;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
 bool autoOcchi = true;
 const int minOcchiValue = 80;
 const int maxOcchiValue = 920;
 
-enum  statiOcchi {APERTI, INCHIUSURA, MANUAL
-                 };
+enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
 statiOcchi sitOcchi = APERTI;
 
@@ -73,11 +72,16 @@ void loop() {
       String value = getValueStringSplitter(asd, ';', 2);
       maestro.setTarget(pin.toInt(), analogConversionMotor(value.toInt()));
     }
-    else
+    if (asd.charAt(0) == 'E')
+    {
+      eventoPalpebre();
+    }
+    if (asd.charAt(0) == 'S')
     {
       String pin = getValueStringSplitter(asd, ';', 1);
-      maestro.setTarget(pin.toInt(),analogConversionMotor(random(0,1023)));
+      
     }
+    
 
   }
 
@@ -87,10 +91,27 @@ void loop() {
 }
 
 
+void eventoPalpebre()
+{
+
+  if (sitOcchi == MANUAL)
+  {
+    sitOcchi = CHIUSMANUAL;
+    contatoreOcchi = 0;
+    maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(minOcchiValue));
+    maestro.setTarget(channelPalpebraDestra, analogConversionMotor(minOcchiValue));
+  }
+  else
+  {
+    nextPalpebre = 0;
+  }
+}
+
 void gestisciOcchi()
 {
   if (sitOcchi == MANUAL)
   {
+    
     return;
   }
 
@@ -114,6 +135,18 @@ void gestisciOcchi()
       maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(maxOcchiValue));
       maestro.setTarget(channelPalpebraDestra, analogConversionMotor(maxOcchiValue));
       sitOcchi = APERTI;
+    }
+    return;
+  }
+
+  if (sitOcchi == CHIUSMANUAL)
+  {
+    contatoreOcchi++;
+    if (contatoreOcchi == limiteOcchi)
+    {
+      maestro.setTarget(channelPalpebraSinistra, analogConversionMotor(maxOcchiValue));
+      maestro.setTarget(channelPalpebraDestra, analogConversionMotor(maxOcchiValue));
+      sitOcchi = MANUAL;
     }
     return;
   }

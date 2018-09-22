@@ -3,5 +3,10 @@ Mac address HC-05
 98:D3:51:F5:C4:D1
 98:D3:21:F7:4E:7B
 98:D3:21:F7:4E:5E
+98:D3:21:F7:4C:D7
 
 Range motori da programma Pololu
+
+180 Gradi = 624----2384  Arduino 1700---9200
+
+PalpebraDX = 752 ---- 2080
