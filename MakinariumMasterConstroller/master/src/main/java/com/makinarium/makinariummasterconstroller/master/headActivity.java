@@ -37,7 +37,6 @@ public class headActivity extends AppCompatActivity {
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
-        Log.d("PORCO", "IDDIO");
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
