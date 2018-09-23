@@ -1,3 +1,5 @@
+const byte Analogfilter = 6;
+
 const byte testAnalog0 = A0;
 const byte testAnalog1 = A1;
 const byte analogPalpebraDXPin = A2;
@@ -47,13 +49,13 @@ void loop() {
   int sensorValue01 = analogRead(testAnalog1);
   int sensorValue0 = analogRead(testAnalog0);
   
-  if (abs(sensorValue01Old - sensorValue01) > 10)
+  if (abs(sensorValue01Old - sensorValue01) > Analogfilter)
   {
     Serial.print("A;22;");
     Serial.println(sensorValue01);
   }
 
-  if (abs(sensorValue0Old - sensorValue0) > 10)
+  if (abs(sensorValue0Old - sensorValue0) > Analogfilter)
   {
     Serial.print("A;21;");
     Serial.println(sensorValue0);
@@ -62,7 +64,7 @@ void loop() {
   if (!loopPalpebre)
   {
     int analogPalpebraDX = analogRead(analogPalpebraDXPin);
-    if (abs(analogPalpebraDXOLD - analogPalpebraDX) > 10)
+    if (abs(analogPalpebraDXOLD - analogPalpebraDX) > Analogfilter)
     {
       Serial.print("A;23;");
       Serial.println(analogPalpebraDX);

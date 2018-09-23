@@ -278,9 +278,10 @@ public class MainActivity extends AppCompatActivity {
             int id = intent.getIntExtra(Constants.intentIDProp, 0);
             String text = intent.getStringExtra("Message");
 
-            if(text.equals(Constants.DEADBUTTONWORD))
+            Log.i(TAG, text);
+            if(text.contains("ALI"))
                 return;
-
+            Log.i(TAG, "WHAT");
             byte[] bytes;
 
             switch (id){

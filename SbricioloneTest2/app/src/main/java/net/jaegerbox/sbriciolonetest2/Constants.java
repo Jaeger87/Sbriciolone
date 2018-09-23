@@ -11,5 +11,5 @@ public class Constants {
     public static final int eyesID = 18;
     public static final int HeadID = 130;
     public static final String intentIDProp = "idBT";
-    public static final String DEADBUTTONWORD = "ALIVE\n";
+    public static final String DEADBUTTONWORD = " ALIVE\n";
 }

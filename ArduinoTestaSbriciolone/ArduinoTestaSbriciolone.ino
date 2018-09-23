@@ -62,14 +62,22 @@ void loop() {
   {
     if (asd.charAt(0) == 'A')
     {
-      String pin = getValueStringSplitter(asd, ';', 1);
+      String pinString = getValueStringSplitter(asd, ';', 1);
+      int pin = pinString.toInt();
       String value = getValueStringSplitter(asd, ';', 2);
+
+
+      
       if (pin == pinOcchioDXX)
-        maestro.setTarget(pin.toInt(), analogConversionMotorOcchioX(value.toInt()));
+      {
+        maestro.setTarget(pin, analogConversionMotorOcchioX(value.toInt()));
+      }
       else if (pin == pinOcchioDXY)
-        maestro.setTarget(pin.toInt(), analogConversionMotorOcchioY(value.toInt()));
+        maestro.setTarget(pin, analogConversionMotorOcchioY(value.toInt()));
+      else if (pin == channelPalpebraDestra)
+        maestro.setTarget(pin, analogConversionMotorPalpebra(value.toInt()));
       else
-        maestro.setTarget(pin.toInt(), analogConversionMotor180(value.toInt()));
+        maestro.setTarget(pin, analogConversionMotor180(value.toInt()));
 
     }
     if (asd.charAt(0) == 'E')
@@ -80,7 +88,7 @@ void loop() {
     {
       if (asd.charAt(2) == 'P')
       {
-        if (asd.charAt(4) == '1')
+        if (asd.charAt(4) == '0')
         {
           sitOcchi = MANUAL;
         }
@@ -169,17 +177,17 @@ int analogConversionMotor180(int analogValue)
 
 int analogConversionMotorPalpebra(int analogValue)
 {
-  return map(analogValue, 0, 1023, 1787, 8212);
+  return map(analogValue, 0, 1023, 2500, 7600);
 }
 
 int analogConversionMotorOcchioX(int analogValue)
 {
-  return map(analogValue, 0, 1023, 3705, 8644);
+  return map(analogValue, 0, 1023, 3705, 8444);
 }
 
 int analogConversionMotorOcchioY(int analogValue)
 {
-  return map(analogValue, 0, 1023, 2397, 8459);
+  return map(analogValue, 0, 1023, 5500, 8550);
 }
 
 
