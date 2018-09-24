@@ -19,7 +19,6 @@ public class headActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("PORCO", "IDDIO");
         setContentView(R.layout.activity_head);
         continueButton = (Button)findViewById(R.id.continuebutton);
         continueButton.setOnClickListener(new View.OnClickListener() {

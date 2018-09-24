@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     public DeviceListAdapter mDeviceListAdapter;
 
-    ListView lvNewDevices;
-
 
     private BluetoothAdapter mBluetoothAdapter;
 
@@ -140,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
                 mBTDevices.add(device);
                 Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
                 mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
-                lvNewDevices.setAdapter(mDeviceListAdapter);
             }
         }
     };
@@ -160,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
                     Log.d(TAG, "BroadcastReceiver: BOND_BONDED.");
                     //inside BroadcastReceiver4
-                    mBTMouthDevice = mDevice;
                 }
                 //case2: creating a bone
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDING) {

@@ -12,4 +12,8 @@ public class Constants {
     public static final int HeadID = 130;
     public static final String intentIDProp = "idBT";
     public static final String DEADBUTTONWORD = "ALIVE";
+    public static final String RegistrationString = "Recording";
+    public static final String stopRecording = "Stop recording";
+    public static final String controllerActived = "controller activated";
+    public static final String controllerDisactived = "controller disactivated";
 }

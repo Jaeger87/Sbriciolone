@@ -1,5 +1,5 @@
 <resources>
 
-    <string name="Backup">Backup</string>
+    <string name="Undo">Undo last rec</string>
     <string name="change_head">Change head</string>
 </resources>

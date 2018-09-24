@@ -6,7 +6,7 @@
         android:id="@+id/action_changehead"
         android:orderInCategory="1" />
     <item
-        android:title="@string/Backup"
-        android:id="@+id/action_backup"
+        android:title="@string/Undo"
+        android:id="@+id/action_undo"
         android:orderInCategory="2" />
 </menu>
