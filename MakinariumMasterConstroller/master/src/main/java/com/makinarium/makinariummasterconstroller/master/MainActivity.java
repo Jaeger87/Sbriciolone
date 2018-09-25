@@ -5,7 +5,9 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.nio.charset.Charset;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter((Constants.incomingMessageIntent)));
 
         Intent headIntent = getIntent();
         headMac = headIntent.getStringExtra(Intent.EXTRA_TEXT);
@@ -101,8 +106,45 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //connectionBluetooth();
     }
 
+
+    private void connectionBluetooth()
+    {
+        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+        for(BluetoothDevice bt : pairedDevices)
+        {
+            if (bt.getAddress().equals(Constants.macEyesBT)) {
+                mBTDeviceEyes = bt;
+                mBluetoothConnectionEyes = new BluetoothConnectionService(MainActivity.this, Constants.eyesID);
+                startBTConnection(mBTDeviceEyes, mBluetoothConnectionEyes);
+            }
+
+
+            if (bt.getAddress().equals(Constants.macMouthBT)) {
+                mBTMouthDevice = bt;
+                mBluetoothConnectionMouth = new BluetoothConnectionService(MainActivity.this, Constants.MouthID);
+                startBTConnection(mBTMouthDevice, mBluetoothConnectionMouth);
+            }
+
+            if (bt.getAddress().equals(headMac)) {
+                Log.d(TAG, bt.getName());
+
+                mBTDeviceHead = bt;
+                mBluetoothConnectionHead = new BluetoothConnectionService(MainActivity.this, Constants.HeadID);
+                startBTConnection(mBTDeviceHead, mBluetoothConnectionHead);
+            }
+
+
+        }
+    }
+
+
+    public void startBTConnection(BluetoothDevice device, BluetoothConnectionService connection)
+    {
+        connection.startClient(device);
+    }
 
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
@@ -297,5 +339,38 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, Constants.controllerDisactived, Toast.LENGTH_LONG).show();
         }
     }
+
+
+
+    BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int id = intent.getIntExtra(Constants.intentIDProp, 0);
+            String text = intent.getStringExtra("Message");
+
+            Log.i(TAG, text);
+            if(text.contains("ALI"))
+                return;
+            byte[] bytes;
+
+            switch (id){
+                case Constants.MouthID:
+                    bytes = text.getBytes(Charset.defaultCharset());
+                    mBluetoothConnectionHead.write(bytes);
+                    break;
+                case Constants.eyesID:
+                    bytes = text.getBytes(Charset.defaultCharset());
+                    mBluetoothConnectionHead.write(bytes);
+                    break;
+                case Constants.HeadID:
+                    //IMPOSSIBLE
+                    break;
+                default:
+                    break;
+            }
+
+
+        }
+    };
 
 }
