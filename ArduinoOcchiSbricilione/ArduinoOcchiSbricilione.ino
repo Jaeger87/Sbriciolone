@@ -17,6 +17,14 @@ bool loopPalpebre = true;
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
 
+
+struct Motore {
+  int port;
+  char sector;
+  char event = 'M';
+};
+
+
 void setup()
 {
   pinMode(closeEyesButtonPin, INPUT);
@@ -121,4 +129,3 @@ void deadManButton()
 
   aliveCounter++;
 }
-

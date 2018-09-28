@@ -1,22 +1,22 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings;
 
-public class PerformancePiece {
+public class PerformancePiece <T>{
 
-    private byte[] action;
+    private T action;
     private int millisToAction = -1;
 
-    public PerformancePiece(byte[] action)
+    public PerformancePiece(T action)
     {
         this.action = action;
     }
 
-    public PerformancePiece(byte[] action, int millisToAction)
+    public PerformancePiece(T action, int millisToAction)
     {
         this.action = action;
         this.millisToAction = millisToAction;
     }
 
-    public byte[] getAction()
+    public T getAction()
     {
         return action;
     }

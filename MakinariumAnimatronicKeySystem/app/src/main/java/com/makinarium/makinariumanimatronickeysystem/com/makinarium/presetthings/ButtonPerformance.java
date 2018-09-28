@@ -11,7 +11,7 @@ import java.util.List;
 public class ButtonPerformance{
 
     private Button button;
-    private List<PerformancePiece> performance;
+    private List<PerformancePiece<byte[]>> performance;
     private FaceSector faceSector;
     private boolean canPerform;
     private int duration;
@@ -24,7 +24,8 @@ public class ButtonPerformance{
         performance = new ArrayList<>();
     }
 
-    public Button getButton() {
+    public Button getButton()
+    {
         return button;
     }
 
@@ -65,13 +66,13 @@ public class ButtonPerformance{
 
     public void addPerformancePiece(byte[] action, int time)
     {
-        performance.add(new PerformancePiece(action,time));
+        performance.add(new PerformancePiece<>(action,time));
         canPerform = true;
         duration+=time;
     }
 
-    public List<PerformancePiece> getPerformance()
+    public List<PerformancePiece<byte[]>> getPerformance()
     {
-        return new ArrayList<PerformancePiece>(performance);
+        return new ArrayList<>(performance);
     }
 }

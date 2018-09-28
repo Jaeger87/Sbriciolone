@@ -477,10 +477,13 @@ public class MainActivity extends AppCompatActivity {
         protected ButtonPerformance doInBackground(ButtonPerformance... params) {
 
             ButtonPerformance bp = params[0];
-            List<PerformancePiece> performance = bp.getPerformance();
+            List<PerformancePiece<byte[]>> performance = bp.getPerformance();
             long startTime = System.currentTimeMillis();
             boolean inPerformance = true;
-            PerformancePiece currentPiece = performance.get(0);
+            PerformancePiece<byte[]> currentPiece = performance.get(0);
+
+
+
 
             int currentIndex = 0;
             long doPerfomance = startTime + currentPiece.getMillisToAction();

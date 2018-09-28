@@ -1,6 +1,0 @@
-apply plugin: 'com.android.instantapp'
-
-dependencies {
-    implementation project(':master')
-    implementation project(':base')
-}

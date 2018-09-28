@@ -5,6 +5,13 @@ int oldButtonState12 = 0;
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
 
+
+struct Motor {
+  int port;
+  char sector;
+  char event = 'M';
+};
+
 void setup()
 {
   Serial.begin(9600);
@@ -37,5 +44,3 @@ void deadManButton()
 
   aliveCounter++;
 }
-
-
