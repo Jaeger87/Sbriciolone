@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/preset_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFD3B6"
+        android:text="Preset-01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cronometro" />
+
+    <Switch
+        android:id="@+id/mouthSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="204dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:rotation="90"
+        android:text="Mouth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cronometro"
+        app:layout_constraintTop_toTopOf="@+id/cronometro" />
+
+    <Switch
+        android:id="@+id/eyesSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:text="Eyes"
+        app:layout_constraintStart_toEndOf="@+id/mouthSwitch"
+        app:layout_constraintTop_toTopOf="@+id/mouthSwitch" />
+
+    <Button
+        android:id="@+id/eyelid_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="#FFD3B6"
+        android:text="Eyelids-01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eyebrow_01" />
+
+    <Button
+        android:id="@+id/nose_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#FFD3B6"
+        android:text="Nose-01"
+        app:layout_constraintStart_toStartOf="@+id/eyelid_01"
+        app:layout_constraintTop_toBottomOf="@+id/eyes_01" />
+
+    <Button
+        android:id="@+id/mouth_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#FFD3B6"
+        android:text="Mouth-01"
+        app:layout_constraintStart_toStartOf="@+id/nose_01"
+        app:layout_constraintTop_toBottomOf="@+id/nose_01" />
+
+    <Button
+        android:id="@+id/preset_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Preset-02"
+        app:layout_constraintStart_toEndOf="@+id/preset_01"
+        app:layout_constraintTop_toTopOf="@+id/preset_01" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_01"
+        app:layout_constraintTop_toTopOf="@+id/eyelid_01" />
+
+    <Button
+        android:id="@+id/eyes_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Eyes-02"
+        app:layout_constraintStart_toEndOf="@+id/eyes_01"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/nose_01"
+        app:layout_constraintTop_toBottomOf="@+id/eyes_02" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/preset_02"
+        app:layout_constraintTop_toTopOf="@+id/preset_02" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/button13" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/eyes_02"
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/button8"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
+
+    <TextView
+        android:id="@+id/cronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/backsquare"
+        android:text=" 00.00.00 "
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="51dp"
+        android:layout_height="42dp"
+        android:text="■ "
+        app:layout_constraintStart_toEndOf="@+id/cronometro"
+        app:layout_constraintTop_toTopOf="@+id/cronometro"
+        tools:clickable="false"
+        tools:enabled="false"/>
+
+    <Button
+        android:id="@+id/eyes_01"
+        android:layout_width="77dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:background="#FFD3B6"
+        android:text="Eyes-01"
+        app:layout_constraintStart_toStartOf="@+id/eyelid_01"
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_01" />
+
+    <Button
+        android:id="@+id/mouth_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="Mouth-02"
+        app:layout_constraintStart_toEndOf="@+id/mouth_01"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/mouth_02"
+        app:layout_constraintTop_toBottomOf="@+id/button12" />
+
+    <Button
+        android:id="@+id/eyebrow_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="#FFD3B6"
+        android:text="Eyebrows-01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preset_01" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/eyebrow_01"
+        app:layout_constraintTop_toBottomOf="@+id/preset_02" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="75dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eyes_01" />
+
+
+</android.support.constraint.ConstraintLayout>
