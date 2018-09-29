@@ -1,8 +1,4 @@
 const byte Analogfilter = 6;
-
-const byte testAnalog0 = A0;
-const byte testAnalog1 = A1;
-const byte analogPalpebraDXPin = A2;
 const byte closeEyesButtonPin = 5;
 int closeEyesState = 0;
 int oldCloseEyesState = 0;
@@ -18,18 +14,36 @@ int aliveCounter = 0;
 const byte aliveTrigger = 10;
 
 
-struct Motore {
+struct Motor {
   int port;
   char sector;
+  int pinH;
   char event = 'M';
+  int oldValue = 0;
 };
 
+const byte howmanyanalog = 3;
+Motor listaMotori[howmanyanalog];
 
 void setup()
 {
   pinMode(closeEyesButtonPin, INPUT);
   pinMode(loopPalpebreButton, INPUT);
   pinMode(loopPalpebreButtonLed, OUTPUT);
+
+
+  listaMotori[0].sector = 'E';//OcchioDXY
+  listaMotori[0].port = A0;//
+  listaMotori[0].pinH = 22;
+
+  listaMotori[1].sector = 'E';//OcchioDXX
+  listaMotori[1].port = A1;
+  listaMotori[1].pinH = 21;
+
+  listaMotori[2].sector = 'L';//PalpebraDestra
+  listaMotori[2].port = A2;
+  listaMotori[2].pinH = 23;
+
 
   loopPalpebreState = digitalRead(loopPalpebreButton);
   if (loopPalpebreState == HIGH)
@@ -48,42 +62,20 @@ void setup()
 }
 
 
-int sensorValue01Old = 0;
-int sensorValue0Old = 0;
-int analogPalpebraDXOLD = 0;
-
 void loop() {
 
-  int sensorValue01 = analogRead(testAnalog1);
-  int sensorValue0 = analogRead(testAnalog0);
-  
-  if (abs(sensorValue01Old - sensorValue01) > Analogfilter)
+  for(int i = 0; i < howmanyanalog; i++)
   {
-    Serial.print("A;22;");
-    Serial.println(sensorValue01);
-  }
+    if(listaMotori[i].sector == 'L')
+      if(loopPalpebre)
+        continue;
 
-  if (abs(sensorValue0Old - sensorValue0) > Analogfilter)
-  {
-    Serial.print("A;21;");
-    Serial.println(sensorValue0);
-  }
-
-  if (!loopPalpebre)
-  {
-    int analogPalpebraDX = analogRead(analogPalpebraDXPin);
-    if (abs(analogPalpebraDXOLD - analogPalpebraDX) > Analogfilter)
-    {
-      Serial.print("A;23;");
-      Serial.println(analogPalpebraDX);
-    }
-    analogPalpebraDXOLD = analogPalpebraDX;
+    readWriteMotor(listaMotori, i);
   }
   
+
   //readCloseEyesButton();
   readLoopPalpebreButton();
-  sensorValue01Old = sensorValue01;
-  sensorValue0Old = sensorValue0;
 
   deadManButton();
   delay(40);
@@ -95,13 +87,13 @@ void readLoopPalpebreButton()
   if (loopPalpebreState != oldloopPalpebreState)
     if (loopPalpebreState == LOW)
     {
-      Serial.println("S;P;0");
+      Serial.println("LS;0");
       digitalWrite(loopPalpebreButtonLed, LOW);
       loopPalpebre = false;
     }
     else
     {
-      Serial.println("S;P;1");
+      Serial.println("LS;1");
       digitalWrite(loopPalpebreButtonLed, HIGH);
       loopPalpebre = true;
     }
@@ -116,10 +108,30 @@ void readCloseEyesButton()
   if (closeEyesState != oldCloseEyesState)
     if (closeEyesState == LOW)
     {
-      Serial.println("E;O");
+      Serial.println("LE");
     }
 
   oldCloseEyesState = closeEyesState;
+}
+
+void readWriteMotor(Motor listaMotori[], int index)
+{
+  int sensorValue = analogRead(listaMotori[index].port);
+
+  if (abs(listaMotori[index].oldValue - sensorValue) > Analogfilter)
+  {
+    Serial.print(listaMotori[index].sector);
+    Serial.print(listaMotori[index].event);
+    Serial.print(';');
+    Serial.print(listaMotori[index].pinH);
+    Serial.print(';');
+    Serial.println(sensorValue);
+
+    delay(5);
+  }
+
+  listaMotori[index].oldValue = sensorValue;
+
 }
 
 void deadManButton()

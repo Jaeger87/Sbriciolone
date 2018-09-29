@@ -1,5 +1,4 @@
 #include <PololuMaestro.h>
-
 unsigned long nextPalpebre = 0;
 
 const byte pinOcchioDXX = 21;
@@ -52,62 +51,63 @@ void setup() {
 }
 
 
-int sensorValue01Old = 0;
-int sensorValue0Old = 0;
-
-
 void loop() {
-  String asd = Serial.readStringUntil('\n');
-  if (asd.length() > 0)
+  String message = Serial.readStringUntil('\n');
+  if (message.length() > 0)
   {
-    if (asd.charAt(0) == 'A')
+    if (message.charAt(0) == 'E')
     {
-      String pinString = getValueStringSplitter(asd, ';', 1);
-      int pin = pinString.toInt();
-      String value = getValueStringSplitter(asd, ';', 2);
-
-
-      
-      if (pin == pinOcchioDXX)
-      {
-        maestro.setTarget(pin, analogConversionMotorOcchioX(value.toInt()));
-      }
-      else if (pin == pinOcchioDXY)
-        maestro.setTarget(pin, analogConversionMotorOcchioY(value.toInt()));
-      else if (pin == channelPalpebraDestra)
-        maestro.setTarget(pin, analogConversionMotorPalpebra(value.toInt()));
-      else
-        maestro.setTarget(pin, analogConversionMotor180(value.toInt()));
+      if (message.charAt(1) == 'M')
+        eyesMotorMessage(message);
 
     }
-    if (asd.charAt(0) == 'E')
+    else if (message.charAt(0) == 'L')
     {
-      eventoPalpebre();
-    }
-    if (asd.charAt(0) == 'S')
-    {
-      if (asd.charAt(2) == 'P')
-      {
-        if (asd.charAt(4) == '0')
-        {
+      if (message.charAt(1) == 'M')
+        palpebraMotorMessage(message);
+        
+      else if (message.charAt(1) == 'E')
+        eventoPalpebre();
+        
+      else if(message.charAt(1) == 'S')
+        if (message.charAt(3) == '0')
           sitOcchi = MANUAL;
-        }
-
-        else
-        {
+        else if (message.charAt(3) == '1')
           sitOcchi = APERTI;
-        }
       }
     }
-
-
-  }
 
   gestisciOcchi();
   deadManButton();
   delay(25);
 }
 
+
+
+void eyesMotorMessage(String message)
+{
+  String pinString = getValueStringSplitter(message, ';', 1);
+  int pin = pinString.toInt();
+  String valueString = getValueStringSplitter(message, ';', 2);
+  int value = valueString.toInt();
+
+  if (pin == pinOcchioDXX)
+    maestro.setTarget(pin, analogConversionMotorOcchioX(value));
+
+  else if (pin == pinOcchioDXY)
+    maestro.setTarget(pin, analogConversionMotorOcchioY(value));
+}
+
+
+void palpebraMotorMessage(String message)
+{
+  String pinString = getValueStringSplitter(message, ';', 1);
+  int pin = pinString.toInt();
+  String valueString = getValueStringSplitter(message, ';', 2);
+  int value = valueString.toInt();
+  if (pin == channelPalpebraDestra)
+    maestro.setTarget(pin, analogConversionMotorPalpebra(value));
+}
 
 void eventoPalpebre()
 {

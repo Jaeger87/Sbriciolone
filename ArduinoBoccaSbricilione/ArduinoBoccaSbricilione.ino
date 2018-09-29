@@ -9,8 +9,14 @@ const byte aliveTrigger = 10;
 struct Motor {
   int port;
   char sector;
+  int pinH;
   char event = 'M';
+  int oldValue = 0;
 };
+
+const byte howmanyanalog = 3;
+Motor listaMotori[howmanyanalog];
+
 
 void setup()
 {

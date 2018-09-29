@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         headMac = headIntent.getStringExtra(Intent.EXTRA_TEXT);
 
         container = new ButtonsContainer();
-
+        initializeAllButtons();
 
 
         ButtonPerformance bp = container.getButtonPerform(R.id.eyes_01);
@@ -106,12 +106,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //connectionBluetooth();
+        connectionBluetooth();
     }
 
 
     private void connectionBluetooth()
     {
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         for(BluetoothDevice bt : pairedDevices)
         {
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void initializaAllButtons()
+    private void initializeAllButtons()
     {
 
 

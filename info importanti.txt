@@ -10,3 +10,14 @@ Range motori da programma Pololu
 180 Gradi = 624----2384  Arduino 1700---9200
 
 PalpebraDX = 752 ---- 2080
+
+MOUTH('M'),
+NOSE('N'),EYES('E'),EYELIDS('L'), EYEBROWS('B'),PRESET('P'),ERROR('0');
+
+
+Eventi
+
+M motore
+E Evento
+S Status
+
