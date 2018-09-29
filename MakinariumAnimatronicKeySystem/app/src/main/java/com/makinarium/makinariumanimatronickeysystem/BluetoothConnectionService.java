@@ -24,10 +24,6 @@ public class BluetoothConnectionService {
 
     private static final String appName = "MYAPP";
 
-    private static final UUID MY_UUID_SECURE =
-            UUID.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
-    private static final UUID MY_UUID_INSECURE =
-            UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66");
 
     private static final UUID BTMODULEUUID =
             UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
@@ -177,7 +173,6 @@ public class BluetoothConnectionService {
                 Log.d(TAG, "run: L'eccezione è papapapaa   " + e.getMessage());
             }
 
-            //will talk about this in the 3rd video
             connected(mmSocket,mmDevice);
         }
         public void cancel() {
@@ -197,7 +192,6 @@ public class BluetoothConnectionService {
      * session in listening (server) mode. Called by the Activity onResume()
      */
     public synchronized void start() {
-        Log.d(TAG, "start");
 
         // Cancel any thread attempting to make a connection
         if (mConnectThread != null) {
@@ -227,6 +221,13 @@ public class BluetoothConnectionService {
         mConnectThread.start();
     }
 
+    public void stopClient(){
+        Log.d(TAG, "startClient: Started.");
+        mConnectedThread.cancel();
+
+    }
+
+
     /**
      Finally the ConnectedThread which is responsible for maintaining the BTConnection, Sending the data, and
      receiving incoming data through input/output streams respectively.
@@ -236,7 +237,7 @@ public class BluetoothConnectionService {
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
         private final char endPacket = '\n';
-
+        private boolean active = true;
 
         public ConnectedThread(BluetoothSocket socket) {
             Log.d(TAG, "ConnectedThread: Starting.");
@@ -269,10 +270,9 @@ public class BluetoothConnectionService {
         public void run(){
             byte[] buffer = new byte[1024];  // buffer store for the stream
 
-            int bytes; // bytes returned from read()
 
             // Keep listening to the InputStream until an exception occurs
-            while (true) {
+            while (active) {
                 // Read from the InputStream
                 try {
 
@@ -290,7 +290,7 @@ public class BluetoothConnectionService {
 
                     //bytes = mmInStream.read(buffer);
                     String incomingMessage = new String(buffer, 0, index);
-                    Log.d(TAG, "InputStream: " + incomingMessage);
+
 
                     Intent incomingMessageIntent = new Intent(Constants.incomingMessageIntent);
                     incomingMessageIntent.putExtra("Message", incomingMessage);
@@ -299,7 +299,7 @@ public class BluetoothConnectionService {
 
 
                 } catch (IOException e) {
-                    Log.e(TAG, "write: Error reading Input Stream. " + e.getMessage() );
+
                     break;
                 }
             }
@@ -318,13 +318,13 @@ public class BluetoothConnectionService {
         /* Call this from the main activity to shutdown the connection */
         public void cancel() {
             try {
+                active = false;
                 mmSocket.close();
             } catch (IOException e) { }
         }
     }
 
     private void connected(BluetoothSocket mmSocket, BluetoothDevice mmDevice) {
-        Log.d(TAG, "connected: Starting.");
 
         // Start the thread to manage the connection and perform transmissions
         mConnectedThread = new ConnectedThread(mmSocket);

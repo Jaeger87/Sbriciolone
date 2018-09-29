@@ -2,6 +2,7 @@ package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthing
 
 import android.support.annotation.NonNull;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
@@ -11,12 +12,13 @@ import java.util.List;
 public class ButtonPerformance{
 
     private Button button;
+    private ProgressBar progressBar;
     private List<PerformancePiece<byte[]>> performance;
     private FaceSector faceSector;
     private boolean canPerform;
     private int duration;
 
-    public ButtonPerformance(Button button, FaceSector faceSector)
+    public ButtonPerformance(Button button, FaceSector faceSector, ProgressBar progressBar)
     {
         this.button = button;
         this.faceSector = faceSector;
@@ -74,5 +76,10 @@ public class ButtonPerformance{
     public List<PerformancePiece<byte[]>> getPerformance()
     {
         return new ArrayList<>(performance);
+    }
+
+    public ProgressBar getProgressBar()
+    {
+        return progressBar;
     }
 }

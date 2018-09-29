@@ -1,6 +1,7 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings;
 
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
@@ -17,9 +18,9 @@ public class ButtonsContainer {
     }
 
 
-    public void addButton(int id, Button button, FaceSector sector)
+    public void addButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
-        mapButtons.put(id, new ButtonPerformance(button,sector));
+        mapButtons.put(id, new ButtonPerformance(button,sector, progressBar));
     }
 
 

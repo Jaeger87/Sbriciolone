@@ -101,6 +101,9 @@ void eyesMotorMessage(String message)
 
 void palpebraMotorMessage(String message)
 {
+
+  if(sitOcchi != MANUAL)
+    return;
   String pinString = getValueStringSplitter(message, ';', 1);
   int pin = pinString.toInt();
   String valueString = getValueStringSplitter(message, ';', 2);
@@ -216,4 +219,3 @@ void deadManButton()
 
   aliveCounter++;
 }
-
