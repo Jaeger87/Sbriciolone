@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen  name="bwidth">47dp</dimen>
+    <dimen  name="bheight">34dp</dimen>
+    <dimen name="mup">34dp</dimen>
+    <dimen name="mdown">34dp</dimen>
+    <dimen name="pbheight">11dp</dimen>
+</resources>

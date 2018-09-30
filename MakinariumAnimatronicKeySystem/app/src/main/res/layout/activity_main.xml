@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/preset_01"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:background="#FFD3B6"
@@ -39,8 +39,8 @@
 
     <Button
         android:id="@+id/eyelid_01"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
         android:background="#FFD3B6"
@@ -50,8 +50,8 @@
 
     <Button
         android:id="@+id/nose_01"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginTop="32dp"
         android:background="#FFD3B6"
         android:text="01"
@@ -60,9 +60,9 @@
 
     <Button
         android:id="@+id/mouth_01"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginTop="28dp"
         android:background="#FFD3B6"
         android:text="01"
         app:layout_constraintStart_toStartOf="@+id/nose_01"
@@ -70,17 +70,17 @@
 
     <Button
         android:id="@+id/preset_02"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="24dp"
         android:text="02"
         app:layout_constraintStart_toEndOf="@+id/preset_01"
         app:layout_constraintTop_toTopOf="@+id/preset_01" />
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:id="@+id/eyelid_02"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
         android:text="02"
@@ -89,18 +89,18 @@
 
     <Button
         android:id="@+id/eyes_02"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="02"
         app:layout_constraintStart_toEndOf="@+id/eyes_01"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_02" />
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
         android:text="02"
@@ -109,37 +109,37 @@
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="32dp"
         android:text="03"
         app:layout_constraintStart_toEndOf="@+id/preset_02"
         app:layout_constraintTop_toTopOf="@+id/preset_02" />
 
     <Button
-        android:id="@+id/button10"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:id="@+id/eyelid_03"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="32dp"
         android:layout_marginTop="36dp"
         android:text="03"
-        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_02"
         app:layout_constraintTop_toBottomOf="@+id/button13" />
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:text="03"
         app:layout_constraintStart_toEndOf="@+id/eyes_02"
-        app:layout_constraintTop_toBottomOf="@+id/button10" />
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_03" />
 
     <Button
         android:id="@+id/button12"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="32dp"
         android:layout_marginTop="36dp"
         android:text="03"
@@ -170,9 +170,9 @@
 
     <Button
         android:id="@+id/eyes_01"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginTop="36dp"
         android:background="#FFD3B6"
         android:text="01"
         app:layout_constraintStart_toStartOf="@+id/eyelid_01"
@@ -180,28 +180,28 @@
 
     <Button
         android:id="@+id/mouth_02"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="02"
         app:layout_constraintStart_toEndOf="@+id/mouth_01"
         app:layout_constraintTop_toBottomOf="@+id/button8" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="03"
         app:layout_constraintStart_toEndOf="@+id/mouth_02"
         app:layout_constraintTop_toBottomOf="@+id/button12" />
 
     <Button
         android:id="@+id/eyebrow_01"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:background="#FFD3B6"
@@ -211,8 +211,8 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:text="02"
@@ -221,8 +221,8 @@
 
     <Button
         android:id="@+id/button13"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:text="03"
@@ -233,7 +233,7 @@
     <ProgressBar
         android:id="@+id/eyesPB01"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="47dp"
+        android:layout_width="@dimen/bwidth"
         android:layout_height="11dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -269,7 +269,7 @@
     <ProgressBar
         android:id="@+id/mouthPB01"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="47dp"
+        android:layout_width="@dimen/bwidth"
         android:layout_height="11dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -278,7 +278,7 @@
     <ProgressBar
         android:id="@+id/eyesPB02"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="47dp"
+        android:layout_width="@dimen/bwidth"
         android:layout_height="11dp"
         android:layout_marginStart="24dp"
         app:layout_constraintStart_toEndOf="@+id/eyesPB01"
@@ -287,7 +287,7 @@
     <ProgressBar
         android:id="@+id/mouthPB02"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="47dp"
+        android:layout_width="@dimen/bwidth"
         android:layout_height="11dp"
         android:layout_marginStart="24dp"
         app:layout_constraintStart_toEndOf="@+id/mouthPB01"
@@ -305,8 +305,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="28dp"
         android:text="04"
         app:layout_constraintStart_toEndOf="@+id/button9"
@@ -314,8 +314,8 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="28dp"
         android:text="05"
         app:layout_constraintStart_toEndOf="@+id/button"
@@ -323,8 +323,8 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="28dp"
         android:text="06"
         app:layout_constraintStart_toEndOf="@+id/button2"
@@ -332,8 +332,8 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="28dp"
         android:text="07"
         app:layout_constraintStart_toEndOf="@+id/button4"
@@ -341,8 +341,8 @@
 
     <Button
         android:id="@+id/button14"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="28dp"
         android:text="08"
         app:layout_constraintStart_toEndOf="@+id/button7"
@@ -350,8 +350,8 @@
 
     <Button
         android:id="@+id/button15"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="28dp"
         android:text="09"
         app:layout_constraintStart_toEndOf="@+id/button14"
@@ -359,12 +359,68 @@
 
     <Button
         android:id="@+id/button16"
-        android:layout_width="47dp"
-        android:layout_height="34dp"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
         android:layout_marginStart="24dp"
         android:text="10"
         app:layout_constraintStart_toEndOf="@+id/button15"
         app:layout_constraintTop_toTopOf="@+id/button15" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Nose"
+        app:layout_constraintBottom_toTopOf="@+id/nose_01"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="24dp"
+        android:text="11"
+        app:layout_constraintStart_toEndOf="@+id/button16"
+        app:layout_constraintTop_toTopOf="@+id/button16" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Mouth"
+        app:layout_constraintBottom_toTopOf="@+id/mouth_01"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/presetPB01"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="7dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preset_01" />
+
+    <Button
+        android:id="@+id/button18"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:text="04"
+        app:layout_constraintStart_toEndOf="@+id/button13"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="36dp"
+        android:text="04"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_03"
+        app:layout_constraintTop_toBottomOf="@+id/button18" />
 
 
 </android.support.constraint.ConstraintLayout>

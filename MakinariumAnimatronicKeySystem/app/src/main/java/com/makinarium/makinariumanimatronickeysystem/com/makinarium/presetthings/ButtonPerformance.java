@@ -9,11 +9,11 @@ import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ButtonPerformance{
+public class ButtonPerformance<T>{
 
     private Button button;
     private ProgressBar progressBar;
-    private List<PerformancePiece<byte[]>> performance;
+    private List<PerformancePiece<T>> performance;
     private FaceSector faceSector;
     private boolean canPerform;
     private int duration;
@@ -24,6 +24,7 @@ public class ButtonPerformance{
         this.faceSector = faceSector;
         canPerform = false;
         performance = new ArrayList<>();
+        this.progressBar = progressBar;
     }
 
     public Button getButton()
@@ -66,14 +67,14 @@ public class ButtonPerformance{
         return duration;
     }
 
-    public void addPerformancePiece(byte[] action, int time)
+    public void addPerformancePiece(T action, int time)
     {
         performance.add(new PerformancePiece<>(action,time));
         canPerform = true;
         duration+=time;
     }
 
-    public List<PerformancePiece<byte[]>> getPerformance()
+    public List<PerformancePiece<T>> getPerformance()
     {
         return new ArrayList<>(performance);
     }

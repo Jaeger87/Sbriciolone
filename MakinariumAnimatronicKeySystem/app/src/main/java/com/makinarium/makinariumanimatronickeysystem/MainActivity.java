@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private Button stopButton;
     private TimerForRecorder timeTask;
     private TextView cronometro;
-    private boolean registrationMode = false;
+    private boolean performRegistrationMode = false;
+    private boolean presetRegistrationMode = false;
     private boolean mouthActiveController = true;
     private boolean eyesActiveController = true;
 
@@ -45,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
     private Switch eyesSwitch;
 
 
-    private ButtonsContainer container;
-    private ButtonPerformance bInRec;
+    private ButtonsContainer<byte[]> container;
+    private ButtonsContainer<Integer> presetContainer;
+    private ButtonPerformance<byte[]> bInRec;
+    private ButtonPerformance<Integer> presetInRec;
+    private long timePresetRec = 0;
     private HashSet<FaceSector> performanceFilter;
 
     private long previousPerformancePieceTime = 0;
@@ -70,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
         Intent headIntent = getIntent();
         headMac = headIntent.getStringExtra(Intent.EXTRA_TEXT);
 
-        container = new ButtonsContainer();
+        container = new ButtonsContainer<>();
+        presetContainer = new ButtonsContainer<>();
         initializeAllButtons();
 
         performanceFilter = new HashSet<>();
@@ -106,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        connectionBluetooth();
+        //connectionBluetooth();
+        testButton();
     }
 
 
@@ -143,8 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeAllButtons()
     {
-
-
+        intitializePresetButton(R.id.preset_01,R.id.presetPB01);
         intitializeButton(R.id.eyes_01 , FaceSector.EYES, R.id.eyesPB01);
         intitializeButton(R.id.eyes_02 , FaceSector.EYES, R.id.eyesPB02);
         intitializeButton(R.id.mouth_01 , FaceSector.MOUTH, R.id.mouthPB01);
@@ -170,8 +175,45 @@ public class MainActivity extends AppCompatActivity {
         });
 
         container.addButton(id, b, sector, pb);
-        return;
     }
+
+
+
+    private void intitializePresetButton(int id,int pbID)
+    {
+        Button b = (Button) findViewById(id);
+        ProgressBar pb = (ProgressBar) findViewById(pbID);
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                presetPerformClick(v);
+            }
+        });
+
+        b.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View v) {
+                presetRecClick(v);
+                return true;
+            }
+        });
+
+        presetContainer.addButton(id, b, FaceSector.PRESET, pb);
+    }
+
+
+    private void testButton()//pnly for debug
+    {
+
+        byte[] arrayTest = {50,20,70};
+
+        container.getButtonPerform(R.id.eyes_01).addPerformancePiece(arrayTest,2000);
+        container.getButtonPerform(R.id.eyes_01).addPerformancePiece(arrayTest,1000);
+        container.getButtonPerform(R.id.eyes_02).addPerformancePiece(arrayTest,500);
+        container.getButtonPerform(R.id.eyes_02).addPerformancePiece(arrayTest,800);
+        container.getButtonPerform(R.id.mouth_01).addPerformancePiece(arrayTest,200);
+        container.getButtonPerform(R.id.mouth_01).addPerformancePiece(arrayTest,4000);
+    }
+
 
     public void startBTConnection(BluetoothDevice device, BluetoothConnectionService connection)
     {
@@ -222,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
     {
 
         int id = v.getId();
-        ButtonPerformance bp = container.getButtonPerform(id);
+        ButtonPerformance<byte[]> bp = container.getButtonPerform(id);
         if(!bp.canPerform())
         {
             Toast.makeText(this, Constants.emptyPerformance, Toast.LENGTH_SHORT).show();
@@ -230,6 +272,13 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, Constants.performing, Toast.LENGTH_SHORT).show();
         container.deactivatesButtonSectorButton(bp.getFaceSector());
+        if(presetRegistrationMode)
+        {
+            int time = (int)(System.currentTimeMillis() - timePresetRec);
+            presetInRec.addPerformancePiece(v.getId(), time);
+            timePresetRec = System.currentTimeMillis();
+
+        }
         performanceFilter.add(bp.getFaceSector());
         performanceThread pt = new performanceThread();
         pt.execute(bp);
@@ -244,10 +293,48 @@ public class MainActivity extends AppCompatActivity {
         timeTask.execute();
         stopButton.setClickable(true);
         stopButton.setEnabled(true);
-        registrationMode = true;
+
+        performRegistrationMode = true;
         bInRec = container.getButtonPerform(v.getId());
         bInRec.deletePerformance();
         previousPerformancePieceTime = System.currentTimeMillis();
+    }
+
+
+    public void presetRecClick(View v)
+    {
+        Toast.makeText(this, Constants.RegistrationString, Toast.LENGTH_LONG).show();
+        timeTask = new TimerForRecorder();
+        timeTask.execute();
+        stopButton.setClickable(true);
+        stopButton.setEnabled(true);
+        timePresetRec = System.currentTimeMillis();
+
+        presetRegistrationMode = true;
+        presetInRec = presetContainer.getButtonPerform(v.getId());
+        presetInRec.deletePerformance();
+        previousPerformancePieceTime = System.currentTimeMillis();
+    }
+
+    public void presetPerformClick(View v)
+    {
+        int id = v.getId();
+        ButtonPerformance<Integer> bp = presetContainer.getButtonPerform(id);
+        if(!bp.canPerform())
+        {
+            Toast.makeText(this, Constants.emptyPerformance, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Toast.makeText(this, Constants.performing, Toast.LENGTH_SHORT).show();
+        container.deactivatesAllButtons();
+        presetContainer.deactivatesButtonSectorButton(bp.getFaceSector());
+        performanceFilter.remove(FaceSector.EYEBROWS);
+        performanceFilter.remove(FaceSector.EYELIDS);
+        performanceFilter.remove(FaceSector.EYES);
+        performanceFilter.remove(FaceSector.NOSE);
+        performanceFilter.remove(FaceSector.MOUTH);
+        preSetThread pt = new preSetThread();
+        pt.execute(bp);
     }
 
 
@@ -255,10 +342,13 @@ public class MainActivity extends AppCompatActivity {
     {
         timeTask.cancel(true);
         timeTask = null;
-        registrationMode = false;
+        performRegistrationMode = false;
+        presetRegistrationMode = false;
         bInRec = null;
+        presetInRec = null;
         stopButton.setClickable(false);
         stopButton.setEnabled(false);
+        timePresetRec = 0;
         Toast.makeText(this, Constants.stopRecording, Toast.LENGTH_LONG).show();
     }
 
@@ -428,7 +518,7 @@ public class MainActivity extends AppCompatActivity {
 
                     bytes = text.getBytes(Charset.defaultCharset());
 
-                    if(registrationMode)
+                    if(performRegistrationMode)
                     {
 
                         if(f == bInRec.getFaceSector())
@@ -444,7 +534,7 @@ public class MainActivity extends AppCompatActivity {
 
                     bytes = text.getBytes(Charset.defaultCharset());
 
-                    if(registrationMode)
+                    if(performRegistrationMode)
                     {
 
                         if(f == bInRec.getFaceSector())
@@ -466,10 +556,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public class performanceThread extends AsyncTask<ButtonPerformance, Integer, ButtonPerformance> {
+    public class performanceThread extends AsyncTask<ButtonPerformance<byte[]>, Integer, ButtonPerformance<byte[]>> {
 
 
-        private ButtonPerformance bpThread;
+        private ButtonPerformance<byte[]> bpThread;
 
         public performanceThread()
         {
@@ -482,7 +572,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected ButtonPerformance doInBackground(ButtonPerformance... params) {
+        protected ButtonPerformance<byte[]> doInBackground(ButtonPerformance<byte[]>... params) {
 
             bpThread = params[0];
             List<PerformancePiece<byte[]>> performance = bpThread.getPerformance();
@@ -511,7 +601,7 @@ public class MainActivity extends AppCompatActivity {
                 if(currentTime > doPerfomance)
                 {
                     //Log.i(TAG, currentPiece.getAction());
-                    mBluetoothConnectionHead.write(currentPiece.getAction());
+                    //mBluetoothConnectionHead.write(currentPiece.getAction());
                     currentIndex++;
 
                     if(currentIndex >= performance.size())
@@ -536,9 +626,94 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(ButtonPerformance bp) {
+        protected void onPostExecute(ButtonPerformance<byte[]> bp) {
             container.activatesButtonSectorButton(bp.getFaceSector());
             performanceFilter.remove(bp.getFaceSector());
+            bpThread.getProgressBar().setProgress(0);
+        }
+
+    }
+
+
+    public class preSetThread extends AsyncTask<ButtonPerformance<Integer>, Integer, ButtonPerformance<Integer>> {
+
+
+        private ButtonPerformance<Integer> bpThread;
+
+        public preSetThread()
+        {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected ButtonPerformance<Integer> doInBackground(ButtonPerformance<Integer>... params) {
+
+            bpThread = params[0];
+            List<PerformancePiece<Integer>> performance = bpThread.getPerformance();
+            long startTime = System.currentTimeMillis();
+            boolean inPerformance = true;
+            PerformancePiece<Integer> currentPiece = performance.get(0);
+
+
+
+
+            int currentIndex = 0;
+            long doPerfomance = startTime + currentPiece.getMillisToAction();
+            while(inPerformance)
+            {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                long currentTime = System.currentTimeMillis();
+                long progressTime = currentTime - startTime;
+                int percentProgress = (int) ((100 * progressTime) / bpThread.getDuration());
+                publishProgress(percentProgress);
+
+                if(currentTime > doPerfomance)
+                {
+                    //Log.i(TAG, currentPiece.getAction());
+                    performclick(container.getButtonPerform(currentPiece.getAction()).getButton());
+
+                    currentIndex++;
+
+                    if(currentIndex >= performance.size())
+                        inPerformance = false;
+                    else
+                    {
+                        currentPiece = performance.get(currentIndex);
+                        doPerfomance = currentTime + currentPiece.getMillisToAction();
+                    }
+                }
+
+
+            }
+            return bpThread;
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Integer... values)
+        {
+            bpThread.getProgressBar().setProgress(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(ButtonPerformance<Integer> bp) {
+            presetContainer.activatesButtonSectorButton(bp.getFaceSector());
+            container.activatesAllButtons();
+            performanceFilter.remove(FaceSector.EYEBROWS);
+            performanceFilter.remove(FaceSector.EYELIDS);
+            performanceFilter.remove(FaceSector.EYES);
+            performanceFilter.remove(FaceSector.NOSE);
+            performanceFilter.remove(FaceSector.MOUTH);
             bpThread.getProgressBar().setProgress(0);
         }
 

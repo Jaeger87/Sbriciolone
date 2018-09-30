@@ -7,10 +7,9 @@ import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
 import java.util.HashMap;
 
-public class ButtonsContainer {
+public class ButtonsContainer<T> {
 
-    private HashMap<Integer,ButtonPerformance> mapButtons;
-
+    private HashMap<Integer,ButtonPerformance<T>> mapButtons;
 
     public ButtonsContainer()
     {
@@ -22,7 +21,6 @@ public class ButtonsContainer {
     {
         mapButtons.put(id, new ButtonPerformance(button,sector, progressBar));
     }
-
 
     public void deactivatesButtonSectorButton(FaceSector sector)
     {
@@ -48,8 +46,21 @@ public class ButtonsContainer {
     }
 
 
-    public ButtonPerformance getButtonPerform(int id)
+    public ButtonPerformance<T> getButtonPerform(int id)
     {
         return mapButtons.get(id);
     }
+
+    public void deactivatesAllButtons()
+    {
+        for(FaceSector sector : FaceSector.values())
+            disActButtons(sector,false);
+    }
+
+    public void activatesAllButtons()
+    {
+        for(FaceSector sector : FaceSector.values())
+            disActButtons(sector,true);
+    }
+
 }
