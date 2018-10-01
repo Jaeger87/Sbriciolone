@@ -281,16 +281,19 @@ public class MainActivity extends AppCompatActivity {
         }
         performanceFilter.add(bp.getFaceSector());
         performanceThread pt = new performanceThread();
-        pt.execute(bp);
+        pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
 
     }
 
     public void recClick(View v)
     {
 
+        if(presetRegistrationMode)
+            return;
+
         Toast.makeText(this, Constants.RegistrationString, Toast.LENGTH_LONG).show();
         timeTask = new TimerForRecorder();
-        timeTask.execute();
+        timeTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         stopButton.setClickable(true);
         stopButton.setEnabled(true);
 
@@ -305,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
     {
         Toast.makeText(this, Constants.RegistrationString, Toast.LENGTH_LONG).show();
         timeTask = new TimerForRecorder();
-        timeTask.execute();
+        timeTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         stopButton.setClickable(true);
         stopButton.setEnabled(true);
         timePresetRec = System.currentTimeMillis();
@@ -334,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
         performanceFilter.remove(FaceSector.NOSE);
         performanceFilter.remove(FaceSector.MOUTH);
         preSetThread pt = new preSetThread();
-        pt.execute(bp);
+        pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
     }
 
 
@@ -664,6 +667,9 @@ public class MainActivity extends AppCompatActivity {
 
             int currentIndex = 0;
             long doPerfomance = startTime + currentPiece.getMillisToAction();
+
+            long endPerfomance = startTime + container.getButtonPerform(currentPiece.getAction()).getDuration();
+
             while(inPerformance)
             {
                 try {
@@ -690,11 +696,26 @@ public class MainActivity extends AppCompatActivity {
                     {
                         currentPiece = performance.get(currentIndex);
                         doPerfomance = currentTime + currentPiece.getMillisToAction();
+
+                        long maybeEnd = startTime + container.getButtonPerform(currentPiece.getAction()).getDuration();
+                        if(maybeEnd > endPerfomance)
+                            endPerfomance = maybeEnd;
+
                     }
                 }
 
 
             }
+
+            if(System.currentTimeMillis() < endPerfomance)
+                try {
+                Thread.sleep(endPerfomance - System.currentTimeMillis() + 10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+
             return bpThread;
         }
 
