@@ -3,7 +3,8 @@
 
     <dimen  name="bwidth">47dp</dimen>
     <dimen  name="bheight">34dp</dimen>
-    <dimen name="mup">34dp</dimen>
-    <dimen name="mdown">34dp</dimen>
+    <dimen name="mup">26dp</dimen>
+    <dimen name="mleft">24dp</dimen>
     <dimen name="pbheight">11dp</dimen>
+    <dimen name="textsize">12sp</dimen>
 </resources>

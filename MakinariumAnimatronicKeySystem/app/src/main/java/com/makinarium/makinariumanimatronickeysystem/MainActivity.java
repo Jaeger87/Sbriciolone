@@ -709,7 +709,7 @@ public class MainActivity extends AppCompatActivity {
                 if(idToPress != -1)
                     publishProgress(percentProgress, idToPress);
                 else
-                    publishProgress(percentProgress, idToPress);
+                    publishProgress(percentProgress);
 
 
             }
