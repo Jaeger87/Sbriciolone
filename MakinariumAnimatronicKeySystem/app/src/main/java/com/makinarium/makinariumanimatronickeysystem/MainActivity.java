@@ -673,7 +673,7 @@ public class MainActivity extends AppCompatActivity {
             while(inPerformance)
             {
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(4);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -681,12 +681,14 @@ public class MainActivity extends AppCompatActivity {
                 long currentTime = System.currentTimeMillis();
                 long progressTime = currentTime - startTime;
                 int percentProgress = (int) ((100 * progressTime) / bpThread.getDuration());
-                publishProgress(percentProgress);
+
+
+                int idToPress = -1;
 
                 if(currentTime > doPerfomance)
                 {
                     //Log.i(TAG, currentPiece.getAction());
-                    performclick(container.getButtonPerform(currentPiece.getAction()).getButton());
+                    idToPress = currentPiece.getAction();
 
                     currentIndex++;
 
@@ -703,6 +705,11 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 }
+
+                if(idToPress != -1)
+                    publishProgress(percentProgress, idToPress);
+                else
+                    publishProgress(percentProgress, idToPress);
 
 
             }
@@ -724,6 +731,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onProgressUpdate(Integer... values)
         {
             bpThread.getProgressBar().setProgress(values[0]);
+            if(values.length > 1)
+                performclick(container.getButtonPerform(values[1]).getButton());
         }
 
         @Override
