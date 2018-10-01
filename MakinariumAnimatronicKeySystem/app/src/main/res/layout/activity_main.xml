@@ -21,7 +21,7 @@
         android:id="@+id/mouthSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="620dp"
+        android:layout_marginStart="632dp"
         android:layout_marginTop="12dp"
         android:rotation="90"
         android:text="Mouth"
@@ -32,7 +32,7 @@
         android:id="@+id/eyesSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:text="Eyes"
         app:layout_constraintStart_toEndOf="@+id/mouthSwitch"
         app:layout_constraintTop_toTopOf="@+id/mouthSwitch" />
@@ -307,7 +307,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/preset_04"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
@@ -316,49 +316,49 @@
         app:layout_constraintTop_toTopOf="@+id/preset_03" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/preset_05"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="@dimen/mleft"
         android:text="05"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/preset_04"
+        app:layout_constraintTop_toTopOf="@+id/preset_04" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/preset_06"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="06"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/preset_05"
+        app:layout_constraintTop_toTopOf="@+id/preset_05" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/preset_07"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="07"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintStart_toEndOf="@+id/preset_06"
+        app:layout_constraintTop_toTopOf="@+id/preset_06" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/preset_08"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="08"
-        app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toTopOf="@+id/button7" />
+        app:layout_constraintStart_toEndOf="@+id/preset_07"
+        app:layout_constraintTop_toTopOf="@+id/preset_07" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/preset_09"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="09"
-        app:layout_constraintStart_toEndOf="@+id/button14"
-        app:layout_constraintTop_toTopOf="@+id/button14" />
+        app:layout_constraintStart_toEndOf="@+id/preset_08"
+        app:layout_constraintTop_toTopOf="@+id/preset_08" />
 
     <Button
         android:id="@+id/preset_10"
@@ -366,8 +366,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="10"
-        app:layout_constraintStart_toEndOf="@+id/button15"
-        app:layout_constraintTop_toTopOf="@+id/button15" />
+        app:layout_constraintStart_toEndOf="@+id/preset_09"
+        app:layout_constraintTop_toTopOf="@+id/preset_09" />
 
     <TextView
         android:id="@+id/textView"
@@ -415,7 +415,7 @@
         android:layout_marginTop="@dimen/mup"
         android:text="04"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_03"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/preset_04" />
 
     <Button
         android:id="@+id/eyelid_04"
@@ -438,7 +438,7 @@
         app:layout_constraintTop_toBottomOf="@+id/eyelid_04" />
 
     <Button
-        android:id="@+id/button19"
+        android:id="@+id/nose_04"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
@@ -455,7 +455,7 @@
         android:layout_marginTop="@dimen/mup"
         android:text="04"
         app:layout_constraintStart_toEndOf="@+id/mouth_03"
-        app:layout_constraintTop_toBottomOf="@+id/button19" />
+        app:layout_constraintTop_toBottomOf="@+id/nose_04" />
 
     <Button
         android:id="@+id/eyebrow_05"
@@ -465,7 +465,7 @@
         android:layout_marginTop="@dimen/mup"
         android:text="05"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_04"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/preset_05" />
 
     <Button
         android:id="@+id/eyelid_05"
@@ -488,13 +488,13 @@
         app:layout_constraintTop_toBottomOf="@+id/eyelid_05" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/nose_05"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="05"
-        app:layout_constraintStart_toEndOf="@+id/button19"
+        app:layout_constraintStart_toEndOf="@+id/nose_04"
         app:layout_constraintTop_toBottomOf="@+id/eyes_05" />
 
     <Button
@@ -505,7 +505,7 @@
         android:layout_marginTop="@dimen/mup"
         android:text="05"
         app:layout_constraintStart_toEndOf="@+id/mouth_04"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/nose_05" />
 
     <Button
         android:id="@+id/eyebrow_06"
@@ -515,7 +515,227 @@
         android:layout_marginTop="@dimen/mup"
         android:text="06"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_05"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/preset_06" />
+
+    <Button
+        android:id="@+id/eyelid_06"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="06"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_05"
+        app:layout_constraintTop_toBottomOf="@+id/eyebrow_06" />
+
+    <Button
+        android:id="@+id/eyes_06"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="06"
+        app:layout_constraintStart_toEndOf="@+id/eyes_05"
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_06" />
+
+    <Button
+        android:id="@+id/nose_06"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="06"
+        app:layout_constraintStart_toEndOf="@+id/nose_05"
+        app:layout_constraintTop_toBottomOf="@+id/eyes_06" />
+
+    <Button
+        android:id="@+id/mouth_06"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="06"
+        app:layout_constraintStart_toEndOf="@+id/mouth_05"
+        app:layout_constraintTop_toBottomOf="@+id/nose_06" />
+
+    <Button
+        android:id="@+id/eyebrow_07"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="07"
+        app:layout_constraintStart_toEndOf="@+id/eyebrow_06"
+        app:layout_constraintTop_toBottomOf="@+id/preset_07" />
+
+    <Button
+        android:id="@+id/eyelid_07"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="07"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_06"
+        app:layout_constraintTop_toBottomOf="@+id/eyebrow_07" />
+
+    <Button
+        android:id="@+id/eyes_07"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="07"
+        app:layout_constraintStart_toEndOf="@+id/eyes_06"
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_07" />
+
+    <Button
+        android:id="@+id/nose_07"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="07"
+        app:layout_constraintStart_toEndOf="@+id/nose_06"
+        app:layout_constraintTop_toBottomOf="@+id/eyes_07" />
+
+    <Button
+        android:id="@+id/mouth_07"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="07"
+        app:layout_constraintStart_toEndOf="@+id/mouth_06"
+        app:layout_constraintTop_toBottomOf="@+id/nose_07" />
+
+    <Button
+        android:id="@+id/eyebrow_08"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="08"
+        app:layout_constraintStart_toEndOf="@+id/eyebrow_07"
+        app:layout_constraintTop_toBottomOf="@+id/preset_08" />
+
+    <Button
+        android:id="@+id/eyelid_08"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="08"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_07"
+        app:layout_constraintTop_toBottomOf="@+id/eyebrow_08" />
+
+    <Button
+        android:id="@+id/eyes_08"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="08"
+        app:layout_constraintStart_toEndOf="@+id/eyes_07"
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_08" />
+
+    <Button
+        android:id="@+id/nose_08"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="08"
+        app:layout_constraintStart_toEndOf="@+id/nose_07"
+        app:layout_constraintTop_toBottomOf="@+id/eyes_08" />
+
+    <Button
+        android:id="@+id/mouth_08"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="08"
+        app:layout_constraintStart_toEndOf="@+id/mouth_07"
+        app:layout_constraintTop_toBottomOf="@+id/nose_08" />
+
+    <Button
+        android:id="@+id/eyebrow_09"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="09"
+        app:layout_constraintStart_toEndOf="@+id/eyebrow_08"
+        app:layout_constraintTop_toBottomOf="@+id/preset_09" />
+
+    <Button
+        android:id="@+id/eyelid_09"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="09"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_08"
+        app:layout_constraintTop_toBottomOf="@+id/eyebrow_09" />
+
+    <Button
+        android:id="@+id/eyes_09"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="09"
+        app:layout_constraintStart_toEndOf="@+id/eyes_08"
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_09" />
+
+    <Button
+        android:id="@+id/nose_09"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="09"
+        app:layout_constraintStart_toEndOf="@+id/nose_08"
+        app:layout_constraintTop_toBottomOf="@+id/eyes_09" />
+
+    <Button
+        android:id="@+id/mouth_09"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="09"
+        app:layout_constraintStart_toEndOf="@+id/mouth_08"
+        app:layout_constraintTop_toBottomOf="@+id/nose_09" />
+
+    <Button
+        android:id="@+id/eyebrow_10"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@+id/eyebrow_09"
+        app:layout_constraintTop_toBottomOf="@+id/preset_10" />
+
+    <Button
+        android:id="@+id/eyelid_10"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@+id/eyelid_09"
+        app:layout_constraintTop_toBottomOf="@+id/eyebrow_10" />
+
+    <Button
+        android:id="@+id/eyes_10"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/bheight"
+        android:layout_marginStart="@dimen/mleft"
+        android:layout_marginTop="@dimen/mup"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@+id/eyes_09"
+        app:layout_constraintTop_toBottomOf="@+id/eyelid_10" />
 
 
 </android.support.constraint.ConstraintLayout>
