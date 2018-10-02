@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView cronometro;
     private boolean performRegistrationMode = false;
     private boolean presetRegistrationMode = false;
+    private boolean presetInPerform = false;
     private boolean mouthActiveController = true;
     private boolean eyesActiveController = true;
 
@@ -336,6 +337,7 @@ public class MainActivity extends AppCompatActivity {
         performanceFilter.remove(FaceSector.EYES);
         performanceFilter.remove(FaceSector.NOSE);
         performanceFilter.remove(FaceSector.MOUTH);
+        presetInPerform = true;
         preSetThread pt = new preSetThread();
         pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
     }
@@ -630,7 +632,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ButtonPerformance<byte[]> bp) {
-            container.activatesButtonSectorButton(bp.getFaceSector());
+
+            if(!presetInPerform)
+                container.activatesButtonSectorButton(bp.getFaceSector());
             performanceFilter.remove(bp.getFaceSector());
             bpThread.getProgressBar().setProgress(0);
         }
@@ -744,6 +748,7 @@ public class MainActivity extends AppCompatActivity {
             performanceFilter.remove(FaceSector.EYES);
             performanceFilter.remove(FaceSector.NOSE);
             performanceFilter.remove(FaceSector.MOUTH);
+            presetInPerform = false;
             bpThread.getProgressBar().setProgress(0);
         }
 

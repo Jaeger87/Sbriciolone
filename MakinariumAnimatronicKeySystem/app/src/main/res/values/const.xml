@@ -6,5 +6,7 @@
     <dimen name="mup">26dp</dimen>
     <dimen name="mleft">20dp</dimen>
     <dimen name="pbheight">11dp</dimen>
+
     <dimen name="textsize">12sp</dimen>
+    <dimen name="firstleft">16dp</dimen>
 </resources>
