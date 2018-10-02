@@ -22,6 +22,14 @@ struct Motor {
   int oldValue = 0;
 };
 
+struct ButtonLed {
+  int pin;
+  int led;
+  char sector;
+  char event = 'S';
+  boolean value;
+};
+
 const byte howmanyanalog = 3;
 Motor listaMotori[howmanyanalog];
 
@@ -74,7 +82,8 @@ void loop() {
   }
   
 
-  //readCloseEyesButton();
+  
+  readCloseEyesButton();
   readLoopPalpebreButton();
 
   deadManButton();
