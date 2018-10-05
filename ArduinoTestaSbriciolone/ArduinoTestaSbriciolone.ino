@@ -65,24 +65,75 @@ void loop() {
     {
       if (message.charAt(1) == 'M')
         palpebraMotorMessage(message);
-        
+
       else if (message.charAt(1) == 'E')
         eventoPalpebre();
-        
-      else if(message.charAt(1) == 'S')
+
+      else if (message.charAt(1) == 'S')
         if (message.charAt(3) == '0')
           sitOcchi = MANUAL;
         else if (message.charAt(3) == '1')
           sitOcchi = APERTI;
-      }
     }
+
+    else if (message.charAt(0) == 'B')
+    {
+      eyeBrowMessage(message);
+    }
+
+    else if (message.charAt(0) == 'N')
+    {
+      noseMessage(message);
+    }
+
+    else if (message.charAt(0) == 'M')
+    {
+      mouthMessage(message);
+    }
+  }
 
   gestisciOcchi();
   deadManButton();
   delay(25);
 }
 
+void noseMessage(String message)
+{
+  if (message.charAt(1) == 'M')
+  {
+    String pinString = getValueStringSplitter(message, ';', 1);
+    int pin = pinString.toInt();
+    String valueString = getValueStringSplitter(message, ';', 2);
+    int value = valueString.toInt();
+    maestro.setTarget(pin, analogConversionMotor180(value));
+  }
+}
 
+
+void eyeBrowMessage(String message)
+{
+  if (message.charAt(1) == 'M')
+  {
+    String pinString = getValueStringSplitter(message, ';', 1);
+    int pin = pinString.toInt();
+    String valueString = getValueStringSplitter(message, ';', 2);
+    int value = valueString.toInt();
+    maestro.setTarget(pin, analogConversionMotor180(value));
+  }
+}
+
+
+void mouthMessage(String message)
+{
+  if (message.charAt(1) == 'M')
+  {
+    String pinString = getValueStringSplitter(message, ';', 1);
+    int pin = pinString.toInt();
+    String valueString = getValueStringSplitter(message, ';', 2);
+    int value = valueString.toInt();
+    maestro.setTarget(pin, analogConversionMotor180(value));
+  }
+}
 
 void eyesMotorMessage(String message)
 {
@@ -102,7 +153,7 @@ void eyesMotorMessage(String message)
 void palpebraMotorMessage(String message)
 {
 
-  if(sitOcchi != MANUAL)
+  if (sitOcchi != MANUAL)
     return;
   String pinString = getValueStringSplitter(message, ';', 1);
   int pin = pinString.toInt();

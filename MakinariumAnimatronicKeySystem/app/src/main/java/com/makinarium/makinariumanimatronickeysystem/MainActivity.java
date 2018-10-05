@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //connectionBluetooth();
-        testButton();
+        connectionBluetooth();
+        //testButton();
     }
 
 
@@ -210,11 +210,16 @@ public class MainActivity extends AppCompatActivity {
         intitializeButton(R.id.nose_02 , FaceSector.EYES, R.id.nosePB02);
         intitializeButton(R.id.nose_03 , FaceSector.EYES, R.id.nosePB03);
         intitializeButton(R.id.nose_04 , FaceSector.EYES, R.id.nosePB04);
+        intitializeButton(R.id.nose_05 , FaceSector.EYES, R.id.nosePB05);
+        intitializeButton(R.id.nose_06 , FaceSector.EYES, R.id.nosePB06);
+        intitializeButton(R.id.nose_07 , FaceSector.EYES, R.id.nosePB07);
+        intitializeButton(R.id.nose_08 , FaceSector.EYES, R.id.nosePB08);
 
 
         intitializeButton(R.id.mouth_01 , FaceSector.MOUTH, R.id.mouthPB01);
         intitializeButton(R.id.mouth_02 , FaceSector.MOUTH, R.id.mouthPB02);
         intitializeButton(R.id.mouth_03 , FaceSector.MOUTH, R.id.mouthPB03);
+        intitializeButton(R.id.mouth_04 , FaceSector.MOUTH, R.id.mouthPB04);
     }
 
     private void intitializeButton(int id, FaceSector sector, int pbID)

@@ -30,7 +30,7 @@ struct ButtonLed {
   boolean value;
 };
 
-const byte howmanyanalog = 3;
+const byte howmanyanalog = 8;
 Motor listaMotori[howmanyanalog];
 ButtonLed mirrorButton;
 
@@ -60,6 +60,26 @@ void setup()
   listaMotori[2].sector = 'L';//PalpebraDestra
   listaMotori[2].port = A2;
   listaMotori[2].pinH = 23;
+
+  listaMotori[3].sector = 'B';//Sopraciglio DXD
+  listaMotori[3].port = A3;//
+  listaMotori[3].pinH = 15;
+
+  listaMotori[4].sector = 'B';//Sopraciglio DXC
+  listaMotori[4].port = A4;
+  listaMotori[4].pinH = 14;
+
+  listaMotori[5].sector = 'B';//Sopraciglio SXS
+  listaMotori[5].port = A5;//
+  listaMotori[5].pinH = 17;
+
+  listaMotori[6].sector = 'B';//Sopraciglio SXC
+  listaMotori[6].port = A6;
+  listaMotori[6].pinH = 16;
+
+  listaMotori[7].sector = 'L';//PalpebraSinistra
+  listaMotori[7].port = A7;
+  listaMotori[7].pinH = 20;
 
 
   loopPalpebreState = digitalRead(loopPalpebreButton);
@@ -149,6 +169,21 @@ void readWriteMotor(Motor listaMotori[], int index)
 
   listaMotori[index].oldValue = sensorValue;
 
+}
+
+void readButtonLed(ButtonLed button)
+{
+  int lettura = digitalRead(button.pin);
+  if (lettura == HIGH)
+  {
+    button.value = true;
+    digitalWrite(button.led, HIGH);
+  }
+  else
+  {
+    button.value = false;
+    digitalWrite(button.led, LOW);
+  }
 }
 
 void deadManButton()

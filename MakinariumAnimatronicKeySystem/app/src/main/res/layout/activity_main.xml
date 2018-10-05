@@ -1051,7 +1051,7 @@
         android:layout_height="@dimen/pbheight"
         android:layout_marginStart="@dimen/mleft"
         app:layout_constraintStart_toEndOf="@+id/nosePB07"
-        app:layout_constraintTop_toBottomOf="@+id/nose_06" />
+        app:layout_constraintTop_toBottomOf="@+id/nose_08" />
 
     <Button
         android:id="@+id/mouth_08"
@@ -1131,6 +1131,16 @@
         app:layout_constraintStart_toEndOf="@+id/nose_08"
         app:layout_constraintTop_toBottomOf="@+id/eyes_09" />
 
+
+    <ProgressBar
+        android:id="@+id/nosePB09"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/nosePB08"
+        app:layout_constraintTop_toBottomOf="@+id/nose_09" />
+
     <Button
         android:id="@+id/mouth_09"
         android:layout_width="@dimen/bwidth"
@@ -1207,6 +1217,16 @@
         android:text="10"
         app:layout_constraintStart_toEndOf="@+id/nose_09"
         app:layout_constraintTop_toBottomOf="@+id/eyes_10" />
+
+    <ProgressBar
+        android:id="@+id/nosePB10"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/nosePB09"
+        app:layout_constraintTop_toBottomOf="@+id/nose_10" />
+
 
     <Button
         android:id="@+id/mouth_10"
@@ -1286,6 +1306,16 @@
         android:text="11"
         app:layout_constraintStart_toEndOf="@+id/nose_10"
         app:layout_constraintTop_toBottomOf="@+id/eyes_11" />
+
+    <ProgressBar
+        android:id="@+id/nosePB11"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/nosePB10"
+        app:layout_constraintTop_toBottomOf="@+id/nose_11" />
+
 
     <Button
         android:id="@+id/mouth_11"

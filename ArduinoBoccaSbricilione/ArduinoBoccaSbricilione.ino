@@ -1,10 +1,7 @@
 const byte Analogfilter = 6;
-
+const byte delayLettura = 5;
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
-
-boolean mirror = false;
-boolean parlata = false;
 
 struct Motor {
   int port;
@@ -32,58 +29,87 @@ void setup()
 {
   Serial.begin(9600);
 
+  mirrorButton.pin = 5;
+  mirrorButton.led = 4;
+  mirrorButton.sector = 'M';
+  mirrorButton.value = false;
+
+
+  parlataButton.pin = 7;
+  parlataButton.led = 6;
+  parlataButton.sector = 'M';
+  parlataButton.value = false;
+
+  pinMode(mirrorButton.pin, INPUT);
+  pinMode(mirrorButton.led, OUTPUT);
+  pinMode(parlataButton.pin, INPUT);
+  pinMode(parlataButton.led, OUTPUT);
+
+
   listaMotori[0].sector = 'M';//BoccaSX
   listaMotori[0].port = A0;//
-  listaMotori[0].pinH = 22;
+  listaMotori[0].pinH = 5;
 
   listaMotori[1].sector = 'M';//BoccaCSX
   listaMotori[1].port = A1;
-  listaMotori[1].pinH = 21;
+  listaMotori[1].pinH = 6;
 
   listaMotori[2].sector = 'M';//BoccaC
   listaMotori[2].port = A2;
-  listaMotori[2].pinH = 23;
+  listaMotori[2].pinH = 7;
 
   listaMotori[3].sector = 'M';//BoccaCDX
   listaMotori[3].port = A3;
-  listaMotori[3].pinH = 23;
+  listaMotori[3].pinH = 8;
 
   listaMotori[4].sector = 'M';//BoccaDX
   listaMotori[4].port = A4;
-  listaMotori[4].pinH = 23;
+  listaMotori[4].pinH = 9;
 
   listaMotori[5].sector = 'M';//NasoS
   listaMotori[5].port = A5;
-  listaMotori[5].pinH = 23;
+  listaMotori[5].pinH = 10;
 
   listaMotori[6].sector = 'M';//NasoCS
   listaMotori[6].port = A6;
-  listaMotori[6].pinH = 23;
+  listaMotori[6].pinH = 11;
 
   listaMotori[7].sector = 'M';//NasoCD
   listaMotori[7].port = A7;
-  listaMotori[7].pinH = 23;
+  listaMotori[7].pinH = 12;
 
   listaMotori[8].sector = 'M';//NasoD
   listaMotori[8].port = A8;
-  listaMotori[8].pinH = 23;
+  listaMotori[8].pinH = 13;
 
 
+  int lettura = digitalRead(mirrorButton.pin);
+  if (lettura == HIGH)
+  {
+    mirrorButton.value = true;
+    digitalWrite(mirrorButton.led, HIGH);
+  }
+  else
+  {
+    mirrorButton.value = false;
+    digitalWrite(mirrorButton.led, LOW);
+  }
 
 }
 
 void loop() {
 
-  for(int i = 0; i < howmanyanalog; i++)
+  for (int i = 0; i < howmanyanalog; i++)
   {
-    if(mirror)
-      if(i == 3 || i == 4)
+    if (mirrorButton.value)
+      if (i == 3 || i == 4)
         continue;
     readWriteMotor(listaMotori, i);
   }
 
-  
 
+  readButtonLed(mirrorButton);
+  readButtonLed(parlataButton);
   deadManButton();
 
   delay(50);
@@ -98,8 +124,8 @@ void readWriteMotor(Motor listaMotori[], int index)
   if (abs(listaMotori[index].oldValue - sensorValue) > Analogfilter)
   {
     sendMotor(listaMotori, index, sensorValue);
-    if(mirror)
-      if(index == 0 || index == 1)
+    if (mirrorButton.value)
+      if (index == 0 || index == 1)
         sendMotor(listaMotori, 4 - index, sensorValue);
   }
 
@@ -108,17 +134,31 @@ void readWriteMotor(Motor listaMotori[], int index)
 }
 
 
+void readButtonLed(ButtonLed button)
+{
+  int lettura = digitalRead(button.pin);
+  if (lettura == HIGH)
+  {
+    button.value = true;
+    digitalWrite(button.led, HIGH);
+  }
+  else
+  {
+    button.value = false;
+    digitalWrite(button.led, LOW);
+  }
+}
+
 void sendMotor(Motor listaMotori[], int index, int sensorValue)
 {
-    Serial.print(listaMotori[index].sector);
-    Serial.print(listaMotori[index].event);
-    Serial.print(';');
-    Serial.print(listaMotori[index].pinH);
-    Serial.print(';');
-    Serial.println(sensorValue);
+  Serial.print(listaMotori[index].sector);
+  Serial.print(listaMotori[index].event);
+  Serial.print(';');
+  Serial.print(listaMotori[index].pinH);
+  Serial.print(';');
+  Serial.println(sensorValue);
+  delay(delayLettura);
 
-    delay(5);
-  
 }
 
 void deadManButton()
