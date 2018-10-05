@@ -1,5 +1,5 @@
 const byte Analogfilter = 6;
-const byte closeEyesButtonPin = 5;
+const byte closeEyesButtonPin = 7;
 int closeEyesState = 0;
 int oldCloseEyesState = 0;
 
@@ -32,9 +32,18 @@ struct ButtonLed {
 
 const byte howmanyanalog = 3;
 Motor listaMotori[howmanyanalog];
+ButtonLed mirrorButton;
+
 
 void setup()
 {
+  mirrorButton.pin = 3;
+  mirrorButton.led = 4;
+  mirrorButton.sector = 'E';
+  mirrorButton.value = false;
+
+  pinMode(mirrorButton.pin, INPUT);
+  pinMode(mirrorButton.led, OUTPUT);
   pinMode(closeEyesButtonPin, INPUT);
   pinMode(loopPalpebreButton, INPUT);
   pinMode(loopPalpebreButtonLed, OUTPUT);
@@ -65,24 +74,23 @@ void setup()
     digitalWrite(loopPalpebreButtonLed, LOW);
   }
 
-
   Serial.begin(9600);
 }
 
 
 void loop() {
 
-  for(int i = 0; i < howmanyanalog; i++)
+  for (int i = 0; i < howmanyanalog; i++)
   {
-    if(listaMotori[i].sector == 'L')
-      if(loopPalpebre)
+    if (listaMotori[i].sector == 'L')
+      if (loopPalpebre)
         continue;
 
     readWriteMotor(listaMotori, i);
   }
-  
 
-  
+
+
   readCloseEyesButton();
   readLoopPalpebreButton();
 
