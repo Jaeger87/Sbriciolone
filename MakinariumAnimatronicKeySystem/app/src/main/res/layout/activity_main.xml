@@ -888,6 +888,16 @@
         app:layout_constraintStart_toEndOf="@+id/mouth_05"
         app:layout_constraintTop_toBottomOf="@+id/nose_06" />
 
+
+    <ProgressBar
+        android:id="@+id/mouthPB06"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/mouthPB05"
+        app:layout_constraintTop_toBottomOf="@+id/mouth_06" />
+
     <Button
         android:id="@+id/eyebrow_07"
         android:layout_width="@dimen/bwidth"
@@ -974,6 +984,16 @@
         android:text="07"
         app:layout_constraintStart_toEndOf="@+id/mouth_06"
         app:layout_constraintTop_toBottomOf="@+id/nose_07" />
+
+    <ProgressBar
+        android:id="@+id/mouthPB07"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/mouthPB06"
+        app:layout_constraintTop_toBottomOf="@+id/mouth_07" />
+
 
     <Button
         android:id="@+id/eyebrow_08"
@@ -1063,6 +1083,16 @@
         app:layout_constraintStart_toEndOf="@+id/mouth_07"
         app:layout_constraintTop_toBottomOf="@+id/nose_08" />
 
+    <ProgressBar
+        android:id="@+id/mouthPB08"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/mouthPB07"
+        app:layout_constraintTop_toBottomOf="@+id/mouth_08" />
+
+
     <Button
         android:id="@+id/eyebrow_09"
         android:layout_width="@dimen/bwidth"
@@ -1151,6 +1181,15 @@
         app:layout_constraintStart_toEndOf="@+id/mouth_08"
         app:layout_constraintTop_toBottomOf="@+id/nose_09" />
 
+    <ProgressBar
+        android:id="@+id/mouthPB09"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/mouthPB08"
+        app:layout_constraintTop_toBottomOf="@+id/mouth_09" />
+
     <Button
         android:id="@+id/eyebrow_10"
         android:layout_width="@dimen/bwidth"
@@ -1237,6 +1276,16 @@
         android:text="10"
         app:layout_constraintStart_toEndOf="@+id/mouth_09"
         app:layout_constraintTop_toBottomOf="@+id/nose_10" />
+
+    <ProgressBar
+        android:id="@+id/mouthPB10"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/mouthPB09"
+        app:layout_constraintTop_toBottomOf="@+id/mouth_10" />
+
 
     <Button
         android:id="@+id/eyebrow_11"
@@ -1327,6 +1376,16 @@
         app:layout_constraintStart_toEndOf="@+id/mouth_10"
         app:layout_constraintTop_toBottomOf="@+id/nose_11" />
 
+    <ProgressBar
+        android:id="@+id/mouthPB11"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/mouthPB10"
+        app:layout_constraintTop_toBottomOf="@+id/mouth_11" />
+
+
     <Button
         android:id="@+id/preset_12"
         android:layout_width="@dimen/bwidth"
@@ -1415,6 +1474,15 @@
         app:layout_constraintStart_toEndOf="@+id/nose_11"
         app:layout_constraintTop_toBottomOf="@+id/eyes_12" />
 
+    <ProgressBar
+        android:id="@+id/nosePB12"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/nosePB11"
+        app:layout_constraintTop_toBottomOf="@+id/nose_12" />
+
     <Button
         android:id="@+id/mouth_12"
         android:layout_width="@dimen/bwidth"
@@ -1424,5 +1492,14 @@
         android:text="12"
         app:layout_constraintStart_toEndOf="@+id/mouth_11"
         app:layout_constraintTop_toBottomOf="@+id/nose_12" />
+
+    <ProgressBar
+        android:id="@+id/mouthPB12"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/bwidth"
+        android:layout_height="@dimen/pbheight"
+        android:layout_marginStart="@dimen/mleft"
+        app:layout_constraintStart_toEndOf="@+id/mouthPB11"
+        app:layout_constraintTop_toBottomOf="@+id/mouth_12" />
 
 </android.support.constraint.ConstraintLayout>

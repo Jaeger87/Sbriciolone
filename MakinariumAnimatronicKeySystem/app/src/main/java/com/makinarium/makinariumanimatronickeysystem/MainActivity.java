@@ -164,32 +164,32 @@ public class MainActivity extends AppCompatActivity {
         intitializePresetButton(R.id.preset_12,R.id.presetPB12);
 
 
-        intitializeButton(R.id.eyebrow_01 , FaceSector.EYES, R.id.eyebrowPB01);
-        intitializeButton(R.id.eyebrow_02 , FaceSector.EYES, R.id.eyebrowPB02);
-        intitializeButton(R.id.eyebrow_03 , FaceSector.EYES, R.id.eyebrowPB03);
-        intitializeButton(R.id.eyebrow_04 , FaceSector.EYES, R.id.eyebrowPB04);
-        intitializeButton(R.id.eyebrow_05 , FaceSector.EYES, R.id.eyebrowPB05);
-        intitializeButton(R.id.eyebrow_06 , FaceSector.EYES, R.id.eyebrowPB06);
-        intitializeButton(R.id.eyebrow_07 , FaceSector.EYES, R.id.eyebrowPB07);
-        intitializeButton(R.id.eyebrow_08 , FaceSector.EYES, R.id.eyebrowPB08);
-        intitializeButton(R.id.eyebrow_09 , FaceSector.EYES, R.id.eyebrowPB09);
-        intitializeButton(R.id.eyebrow_10 , FaceSector.EYES, R.id.eyebrowPB10);
-        intitializeButton(R.id.eyebrow_11 , FaceSector.EYES, R.id.eyebrowPB11);
-        intitializeButton(R.id.eyebrow_12 , FaceSector.EYES, R.id.eyebrowPB12);
+        intitializeButton(R.id.eyebrow_01 , FaceSector.EYEBROWS, R.id.eyebrowPB01);
+        intitializeButton(R.id.eyebrow_02 , FaceSector.EYEBROWS, R.id.eyebrowPB02);
+        intitializeButton(R.id.eyebrow_03 , FaceSector.EYEBROWS, R.id.eyebrowPB03);
+        intitializeButton(R.id.eyebrow_04 , FaceSector.EYEBROWS, R.id.eyebrowPB04);
+        intitializeButton(R.id.eyebrow_05 , FaceSector.EYEBROWS, R.id.eyebrowPB05);
+        intitializeButton(R.id.eyebrow_06 , FaceSector.EYEBROWS, R.id.eyebrowPB06);
+        intitializeButton(R.id.eyebrow_07 , FaceSector.EYEBROWS, R.id.eyebrowPB07);
+        intitializeButton(R.id.eyebrow_08 , FaceSector.EYEBROWS, R.id.eyebrowPB08);
+        intitializeButton(R.id.eyebrow_09 , FaceSector.EYEBROWS, R.id.eyebrowPB09);
+        intitializeButton(R.id.eyebrow_10 , FaceSector.EYEBROWS, R.id.eyebrowPB10);
+        intitializeButton(R.id.eyebrow_11 , FaceSector.EYEBROWS, R.id.eyebrowPB11);
+        intitializeButton(R.id.eyebrow_12 , FaceSector.EYEBROWS, R.id.eyebrowPB12);
 
 
-        intitializeButton(R.id.eyelid_01 , FaceSector.EYES, R.id.eyelidPB01);
-        intitializeButton(R.id.eyelid_02 , FaceSector.EYES, R.id.eyelidPB02);
-        intitializeButton(R.id.eyelid_03 , FaceSector.EYES, R.id.eyelidPB03);
-        intitializeButton(R.id.eyelid_04 , FaceSector.EYES, R.id.eyelidPB04);
-        intitializeButton(R.id.eyelid_05 , FaceSector.EYES, R.id.eyelidPB05);
-        intitializeButton(R.id.eyelid_06 , FaceSector.EYES, R.id.eyelidPB06);
-        intitializeButton(R.id.eyelid_07 , FaceSector.EYES, R.id.eyelidPB07);
-        intitializeButton(R.id.eyelid_08 , FaceSector.EYES, R.id.eyelidPB08);
-        intitializeButton(R.id.eyelid_09 , FaceSector.EYES, R.id.eyelidPB09);
-        intitializeButton(R.id.eyelid_10 , FaceSector.EYES, R.id.eyelidPB10);
-        intitializeButton(R.id.eyelid_11 , FaceSector.EYES, R.id.eyelidPB11);
-        intitializeButton(R.id.eyelid_12 , FaceSector.EYES, R.id.eyelidPB12);
+        intitializeButton(R.id.eyelid_01 , FaceSector.EYELIDS, R.id.eyelidPB01);
+        intitializeButton(R.id.eyelid_02 , FaceSector.EYELIDS, R.id.eyelidPB02);
+        intitializeButton(R.id.eyelid_03 , FaceSector.EYELIDS, R.id.eyelidPB03);
+        intitializeButton(R.id.eyelid_04 , FaceSector.EYELIDS, R.id.eyelidPB04);
+        intitializeButton(R.id.eyelid_05 , FaceSector.EYELIDS, R.id.eyelidPB05);
+        intitializeButton(R.id.eyelid_06 , FaceSector.EYELIDS, R.id.eyelidPB06);
+        intitializeButton(R.id.eyelid_07 , FaceSector.EYELIDS, R.id.eyelidPB07);
+        intitializeButton(R.id.eyelid_08 , FaceSector.EYELIDS, R.id.eyelidPB08);
+        intitializeButton(R.id.eyelid_09 , FaceSector.EYELIDS, R.id.eyelidPB09);
+        intitializeButton(R.id.eyelid_10 , FaceSector.EYELIDS, R.id.eyelidPB10);
+        intitializeButton(R.id.eyelid_11 , FaceSector.EYELIDS, R.id.eyelidPB11);
+        intitializeButton(R.id.eyelid_12 , FaceSector.EYELIDS, R.id.eyelidPB12);
 
 
         intitializeButton(R.id.eyes_01 , FaceSector.EYES, R.id.eyesPB01);
@@ -206,20 +206,31 @@ public class MainActivity extends AppCompatActivity {
         intitializeButton(R.id.eyes_12 , FaceSector.EYES, R.id.eyesPB12);
 
 
-        intitializeButton(R.id.nose_01 , FaceSector.EYES, R.id.nosePB01);
-        intitializeButton(R.id.nose_02 , FaceSector.EYES, R.id.nosePB02);
-        intitializeButton(R.id.nose_03 , FaceSector.EYES, R.id.nosePB03);
-        intitializeButton(R.id.nose_04 , FaceSector.EYES, R.id.nosePB04);
-        intitializeButton(R.id.nose_05 , FaceSector.EYES, R.id.nosePB05);
-        intitializeButton(R.id.nose_06 , FaceSector.EYES, R.id.nosePB06);
-        intitializeButton(R.id.nose_07 , FaceSector.EYES, R.id.nosePB07);
-        intitializeButton(R.id.nose_08 , FaceSector.EYES, R.id.nosePB08);
-
+        intitializeButton(R.id.nose_01 , FaceSector.NOSE, R.id.nosePB01);
+        intitializeButton(R.id.nose_02 , FaceSector.NOSE, R.id.nosePB02);
+        intitializeButton(R.id.nose_03 , FaceSector.NOSE, R.id.nosePB03);
+        intitializeButton(R.id.nose_04 , FaceSector.NOSE, R.id.nosePB04);
+        intitializeButton(R.id.nose_05 , FaceSector.NOSE, R.id.nosePB05);
+        intitializeButton(R.id.nose_06 , FaceSector.NOSE, R.id.nosePB06);
+        intitializeButton(R.id.nose_07 , FaceSector.NOSE, R.id.nosePB07);
+        intitializeButton(R.id.nose_08 , FaceSector.NOSE, R.id.nosePB08);
+        intitializeButton(R.id.nose_09 , FaceSector.NOSE, R.id.nosePB09);
+        intitializeButton(R.id.nose_10 , FaceSector.NOSE, R.id.nosePB10);
+        intitializeButton(R.id.nose_11 , FaceSector.NOSE, R.id.nosePB11);
+        intitializeButton(R.id.nose_12 , FaceSector.NOSE, R.id.nosePB12);
 
         intitializeButton(R.id.mouth_01 , FaceSector.MOUTH, R.id.mouthPB01);
         intitializeButton(R.id.mouth_02 , FaceSector.MOUTH, R.id.mouthPB02);
         intitializeButton(R.id.mouth_03 , FaceSector.MOUTH, R.id.mouthPB03);
         intitializeButton(R.id.mouth_04 , FaceSector.MOUTH, R.id.mouthPB04);
+        intitializeButton(R.id.mouth_05 , FaceSector.MOUTH, R.id.mouthPB05);
+        intitializeButton(R.id.mouth_06 , FaceSector.MOUTH, R.id.mouthPB06);
+        intitializeButton(R.id.mouth_07 , FaceSector.MOUTH, R.id.mouthPB07);
+        intitializeButton(R.id.mouth_08 , FaceSector.MOUTH, R.id.mouthPB08);
+        intitializeButton(R.id.mouth_09 , FaceSector.MOUTH, R.id.mouthPB09);
+        intitializeButton(R.id.mouth_10 , FaceSector.MOUTH, R.id.mouthPB10);
+        intitializeButton(R.id.mouth_11 , FaceSector.MOUTH, R.id.mouthPB11);
+        intitializeButton(R.id.mouth_12 , FaceSector.MOUTH, R.id.mouthPB12);
     }
 
     private void intitializeButton(int id, FaceSector sector, int pbID)
