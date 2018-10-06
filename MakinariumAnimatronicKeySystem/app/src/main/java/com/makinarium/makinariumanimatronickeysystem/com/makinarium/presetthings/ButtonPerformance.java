@@ -69,6 +69,8 @@ public class ButtonPerformance<T>{
 
     public void addPerformancePiece(T action, int time)
     {
+        if(performance.size() == 0)
+            time = 0;
         performance.add(new PerformancePiece<>(action,time));
         canPerform = true;
         duration+=time;
