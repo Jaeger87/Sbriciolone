@@ -15,9 +15,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-/**
- * Created by User on 12/21/2016.
- */
+
 
 public class BluetoothConnectionService {
     private static final String TAG = "BluetoothConnectionServ";
@@ -26,11 +24,11 @@ public class BluetoothConnectionService {
 
 
     private static final UUID BTMODULEUUID =
-            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
+            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier for HC05
 
 
     private final BluetoothAdapter mBluetoothAdapter;
-    Context mContext;
+    private Context mContext;
 
     private AcceptThread mInsecureAcceptThread;
 
@@ -136,7 +134,6 @@ public class BluetoothConnectionService {
 
         public void run(){
             BluetoothSocket tmp = null;
-            Log.i(TAG, "RUN mConnectThread ");
 
             // Get a BluetoothSocket for a connection with the
             // given BluetoothDevice

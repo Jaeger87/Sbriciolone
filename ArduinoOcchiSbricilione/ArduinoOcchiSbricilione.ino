@@ -1,19 +1,3 @@
-const byte Analogfilter = 6;
-const byte closeEyesButtonPin = 7;
-int closeEyesState = 0;
-int oldCloseEyesState = 0;
-
-const byte loopPalpebreButton = 5;
-const byte loopPalpebreButtonLed = 6;
-int loopPalpebreState = 0;
-int oldloopPalpebreState = 0;
-bool loopPalpebre = true;
-
-
-int aliveCounter = 0;
-const byte aliveTrigger = 10;
-
-
 struct Motor {
   int port;
   char sector;
@@ -29,6 +13,23 @@ struct ButtonLed {
   char event = 'S';
   boolean value;
 };
+
+const byte delayLettura = 5;
+const byte Analogfilter = 6;
+const byte closeEyesButtonPin = 7;
+int closeEyesState = 0;
+int oldCloseEyesState = 0;
+
+const byte loopPalpebreButton = 5;
+const byte loopPalpebreButtonLed = 6;
+int loopPalpebreState = 0;
+int oldloopPalpebreState = 0;
+bool loopPalpebre = true;
+
+
+int aliveCounter = 0;
+const byte aliveTrigger = 10;
+
 
 const byte howmanyanalog = 8;
 Motor listaMotori[howmanyanalog];
@@ -94,6 +95,9 @@ void setup()
     digitalWrite(loopPalpebreButtonLed, LOW);
   }
 
+  //readButtonLed(mirrorButton);
+
+
   Serial.begin(9600);
 }
 
@@ -106,7 +110,7 @@ void loop() {
       if (loopPalpebre)
         continue;
 
-    readWriteMotor(listaMotori, i);
+    readWriteMotor(i);
   }
 
 
@@ -117,6 +121,7 @@ void loop() {
   deadManButton();
   delay(40);
 }
+
 
 void readLoopPalpebreButton()
 {
@@ -151,25 +156,16 @@ void readCloseEyesButton()
   oldCloseEyesState = closeEyesState;
 }
 
-void readWriteMotor(Motor listaMotori[], int index)
+void readWriteMotor(int index)
 {
   int sensorValue = analogRead(listaMotori[index].port);
 
   if (abs(listaMotori[index].oldValue - sensorValue) > Analogfilter)
-  {
-    Serial.print(listaMotori[index].sector);
-    Serial.print(listaMotori[index].event);
-    Serial.print(';');
-    Serial.print(listaMotori[index].pinH);
-    Serial.print(';');
-    Serial.println(sensorValue);
-
-    delay(5);
-  }
+    sendMotor(index, sensorValue);
 
   listaMotori[index].oldValue = sensorValue;
-
 }
+
 
 void readButtonLed(ButtonLed button)
 {
@@ -185,6 +181,48 @@ void readButtonLed(ButtonLed button)
     digitalWrite(button.led, LOW);
   }
 }
+
+
+
+void readButtonLedAndSend(ButtonLed button)
+{
+  int lettura = digitalRead(button.pin);
+  if (lettura == HIGH && button.value != true)
+  {
+    button.value = true;
+    digitalWrite(button.led, HIGH);
+    Serial.print(button.sector);
+    Serial.print(button.event);
+    Serial.print(';');
+    Serial.println('1');
+    delay(delayLettura);
+  }
+  else
+  {
+    button.value = false;
+    digitalWrite(button.led, LOW);
+    Serial.print(button.sector);
+    Serial.print(button.event);
+    Serial.print(';');
+    Serial.println('0');
+    delay(delayLettura);
+  }
+}
+
+
+
+void sendMotor(int index, int sensorValue)
+{
+  Serial.print(listaMotori[index].sector);
+  Serial.print(listaMotori[index].event);
+  Serial.print(';');
+  Serial.print(listaMotori[index].pinH);
+  Serial.print(';');
+  Serial.println(sensorValue);
+  delay(delayLettura);
+
+}
+
 
 void deadManButton()
 {

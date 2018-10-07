@@ -38,7 +38,6 @@ public abstract class AbstractPerformance {
         return button;
     }
 
-
     public FaceSector getFaceSector() {
         return faceSector;
     }
@@ -51,10 +50,21 @@ public abstract class AbstractPerformance {
         this.duration = duration;
     }
 
+    protected void setPerform(boolean canPerform) {this.canPerform = canPerform; }
+
     public boolean canPerform()
     {
         return canPerform;
     }
 
-    public abstract void deletePerformance();
+    public void deletePerformance()
+    {
+        duration = 0;
+        canPerform = false;
+
+    }
+
+    public ProgressBar getProgressBar() {
+        return progressBar;
+    }
 }

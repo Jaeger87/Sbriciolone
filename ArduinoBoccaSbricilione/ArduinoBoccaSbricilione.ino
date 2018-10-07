@@ -21,8 +21,8 @@ struct ButtonLed {
 
 const byte howmanyanalog = 9;
 Motor listaMotori[howmanyanalog];
-ButtonLed parlataButton;
-ButtonLed mirrorButton;
+ButtonLed parlataButton; //non deve mai inviare alla testa
+ButtonLed mirrorButton; //non deve mai inviare alla testa
 
 
 void setup()
@@ -83,17 +83,8 @@ void setup()
   listaMotori[8].pinH = 13;
 
 
-  int lettura = digitalRead(mirrorButton.pin);
-  if (lettura == HIGH)
-  {
-    mirrorButton.value = true;
-    digitalWrite(mirrorButton.led, HIGH);
-  }
-  else
-  {
-    mirrorButton.value = false;
-    digitalWrite(mirrorButton.led, LOW);
-  }
+  readButtonLed(mirrorButton);
+  readButtonLed(parlataButton);
 
 }
 
@@ -108,8 +99,8 @@ void loop() {
   }
 
 
-  readButtonLed(mirrorButton);
-  readButtonLed(parlataButton);
+  readButtonLed(mirrorButton);//non invia nulla alla testa
+  readButtonLed(parlataButton);//non invia nulla alla testa
   deadManButton();
 
   delay(50);

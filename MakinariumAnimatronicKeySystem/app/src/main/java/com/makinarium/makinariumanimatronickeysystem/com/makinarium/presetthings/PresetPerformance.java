@@ -15,7 +15,6 @@ public class PresetPerformance extends AbstractPerformance{
     private ButtonPerformance<byte[]> nose;
     private ButtonPerformance<byte[]> mouth;
 
-    private int duration;
 
     public PresetPerformance(Button button, FaceSector faceSector, ProgressBar progressBar)
     {
@@ -46,15 +45,21 @@ public class PresetPerformance extends AbstractPerformance{
                     return;
         }
 
-        if(bp.getDuration() > duration)
-            duration = bp.getDuration();
+        setPerform(true);
+
+        if(bp.getDuration() > this.getDuration())
+            setDuration(bp.getDuration());
     }
 
 
     public void deletePerformance()
     {
-        duration = 0;
-
+        super.deletePerformance();
+        eyebrowns = null;
+        eyelids = null;
+        eyes = null;
+        nose = null;
+        mouth = null;
     }
 
 
