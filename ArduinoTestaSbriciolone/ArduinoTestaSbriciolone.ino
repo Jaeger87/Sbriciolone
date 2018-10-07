@@ -63,17 +63,7 @@ void loop() {
     }
     else if (message.charAt(0) == 'L')
     {
-      if (message.charAt(1) == 'M')
-        palpebraMotorMessage(message);
-
-      else if (message.charAt(1) == 'E')
-        eventoPalpebre();
-
-      else if (message.charAt(1) == 'S')
-        if (message.charAt(3) == '0')
-          sitOcchi = MANUAL;
-        else if (message.charAt(3) == '1')
-          sitOcchi = APERTI;
+      eyelidsMessage(message);
     }
 
     else if (message.charAt(0) == 'B')
@@ -109,6 +99,20 @@ void noseMessage(String message)
   }
 }
 
+void eyelidsMessage(String message)
+{
+        if (message.charAt(1) == 'M')
+        palpebraMotorMessage(message);
+
+      else if (message.charAt(1) == 'E')
+        eventoPalpebre();
+
+      else if (message.charAt(1) == 'S')
+        if (message.charAt(3) == '0')
+          sitOcchi = MANUAL;
+        else if (message.charAt(3) == '1')
+          sitOcchi = APERTI;
+}
 
 void eyeBrowMessage(String message)
 {

@@ -114,10 +114,10 @@ void readWriteMotor(Motor listaMotori[], int index)
 
   if (abs(listaMotori[index].oldValue - sensorValue) > Analogfilter)
   {
-    sendMotor(listaMotori, index, sensorValue);
+    sendMotor(index, sensorValue);
     if (mirrorButton.value)
       if (index == 0 || index == 1)
-        sendMotor(listaMotori, 4 - index, sensorValue);
+        sendMotor(4 - index, sensorValue);
   }
 
   listaMotori[index].oldValue = sensorValue;
@@ -125,7 +125,7 @@ void readWriteMotor(Motor listaMotori[], int index)
 }
 
 
-void readButtonLed(ButtonLed button)
+void readButtonLed(ButtonLed& button)
 {
   int lettura = digitalRead(button.pin);
   if (lettura == HIGH)
@@ -140,7 +140,7 @@ void readButtonLed(ButtonLed button)
   }
 }
 
-void sendMotor(Motor listaMotori[], int index, int sensorValue)
+void sendMotor(int index, int sensorValue)
 {
   Serial.print(listaMotori[index].sector);
   Serial.print(listaMotori[index].event);

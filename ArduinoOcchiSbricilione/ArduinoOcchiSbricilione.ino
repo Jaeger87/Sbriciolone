@@ -167,7 +167,7 @@ void readWriteMotor(int index)
 }
 
 
-void readButtonLed(ButtonLed button)
+void readButtonLed(ButtonLed& button)
 {
   int lettura = digitalRead(button.pin);
   if (lettura == HIGH)
@@ -184,7 +184,7 @@ void readButtonLed(ButtonLed button)
 
 
 
-void readButtonLedAndSend(ButtonLed button)
+void readButtonLedAndSend(ButtonLed& button)
 {
   int lettura = digitalRead(button.pin);
   if (lettura == HIGH && button.value != true)
