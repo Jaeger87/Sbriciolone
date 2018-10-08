@@ -14,8 +14,9 @@ struct ButtonLed {
   boolean value;
 };
 
-const byte delayLettura = 5;
-const byte Analogfilter = 6;
+const byte delayLettura = 4;
+const byte delayLoop = 52;
+const byte Analogfilter = 9;
 const byte closeEyesButtonPin = 7;
 int closeEyesState = 0;
 int oldCloseEyesState = 0;
@@ -31,7 +32,7 @@ int aliveCounter = 0;
 const byte aliveTrigger = 10;
 
 
-const byte howmanyanalog = 8;
+const byte howmanyanalog = 8;//Sono 8 invero
 Motor listaMotori[howmanyanalog];
 ButtonLed mirrorButton;
 
@@ -119,7 +120,7 @@ void loop() {
   readLoopPalpebreButton();
 
   deadManButton();
-  delay(40);
+  delay(delayLoop);
 }
 
 

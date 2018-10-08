@@ -4,7 +4,7 @@ unsigned long nextPalpebre = 0;
 const byte pinOcchioDXX = 21;
 const byte pinOcchioDXY = 22;
 
-const byte channelPalpebraSinistra = 5;
+const byte channelPalpebraSinistra = 20;
 const byte channelPalpebraDestra = 23;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
@@ -101,17 +101,17 @@ void noseMessage(String message)
 
 void eyelidsMessage(String message)
 {
-        if (message.charAt(1) == 'M')
-        palpebraMotorMessage(message);
+  if (message.charAt(1) == 'M')
+    palpebraMotorMessage(message);
 
-      else if (message.charAt(1) == 'E')
-        eventoPalpebre();
+  else if (message.charAt(1) == 'E')
+    eventoPalpebre();
 
-      else if (message.charAt(1) == 'S')
-        if (message.charAt(3) == '0')
-          sitOcchi = MANUAL;
-        else if (message.charAt(3) == '1')
-          sitOcchi = APERTI;
+  else if (message.charAt(1) == 'S')
+    if (message.charAt(3) == '0')
+      sitOcchi = MANUAL;
+    else if (message.charAt(3) == '1')
+      sitOcchi = APERTI;
 }
 
 void eyeBrowMessage(String message)
@@ -230,7 +230,7 @@ void gestisciOcchi()
 
 int analogConversionMotor180(int analogValue)
 {
-  return map(analogValue, 0, 1023, 1700, 9200);
+  return map(analogValue, 0, 1023, 2100, 9200);
 }
 
 int analogConversionMotorPalpebra(int analogValue)

@@ -19,8 +19,8 @@ struct ButtonLed {
   boolean value;
 };
 
-const byte howmanyanalog = 9;
-Motor listaMotori[howmanyanalog];
+const byte howmanyanalog = 0;//9
+Motor listaMotori[9];
 ButtonLed parlataButton; //non deve mai inviare alla testa
 ButtonLed mirrorButton; //non deve mai inviare alla testa
 
