@@ -3,7 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="firstcolumn">#FFD3B6</color>
-    <color name="activePerform">#FFD6B6</color>
-    <color name="performToRec">#A2D6A6</color>
+    <color name="firstcolumn">#ff3d00</color>
+    <color name="activePerform">#2e7d32</color>
+    <color name="performToRec">#616161</color>
+    <color name="whiteText">#F5F5F5</color>
+
 </resources>
