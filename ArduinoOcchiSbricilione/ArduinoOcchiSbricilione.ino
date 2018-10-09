@@ -16,16 +16,10 @@ struct ButtonLed {
 
 const byte delayLettura = 4;
 const byte delayLoop = 52;
-const byte Analogfilter = 9;
+const byte Analogfilter = 4;
 const byte closeEyesButtonPin = 7;
 int closeEyesState = 0;
 int oldCloseEyesState = 0;
-
-const byte loopPalpebreButton = 5;
-const byte loopPalpebreButtonLed = 6;
-int loopPalpebreState = 0;
-int oldloopPalpebreState = 0;
-bool loopPalpebre = true;
 
 
 int aliveCounter = 0;
@@ -34,8 +28,10 @@ const byte aliveTrigger = 10;
 
 const byte howmanyanalog = 8;//Sono 8 invero
 Motor listaMotori[howmanyanalog];
+Motor eyeSXX;
+Motor eyeSXY;
 ButtonLed mirrorButton;
-
+ButtonLed palpebreButton;
 
 void setup()
 {
@@ -44,12 +40,17 @@ void setup()
   mirrorButton.sector = 'E';
   mirrorButton.value = false;
 
+
+  palpebreButton.pin = 5;
+  palpebreButton.led = 6;
+  palpebreButton.sector = 'L';
+  palpebreButton.value = false;
+
   pinMode(mirrorButton.pin, INPUT);
   pinMode(mirrorButton.led, OUTPUT);
+  pinMode(palpebreButton.pin, INPUT);
+  pinMode(palpebreButton.led, OUTPUT);
   pinMode(closeEyesButtonPin, INPUT);
-  pinMode(loopPalpebreButton, INPUT);
-  pinMode(loopPalpebreButtonLed, OUTPUT);
-
 
   listaMotori[0].sector = 'E';//OcchioDXY
   listaMotori[0].port = A0;//
@@ -83,21 +84,16 @@ void setup()
   listaMotori[7].port = A7;
   listaMotori[7].pinH = 20;
 
+  eyeSXX.sector = 'E';
+  eyeSXX.port = -1;
+  eyeSXX.pinH = 18;
 
-  loopPalpebreState = digitalRead(loopPalpebreButton);
-  if (loopPalpebreState == HIGH)
-  {
-    loopPalpebre = true;
-    digitalWrite(loopPalpebreButtonLed, HIGH);
-  }
-  else
-  {
-    loopPalpebre = false;
-    digitalWrite(loopPalpebreButtonLed, LOW);
-  }
+  eyeSXY.sector = 'E';
+  eyeSXY.port = -1;
+  eyeSXY.pinH = 19;
 
-  //readButtonLed(mirrorButton);
-
+  readButtonLed(mirrorButton);
+  readButtonLedAndSend(palpebreButton);
 
   Serial.begin(9600);
 }
@@ -108,41 +104,22 @@ void loop() {
   for (int i = 0; i < howmanyanalog; i++)
   {
     if (listaMotori[i].sector == 'L')
-      if (loopPalpebre)
+      if (!palpebreButton.value)
         continue;
 
-    readWriteMotor(i);
+    readWriteMotor(listaMotori[i]);
   }
 
 
 
   readCloseEyesButton();
-  readLoopPalpebreButton();
+  readButtonLed(mirrorButton);
+  readButtonLedAndSend(palpebreButton);
 
   deadManButton();
   delay(delayLoop);
 }
 
-
-void readLoopPalpebreButton()
-{
-  loopPalpebreState = digitalRead(loopPalpebreButton);
-  if (loopPalpebreState != oldloopPalpebreState)
-    if (loopPalpebreState == LOW)
-    {
-      Serial.println("LS;0");
-      digitalWrite(loopPalpebreButtonLed, LOW);
-      loopPalpebre = false;
-    }
-    else
-    {
-      Serial.println("LS;1");
-      digitalWrite(loopPalpebreButtonLed, HIGH);
-      loopPalpebre = true;
-    }
-
-  oldloopPalpebreState = loopPalpebreState;
-}
 
 void readCloseEyesButton()
 {
@@ -157,14 +134,28 @@ void readCloseEyesButton()
   oldCloseEyesState = closeEyesState;
 }
 
-void readWriteMotor(int index)
+void readWriteMotor(Motor& m)
 {
-  int sensorValue = analogRead(listaMotori[index].port);
+  int sensorValue = analogRead(m.port);
 
-  if (abs(listaMotori[index].oldValue - sensorValue) > Analogfilter)
-    sendMotor(index, sensorValue);
+  if (abs(m.oldValue - sensorValue) > Analogfilter)
+  {
+    if (m.pinH == 22)
+      sendMotor(eyeSXY, sensorValue);
 
-  listaMotori[index].oldValue = sensorValue;
+    if (m.pinH == 21)
+    {
+      if (mirrorButton.value)
+        sendMotor(eyeSXX, mirrorEye(sensorValue));
+      else
+        sendMotor(eyeSXX, sensorValue);
+    }
+
+
+    sendMotor(m, sensorValue);
+  }
+
+  m.oldValue = sensorValue;
 }
 
 
@@ -211,19 +202,23 @@ void readButtonLedAndSend(ButtonLed& button)
 }
 
 
-
-void sendMotor(int index, int sensorValue)
+int mirrorEye(int value)
 {
-  Serial.print(listaMotori[index].sector);
-  Serial.print(listaMotori[index].event);
+  return map(value, 0, 1023, 1023, 0);
+}
+
+
+void sendMotor(Motor& m, int sensorValue)
+{
+  Serial.print(m.sector);
+  Serial.print(m.event);
   Serial.print(';');
-  Serial.print(listaMotori[index].pinH);
+  Serial.print(m.pinH);
   Serial.print(';');
   Serial.println(sensorValue);
   delay(delayLettura);
 
 }
-
 
 void deadManButton()
 {

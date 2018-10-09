@@ -92,10 +92,13 @@ void loop() {
 
   for (int i = 0; i < howmanyanalog; i++)
   {
+    if (parlataButton.value)
+      if (i == 0 || i == 1 || i == 3 || i == 4)
+        continue;
     if (mirrorButton.value)
       if (i == 3 || i == 4)
         continue;
-    readWriteMotor(listaMotori, i);
+    readWriteMotor(listaMotori[i], i);
   }
 
 
@@ -108,19 +111,23 @@ void loop() {
 }
 
 
-void readWriteMotor(Motor listaMotori[], int index)
+void readWriteMotor(Motor& m, int index)
 {
-  int sensorValue = analogRead(listaMotori[index].port);
+  int sensorValue = analogRead(m.port);
 
-  if (abs(listaMotori[index].oldValue - sensorValue) > Analogfilter)
+  if (abs(m.oldValue - sensorValue) > Analogfilter)
   {
-    sendMotor(index, sensorValue);
-    if (mirrorButton.value)
+    sendMotor(m, sensorValue);
+    if (parlataButton.value)
+    {
+
+    }
+    else if (mirrorButton.value)
       if (index == 0 || index == 1)
-        sendMotor(4 - index, sensorValue);
+        sendMotor(listaMotori[4 - index], sensorValue);
   }
 
-  listaMotori[index].oldValue = sensorValue;
+  m.oldValue = sensorValue;
 
 }
 
@@ -140,12 +147,12 @@ void readButtonLed(ButtonLed& button)
   }
 }
 
-void sendMotor(int index, int sensorValue)
+void sendMotor(Motor& m, int sensorValue)
 {
-  Serial.print(listaMotori[index].sector);
-  Serial.print(listaMotori[index].event);
+  Serial.print(m.sector);
+  Serial.print(m.event);
   Serial.print(';');
-  Serial.print(listaMotori[index].pinH);
+  Serial.print(m.pinH);
   Serial.print(';');
   Serial.println(sensorValue);
   delay(delayLettura);
