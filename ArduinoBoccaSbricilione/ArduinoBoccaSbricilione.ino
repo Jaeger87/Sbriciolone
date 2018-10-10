@@ -1,5 +1,6 @@
 const byte Analogfilter = 6;
 const byte delayLettura = 5;
+const byte delayLoop = 50;
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
 
@@ -19,8 +20,8 @@ struct ButtonLed {
   boolean value;
 };
 
-const byte howmanyanalog = 0;//9
-Motor listaMotori[9];
+const byte howmanyanalog = 9;//9
+Motor listaMotori[howmanyanalog];
 ButtonLed parlataButton; //non deve mai inviare alla testa
 ButtonLed mirrorButton; //non deve mai inviare alla testa
 
@@ -106,7 +107,7 @@ void loop() {
   readButtonLed(parlataButton);//non invia nulla alla testa
   deadManButton();
 
-  delay(50);
+  delay(delayLoop);
 
 }
 
@@ -120,7 +121,10 @@ void readWriteMotor(Motor& m, int index)
     sendMotor(m, sensorValue);
     if (parlataButton.value)
     {
-
+      sendMotor(listaMotori[0], parlataConversion(sensorValue, 180));
+      sendMotor(listaMotori[1], parlataConversion(sensorValue, 100));
+      sendMotor(listaMotori[3], parlataConversion(sensorValue, 100));
+      sendMotor(listaMotori[4], parlataConversion(sensorValue, 180));
     }
     else if (mirrorButton.value)
       if (index == 0 || index == 1)
@@ -146,6 +150,14 @@ void readButtonLed(ButtonLed& button)
     digitalWrite(button.led, LOW);
   }
 }
+
+int parlataConversion(int value, int distanza)
+{
+  if (value < 612)
+    return value - map(value,0,611,0,distanza);
+  return value - map(value,612,1023,distanza,0);
+}
+
 
 void sendMotor(Motor& m, int sensorValue)
 {
