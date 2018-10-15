@@ -12,9 +12,9 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/firstleft"
         android:layout_marginTop="24dp"
-        android:background="@color/firstcolumn"
         android:text="01"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.Preset"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cronometro" />
 
@@ -44,8 +44,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/firstleft"
         android:layout_marginTop="@dimen/mup"
-        android:background="@color/firstcolumn"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.Preset"
         android:text="01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_01" />
@@ -64,9 +64,9 @@
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginTop="@dimen/mup"
-        android:background="@color/firstcolumn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.Preset"
         android:text="01"
-        android:textColor="@color/whiteText"
         app:layout_constraintStart_toStartOf="@+id/eyelid_01"
         app:layout_constraintTop_toBottomOf="@+id/eyes_01" />
 
@@ -84,9 +84,9 @@
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginTop="@dimen/mup"
-        android:background="@color/firstcolumn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.Preset"
         android:text="01"
-        android:textColor="@color/whiteText"
         app:layout_constraintStart_toStartOf="@+id/nose_01"
         app:layout_constraintTop_toBottomOf="@+id/nose_01" />
 
@@ -96,8 +96,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="02"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_01"
         app:layout_constraintTop_toTopOf="@+id/preset_01" />
 
@@ -118,8 +118,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="02"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_01"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_02" />
 
@@ -134,14 +134,14 @@
 
 
     <Button
+        style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/eyes_02"
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="02"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_01"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_02" />
 
@@ -152,8 +152,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="02"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_01"
         app:layout_constraintTop_toBottomOf="@+id/eyes_02" />
 
@@ -173,8 +173,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="03"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_02"
         app:layout_constraintTop_toTopOf="@+id/preset_02" />
 
@@ -195,8 +195,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="03"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_02"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_03" />
 
@@ -217,8 +217,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="03"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_02"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_03" />
 
@@ -238,8 +238,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="03"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_02"
         app:layout_constraintTop_toBottomOf="@+id/eyes_03" />
 
@@ -279,9 +279,9 @@
         android:layout_width="@dimen/bwidth"
         android:layout_height="@dimen/bheight"
         android:layout_marginTop="@dimen/mup"
-        android:background="@color/firstcolumn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.Preset"
         android:text="01"
-        android:textColor="@color/whiteText"
         app:layout_constraintStart_toStartOf="@+id/eyelid_01"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_01" />
 
@@ -292,8 +292,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="02"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_01"
         app:layout_constraintTop_toBottomOf="@+id/nose_02" />
 
@@ -304,8 +304,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="03"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_02"
         app:layout_constraintTop_toBottomOf="@+id/nose_03" />
 
@@ -325,9 +325,9 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/firstleft"
         android:layout_marginTop="@dimen/mup"
-        android:background="@color/firstcolumn"
         android:text="01"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.Preset"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/preset_01" />
 
@@ -347,8 +347,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="02"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_01"
         app:layout_constraintTop_toBottomOf="@+id/preset_02" />
 
@@ -369,8 +369,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="03"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_02"
         app:layout_constraintTop_toBottomOf="@+id/preset_03" />
 
@@ -465,8 +465,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="04"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_03"
         app:layout_constraintTop_toTopOf="@+id/preset_03" />
 
@@ -486,8 +486,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="05"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_04"
         app:layout_constraintTop_toTopOf="@+id/preset_04" />
 
@@ -507,8 +507,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="06"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_05"
         app:layout_constraintTop_toTopOf="@+id/preset_05" />
 
@@ -528,8 +528,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="07"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_06"
         app:layout_constraintTop_toTopOf="@+id/preset_06" />
 
@@ -548,8 +548,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="08"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_07"
         app:layout_constraintTop_toTopOf="@+id/preset_07" />
 
@@ -568,8 +568,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="09"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_08"
         app:layout_constraintTop_toTopOf="@+id/preset_08" />
 
@@ -588,8 +588,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="10"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_09"
         app:layout_constraintTop_toTopOf="@+id/preset_09" />
 
@@ -619,8 +619,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="11"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_10"
         app:layout_constraintTop_toTopOf="@+id/preset_10" />
 
@@ -659,8 +659,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="04"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_03"
         app:layout_constraintTop_toBottomOf="@+id/preset_04" />
 
@@ -680,8 +680,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="04"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_03"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_04" />
 
@@ -701,8 +701,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="04"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_03"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_04" />
 
@@ -723,8 +723,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="04"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_03"
         app:layout_constraintTop_toBottomOf="@+id/eyes_04" />
 
@@ -744,8 +744,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="04"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_03"
         app:layout_constraintTop_toBottomOf="@+id/nose_04" />
 
@@ -766,8 +766,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="05"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_04"
         app:layout_constraintTop_toBottomOf="@+id/preset_05" />
 
@@ -787,8 +787,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="05"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_04"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_05" />
 
@@ -809,8 +809,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="05"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_04"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_05" />
 
@@ -830,8 +830,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="05"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_04"
         app:layout_constraintTop_toBottomOf="@+id/eyes_05" />
 
@@ -852,8 +852,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="05"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_04"
         app:layout_constraintTop_toBottomOf="@+id/nose_05" />
 
@@ -873,8 +873,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="06"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_05"
         app:layout_constraintTop_toBottomOf="@+id/preset_06" />
 
@@ -895,8 +895,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="06"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_05"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_06" />
 
@@ -917,8 +917,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="06"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_05"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_06" />
 
@@ -938,8 +938,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="06"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_05"
         app:layout_constraintTop_toBottomOf="@+id/eyes_06" />
 
@@ -959,8 +959,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="06"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_05"
         app:layout_constraintTop_toBottomOf="@+id/nose_06" />
 
@@ -981,8 +981,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="07"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_06"
         app:layout_constraintTop_toBottomOf="@+id/preset_07" />
 
@@ -1002,8 +1002,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="07"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_06"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_07" />
 
@@ -1024,8 +1024,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="07"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_06"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_07" />
 
@@ -1045,8 +1045,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="07"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_06"
         app:layout_constraintTop_toBottomOf="@+id/eyes_07" />
 
@@ -1066,8 +1066,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="07"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_06"
         app:layout_constraintTop_toBottomOf="@+id/nose_07" />
 
@@ -1088,8 +1088,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="08"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_07"
         app:layout_constraintTop_toBottomOf="@+id/preset_08" />
 
@@ -1110,8 +1110,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="08"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_07"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_08" />
 
@@ -1131,8 +1131,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="08"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_07"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_08" />
 
@@ -1152,8 +1152,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="08"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_07"
         app:layout_constraintTop_toBottomOf="@+id/eyes_08" />
 
@@ -1174,8 +1174,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="08"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_07"
         app:layout_constraintTop_toBottomOf="@+id/nose_08" />
 
@@ -1196,8 +1196,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="09"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_08"
         app:layout_constraintTop_toBottomOf="@+id/preset_09" />
 
@@ -1217,8 +1217,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="09"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_08"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_09" />
 
@@ -1238,8 +1238,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="09"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_08"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_09" />
 
@@ -1260,8 +1260,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="09"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_08"
         app:layout_constraintTop_toBottomOf="@+id/eyes_09" />
 
@@ -1282,8 +1282,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="09"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_08"
         app:layout_constraintTop_toBottomOf="@+id/nose_09" />
 
@@ -1303,8 +1303,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="10"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_09"
         app:layout_constraintTop_toBottomOf="@+id/preset_10" />
 
@@ -1324,8 +1324,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="10"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_09"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_10" />
 
@@ -1345,8 +1345,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="10"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_09"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_10" />
 
@@ -1366,8 +1366,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="10"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_09"
         app:layout_constraintTop_toBottomOf="@+id/eyes_10" />
 
@@ -1388,8 +1388,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="10"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_09"
         app:layout_constraintTop_toBottomOf="@+id/nose_10" />
 
@@ -1410,8 +1410,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="11"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_10"
         app:layout_constraintTop_toBottomOf="@+id/preset_11" />
 
@@ -1432,8 +1432,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="11"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_10"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_11" />
 
@@ -1454,8 +1454,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="11"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_10"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_11" />
 
@@ -1475,8 +1475,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="11"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_10"
         app:layout_constraintTop_toBottomOf="@+id/eyes_11" />
 
@@ -1497,8 +1497,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="11"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_10"
         app:layout_constraintTop_toBottomOf="@+id/nose_11" />
 
@@ -1518,8 +1518,8 @@
         android:layout_height="@dimen/bheight"
         android:layout_marginStart="@dimen/mleft"
         android:text="12"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/preset_11"
         app:layout_constraintTop_toTopOf="@+id/preset_11" />
 
@@ -1540,8 +1540,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="12"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyebrow_11"
         app:layout_constraintTop_toBottomOf="@+id/preset_12" />
 
@@ -1561,8 +1561,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="12"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyelid_11"
         app:layout_constraintTop_toBottomOf="@+id/eyebrow_12" />
 
@@ -1583,8 +1583,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="12"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/eyes_11"
         app:layout_constraintTop_toBottomOf="@+id/eyelid_12" />
 
@@ -1605,8 +1605,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="12"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/nose_11"
         app:layout_constraintTop_toBottomOf="@+id/eyes_12" />
 
@@ -1626,8 +1626,8 @@
         android:layout_marginStart="@dimen/mleft"
         android:layout_marginTop="@dimen/mup"
         android:text="12"
-        android:background="@color/performToRec"
-        android:textColor="@color/whiteText"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/AppTheme.PerformToRec"
         app:layout_constraintStart_toEndOf="@+id/mouth_11"
         app:layout_constraintTop_toBottomOf="@+id/nose_12" />
 

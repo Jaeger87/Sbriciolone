@@ -8,4 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="AppTheme.PerformToRec" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorAccent">@color/performToRec</item>
+        <item name="android:colorButtonNormal">@color/disablePerformToRec</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+
+    <style name="AppTheme.Preset" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorAccent">@color/firstcolumn</item>
+        <item name="android:colorButtonNormal">@color/disablePreset</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+
+    <style name="AppTheme.Perform" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorAccent">@color/activePerform</item>
+        <item name="android:colorButtonNormal">@color/disablePerform</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+
+
 </resources>

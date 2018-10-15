@@ -669,7 +669,7 @@ public class MainActivity extends AppCompatActivity {
             while(inPerformance)
             {
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(8);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -681,8 +681,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(currentTime > doPerfomance)
                 {
-                    //Log.i(TAG, currentPiece.getAction());
-                    //mBluetoothConnectionHead.write(currentPiece.getAction());
+                    mBluetoothConnectionHead.write(currentPiece.getAction());
                     currentIndex++;
 
                     if(currentIndex >= performance.size())

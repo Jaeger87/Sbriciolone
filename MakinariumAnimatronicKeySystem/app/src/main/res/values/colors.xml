@@ -7,5 +7,7 @@
     <color name="activePerform">#2e7d32</color>
     <color name="performToRec">#616161</color>
     <color name="whiteText">#F5F5F5</color>
-
+    <color name="disablePerformToRec">#bdbdbd</color>
+    <color name="disablePreset">#ff9e80</color>
+    <color name="disablePerform">#81c784</color>
 </resources>
