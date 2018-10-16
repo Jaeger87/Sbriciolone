@@ -7,13 +7,12 @@ import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
 import java.util.ArrayList;
 
-public class PresetPerformance extends AbstractPerformance{
-
-    private ButtonPerformance<byte[]> eyebrowns;
-    private ButtonPerformance<byte[]> eyelids;
-    private ButtonPerformance<byte[]> eyes;
-    private ButtonPerformance<byte[]> nose;
-    private ButtonPerformance<byte[]> mouth;
+public class PresetPerformance <T> extends AbstractPerformance{
+    private ButtonPerformance<T> eyebrowns;
+    private ButtonPerformance<T> eyelids;
+    private ButtonPerformance<T> eyes;
+    private ButtonPerformance<T> nose;
+    private ButtonPerformance<T> mouth;
 
 
     public PresetPerformance(Button button, FaceSector faceSector, ProgressBar progressBar)
@@ -22,7 +21,7 @@ public class PresetPerformance extends AbstractPerformance{
     }
 
 
-    public void setButtonPerformance(ButtonPerformance<byte[]> bp)
+    public void setButtonPerformance(ButtonPerformance<T> bp)
     {
         switch (bp.getFaceSector())
         {
