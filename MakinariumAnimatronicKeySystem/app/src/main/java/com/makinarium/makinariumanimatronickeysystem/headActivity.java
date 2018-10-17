@@ -1,7 +1,11 @@
 package com.makinarium.makinariumanimatronickeysystem;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -40,10 +44,12 @@ public class headActivity extends AppCompatActivity {
         int i = view.getId();
         if (i == R.id.head01button) {
             if (checked) {
-                Log.d("HAO", "E mo?");
                 continueButton.setEnabled(true);
                 continueButton.setClickable(true);
                 headMac = Constants.macHead01BT;
+                //continueButton.setBackgroundColor(ContextCompat.getColor(this, R.color.activePerform)); SBAGLIATO
+                //continueButton.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+
             }
 
         } else if (i == R.id.head02button) {
@@ -52,6 +58,7 @@ public class headActivity extends AppCompatActivity {
                 continueButton.setEnabled(true);
                 continueButton.setClickable(true);
                 headMac = Constants.macHead02BT;
+                //continueButton.setAlpha(.5f);
             }
 
         }
@@ -60,7 +67,6 @@ public class headActivity extends AppCompatActivity {
 
 
     private void ctnBtn(View view){
-        Log.d("CIAO", "DAJE");
 
         Intent mainActivityIntent = new Intent(headActivity.this, MainActivity.class);
 

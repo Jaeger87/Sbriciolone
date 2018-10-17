@@ -493,7 +493,6 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 long timePassed = System.currentTimeMillis() - startTime;
@@ -687,7 +686,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    
+
     public class preSetThread extends AsyncTask<PresetPerformance<byte[]>, Integer, PresetPerformance<byte[]>> {
 
         private PresetPerformance<byte[]> bpThread;

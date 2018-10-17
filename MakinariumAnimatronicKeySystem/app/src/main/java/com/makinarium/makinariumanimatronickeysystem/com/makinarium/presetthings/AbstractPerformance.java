@@ -67,4 +67,10 @@ public abstract class AbstractPerformance {
     public ProgressBar getProgressBar() {
         return progressBar;
     }
+
+    //TODO: Farollo
+    public void updateColor()
+    {
+
+    }
 }
