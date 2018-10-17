@@ -9,17 +9,26 @@ import java.util.HashMap;
 
 public class ButtonsContainer<T> {
 
-    private HashMap<Integer,ButtonPerformance<T>> mapButtons;
+    private HashMap<Integer,ButtonPerformance<T>> performanceHashMap;
+    private HashMap<Integer,PresetPerformance<T>> presetHashMap;
+
 
     public ButtonsContainer()
     {
-        mapButtons = new HashMap<>();
+        performanceHashMap = new HashMap<>();
+        presetHashMap = new HashMap<>();
     }
 
 
-    public void addButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
+    public void addPerformanceButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
-        mapButtons.put(id, new ButtonPerformance(button,sector, progressBar));
+        performanceHashMap.put(id, new ButtonPerformance(button,sector, progressBar));
+    }
+
+    public void addPresetButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
+    {
+        if(sector == FaceSector.PRESET)
+            presetHashMap.put(id, new PresetPerformance(button,sector, progressBar));
     }
 
     public void deactivatesButtonSectorButton(FaceSector sector)
@@ -34,21 +43,41 @@ public class ButtonsContainer<T> {
 
     private void disActButtons(FaceSector sector, boolean whatToDo)
     {
-        for (Integer id: mapButtons.keySet()) {
-            if(mapButtons.get(id).getFaceSector() != sector)
+
+        if(sector == FaceSector.PRESET)
+        {
+            for (Integer id: presetHashMap.keySet())
+                if(whatToDo)
+                    presetHashMap.get(id).activatesButton();
+                else
+                    presetHashMap.get(id).deactivatesButton();
+            return;
+        }
+
+        for (Integer id: performanceHashMap.keySet()) {
+            if(performanceHashMap.get(id).getFaceSector() != sector)
                 continue;
             if(whatToDo)
-                mapButtons.get(id).activatesButton();
+                performanceHashMap.get(id).activatesButton();
             else
-                mapButtons.get(id).deactivatesButton();
+                performanceHashMap.get(id).deactivatesButton();
 
         }
     }
 
 
-    public ButtonPerformance<T> getButtonPerform(int id)
+    public ButtonPerformance<T> getButtonPerformance(int id)
     {
-        return mapButtons.get(id);
+        if(performanceHashMap.containsKey(id))
+            return performanceHashMap.get(id);
+        return null;
+    }
+
+    public PresetPerformance<T> getPresetPerformance(int id)
+    {
+        if(presetHashMap.containsKey(id))
+            return presetHashMap.get(id);
+        return null;
     }
 
     public void deactivatesAllButtons()

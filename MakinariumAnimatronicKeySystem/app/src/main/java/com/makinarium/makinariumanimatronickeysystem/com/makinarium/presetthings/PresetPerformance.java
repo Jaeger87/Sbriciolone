@@ -6,6 +6,7 @@ import android.widget.ProgressBar;
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PresetPerformance <T> extends AbstractPerformance{
     private ButtonPerformance<T> eyebrowns;
@@ -62,6 +63,23 @@ public class PresetPerformance <T> extends AbstractPerformance{
     }
 
 
+    public List<Integer> getButtonsToPress()
+    {
+        List result = new ArrayList<>();
+
+        if(eyebrowns != null)
+            result.add(eyebrowns.getButton().getId());
+        if(eyelids != null)
+            result.add(eyelids.getButton().getId());
+        if(eyes != null)
+            result.add(eyes.getButton().getId());
+        if(nose != null)
+            result.add(nose.getButton().getId());
+        if(mouth != null)
+            result.add(mouth.getButton().getId());
+
+        return result;
+    }
 
 
 }

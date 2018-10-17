@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonPerformance;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonsContainer;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.PerformancePiece;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.PresetPerformance;
 
 import java.nio.charset.Charset;
 import java.util.HashSet;
@@ -46,11 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private Switch mouthSwitch;
     private Switch eyesSwitch;
 
-
     private ButtonsContainer<byte[]> container;
-    private ButtonsContainer<Integer> presetContainer;
     private ButtonPerformance<byte[]> bInRec;
-    private ButtonPerformance<Integer> presetInRec;
+    private PresetPerformance<byte[]> presetInRec;
     private long timePresetRec = 0;
     private HashSet<FaceSector> performanceFilter;
 
@@ -76,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         headMac = headIntent.getStringExtra(Intent.EXTRA_TEXT);
 
         container = new ButtonsContainer<>();
-        presetContainer = new ButtonsContainer<>();
         initializeAllButtons();
 
         performanceFilter = new HashSet<>();
@@ -110,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         connectionBluetooth();
         //testButton();
     }
@@ -144,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 startBTConnection(mBTDeviceHead, mBluetoothConnectionHead);
             }
 
-
         }
     }
 
@@ -163,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
         intitializePresetButton(R.id.preset_11,R.id.presetPB11);
         intitializePresetButton(R.id.preset_12,R.id.presetPB12);
 
-
         intitializeButton(R.id.eyebrow_01 , FaceSector.EYEBROWS, R.id.eyebrowPB01);
         intitializeButton(R.id.eyebrow_02 , FaceSector.EYEBROWS, R.id.eyebrowPB02);
         intitializeButton(R.id.eyebrow_03 , FaceSector.EYEBROWS, R.id.eyebrowPB03);
@@ -176,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
         intitializeButton(R.id.eyebrow_10 , FaceSector.EYEBROWS, R.id.eyebrowPB10);
         intitializeButton(R.id.eyebrow_11 , FaceSector.EYEBROWS, R.id.eyebrowPB11);
         intitializeButton(R.id.eyebrow_12 , FaceSector.EYEBROWS, R.id.eyebrowPB12);
-
 
         intitializeButton(R.id.eyelid_01 , FaceSector.EYELIDS, R.id.eyelidPB01);
         intitializeButton(R.id.eyelid_02 , FaceSector.EYELIDS, R.id.eyelidPB02);
@@ -251,10 +244,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        container.addButton(id, b, sector, pb);
+        container.addPerformanceButton(id, b, sector, pb);
     }
-
-
 
     private void intitializePresetButton(int id,int pbID)
     {
@@ -274,21 +265,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        presetContainer.addButton(id, b, FaceSector.PRESET, pb);
+        container.addPerformanceButton(id, b, FaceSector.PRESET, pb);
     }
-
 
     private void testButton()//pnly for debug
     {
 
         byte[] arrayTest = {50,20,70};
 
-        container.getButtonPerform(R.id.eyes_01).addPerformancePiece(arrayTest,2000);
-        container.getButtonPerform(R.id.eyes_01).addPerformancePiece(arrayTest,1000);
-        container.getButtonPerform(R.id.eyes_02).addPerformancePiece(arrayTest,500);
-        container.getButtonPerform(R.id.eyes_02).addPerformancePiece(arrayTest,800);
-        container.getButtonPerform(R.id.mouth_01).addPerformancePiece(arrayTest,200);
-        container.getButtonPerform(R.id.mouth_01).addPerformancePiece(arrayTest,4000);
+        container.getButtonPerformance(R.id.eyes_01).addPerformancePiece(arrayTest,2000);
+        container.getButtonPerformance(R.id.eyes_01).addPerformancePiece(arrayTest,1000);
+        container.getButtonPerformance(R.id.eyes_02).addPerformancePiece(arrayTest,500);
+        container.getButtonPerformance(R.id.eyes_02).addPerformancePiece(arrayTest,800);
+        container.getButtonPerformance(R.id.mouth_01).addPerformancePiece(arrayTest,200);
+        container.getButtonPerformance(R.id.mouth_01).addPerformancePiece(arrayTest,4000);
     }
 
 
@@ -341,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
     {
 
         int id = v.getId();
-        ButtonPerformance<byte[]> bp = container.getButtonPerform(id);
+        ButtonPerformance<byte[]> bp = container.getButtonPerformance(id);
         if(!bp.canPerform())
         {
             Toast.makeText(this, Constants.emptyPerformance, Toast.LENGTH_SHORT).show();
@@ -351,10 +341,8 @@ public class MainActivity extends AppCompatActivity {
         container.deactivatesButtonSectorButton(bp.getFaceSector());
         if(presetRegistrationMode)
         {
-            int time = (int)(System.currentTimeMillis() - timePresetRec);
-            presetInRec.addPerformancePiece(v.getId(), time);
+            presetInRec.setButtonPerformance(container.getButtonPerformance(id));
             timePresetRec = System.currentTimeMillis();
-
         }
         performanceFilter.add(bp.getFaceSector());
         performanceThread pt = new performanceThread();
@@ -375,7 +363,7 @@ public class MainActivity extends AppCompatActivity {
         stopButton.setEnabled(true);
 
         performRegistrationMode = true;
-        bInRec = container.getButtonPerform(v.getId());
+        bInRec = container.getButtonPerformance(v.getId());
         bInRec.deletePerformance();
         previousPerformancePieceTime = System.currentTimeMillis();
     }
@@ -391,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
         timePresetRec = System.currentTimeMillis();
 
         presetRegistrationMode = true;
-        presetInRec = presetContainer.getButtonPerform(v.getId());
+        presetInRec = container.getPresetPerformance(v.getId());
         presetInRec.deletePerformance();
         previousPerformancePieceTime = System.currentTimeMillis();
     }
@@ -399,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
     public void presetPerformClick(View v)
     {
         int id = v.getId();
-        ButtonPerformance<Integer> bp = presetContainer.getButtonPerform(id);
+        PresetPerformance<byte[]> bp = container.getPresetPerformance(id);
         if(!bp.canPerform())
         {
             Toast.makeText(this, Constants.emptyPerformance, Toast.LENGTH_SHORT).show();
@@ -407,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, Constants.performing, Toast.LENGTH_SHORT).show();
         container.deactivatesAllButtons();
-        presetContainer.deactivatesButtonSectorButton(bp.getFaceSector());
+        container.deactivatesButtonSectorButton(bp.getFaceSector());
         performanceFilter.remove(FaceSector.EYEBROWS);
         performanceFilter.remove(FaceSector.EYELIDS);
         performanceFilter.remove(FaceSector.EYES);
@@ -491,7 +479,6 @@ public class MainActivity extends AppCompatActivity {
 
     public class TimerForRecorder extends AsyncTask<String, Integer, String> {
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -539,11 +526,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-
         }
 
     }
-
 
     private void addPerforamancePieceToRec(byte[] action)
     {
@@ -573,7 +558,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, Constants.controllerDisactived, Toast.LENGTH_LONG).show();
         }
     }
-
 
 
     BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -630,22 +614,13 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     break;
             }
-
-
         }
     };
 
 
-
     public class performanceThread extends AsyncTask<ButtonPerformance<byte[]>, Integer, ButtonPerformance<byte[]>> {
 
-
         private ButtonPerformance<byte[]> bpThread;
-
-        public performanceThread()
-        {
-
-        }
 
         @Override
         protected void onPreExecute() {
@@ -660,8 +635,6 @@ public class MainActivity extends AppCompatActivity {
             long startTime = System.currentTimeMillis();
             boolean inPerformance = true;
             PerformancePiece<byte[]> currentPiece = performance.get(0);
-
-
 
 
             int currentIndex = 0;
@@ -698,7 +671,6 @@ public class MainActivity extends AppCompatActivity {
             return bpThread;
         }
 
-
         @Override
         protected void onProgressUpdate(Integer... values)
         {
@@ -715,114 +687,58 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    
+    public class preSetThread extends AsyncTask<PresetPerformance<byte[]>, Integer, PresetPerformance<byte[]>> {
 
-
-    public class preSetThread extends AsyncTask<ButtonPerformance<Integer>, Integer, ButtonPerformance<Integer>> {
-
-
-        private ButtonPerformance<Integer> bpThread;
-
-        public preSetThread()
-        {
-
-        }
-
+        private PresetPerformance<byte[]> bpThread;
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected ButtonPerformance<Integer> doInBackground(ButtonPerformance<Integer>... params) {
-
-            bpThread = params[0];
-            List<PerformancePiece<Integer>> performance = bpThread.getPerformance();
+        protected PresetPerformance<byte[]> doInBackground(PresetPerformance<byte[]>... presetPerformances) {
+            bpThread = presetPerformances[0];
+            int duration = bpThread.getDuration();
+            List<Integer> buttonToPress = bpThread.getButtonsToPress();
+            publishProgress(buttonToPress.toArray(new Integer[buttonToPress.size()]));
             long startTime = System.currentTimeMillis();
-            boolean inPerformance = true;
-            PerformancePiece<Integer> currentPiece = performance.get(0);
+            long time = startTime;
+            long endTime = time + duration;
 
-
-
-
-            int currentIndex = 0;
-            long doPerfomance = startTime + currentPiece.getMillisToAction();
-
-            long endPerfomance = startTime + container.getButtonPerform(currentPiece.getAction()).getDuration();
-
-            while(inPerformance)
+            while(time < endTime)
             {
                 try {
-                    Thread.sleep(4);
+                    Thread.sleep(8);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
-                long currentTime = System.currentTimeMillis();
-                long progressTime = currentTime - startTime;
+                time = System.currentTimeMillis();
+                long progressTime = time - startTime;
                 int percentProgress = (int) ((100 * progressTime) / bpThread.getDuration());
-
-
-                int idToPress = -1;
-
-                if(currentTime > doPerfomance)
-                {
-                    //Log.i(TAG, currentPiece.getAction());
-                    idToPress = currentPiece.getAction();
-
-                    currentIndex++;
-
-                    if(currentIndex >= performance.size())
-                        inPerformance = false;
-                    else
-                    {
-                        currentPiece = performance.get(currentIndex);
-                        doPerfomance = currentTime + currentPiece.getMillisToAction();
-
-                        long maybeEnd = startTime + container.getButtonPerform(currentPiece.getAction()).getDuration();
-                        if(maybeEnd > endPerfomance)
-                            endPerfomance = maybeEnd;
-
-                    }
-                }
-
-                if(idToPress != -1)
-                    publishProgress(percentProgress, idToPress);
-                else
-                    publishProgress(percentProgress);
-
-
+                publishProgress(percentProgress);
             }
-
-            if(System.currentTimeMillis() < endPerfomance)
-                try {
-                Thread.sleep(endPerfomance - System.currentTimeMillis() + 10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-
-
-            return bpThread;
+            return null;
         }
-
 
         @Override
         protected void onProgressUpdate(Integer... values)
         {
-            bpThread.getProgressBar().setProgress(values[0]);
+
             if(values.length > 1)
-                performclick(container.getButtonPerform(values[1]).getButton());
+            {
+                for(int i = 0; i < values.length; i++)
+                {
+                    Button b = container.getButtonPerformance(values[i]).getButton();
+                    b.performClick();
+                }
+                return;
+
+            }
+
+            bpThread.getProgressBar().setProgress(values[0]);
         }
 
+
         @Override
-        protected void onPostExecute(ButtonPerformance<Integer> bp) {
-            presetContainer.activatesButtonSectorButton(bp.getFaceSector());
-            container.activatesAllButtons();
-            performanceFilter.remove(FaceSector.EYEBROWS);
-            performanceFilter.remove(FaceSector.EYELIDS);
-            performanceFilter.remove(FaceSector.EYES);
-            performanceFilter.remove(FaceSector.NOSE);
-            performanceFilter.remove(FaceSector.MOUTH);
+        protected void onPostExecute(PresetPerformance<byte[]> p) {
+            container.activatesButtonSectorButton(bpThread.getFaceSector());
             presetInPerform = false;
             bpThread.getProgressBar().setProgress(0);
         }
