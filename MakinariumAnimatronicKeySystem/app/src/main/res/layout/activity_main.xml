@@ -21,19 +21,18 @@
     <Switch
         android:id="@+id/mouthSwitch"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="632dp"
-        android:layout_marginTop="12dp"
-        android:rotation="90"
+        android:layout_height="13dp"
+        android:layout_marginStart="468dp"
+        android:layout_marginTop="16dp"
         android:text="Mouth"
-        app:layout_constraintStart_toEndOf="@+id/cronometro"
-        app:layout_constraintTop_toTopOf="@+id/cronometro" />
+        app:layout_constraintStart_toEndOf="@+id/stopButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/eyesSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="20dp"
         android:text="Eyes"
         app:layout_constraintStart_toEndOf="@+id/mouthSwitch"
         app:layout_constraintTop_toTopOf="@+id/mouthSwitch" />
@@ -263,6 +262,8 @@
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <Button
         android:id="@+id/stopButton"
@@ -1640,4 +1641,39 @@
         app:layout_constraintStart_toEndOf="@+id/mouthPB11"
         app:layout_constraintTop_toBottomOf="@+id/mouth_12" />
 
+
+    <Button
+        android:id="@+id/resetM"
+        android:layout_width="89dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="Reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <com.makinarium.makinariumanimatronickeysystem.VerticalSeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="19dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="900dp"
+        android:layout_marginTop="112dp"
+        android:max="30"
+        android:min="1"
+        android:progress="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/multText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/backsquare"
+        android:text=" 1.0 "
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

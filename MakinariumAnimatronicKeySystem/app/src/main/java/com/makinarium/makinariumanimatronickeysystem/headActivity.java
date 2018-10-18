@@ -30,6 +30,7 @@ public class headActivity extends AppCompatActivity {
             }
         });
 
+        continueButton.setAlpha(.5f);
         continueButton.setEnabled(false);
         continueButton.setClickable(false);
 
@@ -39,26 +40,21 @@ public class headActivity extends AppCompatActivity {
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-
+        continueButton.setAlpha(1);
+        continueButton.setEnabled(true);
+        continueButton.setClickable(true);
         // Check which radio button was clicked
         int i = view.getId();
         if (i == R.id.head01button) {
-            if (checked) {
-                continueButton.setEnabled(true);
-                continueButton.setClickable(true);
+            if (checked)
+            {
                 headMac = Constants.macHead01BT;
                 //continueButton.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
-
             }
 
         } else if (i == R.id.head02button) {
             if (checked)
-            {
-                continueButton.setEnabled(true);
-                continueButton.setClickable(true);
                 headMac = Constants.macHead02BT;
-                //continueButton.setAlpha(.5f);
-            }
 
         }
     }

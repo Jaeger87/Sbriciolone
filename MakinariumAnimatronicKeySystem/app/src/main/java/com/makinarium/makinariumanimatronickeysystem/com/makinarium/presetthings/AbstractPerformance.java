@@ -30,12 +30,14 @@ public abstract class AbstractPerformance {
 
     public void deactivatesButton()
     {
+        this.button.setAlpha(.5f);
         this.button.setEnabled(false);
         this.button.setClickable(false);
     }
 
     public void activatesButton()
     {
+        this.button.setAlpha(1);
         this.button.setEnabled(true);
         this.button.setClickable(true);
     }

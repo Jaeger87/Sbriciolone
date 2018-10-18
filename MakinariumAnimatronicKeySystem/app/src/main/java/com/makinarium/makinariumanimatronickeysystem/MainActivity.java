@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothDevice mBTDeviceEyes;
 
 
+    private double multiplicator = 1;
+    private static final double multChange = 0.1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
