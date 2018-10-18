@@ -24,7 +24,7 @@ public class BluetoothConnectionService {
 
 
     private static final UUID BTMODULEUUID =
-            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier for HC05
+            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier for HC05 trovato su internet
 
 
     private final BluetoothAdapter mBluetoothAdapter;
@@ -127,7 +127,6 @@ public class BluetoothConnectionService {
         private BluetoothSocket mmSocket;
 
         public ConnectThread(BluetoothDevice device, UUID uuid) {
-            Log.d(TAG, "ConnectThread: started.");
             mmDevice = device;
             deviceUUID = uuid;
         }
@@ -167,7 +166,6 @@ public class BluetoothConnectionService {
                     Log.e(TAG, "mConnectThread: run: Unable to close connection in socket " + e1.getMessage());
                 }
                 Log.d(TAG, "run: ConnectThread: Could not connect to UUID: " + BTMODULEUUID );
-                Log.d(TAG, "run: L'eccezione è papapapaa   " + e.getMessage());
             }
 
             connected(mmSocket,mmDevice);
@@ -250,7 +248,6 @@ public class BluetoothConnectionService {
                 e.printStackTrace();
             }
 
-
             try {
                 tmpIn = mmSocket.getInputStream();
                 tmpOut = mmSocket.getOutputStream();
@@ -261,7 +258,6 @@ public class BluetoothConnectionService {
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
 
-            Log.d(TAG, "Qui ci siamo");
         }
 
         public void run(){

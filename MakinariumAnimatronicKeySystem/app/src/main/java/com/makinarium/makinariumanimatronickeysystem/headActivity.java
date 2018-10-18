@@ -47,7 +47,6 @@ public class headActivity extends AppCompatActivity {
                 continueButton.setEnabled(true);
                 continueButton.setClickable(true);
                 headMac = Constants.macHead01BT;
-                //continueButton.setBackgroundColor(ContextCompat.getColor(this, R.color.activePerform)); SBAGLIATO
                 //continueButton.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
 
             }

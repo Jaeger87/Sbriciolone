@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView cronometro;
     private boolean performRegistrationMode = false;
     private boolean presetRegistrationMode = false;
-    private boolean presetInPerform = false;
     private boolean mouthActiveController = true;
     private boolean eyesActiveController = true;
 
@@ -74,7 +74,11 @@ public class MainActivity extends AppCompatActivity {
         Intent headIntent = getIntent();
         headMac = headIntent.getStringExtra(Intent.EXTRA_TEXT);
 
-        container = new ButtonsContainer<>();
+        int readyColor = ResourcesCompat.getColor(getResources(), R.color.activePerform, null);
+        int toReccolor = ResourcesCompat.getColor(getResources(), R.color.performToRec, null);
+
+
+        container = new ButtonsContainer<>(readyColor, toReccolor);
         initializeAllButtons();
 
         performanceFilter = new HashSet<>();
@@ -394,14 +398,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Toast.makeText(this, Constants.performing, Toast.LENGTH_SHORT).show();
-        container.deactivatesAllButtons();
         container.deactivatesButtonSectorButton(bp.getFaceSector());
-        performanceFilter.remove(FaceSector.EYEBROWS);
-        performanceFilter.remove(FaceSector.EYELIDS);
-        performanceFilter.remove(FaceSector.EYES);
-        performanceFilter.remove(FaceSector.NOSE);
-        performanceFilter.remove(FaceSector.MOUTH);
-        presetInPerform = true;
         preSetThread pt = new preSetThread();
         pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
     }
@@ -413,8 +410,14 @@ public class MainActivity extends AppCompatActivity {
         timeTask = null;
         performRegistrationMode = false;
         presetRegistrationMode = false;
+        if(bInRec != null)
+            bInRec.updateColor();
         bInRec = null;
+
+        if(presetInRec != null)
+            presetInRec.updateColor();
         presetInRec = null;
+
         stopButton.setClickable(false);
         stopButton.setEnabled(false);
         timePresetRec = 0;
@@ -679,8 +682,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ButtonPerformance<byte[]> bp) {
 
-            if(!presetInPerform)
-                container.activatesButtonSectorButton(bp.getFaceSector());
+            container.activatesButtonSectorButton(bp.getFaceSector());
             performanceFilter.remove(bp.getFaceSector());
             bpThread.getProgressBar().setProgress(0);
         }
@@ -738,7 +740,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(PresetPerformance<byte[]> p) {
             container.activatesButtonSectorButton(bpThread.getFaceSector());
-            presetInPerform = false;
             bpThread.getProgressBar().setProgress(0);
         }
 

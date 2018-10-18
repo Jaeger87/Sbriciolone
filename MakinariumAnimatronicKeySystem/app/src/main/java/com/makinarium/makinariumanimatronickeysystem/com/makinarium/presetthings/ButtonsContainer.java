@@ -12,23 +12,27 @@ public class ButtonsContainer<T> {
     private HashMap<Integer,ButtonPerformance<T>> performanceHashMap;
     private HashMap<Integer,PresetPerformance<T>> presetHashMap;
 
+    private int activeColor;
+    private int performToRecColor;
 
-    public ButtonsContainer()
+    public ButtonsContainer(int activeColor, int performToRecColor)
     {
         performanceHashMap = new HashMap<>();
         presetHashMap = new HashMap<>();
+        this.activeColor = activeColor;
+        this.performToRecColor = performToRecColor;
     }
 
 
     public void addPerformanceButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
-        performanceHashMap.put(id, new ButtonPerformance(button,sector, progressBar));
+        performanceHashMap.put(id, new ButtonPerformance(button,sector, progressBar, activeColor, performToRecColor));
     }
 
     public void addPresetButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
         if(sector == FaceSector.PRESET)
-            presetHashMap.put(id, new PresetPerformance(button,sector, progressBar));
+            presetHashMap.put(id, new PresetPerformance(button,sector, progressBar, activeColor, performToRecColor));
     }
 
     public void deactivatesButtonSectorButton(FaceSector sector)

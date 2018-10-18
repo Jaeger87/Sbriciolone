@@ -1,9 +1,13 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.support.v4.content.res.ResourcesCompat;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
+import com.makinarium.makinariumanimatronickeysystem.R;
 
 public abstract class AbstractPerformance {
 
@@ -12,8 +16,11 @@ public abstract class AbstractPerformance {
     private FaceSector faceSector;
     private boolean canPerform;
     private int duration;
+    private int activeColor;
+    private int performToRecColor;
 
-    public AbstractPerformance(Button button, FaceSector faceSector, ProgressBar progressBar)
+    public AbstractPerformance(Button button, FaceSector faceSector, ProgressBar progressBar,
+                               int activeColor, int performToRecColor)
     {
         this.button = button;
         this.faceSector = faceSector;
@@ -68,9 +75,11 @@ public abstract class AbstractPerformance {
         return progressBar;
     }
 
-    //TODO: Farollo
     public void updateColor()
     {
-
+        if(canPerform)
+            button.getBackground().setColorFilter(activeColor, PorterDuff.Mode.SRC_ATOP);
+        else
+            button.getBackground().setColorFilter(performToRecColor, PorterDuff.Mode.SRC_ATOP);
     }
 }
