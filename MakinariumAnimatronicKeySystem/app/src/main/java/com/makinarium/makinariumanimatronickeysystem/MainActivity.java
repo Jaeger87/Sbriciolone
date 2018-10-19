@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private double multiplicator = 1;
-    private static final double multChange = 0.1;
+    private VerticalSeekBar multBar;
+    private Button resetM;
+    private TextView multText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,34 @@ public class MainActivity extends AppCompatActivity {
         eyesSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 onCheckEyes(buttonView,isChecked);
+            }
+        });
+
+        multBar = (VerticalSeekBar) findViewById(R.id.seekBar);
+        resetM = (Button) findViewById(R.id.resetM);
+        resetM.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                resetSBButton();
+            }
+        });
+        multText = (TextView) findViewById(R.id.multText);
+
+        multBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                multiplicator = progress / 10.0;
+                multText.setText(" " + String.valueOf(multiplicator) + " ");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
 
@@ -272,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        container.addPerformanceButton(id, b, FaceSector.PRESET, pb);
+        container.addPresetButton(id, b, FaceSector.PRESET, pb);
     }
 
     private void testButton()//pnly for debug
@@ -404,6 +435,11 @@ public class MainActivity extends AppCompatActivity {
         container.deactivatesButtonSectorButton(bp.getFaceSector());
         preSetThread pt = new preSetThread();
         pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
+    }
+
+    public void resetSBButton()
+    {
+        multBar.setProgress(10);
     }
 
 

@@ -55,4 +55,10 @@ public class VerticalSeekBar extends android.support.v7.widget.AppCompatSeekBar 
         }
         return true;
     }
+
+    @Override
+    public void setProgress(int progress) {
+        super.setProgress(progress);
+        onSizeChanged(getWidth(), getHeight(), 0, 0);
+    }
 }
