@@ -49,39 +49,39 @@ void setup()
 
   listaMotori[0].sector = 'M';//BoccaSX
   listaMotori[0].port = A0;//
-  listaMotori[0].pinH = 5;
+  listaMotori[0].pinH = 0;
 
   listaMotori[1].sector = 'M';//BoccaCSX
   listaMotori[1].port = A1;
-  listaMotori[1].pinH = 6;
+  listaMotori[1].pinH = 1;
 
   listaMotori[2].sector = 'M';//BoccaC
   listaMotori[2].port = A2;
-  listaMotori[2].pinH = 7;
+  listaMotori[2].pinH = 2;
 
   listaMotori[3].sector = 'M';//BoccaCDX
   listaMotori[3].port = A3;
-  listaMotori[3].pinH = 8;
+  listaMotori[3].pinH = 3;
 
   listaMotori[4].sector = 'M';//BoccaDX
   listaMotori[4].port = A4;
-  listaMotori[4].pinH = 9;
+  listaMotori[4].pinH = 4;
 
   listaMotori[5].sector = 'M';//NasoS
   listaMotori[5].port = A5;
-  listaMotori[5].pinH = 10;
+  listaMotori[5].pinH = 5;
 
   listaMotori[6].sector = 'M';//NasoCS
   listaMotori[6].port = A6;
-  listaMotori[6].pinH = 11;
+  listaMotori[6].pinH = 6;
 
   listaMotori[7].sector = 'M';//NasoCD
   listaMotori[7].port = A7;
-  listaMotori[7].pinH = 12;
+  listaMotori[7].pinH = 7;
 
   listaMotori[8].sector = 'M';//NasoD
   listaMotori[8].port = A8;
-  listaMotori[8].pinH = 13;
+  listaMotori[8].pinH = 8;
 
 
   readButtonLed(mirrorButton);

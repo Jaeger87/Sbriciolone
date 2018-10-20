@@ -7,15 +7,9 @@ struct ServoValues {
 };
 
 const byte howmanyservo = 19;//Sono 8 invero
-
+ServoValues servoList[howmanyservo];
 #include <PololuMaestro.h>
 unsigned long nextPalpebre = 0;
-
-const byte pinOcchioDXX = 21;
-const byte pinOcchioDXY = 22;
-
-const byte channelPalpebraSinistra = 20;
-const byte channelPalpebraDestra = 23;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
 const int minOcchiValue = 920;
@@ -57,7 +51,124 @@ void setup() {
   Serial.begin(9600);
   maestroSerial.begin(9600);
   Serial.setTimeout(20);
+
+  servoList[0].minValue = 4180;
+  servoList[0].maxValue = 8650;
+  servoList[0].channel = 5;
+  servoList[0].servoName = "BoccaSX";
+  servoList[0].mirror = false;
+
+  servoList[1].minValue = 4180;
+  servoList[1].maxValue = 8650;
+  servoList[1].channel = 6;
+  servoList[1].servoName = "BoccaCSX";
+  servoList[1].mirror = false;
+
+  servoList[2].minValue = 4180;
+  servoList[2].maxValue = 8650;
+  servoList[2].channel = 7;
+  servoList[2].servoName = "BoccaC";
+  servoList[2].mirror = false;
+
+  servoList[3].minValue = 4180;
+  servoList[3].maxValue = 8650;
+  servoList[3].channel = 8;
+  servoList[3].servoName = "BoccaCDX";//
+  servoList[3].mirror = false;
+
+  servoList[4].minValue = 4180;
+  servoList[4].maxValue = 8650;//
+  servoList[4].channel = 9;
+  servoList[4].servoName = "BoccaDX";//
+  servoList[4].mirror = false;
+
+  servoList[5].minValue = 4180;
+  servoList[5].maxValue = 8650;
+  servoList[5].channel = 10;
+  servoList[5].servoName = "NasoCS";
+  servoList[5].mirror = false;
+
+  servoList[6].minValue = 4180;
+  servoList[6].maxValue = 8650;//
+  servoList[6].channel = 11;
+  servoList[6].servoName = "NasoS";
+  servoList[6].mirror = false;
+
+  servoList[7].minValue = 4180;
+  servoList[7].maxValue = 8650;
+  servoList[7].channel = 12;
+  servoList[7].servoName = "NasoCD";
+  servoList[7].mirror = false;
+
+  servoList[8].minValue = 4180;
+  servoList[8].maxValue = 8650;
+  servoList[8].channel = 13;
+  servoList[8].servoName = "NasoD";
+  servoList[8].mirror = false;
+
+  servoList[9].minValue = 4180;
+  servoList[9].maxValue = 8650;
+  servoList[9].channel = 14;
+  servoList[9].servoName = "SopraciglioCD";
+  servoList[9].mirror = false;
+
+  servoList[10].minValue = 4180;
+  servoList[10].maxValue = 8650;
+  servoList[10].channel = 15;
+  servoList[10].servoName = "SopraciglioDX";
+  servoList[10].mirror = false;
+
+  servoList[11].minValue = 4180;
+  servoList[11].maxValue = 8650;
+  servoList[11].channel = 16;
+  servoList[11].servoName = "SopraciglioCS";
+  servoList[11].mirror = false;
+
+  servoList[12].minValue = 4180;
+  servoList[12].maxValue = 8650;
+  servoList[12].channel = 17;
+  servoList[12].servoName = "SopraciglioSX";
+  servoList[12].mirror = false;
+
+  servoList[13].minValue = 4180;
+  servoList[13].maxValue = 8650;
+  servoList[13].channel = 18;
+  servoList[13].servoName = "OcchioSXX";
+  servoList[13].mirror = false;
+
+  servoList[14].minValue = 4180;
+  servoList[14].maxValue = 8650;
+  servoList[14].channel = 19;
+  servoList[14].servoName = "OcchioSXY";
+  servoList[14].mirror = false;
+
+  servoList[15].minValue = 4180;
+  servoList[15].maxValue = 8650;
+  servoList[15].channel = 20;
+  servoList[15].servoName = "PalpebraSX";
+  servoList[15].mirror = false;
+
+  servoList[16].minValue = 4180;
+  servoList[16].maxValue = 8650;
+  servoList[16].channel = 21;
+  servoList[16].servoName = "OcchioDXX";
+  servoList[16].mirror = false;
+
+  servoList[17].minValue = 4180;
+  servoList[17].maxValue = 8650;
+  servoList[17].channel = 22;
+  servoList[17].servoName = "OcchioDXY";
+  servoList[17].mirror = false;
+
+  servoList[18].minValue = 4180;
+  servoList[18].maxValue = 8650;
+  servoList[18].channel = 23;
+  servoList[18].servoName = "PalpebraDX";
+  servoList[18].mirror = false;
+
+
   nextPalpebre = random(2000, 10000) + millis();
+
 }
 
 
@@ -101,11 +212,11 @@ void noseMessage(String message)
 {
   if (message.charAt(1) == 'M')
   {
-    String pinString = getValueStringSplitter(message, ';', 1);
-    int pin = pinString.toInt();
+    String indexString = getValueStringSplitter(message, ';', 1);
+    int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
-    maestro.setTarget(pin, analogConversionMotor180(value));
+    maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
   }
 }
 
@@ -128,11 +239,11 @@ void eyeBrowMessage(String message)
 {
   if (message.charAt(1) == 'M')
   {
-    String pinString = getValueStringSplitter(message, ';', 1);
-    int pin = pinString.toInt();
+    String indexString = getValueStringSplitter(message, ';', 1);
+    int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
-    maestro.setTarget(pin, analogConversionMotor180(value));
+    maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
   }
 }
 
@@ -141,26 +252,21 @@ void mouthMessage(String message)
 {
   if (message.charAt(1) == 'M')
   {
-    String pinString = getValueStringSplitter(message, ';', 1);
-    int pin = pinString.toInt();
+    String indexString = getValueStringSplitter(message, ';', 1);
+    int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
-    maestro.setTarget(pin, analogConversionMotor180(value));
+    maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
   }
 }
 
 void eyesMotorMessage(String message)
 {
-  String pinString = getValueStringSplitter(message, ';', 1);
-  int pin = pinString.toInt();
+  String indexString = getValueStringSplitter(message, ';', 1);
+  int index = indexString.toInt();
   String valueString = getValueStringSplitter(message, ';', 2);
   int value = valueString.toInt();
-
-  if (pin == pinOcchioDXX)
-    maestro.setTarget(pin, analogConversionMotorOcchioX(value));
-
-  else if (pin == pinOcchioDXY)
-    maestro.setTarget(pin, analogConversionMotorOcchioY(value));
+  maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
 }
 
 
@@ -169,12 +275,11 @@ void palpebraMotorMessage(String message)
 
   if (sitOcchi != MANUAL)
     return;
-  String pinString = getValueStringSplitter(message, ';', 1);
-  int pin = pinString.toInt();
+  String indexString = getValueStringSplitter(message, ';', 1);
+  int index = indexString.toInt();
   String valueString = getValueStringSplitter(message, ';', 2);
   int value = valueString.toInt();
-  if (pin == channelPalpebraDestra)
-    maestro.setTarget(pin, analogConversionMotorPalpebra(value));
+  maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
 }
 
 void eventoPalpebre()
@@ -184,8 +289,8 @@ void eventoPalpebre()
   {
     sitOcchi = CHIUSMANUAL;
     contatoreOcchi = 0;
-    maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(minOcchiValue));
-    maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(minOcchiValue));
+    maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
+    maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
   }
   else
   {
@@ -208,8 +313,8 @@ void gestisciOcchi()
       nextPalpebre = random(2000, 10000) + millis();
       sitOcchi = INCHIUSURA;
       contatoreOcchi = 0;
-      maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(minOcchiValue));
-      maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(minOcchiValue));
+      maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
+      maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
     }
     return;
   }
@@ -218,8 +323,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
-      maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(maxOcchiValue));
-      maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(maxOcchiValue));
+      maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
+      maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = APERTI;
     }
     return;
@@ -230,36 +335,25 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
-      maestro.setTarget(channelPalpebraSinistra, analogConversionMotorPalpebra(maxOcchiValue));
-      maestro.setTarget(channelPalpebraDestra, analogConversionMotorPalpebra(maxOcchiValue));
+      maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
+      maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = MANUAL;
     }
     return;
   }
 }
 
-int analogConversionMotor180(int analogValue)
-{
+/*
+  int analogConversionMotor180(int analogValue)
+  {
   return map(analogValue, 0, 1023, 2100, 9200);
-}
-
-int analogConversionMotorPalpebra(int analogValue)
-{
-  return map(analogValue, 0, 1023, 2500, 7600);
-}
-
-int analogConversionMotorOcchioX(int analogValue)
-{
-  return map(analogValue, 0, 1023, 3705, 8444);
-}
-
-int analogConversionMotorOcchioY(int analogValue)
-{
-  return map(analogValue, 0, 1023, 5500, 8550);
-}
+  }
+*/
 
 int analogServoConversion(int analogValue, ServoValues& servo)
 {
+  if (servo.mirror)
+    return map(analogValue, 1023, 0, servo.minValue, servo.maxValue);
   return map(analogValue, 0, 1023, servo.minValue, servo.maxValue);
 }
 
