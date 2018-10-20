@@ -1,10 +1,14 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings;
 
+import android.content.Context;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import com.google.gson.Gson;
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 
 public class ButtonsContainer<T> {
@@ -15,10 +19,13 @@ public class ButtonsContainer<T> {
     private int activeColor;
     private int performToRecColor;
 
+    private Gson gson;
+
     public ButtonsContainer(int activeColor, int performToRecColor)
     {
         performanceHashMap = new HashMap<>();
         presetHashMap = new HashMap<>();
+        gson = new Gson();
         this.activeColor = activeColor;
         this.performToRecColor = performToRecColor;
     }
@@ -94,6 +101,20 @@ public class ButtonsContainer<T> {
     {
         for(FaceSector sector : FaceSector.values())
             disActButtons(sector,true);
+    }
+
+
+    public void saveMe(Context context)
+    {
+        String filename = "myfile";
+        String fileContents = "Hello world!";
+        FileOutputStream outputStream;
+
+        try {
+            File file = new File(context.getFilesDir(), filename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
