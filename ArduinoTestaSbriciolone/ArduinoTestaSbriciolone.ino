@@ -1,3 +1,13 @@
+struct ServoValues {
+  int minValue;
+  int maxValue;
+  int channel;
+  String servoName;
+  bool mirror;
+};
+
+const byte howmanyservo = 19;//Sono 8 invero
+
 #include <PololuMaestro.h>
 unsigned long nextPalpebre = 0;
 
@@ -246,6 +256,11 @@ int analogConversionMotorOcchioX(int analogValue)
 int analogConversionMotorOcchioY(int analogValue)
 {
   return map(analogValue, 0, 1023, 5500, 8550);
+}
+
+int analogServoConversion(int analogValue, ServoValues& servo)
+{
+  return map(analogValue, 0, 1023, servo.minValue, servo.maxValue);
 }
 
 

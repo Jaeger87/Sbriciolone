@@ -1658,8 +1658,8 @@
         android:layout_height="290dp"
         android:layout_marginStart="900dp"
         android:layout_marginTop="112dp"
-        android:max="30"
-        android:min="1"
+        android:max="27"
+        android:min="3"
         android:progress="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private VerticalSeekBar multBar;
     private Button resetM;
     private TextView multText;
+    private static final int minValueMult = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,11 +128,12 @@ public class MainActivity extends AppCompatActivity {
         });
         multText = (TextView) findViewById(R.id.multText);
 
+        //multBar.setMin(3);
         multBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                multiplicator = progress / 10.0;
+                multiplicator = (progress + minValueMult) / 10.0;
                 multText.setText(" " + String.valueOf(multiplicator) + " ");
             }
 
@@ -439,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void resetSBButton()
     {
-        multBar.setProgress(10);
+        multBar.setProgress(10 - minValueMult);
     }
 
 
