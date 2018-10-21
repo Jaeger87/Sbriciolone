@@ -5,10 +5,17 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
+import com.makinarium.makinariumanimatronickeysystem.Constants;
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.HashMap;
 
 public class ButtonsContainer<T> {
@@ -25,7 +32,7 @@ public class ButtonsContainer<T> {
     {
         performanceHashMap = new HashMap<>();
         presetHashMap = new HashMap<>();
-        gson = new Gson();
+        this.gson = new Gson();
         this.activeColor = activeColor;
         this.performToRecColor = performToRecColor;
     }
@@ -106,15 +113,22 @@ public class ButtonsContainer<T> {
 
     public void saveMe(Context context)
     {
-        String filename = "myfile";
-        String fileContents = "Hello world!";
-        FileOutputStream outputStream;
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(context.getFilesDir() + Constants.SaveFileName), "utf-8"))) {
+            writer.write(gson.toJson(this));
+        } catch (UnsupportedEncodingException e) {
 
-        try {
-            File file = new File(context.getFilesDir(), filename);
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
 }

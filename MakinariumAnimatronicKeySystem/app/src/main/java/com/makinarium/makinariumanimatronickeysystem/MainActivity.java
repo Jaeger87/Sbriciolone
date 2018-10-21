@@ -23,11 +23,19 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.google.gson.Gson;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.customgraphics.VerticalSeekBar;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonPerformance;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonsContainer;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.PerformancePiece;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.PresetPerformance;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.undo.UndoManager;
 
+import org.apache.commons.io.IOUtils;
+
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.List;
@@ -49,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch eyesSwitch;
 
     private ButtonsContainer<byte[]> container;
+    private UndoManager<byte[]> undoManager;
     private ButtonPerformance<byte[]> bInRec;
     private PresetPerformance<byte[]> presetInRec;
     private long timePresetRec = 0;
@@ -84,9 +93,17 @@ public class MainActivity extends AppCompatActivity {
         int readyColor = ResourcesCompat.getColor(getResources(), R.color.activePerform, null);
         int toReccolor = ResourcesCompat.getColor(getResources(), R.color.performToRec, null);
 
+        Gson gson = new Gson();
 
-        container = new ButtonsContainer<>(readyColor, toReccolor);
-        initializeAllButtons();
+        try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
+            String json = IOUtils.toString(inputStream, "UTF-8");
+            container = gson.fromJson(json, ButtonsContainer.class);
+        } catch (IOException e) {
+            container = new ButtonsContainer<>(readyColor, toReccolor);
+            initializeAllButtons();
+        }
+
+        undoManager = new UndoManager<>(container);
 
         performanceFilter = new HashSet<>();
 
@@ -404,6 +421,7 @@ public class MainActivity extends AppCompatActivity {
 
         performRegistrationMode = true;
         bInRec = container.getButtonPerformance(v.getId());
+        undoManager.addLastEdit(bInRec);
         bInRec.deletePerformance();
         previousPerformancePieceTime = System.currentTimeMillis();
     }
@@ -420,6 +438,7 @@ public class MainActivity extends AppCompatActivity {
 
         presetRegistrationMode = true;
         presetInRec = container.getPresetPerformance(v.getId());
+        undoManager.addLastEdit(presetInRec);
         presetInRec.deletePerformance();
         previousPerformancePieceTime = System.currentTimeMillis();
     }
@@ -458,11 +477,13 @@ public class MainActivity extends AppCompatActivity {
         if(presetInRec != null)
             presetInRec.updateColor();
         presetInRec = null;
+        container.saveMe(this);
 
         stopButton.setClickable(false);
         stopButton.setEnabled(false);
         timePresetRec = 0;
         Toast.makeText(this, Constants.stopRecording, Toast.LENGTH_LONG).show();
+
     }
 
     private void hideSystemUI() {
@@ -513,7 +534,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (itemThatWasClickedId == R.id.action_undo) {
             Context context = MainActivity.this;
-            String textToShow = "undo clicked";
+            String textToShow =  undoManager.undo() ? "undo done" : "There was nothing to undo";
             Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -681,18 +702,18 @@ public class MainActivity extends AppCompatActivity {
 
 
             int currentIndex = 0;
-            long doPerfomance = startTime + currentPiece.getMillisToAction();
+            long doPerfomance = startTime + (long)(currentPiece.getMillisToAction() * multiplicator);
             while(inPerformance)
             {
                 try {
-                    Thread.sleep(8);
+                    Thread.sleep(6);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
                 long currentTime = System.currentTimeMillis();
                 long progressTime = currentTime - startTime;
-                int percentProgress = (int) ((100 * progressTime) / bpThread.getDuration());
+                int percentProgress = (int) ((100 * progressTime) / (int)(bpThread.getDuration() * multiplicator));
                 publishProgress(percentProgress);
 
                 if(currentTime > doPerfomance)
@@ -705,7 +726,7 @@ public class MainActivity extends AppCompatActivity {
                     else
                     {
                         currentPiece = performance.get(currentIndex);
-                        doPerfomance = currentTime + currentPiece.getMillisToAction();
+                        doPerfomance = currentTime + (long)(currentPiece.getMillisToAction() * multiplicator);
                     }
                 }
 
@@ -736,7 +757,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected PresetPerformance<byte[]> doInBackground(PresetPerformance<byte[]>... presetPerformances) {
             bpThread = presetPerformances[0];
-            int duration = bpThread.getDuration();
+            int duration = (int)(bpThread.getDuration() * multiplicator);
             List<Integer> buttonToPress = bpThread.getButtonsToPress();
             publishProgress(buttonToPress.toArray(new Integer[buttonToPress.size()]));
             long startTime = System.currentTimeMillis();
@@ -753,7 +774,7 @@ public class MainActivity extends AppCompatActivity {
 
                 time = System.currentTimeMillis();
                 long progressTime = time - startTime;
-                int percentProgress = (int) ((100 * progressTime) / bpThread.getDuration());
+                int percentProgress = (int) ((100 * progressTime) / (int)(bpThread.getDuration() * multiplicator));
                 publishProgress(percentProgress);
             }
             return null;

@@ -1,4 +1,4 @@
-package com.makinarium.makinariumanimatronickeysystem;
+package com.makinarium.makinariumanimatronickeysystem.com.makinarium.customgraphics;
 
 import android.content.Context;
 import android.graphics.Canvas;

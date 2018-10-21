@@ -18,4 +18,5 @@ public class Constants {
     public static final String controllerDisactived = "controller disactivated";
     public static final String emptyPerformance = "Please rec before performance";
     public static final String performing = "Performing";
+    public static final String SaveFileName = "save.json";
 }

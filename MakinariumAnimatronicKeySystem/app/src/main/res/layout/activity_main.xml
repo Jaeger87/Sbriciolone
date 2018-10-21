@@ -1652,7 +1652,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
-    <com.makinarium.makinariumanimatronickeysystem.VerticalSeekBar
+    <com.makinarium.makinariumanimatronickeysystem.com.makinarium.customgraphics.VerticalSeekBar
         android:id="@+id/seekBar"
         android:layout_width="19dp"
         android:layout_height="290dp"

@@ -26,6 +26,8 @@ public abstract class AbstractPerformance {
         this.faceSector = faceSector;
         canPerform = false;
         this.progressBar = progressBar;
+        this.activeColor = activeColor;
+        this.performToRecColor = performToRecColor;
     }
 
     public void deactivatesButton()

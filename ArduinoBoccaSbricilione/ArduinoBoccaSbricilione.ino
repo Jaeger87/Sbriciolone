@@ -4,6 +4,9 @@ const byte delayLoop = 50;
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
 
+const int parlataDistanceCentrali = 100;
+const int parlataDistanceLaterali = 180;
+
 struct Motor {
   int port;
   char sector;
@@ -121,10 +124,10 @@ void readWriteMotor(Motor& m, int index)
     sendMotor(m, sensorValue);
     if (parlataButton.value)
     {
-      sendMotor(listaMotori[0], parlataConversion(sensorValue, 180));
-      sendMotor(listaMotori[1], parlataConversion(sensorValue, 100));
-      sendMotor(listaMotori[3], parlataConversion(sensorValue, 100));
-      sendMotor(listaMotori[4], parlataConversion(sensorValue, 180));
+      sendMotor(listaMotori[0], parlataConversion(sensorValue, parlataDistanceLaterali));
+      sendMotor(listaMotori[1], parlataConversion(sensorValue, parlataDistanceCentrali));
+      sendMotor(listaMotori[3], parlataConversion(sensorValue, parlataDistanceCentrali));
+      sendMotor(listaMotori[4], parlataConversion(sensorValue, parlataDistanceLaterali));
     }
     else if (mirrorButton.value)
       if (index == 0 || index == 1)
