@@ -11,7 +11,9 @@ import com.makinarium.makinariumanimatronickeysystem.R;
 
 public abstract class AbstractPerformance {
 
-    private Button button;
+    private transient Button button;
+    //TODO: Rifare salvataggio
+    private int buttonID;
     private ProgressBar progressBar;
     private FaceSector faceSector;
     private boolean canPerform;
@@ -81,6 +83,12 @@ public abstract class AbstractPerformance {
 
     public void updateColor()
     {
+        int id = button.getId();
+
+        if(id == R.id.eyebrow_01 || id == R.id.eyes_01 ||
+                id == R.id.preset_01 ||id == R.id.mouth_01 || id == R.id.nose_01)
+            return;
+
         if(canPerform)
             button.getBackground().setColorFilter(activeColor, PorterDuff.Mode.SRC_ATOP);
         else

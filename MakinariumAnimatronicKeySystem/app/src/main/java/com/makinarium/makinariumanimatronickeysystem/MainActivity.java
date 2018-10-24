@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
 
+        //TODO: Rifare salvataggio, no button ma button id
         try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
             String json = IOUtils.toString(inputStream, "UTF-8");
             container = gson.fromJson(json, ButtonsContainer.class);
@@ -102,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
             container = new ButtonsContainer<>(readyColor, toReccolor);
             initializeAllButtons();
         }
+
+
+        container = new ButtonsContainer<>(readyColor, toReccolor);
+        initializeAllButtons();
 
         undoManager = new UndoManager<>(container);
 
@@ -145,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
         });
         multText = (TextView) findViewById(R.id.multText);
 
-        //multBar.setMin(3);
         multBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -477,7 +481,7 @@ public class MainActivity extends AppCompatActivity {
         if(presetInRec != null)
             presetInRec.updateColor();
         presetInRec = null;
-        container.saveMe(this);
+       // container.saveMe(this);
 
         stopButton.setClickable(false);
         stopButton.setEnabled(false);
@@ -629,7 +633,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             int id = intent.getIntExtra(Constants.intentIDProp, 0);
             String text = intent.getStringExtra("Message");
-
+            Log.i(TAG,text);
             if(text.contains("ALI"))
                 return;
             byte[] bytes;
@@ -647,11 +651,13 @@ public class MainActivity extends AppCompatActivity {
 
                     bytes = text.getBytes(Charset.defaultCharset());
 
+
                     if(performRegistrationMode)
                     {
 
-                        if(f == bInRec.getFaceSector())
+                        if(f == bInRec.getFaceSector()) {
                             addPerforamancePieceToRec(bytes);
+                        }
                     }
 
                     mBluetoothConnectionHead.write(bytes);
@@ -663,9 +669,9 @@ public class MainActivity extends AppCompatActivity {
 
                     bytes = text.getBytes(Charset.defaultCharset());
 
+                    Log.i(TAG,text);
                     if(performRegistrationMode)
                     {
-
                         if(f == bInRec.getFaceSector())
                             addPerforamancePieceToRec(bytes);
                     }
@@ -702,7 +708,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             int currentIndex = 0;
-            long doPerfomance = startTime + (long)(currentPiece.getMillisToAction() * multiplicator);
+            long doPerfomance = startTime + (long)(currentPiece.getMillisToAction() / multiplicator);
             while(inPerformance)
             {
                 try {
@@ -713,7 +719,7 @@ public class MainActivity extends AppCompatActivity {
 
                 long currentTime = System.currentTimeMillis();
                 long progressTime = currentTime - startTime;
-                int percentProgress = (int) ((100 * progressTime) / (int)(bpThread.getDuration() * multiplicator));
+                int percentProgress = (int) ((100 * progressTime) / (int)(bpThread.getDuration() / multiplicator));
                 publishProgress(percentProgress);
 
                 if(currentTime > doPerfomance)
@@ -726,7 +732,7 @@ public class MainActivity extends AppCompatActivity {
                     else
                     {
                         currentPiece = performance.get(currentIndex);
-                        doPerfomance = currentTime + (long)(currentPiece.getMillisToAction() * multiplicator);
+                        doPerfomance = currentTime + (long)(currentPiece.getMillisToAction() / multiplicator);
                     }
                 }
 
@@ -757,7 +763,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected PresetPerformance<byte[]> doInBackground(PresetPerformance<byte[]>... presetPerformances) {
             bpThread = presetPerformances[0];
-            int duration = (int)(bpThread.getDuration() * multiplicator);
+            int duration = (int)(bpThread.getDuration() / multiplicator);
             List<Integer> buttonToPress = bpThread.getButtonsToPress();
             publishProgress(buttonToPress.toArray(new Integer[buttonToPress.size()]));
             long startTime = System.currentTimeMillis();
@@ -774,7 +780,7 @@ public class MainActivity extends AppCompatActivity {
 
                 time = System.currentTimeMillis();
                 long progressTime = time - startTime;
-                int percentProgress = (int) ((100 * progressTime) / (int)(bpThread.getDuration() * multiplicator));
+                int percentProgress = (int) ((100 * progressTime) / (int)(bpThread.getDuration() / multiplicator));
                 publishProgress(percentProgress);
             }
             return null;

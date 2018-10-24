@@ -131,4 +131,17 @@ public class ButtonsContainer<T> {
 
     }
 
+    public void updateAllColors()
+    {
+        for(Integer id: performanceHashMap.keySet())
+        {
+            performanceHashMap.get(id).updateColor();
+        }
+
+        for(Integer id: presetHashMap.keySet())
+        {
+            presetHashMap.get(id).updateColor();
+        }
+    }
+
 }

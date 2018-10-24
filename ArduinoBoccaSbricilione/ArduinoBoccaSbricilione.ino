@@ -70,19 +70,19 @@ void setup()
   listaMotori[4].port = A4;
   listaMotori[4].pinH = 4;
 
-  listaMotori[5].sector = 'M';//NasoS
+  listaMotori[5].sector = 'N';//NasoS
   listaMotori[5].port = A5;
   listaMotori[5].pinH = 5;
 
-  listaMotori[6].sector = 'M';//NasoCS
+  listaMotori[6].sector = 'N';//NasoCS
   listaMotori[6].port = A6;
   listaMotori[6].pinH = 6;
 
-  listaMotori[7].sector = 'M';//NasoCD
+  listaMotori[7].sector = 'N';//NasoCD
   listaMotori[7].port = A7;
   listaMotori[7].pinH = 7;
 
-  listaMotori[8].sector = 'M';//NasoD
+  listaMotori[8].sector = 'N';//NasoD
   listaMotori[8].port = A8;
   listaMotori[8].pinH = 8;
 
