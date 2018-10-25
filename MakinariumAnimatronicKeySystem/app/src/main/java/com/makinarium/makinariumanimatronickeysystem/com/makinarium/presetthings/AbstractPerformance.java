@@ -12,9 +12,7 @@ import com.makinarium.makinariumanimatronickeysystem.R;
 public abstract class AbstractPerformance {
 
     private transient Button button;
-    //TODO: Rifare salvataggio
-    private int buttonID;
-    private ProgressBar progressBar;
+    private transient ProgressBar progressBar;
     private FaceSector faceSector;
     private boolean canPerform;
     private int duration;
@@ -93,5 +91,11 @@ public abstract class AbstractPerformance {
             button.getBackground().setColorFilter(activeColor, PorterDuff.Mode.SRC_ATOP);
         else
             button.getBackground().setColorFilter(performToRecColor, PorterDuff.Mode.SRC_ATOP);
+    }
+
+    public void setButtonAndProgressBar(Button button, ProgressBar progressBar)
+    {
+        this.button = button;
+        this.progressBar = progressBar;
     }
 }

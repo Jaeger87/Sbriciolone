@@ -44,6 +44,7 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
 
+    private static final int stopMillisPerformance = 2;
     private static final String TAG = "MainActivity";
     private Button stopButton;
     private TimerForRecorder timeTask;
@@ -95,10 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
 
-        //TODO: Rifare salvataggio, no button ma button id
         try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
             String json = IOUtils.toString(inputStream, "UTF-8");
             container = gson.fromJson(json, ButtonsContainer.class);
+            initializeAllButtons();
+            container.updateAllColors();
         } catch (IOException e) {
             container = new ButtonsContainer<>(readyColor, toReccolor);
             initializeAllButtons();
@@ -481,7 +483,7 @@ public class MainActivity extends AppCompatActivity {
         if(presetInRec != null)
             presetInRec.updateColor();
         presetInRec = null;
-       // container.saveMe(this);
+        container.saveMe(this);
 
         stopButton.setClickable(false);
         stopButton.setEnabled(false);
@@ -539,6 +541,7 @@ public class MainActivity extends AppCompatActivity {
         if (itemThatWasClickedId == R.id.action_undo) {
             Context context = MainActivity.this;
             String textToShow =  undoManager.undo() ? "undo done" : "There was nothing to undo";
+            container.saveMe(this);
             Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -669,7 +672,6 @@ public class MainActivity extends AppCompatActivity {
 
                     bytes = text.getBytes(Charset.defaultCharset());
 
-                    Log.i(TAG,text);
                     if(performRegistrationMode)
                     {
                         if(f == bInRec.getFaceSector())
@@ -712,7 +714,7 @@ public class MainActivity extends AppCompatActivity {
             while(inPerformance)
             {
                 try {
-                    Thread.sleep(6);
+                    Thread.sleep(stopMillisPerformance);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -773,7 +775,7 @@ public class MainActivity extends AppCompatActivity {
             while(time < endTime)
             {
                 try {
-                    Thread.sleep(8);
+                    Thread.sleep(stopMillisPerformance);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -40,11 +40,16 @@ public class ButtonsContainer<T> {
 
     public void addPerformanceButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
-        performanceHashMap.put(id, new ButtonPerformance(button,sector, progressBar, activeColor, performToRecColor));
+        if(performanceHashMap.containsKey(button.getId()))
+            setButtonAndProgressBarPerformance(button, progressBar);
+        else
+            performanceHashMap.put(id, new ButtonPerformance(button,sector, progressBar, activeColor, performToRecColor));
     }
 
     public void addPresetButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
+        if(presetHashMap.containsKey(button.getId()))
+            setButtonAndProgressBarPreset(button, progressBar);
         if(sector == FaceSector.PRESET)
             presetHashMap.put(id, new PresetPerformance(button,sector, progressBar, activeColor, performToRecColor));
     }
@@ -143,5 +148,16 @@ public class ButtonsContainer<T> {
             presetHashMap.get(id).updateColor();
         }
     }
+
+    private void setButtonAndProgressBarPreset(Button button, ProgressBar progressBar)
+    {
+        presetHashMap.get(button.getId()).setButtonAndProgressBar(button, progressBar);
+    }
+
+    private void setButtonAndProgressBarPerformance(Button button, ProgressBar progressBar)
+    {
+        performanceHashMap.get(button.getId()).setButtonAndProgressBar(button, progressBar);
+    }
+
 
 }
