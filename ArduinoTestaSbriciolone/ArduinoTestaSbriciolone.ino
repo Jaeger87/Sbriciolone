@@ -55,13 +55,13 @@ void setup() {
   servoList[0].minValue = 4180;
   servoList[0].maxValue = 8650;
   servoList[0].channel = 5;
-  servoList[0].servoName = "BoccaSX";
+  servoList[0].servoName = "BoccaDX";
   servoList[0].mirror = false;
 
   servoList[1].minValue = 4180;
   servoList[1].maxValue = 8650;
   servoList[1].channel = 6;
-  servoList[1].servoName = "BoccaCSX";
+  servoList[1].servoName = "BoccaCDX";
   servoList[1].mirror = false;
 
   servoList[2].minValue = 4180;
@@ -73,13 +73,13 @@ void setup() {
   servoList[3].minValue = 4180;
   servoList[3].maxValue = 8650;
   servoList[3].channel = 8;
-  servoList[3].servoName = "BoccaCDX";//
+  servoList[3].servoName = "BoccaCSX";//
   servoList[3].mirror = false;
 
   servoList[4].minValue = 4180;
   servoList[4].maxValue = 8650;//
   servoList[4].channel = 9;
-  servoList[4].servoName = "BoccaDX";//
+  servoList[4].servoName = "BoccaSX";//
   servoList[4].mirror = false;
 
   servoList[5].minValue = 4180;
@@ -100,8 +100,8 @@ void setup() {
   servoList[7].servoName = "NasoCD";
   servoList[7].mirror = false;
 
-  servoList[8].minValue = 4180;
-  servoList[8].maxValue = 8650;
+  servoList[8].minValue = 5820;
+  servoList[8].maxValue = 7590;
   servoList[8].channel = 13;
   servoList[8].servoName = "NasoD";
   servoList[8].mirror = false;
@@ -142,11 +142,11 @@ void setup() {
   servoList[14].servoName = "OcchioSXY";
   servoList[14].mirror = false;
 
-  servoList[15].minValue = 4180;
-  servoList[15].maxValue = 8650;
+  servoList[15].minValue = 2600;
+  servoList[15].maxValue = 8450;
   servoList[15].channel = 20;
-  servoList[15].servoName = "PalpebraSX";
-  servoList[15].mirror = false;
+  servoList[15].servoName = "PalpebraDX";
+  servoList[15].mirror = true;
 
   servoList[16].minValue = 4180;
   servoList[16].maxValue = 8650;
@@ -160,10 +160,10 @@ void setup() {
   servoList[17].servoName = "OcchioDXY";
   servoList[17].mirror = false;
 
-  servoList[18].minValue = 4180;
-  servoList[18].maxValue = 8650;
+  servoList[18].minValue = 3400;
+  servoList[18].maxValue = 8530;
   servoList[18].channel = 23;
-  servoList[18].servoName = "PalpebraDX";
+  servoList[18].servoName = "PalpebraSX";
   servoList[18].mirror = false;
 
 

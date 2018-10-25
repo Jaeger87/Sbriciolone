@@ -99,16 +99,19 @@ public class MainActivity extends AppCompatActivity {
         try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
             String json = IOUtils.toString(inputStream, "UTF-8");
             container = gson.fromJson(json, ButtonsContainer.class);
-            initializeAllButtons();
-            container.updateAllColors();
+            if(container != null) {
+                initializeAllButtons();
+                container.updateAllColors();
+            }
+            else
+            {
+                container = new ButtonsContainer<>(readyColor, toReccolor);
+                initializeAllButtons();
+            }
         } catch (IOException e) {
             container = new ButtonsContainer<>(readyColor, toReccolor);
             initializeAllButtons();
         }
-
-
-        container = new ButtonsContainer<>(readyColor, toReccolor);
-        initializeAllButtons();
 
         undoManager = new UndoManager<>(container);
 

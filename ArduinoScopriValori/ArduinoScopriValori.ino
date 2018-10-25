@@ -22,7 +22,7 @@ void loop() {
   {
     int value = message.toInt();
     Serial.println(value);
-    maestro.setTarget(23, value);
+    maestro.setTarget(12, value);
   }
 }
 

@@ -50,11 +50,11 @@ void setup()
   pinMode(parlataButton.led, OUTPUT);
 
 
-  listaMotori[0].sector = 'M';//BoccaSX
+  listaMotori[0].sector = 'M';//BoccaDX
   listaMotori[0].port = A0;//
   listaMotori[0].pinH = 0;
 
-  listaMotori[1].sector = 'M';//BoccaCSX
+  listaMotori[1].sector = 'M';//BoccaCDX
   listaMotori[1].port = A1;
   listaMotori[1].pinH = 1;
 
@@ -62,27 +62,27 @@ void setup()
   listaMotori[2].port = A2;
   listaMotori[2].pinH = 2;
 
-  listaMotori[3].sector = 'M';//BoccaCDX
+  listaMotori[3].sector = 'M';//BoccaCSX
   listaMotori[3].port = A3;
   listaMotori[3].pinH = 3;
 
-  listaMotori[4].sector = 'M';//BoccaDX
+  listaMotori[4].sector = 'M';//BoccaSX
   listaMotori[4].port = A4;
   listaMotori[4].pinH = 4;
 
-  listaMotori[5].sector = 'N';//NasoS
+  listaMotori[5].sector = 'N';//NasoD
   listaMotori[5].port = A5;
   listaMotori[5].pinH = 5;
 
-  listaMotori[6].sector = 'N';//NasoCS
+  listaMotori[6].sector = 'N';//NasoCD
   listaMotori[6].port = A6;
   listaMotori[6].pinH = 6;
 
-  listaMotori[7].sector = 'N';//NasoCD
+  listaMotori[7].sector = 'N';//NasoCS
   listaMotori[7].port = A7;
   listaMotori[7].pinH = 7;
 
-  listaMotori[8].sector = 'N';//NasoD
+  listaMotori[8].sector = 'N';//NasoS
   listaMotori[8].port = A8;
   listaMotori[8].pinH = 8;
 

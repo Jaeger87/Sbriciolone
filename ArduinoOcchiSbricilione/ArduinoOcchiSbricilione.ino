@@ -60,28 +60,28 @@ void setup()
   listaMotori[1].port = A1;
   listaMotori[1].pinH = 16;
 
-  listaMotori[2].sector = 'L';//PalpebraDestra
+  listaMotori[2].sector = 'L';//PalpebraSinistra
   listaMotori[2].port = A2;
   listaMotori[2].pinH = 18;
 
   listaMotori[3].sector = 'B';//Sopraciglio DXD
-  listaMotori[3].port = A3;//
+  listaMotori[3].port = A4;//
   listaMotori[3].pinH = 10;
 
   listaMotori[4].sector = 'B';//Sopraciglio DXC
-  listaMotori[4].port = A4;
+  listaMotori[4].port = A5;
   listaMotori[4].pinH = 9;
 
   listaMotori[5].sector = 'B';//Sopraciglio SXS
-  listaMotori[5].port = A5;//
+  listaMotori[5].port = A6;//
   listaMotori[5].pinH = 12;
 
   listaMotori[6].sector = 'B';//Sopraciglio SXC
-  listaMotori[6].port = A6;
+  listaMotori[6].port = A7;
   listaMotori[6].pinH = 11;
 
-  listaMotori[7].sector = 'L';//PalpebraSinistra
-  listaMotori[7].port = A7;
+  listaMotori[7].sector = 'L';//PalpebraDestra
+  listaMotori[7].port = A3;
   listaMotori[7].pinH = 15;
 
   eyeSXX.sector = 'E';
