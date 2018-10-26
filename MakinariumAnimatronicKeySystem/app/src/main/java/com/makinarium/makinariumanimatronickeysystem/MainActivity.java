@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
             String json = IOUtils.toString(inputStream, "UTF-8");
-            container = gson.fromJson(json, ButtonsContainer.class);
+            //container = gson.fromJson(json, ButtonsContainer.class);
             if(container != null) {
                 initializeAllButtons();
                 container.updateAllColors();
