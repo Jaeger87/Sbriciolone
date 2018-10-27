@@ -401,1279 +401,1284 @@
         android:text="Preset"
         android:textSize="@dimen/textsize"
         app:layout_constraintBottom_toTopOf="@+id/preset_01"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/eyebrowsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/firstleft"
-        android:text="Eyebrows"
-        android:textSize="@dimen/textsize"
-        app:layout_constraintBottom_toTopOf="@+id/eyebrow_01"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="37dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="@dimen/firstleft"
-        android:text="Eyelid"
-        android:textSize="@dimen/textsize"
-        app:layout_constraintBottom_toTopOf="@+id/eyelid_01"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB01"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/firstleft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_01" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB02"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB01"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_02" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB02"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB01"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_02" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/firstleft"
-        android:text="Eyes"
-        android:textSize="@dimen/textsize"
-        app:layout_constraintBottom_toTopOf="@+id/eyes_01"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/preset_04"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="04"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_03"
-        app:layout_constraintTop_toTopOf="@+id/preset_03" />
-
-
-    <ProgressBar
-        android:id="@+id/presetPB04"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB03"
-        app:layout_constraintTop_toBottomOf="@+id/preset_04" />
-
-    <Button
-        android:id="@+id/preset_05"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="05"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_04"
-        app:layout_constraintTop_toTopOf="@+id/preset_04" />
-
-    <ProgressBar
-        android:id="@+id/presetPB05"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB04"
-        app:layout_constraintTop_toBottomOf="@+id/preset_05" />
-
-
-    <Button
-        android:id="@+id/preset_06"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="06"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_05"
-        app:layout_constraintTop_toTopOf="@+id/preset_05" />
-
-    <ProgressBar
-        android:id="@+id/presetPB06"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB05"
-        app:layout_constraintTop_toBottomOf="@+id/preset_06" />
-
-
-    <Button
-        android:id="@+id/preset_07"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="07"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_06"
-        app:layout_constraintTop_toTopOf="@+id/preset_06" />
-
-    <ProgressBar
-        android:id="@+id/presetPB07"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB06"
-        app:layout_constraintTop_toBottomOf="@+id/preset_07" />
-
-    <Button
-        android:id="@+id/preset_08"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="08"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_07"
-        app:layout_constraintTop_toTopOf="@+id/preset_07" />
-
-    <ProgressBar
-        android:id="@+id/presetPB08"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB07"
-        app:layout_constraintTop_toBottomOf="@+id/preset_08" />
-
-    <Button
-        android:id="@+id/preset_09"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="09"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_08"
-        app:layout_constraintTop_toTopOf="@+id/preset_08" />
-
-    <ProgressBar
-        android:id="@+id/presetPB09"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB08"
-        app:layout_constraintTop_toBottomOf="@+id/preset_09" />
-
-    <Button
-        android:id="@+id/preset_10"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="10"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_09"
-        app:layout_constraintTop_toTopOf="@+id/preset_09" />
-
-    <ProgressBar
-        android:id="@+id/presetPB10"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB09"
-        app:layout_constraintTop_toBottomOf="@+id/preset_10" />
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/firstleft"
-        android:text="Nose"
-        android:textSize="@dimen/textsize"
-        app:layout_constraintBottom_toTopOf="@+id/nose_01"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/preset_11"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="11"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_10"
-        app:layout_constraintTop_toTopOf="@+id/preset_10" />
-
-    <ProgressBar
-        android:id="@+id/presetPB11"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB10"
-        app:layout_constraintTop_toBottomOf="@+id/preset_11" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/firstleft"
-        android:text="Mouth"
-        android:textSize="@dimen/textsize"
-        app:layout_constraintBottom_toTopOf="@+id/mouth_01"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/presetPB01"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/firstleft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/preset_01" />
-
-    <Button
-        android:id="@+id/eyebrow_04"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="04"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_03"
-        app:layout_constraintTop_toBottomOf="@+id/preset_04" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB04"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB03"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_04" />
-
-    <Button
-        android:id="@+id/eyelid_04"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="04"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_03"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_04" />
-
-    <ProgressBar
-        android:id="@+id/eyelidPB04"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB03"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_04" />
-
-    <Button
-        android:id="@+id/eyes_04"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="04"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_03"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_04" />
-
-
-    <ProgressBar
-        android:id="@+id/eyesPB04"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB03"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_04" />
-
-    <Button
-        android:id="@+id/nose_04"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="04"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_03"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_04" />
-
-    <ProgressBar
-        android:id="@+id/nosePB04"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB03"
-        app:layout_constraintTop_toBottomOf="@+id/nose_04" />
-
-    <Button
-        android:id="@+id/mouth_04"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="04"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_03"
-        app:layout_constraintTop_toBottomOf="@+id/nose_04" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB04"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB03"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_04" />
-
-
-    <Button
-        android:id="@+id/eyebrow_05"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="05"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_04"
-        app:layout_constraintTop_toBottomOf="@+id/preset_05" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB05"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB04"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_05" />
-
-    <Button
-        android:id="@+id/eyelid_05"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="05"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_04"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_05" />
-
-    <ProgressBar
-        android:id="@+id/eyelidPB05"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB04"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_05" />
-
-
-    <Button
-        android:id="@+id/eyes_05"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="05"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_04"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_05" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB05"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB04"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_05" />
-
-    <Button
-        android:id="@+id/nose_05"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="05"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_04"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_05" />
-
-    <ProgressBar
-        android:id="@+id/nosePB05"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB04"
-        app:layout_constraintTop_toBottomOf="@+id/nose_05" />
-
-
-    <Button
-        android:id="@+id/mouth_05"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="05"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_04"
-        app:layout_constraintTop_toBottomOf="@+id/nose_05" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB05"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB04"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_05" />
-
-    <Button
-        android:id="@+id/eyebrow_06"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="06"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_05"
-        app:layout_constraintTop_toBottomOf="@+id/preset_06" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB06"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB05"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_06" />
-
-
-    <Button
-        android:id="@+id/eyelid_06"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="06"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_05"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_06" />
-
-
-    <ProgressBar
-        android:id="@+id/eyelidPB06"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB05"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_06" />
-
-    <Button
-        android:id="@+id/eyes_06"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="06"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_05"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_06" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB06"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB05"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_06" />
-
-    <Button
-        android:id="@+id/nose_06"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="06"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_05"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_06" />
-
-    <ProgressBar
-        android:id="@+id/nosePB06"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB05"
-        app:layout_constraintTop_toBottomOf="@+id/nose_06" />
-
-    <Button
-        android:id="@+id/mouth_06"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="06"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_05"
-        app:layout_constraintTop_toBottomOf="@+id/nose_06" />
-
-
-    <ProgressBar
-        android:id="@+id/mouthPB06"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB05"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_06" />
-
-    <Button
-        android:id="@+id/eyebrow_07"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="07"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_06"
-        app:layout_constraintTop_toBottomOf="@+id/preset_07" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB07"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB06"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_07" />
-
-    <Button
-        android:id="@+id/eyelid_07"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="07"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_06"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_07" />
-
-    <ProgressBar
-        android:id="@+id/eyelidPB07"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB06"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_07" />
-
-
-    <Button
-        android:id="@+id/eyes_07"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="07"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_06"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_07" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB07"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB06"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_07" />
-
-    <Button
-        android:id="@+id/nose_07"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="07"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_06"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_07" />
-
-    <ProgressBar
-        android:id="@+id/nosePB07"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB06"
-        app:layout_constraintTop_toBottomOf="@+id/nose_07" />
-
-    <Button
-        android:id="@+id/mouth_07"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="07"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_06"
-        app:layout_constraintTop_toBottomOf="@+id/nose_07" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB07"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB06"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_07" />
-
-
-    <Button
-        android:id="@+id/eyebrow_08"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="08"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_07"
-        app:layout_constraintTop_toBottomOf="@+id/preset_08" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB08"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB07"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_08" />
-
-
-    <Button
-        android:id="@+id/eyelid_08"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="08"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_07"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_08" />
-
-    <ProgressBar
-        android:id="@+id/eyelidPB08"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB07"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_08" />
-
-    <Button
-        android:id="@+id/eyes_08"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="08"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_07"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_08" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB08"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB07"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_08" />
-
-    <Button
-        android:id="@+id/nose_08"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="08"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_07"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_08" />
-
-
-    <ProgressBar
-        android:id="@+id/nosePB08"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB07"
-        app:layout_constraintTop_toBottomOf="@+id/nose_08" />
-
-    <Button
-        android:id="@+id/mouth_08"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="08"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_07"
-        app:layout_constraintTop_toBottomOf="@+id/nose_08" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB08"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB07"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_08" />
-
-
-    <Button
-        android:id="@+id/eyebrow_09"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="09"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_08"
-        app:layout_constraintTop_toBottomOf="@+id/preset_09" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB09"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB08"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_09" />
-
-    <Button
-        android:id="@+id/eyelid_09"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="09"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_08"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_09" />
-
-    <ProgressBar
-        android:id="@+id/eyelidPB09"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB08"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_09" />
-
-    <Button
-        android:id="@+id/eyes_09"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="09"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_08"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_09" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB09"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB08"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_09" />
-
-
-    <Button
-        android:id="@+id/nose_09"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="09"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_08"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_09" />
-
-
-    <ProgressBar
-        android:id="@+id/nosePB09"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB08"
-        app:layout_constraintTop_toBottomOf="@+id/nose_09" />
-
-    <Button
-        android:id="@+id/mouth_09"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="09"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_08"
-        app:layout_constraintTop_toBottomOf="@+id/nose_09" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB09"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB08"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_09" />
-
-    <Button
-        android:id="@+id/eyebrow_10"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="10"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_09"
-        app:layout_constraintTop_toBottomOf="@+id/preset_10" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB10"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB09"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_10" />
-
-    <Button
-        android:id="@+id/eyelid_10"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="10"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_09"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_10" />
-
-    <ProgressBar
-        android:id="@+id/eyelidPB10"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB09"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_10" />
-
-    <Button
-        android:id="@+id/eyes_10"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="10"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_09"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_10" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB10"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB09"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_10" />
-
-    <Button
-        android:id="@+id/nose_10"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="10"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_09"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_10" />
-
-    <ProgressBar
-        android:id="@+id/nosePB10"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB09"
-        app:layout_constraintTop_toBottomOf="@+id/nose_10" />
-
-
-    <Button
-        android:id="@+id/mouth_10"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="10"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_09"
-        app:layout_constraintTop_toBottomOf="@+id/nose_10" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB10"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB09"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_10" />
-
-
-    <Button
-        android:id="@+id/eyebrow_11"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="11"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_10"
-        app:layout_constraintTop_toBottomOf="@+id/preset_11" />
-
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB11"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB10"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_11" />
-
-    <Button
-        android:id="@+id/eyelid_11"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="11"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_10"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_11" />
-
-
-    <ProgressBar
-        android:id="@+id/eyelidPB11"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB10"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_11" />
-
-    <Button
-        android:id="@+id/eyes_11"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="11"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_10"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_11" />
-
-    <ProgressBar
-        android:id="@+id/eyesPB11"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB10"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_11" />
-
-    <Button
-        android:id="@+id/nose_11"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="11"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_10"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_11" />
-
-    <ProgressBar
-        android:id="@+id/nosePB11"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB10"
-        app:layout_constraintTop_toBottomOf="@+id/nose_11" />
-
-
-    <Button
-        android:id="@+id/mouth_11"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="11"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_10"
-        app:layout_constraintTop_toBottomOf="@+id/nose_11" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB11"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB10"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_11" />
-
-
-    <Button
-        android:id="@+id/preset_12"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:text="12"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/preset_11"
-        app:layout_constraintTop_toTopOf="@+id/preset_11" />
-
-    <ProgressBar
-        android:id="@+id/presetPB12"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/presetPB11"
-        app:layout_constraintTop_toBottomOf="@+id/preset_12" />
-
-
-    <Button
-        android:id="@+id/eyebrow_12"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="12"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyebrow_11"
-        app:layout_constraintTop_toBottomOf="@+id/preset_12" />
-
-    <ProgressBar
-        android:id="@+id/eyebrowPB12"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyebrowPB11"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_12" />
-
-    <Button
-        android:id="@+id/eyelid_12"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="12"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyelid_11"
-        app:layout_constraintTop_toBottomOf="@+id/eyebrow_12" />
-
-    <ProgressBar
-        android:id="@+id/eyelidPB12"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyelidPB11"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_12" />
-
-
-    <Button
-        android:id="@+id/eyes_12"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="12"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/eyes_11"
-        app:layout_constraintTop_toBottomOf="@+id/eyelid_12" />
-
-
-    <ProgressBar
-        android:id="@+id/eyesPB12"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/eyesPB11"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_12" />
-
-    <Button
-        android:id="@+id/nose_12"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="12"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/nose_11"
-        app:layout_constraintTop_toBottomOf="@+id/eyes_12" />
-
-    <ProgressBar
-        android:id="@+id/nosePB12"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/nosePB11"
-        app:layout_constraintTop_toBottomOf="@+id/nose_12" />
-
-    <Button
-        android:id="@+id/mouth_12"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/bheight"
-        android:layout_marginStart="@dimen/mleft"
-        android:layout_marginTop="@dimen/mup"
-        android:text="12"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:theme="@style/AppTheme.PerformToRec"
-        app:layout_constraintStart_toEndOf="@+id/mouth_11"
-        app:layout_constraintTop_toBottomOf="@+id/nose_12" />
-
-    <ProgressBar
-        android:id="@+id/mouthPB12"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/bwidth"
-        android:layout_height="@dimen/pbheight"
-        android:layout_marginStart="@dimen/mleft"
-        app:layout_constraintStart_toEndOf="@+id/mouthPB11"
-        app:layout_constraintTop_toBottomOf="@+id/mouth_12" />
-
-
-    <Button
-        android:id="@+id/resetM"
-        android:layout_width="89dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:text="Reset"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
-    <com.makinarium.makinariumanimatronickeysystem.com.makinarium.customgraphics.VerticalSeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="19dp"
-        android:layout_height="290dp"
-        android:layout_marginStart="900dp"
-        android:layout_marginTop="112dp"
-        android:max="27"
-        android:min="3"
-        android:progress="7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/multText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/backsquare"
-        android:text=" 1.0 "
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
+    <!--
+    android:clickable="true"
+    android:onClick="changeName"
+     <!- -->
+
+
+<TextView
+    android:id="@+id/eyebrowsText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/firstleft"
+    android:text="Eyebrows"
+    android:textSize="@dimen/textsize"
+    app:layout_constraintBottom_toTopOf="@+id/eyebrow_01"
+    app:layout_constraintStart_toStartOf="parent" />
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="37dp"
+    android:layout_height="17dp"
+    android:layout_marginStart="@dimen/firstleft"
+    android:text="Eyelid"
+    android:textSize="@dimen/textsize"
+    app:layout_constraintBottom_toTopOf="@+id/eyelid_01"
+    app:layout_constraintStart_toStartOf="parent" />
+
+<ProgressBar
+    android:id="@+id/mouthPB01"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/firstleft"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_01" />
+
+<ProgressBar
+    android:id="@+id/eyesPB02"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB01"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_02" />
+
+<ProgressBar
+    android:id="@+id/mouthPB02"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB01"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_02" />
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/firstleft"
+    android:text="Eyes"
+    android:textSize="@dimen/textsize"
+    app:layout_constraintBottom_toTopOf="@+id/eyes_01"
+    app:layout_constraintStart_toStartOf="parent" />
+
+<Button
+    android:id="@+id/preset_04"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="04"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_03"
+    app:layout_constraintTop_toTopOf="@+id/preset_03" />
+
+
+<ProgressBar
+    android:id="@+id/presetPB04"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB03"
+    app:layout_constraintTop_toBottomOf="@+id/preset_04" />
+
+<Button
+    android:id="@+id/preset_05"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="05"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_04"
+    app:layout_constraintTop_toTopOf="@+id/preset_04" />
+
+<ProgressBar
+    android:id="@+id/presetPB05"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB04"
+    app:layout_constraintTop_toBottomOf="@+id/preset_05" />
+
+
+<Button
+    android:id="@+id/preset_06"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="06"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_05"
+    app:layout_constraintTop_toTopOf="@+id/preset_05" />
+
+<ProgressBar
+    android:id="@+id/presetPB06"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB05"
+    app:layout_constraintTop_toBottomOf="@+id/preset_06" />
+
+
+<Button
+    android:id="@+id/preset_07"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="07"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_06"
+    app:layout_constraintTop_toTopOf="@+id/preset_06" />
+
+<ProgressBar
+    android:id="@+id/presetPB07"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB06"
+    app:layout_constraintTop_toBottomOf="@+id/preset_07" />
+
+<Button
+    android:id="@+id/preset_08"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="08"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_07"
+    app:layout_constraintTop_toTopOf="@+id/preset_07" />
+
+<ProgressBar
+    android:id="@+id/presetPB08"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB07"
+    app:layout_constraintTop_toBottomOf="@+id/preset_08" />
+
+<Button
+    android:id="@+id/preset_09"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="09"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_08"
+    app:layout_constraintTop_toTopOf="@+id/preset_08" />
+
+<ProgressBar
+    android:id="@+id/presetPB09"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB08"
+    app:layout_constraintTop_toBottomOf="@+id/preset_09" />
+
+<Button
+    android:id="@+id/preset_10"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="10"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_09"
+    app:layout_constraintTop_toTopOf="@+id/preset_09" />
+
+<ProgressBar
+    android:id="@+id/presetPB10"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB09"
+    app:layout_constraintTop_toBottomOf="@+id/preset_10" />
+
+
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/firstleft"
+    android:text="Nose"
+    android:textSize="@dimen/textsize"
+    app:layout_constraintBottom_toTopOf="@+id/nose_01"
+    app:layout_constraintStart_toStartOf="parent" />
+
+<Button
+    android:id="@+id/preset_11"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="11"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_10"
+    app:layout_constraintTop_toTopOf="@+id/preset_10" />
+
+<ProgressBar
+    android:id="@+id/presetPB11"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB10"
+    app:layout_constraintTop_toBottomOf="@+id/preset_11" />
+
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/firstleft"
+    android:text="Mouth"
+    android:textSize="@dimen/textsize"
+    app:layout_constraintBottom_toTopOf="@+id/mouth_01"
+    app:layout_constraintStart_toStartOf="parent" />
+
+<ProgressBar
+    android:id="@+id/presetPB01"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/firstleft"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/preset_01" />
+
+<Button
+    android:id="@+id/eyebrow_04"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="04"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_03"
+    app:layout_constraintTop_toBottomOf="@+id/preset_04" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB04"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB03"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_04" />
+
+<Button
+    android:id="@+id/eyelid_04"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="04"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_03"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_04" />
+
+<ProgressBar
+    android:id="@+id/eyelidPB04"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB03"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_04" />
+
+<Button
+    android:id="@+id/eyes_04"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="04"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_03"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_04" />
+
+
+<ProgressBar
+    android:id="@+id/eyesPB04"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB03"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_04" />
+
+<Button
+    android:id="@+id/nose_04"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="04"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_03"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_04" />
+
+<ProgressBar
+    android:id="@+id/nosePB04"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB03"
+    app:layout_constraintTop_toBottomOf="@+id/nose_04" />
+
+<Button
+    android:id="@+id/mouth_04"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="04"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_03"
+    app:layout_constraintTop_toBottomOf="@+id/nose_04" />
+
+<ProgressBar
+    android:id="@+id/mouthPB04"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB03"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_04" />
+
+
+<Button
+    android:id="@+id/eyebrow_05"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="05"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_04"
+    app:layout_constraintTop_toBottomOf="@+id/preset_05" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB05"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB04"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_05" />
+
+<Button
+    android:id="@+id/eyelid_05"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="05"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_04"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_05" />
+
+<ProgressBar
+    android:id="@+id/eyelidPB05"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB04"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_05" />
+
+
+<Button
+    android:id="@+id/eyes_05"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="05"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_04"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_05" />
+
+<ProgressBar
+    android:id="@+id/eyesPB05"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB04"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_05" />
+
+<Button
+    android:id="@+id/nose_05"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="05"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_04"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_05" />
+
+<ProgressBar
+    android:id="@+id/nosePB05"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB04"
+    app:layout_constraintTop_toBottomOf="@+id/nose_05" />
+
+
+<Button
+    android:id="@+id/mouth_05"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="05"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_04"
+    app:layout_constraintTop_toBottomOf="@+id/nose_05" />
+
+<ProgressBar
+    android:id="@+id/mouthPB05"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB04"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_05" />
+
+<Button
+    android:id="@+id/eyebrow_06"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="06"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_05"
+    app:layout_constraintTop_toBottomOf="@+id/preset_06" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB06"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB05"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_06" />
+
+
+<Button
+    android:id="@+id/eyelid_06"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="06"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_05"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_06" />
+
+
+<ProgressBar
+    android:id="@+id/eyelidPB06"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB05"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_06" />
+
+<Button
+    android:id="@+id/eyes_06"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="06"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_05"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_06" />
+
+<ProgressBar
+    android:id="@+id/eyesPB06"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB05"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_06" />
+
+<Button
+    android:id="@+id/nose_06"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="06"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_05"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_06" />
+
+<ProgressBar
+    android:id="@+id/nosePB06"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB05"
+    app:layout_constraintTop_toBottomOf="@+id/nose_06" />
+
+<Button
+    android:id="@+id/mouth_06"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="06"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_05"
+    app:layout_constraintTop_toBottomOf="@+id/nose_06" />
+
+
+<ProgressBar
+    android:id="@+id/mouthPB06"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB05"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_06" />
+
+<Button
+    android:id="@+id/eyebrow_07"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="07"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_06"
+    app:layout_constraintTop_toBottomOf="@+id/preset_07" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB07"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB06"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_07" />
+
+<Button
+    android:id="@+id/eyelid_07"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="07"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_06"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_07" />
+
+<ProgressBar
+    android:id="@+id/eyelidPB07"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB06"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_07" />
+
+
+<Button
+    android:id="@+id/eyes_07"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="07"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_06"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_07" />
+
+<ProgressBar
+    android:id="@+id/eyesPB07"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB06"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_07" />
+
+<Button
+    android:id="@+id/nose_07"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="07"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_06"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_07" />
+
+<ProgressBar
+    android:id="@+id/nosePB07"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB06"
+    app:layout_constraintTop_toBottomOf="@+id/nose_07" />
+
+<Button
+    android:id="@+id/mouth_07"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="07"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_06"
+    app:layout_constraintTop_toBottomOf="@+id/nose_07" />
+
+<ProgressBar
+    android:id="@+id/mouthPB07"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB06"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_07" />
+
+
+<Button
+    android:id="@+id/eyebrow_08"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="08"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_07"
+    app:layout_constraintTop_toBottomOf="@+id/preset_08" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB08"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB07"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_08" />
+
+
+<Button
+    android:id="@+id/eyelid_08"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="08"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_07"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_08" />
+
+<ProgressBar
+    android:id="@+id/eyelidPB08"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB07"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_08" />
+
+<Button
+    android:id="@+id/eyes_08"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="08"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_07"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_08" />
+
+<ProgressBar
+    android:id="@+id/eyesPB08"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB07"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_08" />
+
+<Button
+    android:id="@+id/nose_08"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="08"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_07"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_08" />
+
+
+<ProgressBar
+    android:id="@+id/nosePB08"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB07"
+    app:layout_constraintTop_toBottomOf="@+id/nose_08" />
+
+<Button
+    android:id="@+id/mouth_08"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="08"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_07"
+    app:layout_constraintTop_toBottomOf="@+id/nose_08" />
+
+<ProgressBar
+    android:id="@+id/mouthPB08"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB07"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_08" />
+
+
+<Button
+    android:id="@+id/eyebrow_09"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="09"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_08"
+    app:layout_constraintTop_toBottomOf="@+id/preset_09" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB09"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB08"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_09" />
+
+<Button
+    android:id="@+id/eyelid_09"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="09"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_08"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_09" />
+
+<ProgressBar
+    android:id="@+id/eyelidPB09"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB08"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_09" />
+
+<Button
+    android:id="@+id/eyes_09"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="09"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_08"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_09" />
+
+<ProgressBar
+    android:id="@+id/eyesPB09"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB08"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_09" />
+
+
+<Button
+    android:id="@+id/nose_09"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="09"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_08"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_09" />
+
+
+<ProgressBar
+    android:id="@+id/nosePB09"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB08"
+    app:layout_constraintTop_toBottomOf="@+id/nose_09" />
+
+<Button
+    android:id="@+id/mouth_09"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="09"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_08"
+    app:layout_constraintTop_toBottomOf="@+id/nose_09" />
+
+<ProgressBar
+    android:id="@+id/mouthPB09"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB08"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_09" />
+
+<Button
+    android:id="@+id/eyebrow_10"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="10"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_09"
+    app:layout_constraintTop_toBottomOf="@+id/preset_10" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB10"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB09"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_10" />
+
+<Button
+    android:id="@+id/eyelid_10"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="10"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_09"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_10" />
+
+<ProgressBar
+    android:id="@+id/eyelidPB10"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB09"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_10" />
+
+<Button
+    android:id="@+id/eyes_10"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="10"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_09"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_10" />
+
+<ProgressBar
+    android:id="@+id/eyesPB10"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB09"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_10" />
+
+<Button
+    android:id="@+id/nose_10"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="10"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_09"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_10" />
+
+<ProgressBar
+    android:id="@+id/nosePB10"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB09"
+    app:layout_constraintTop_toBottomOf="@+id/nose_10" />
+
+
+<Button
+    android:id="@+id/mouth_10"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="10"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_09"
+    app:layout_constraintTop_toBottomOf="@+id/nose_10" />
+
+<ProgressBar
+    android:id="@+id/mouthPB10"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB09"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_10" />
+
+
+<Button
+    android:id="@+id/eyebrow_11"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="11"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_10"
+    app:layout_constraintTop_toBottomOf="@+id/preset_11" />
+
+
+<ProgressBar
+    android:id="@+id/eyebrowPB11"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB10"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_11" />
+
+<Button
+    android:id="@+id/eyelid_11"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="11"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_10"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_11" />
+
+
+<ProgressBar
+    android:id="@+id/eyelidPB11"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB10"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_11" />
+
+<Button
+    android:id="@+id/eyes_11"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="11"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_10"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_11" />
+
+<ProgressBar
+    android:id="@+id/eyesPB11"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB10"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_11" />
+
+<Button
+    android:id="@+id/nose_11"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="11"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_10"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_11" />
+
+<ProgressBar
+    android:id="@+id/nosePB11"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB10"
+    app:layout_constraintTop_toBottomOf="@+id/nose_11" />
+
+
+<Button
+    android:id="@+id/mouth_11"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="11"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_10"
+    app:layout_constraintTop_toBottomOf="@+id/nose_11" />
+
+<ProgressBar
+    android:id="@+id/mouthPB11"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB10"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_11" />
+
+
+<Button
+    android:id="@+id/preset_12"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:text="12"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/preset_11"
+    app:layout_constraintTop_toTopOf="@+id/preset_11" />
+
+<ProgressBar
+    android:id="@+id/presetPB12"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/presetPB11"
+    app:layout_constraintTop_toBottomOf="@+id/preset_12" />
+
+
+<Button
+    android:id="@+id/eyebrow_12"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="12"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyebrow_11"
+    app:layout_constraintTop_toBottomOf="@+id/preset_12" />
+
+<ProgressBar
+    android:id="@+id/eyebrowPB12"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyebrowPB11"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_12" />
+
+<Button
+    android:id="@+id/eyelid_12"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="12"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyelid_11"
+    app:layout_constraintTop_toBottomOf="@+id/eyebrow_12" />
+
+<ProgressBar
+    android:id="@+id/eyelidPB12"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyelidPB11"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_12" />
+
+
+<Button
+    android:id="@+id/eyes_12"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="12"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/eyes_11"
+    app:layout_constraintTop_toBottomOf="@+id/eyelid_12" />
+
+
+<ProgressBar
+    android:id="@+id/eyesPB12"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/eyesPB11"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_12" />
+
+<Button
+    android:id="@+id/nose_12"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="12"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/nose_11"
+    app:layout_constraintTop_toBottomOf="@+id/eyes_12" />
+
+<ProgressBar
+    android:id="@+id/nosePB12"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/nosePB11"
+    app:layout_constraintTop_toBottomOf="@+id/nose_12" />
+
+<Button
+    android:id="@+id/mouth_12"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/bheight"
+    android:layout_marginStart="@dimen/mleft"
+    android:layout_marginTop="@dimen/mup"
+    android:text="12"
+    style="@style/Widget.AppCompat.Button.Colored"
+    android:theme="@style/AppTheme.PerformToRec"
+    app:layout_constraintStart_toEndOf="@+id/mouth_11"
+    app:layout_constraintTop_toBottomOf="@+id/nose_12" />
+
+<ProgressBar
+    android:id="@+id/mouthPB12"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="@dimen/bwidth"
+    android:layout_height="@dimen/pbheight"
+    android:layout_marginStart="@dimen/mleft"
+    app:layout_constraintStart_toEndOf="@+id/mouthPB11"
+    app:layout_constraintTop_toBottomOf="@+id/mouth_12" />
+
+
+<Button
+    android:id="@+id/resetM"
+    android:layout_width="89dp"
+    android:layout_height="39dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:text="Reset"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+<com.makinarium.makinariumanimatronickeysystem.com.makinarium.customgraphics.VerticalSeekBar
+    android:id="@+id/seekBar"
+    android:layout_width="19dp"
+    android:layout_height="290dp"
+    android:layout_marginStart="900dp"
+    android:layout_marginTop="112dp"
+    android:max="27"
+    android:min="3"
+    android:progress="7"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+<TextView
+    android:id="@+id/multText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="24dp"
+    android:layout_marginBottom="36dp"
+    android:background="@drawable/backsquare"
+    android:text=" 1.0 "
+    android:textSize="30sp"
+    app:layout_constraintBottom_toTopOf="@+id/seekBar"
+    app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

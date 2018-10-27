@@ -1,6 +1,7 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
@@ -26,13 +27,10 @@ public class ButtonsContainer<T> {
     private int activeColor;
     private int performToRecColor;
 
-    private Gson gson;
-
     public ButtonsContainer(int activeColor, int performToRecColor)
     {
         performanceHashMap = new HashMap<>();
         presetHashMap = new HashMap<>();
-        this.gson = new Gson();
         this.activeColor = activeColor;
         this.performToRecColor = performToRecColor;
     }
@@ -40,6 +38,7 @@ public class ButtonsContainer<T> {
 
     public void addPerformanceButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
+        Log.i("Makinarium", String.valueOf(id));
         if(performanceHashMap.containsKey(button.getId()))
             setButtonAndProgressBarPerformance(button, progressBar);
         else
@@ -116,8 +115,9 @@ public class ButtonsContainer<T> {
     }
 
 
-    public void saveMe(Context context)
+    public void saveMe(Context context, Gson gson)
     {
+        Log.i("gson", gson.toJson(this));
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(context.getFilesDir() + Constants.SaveFileName), "utf-8"))) {
             writer.write(gson.toJson(this));

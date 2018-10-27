@@ -4,19 +4,24 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -41,11 +46,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static java.security.AccessController.getContext;
+
 public class MainActivity extends AppCompatActivity {
 
 
     private static final int stopMillisPerformance = 2;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Makinarium";
     private Button stopButton;
     private TimerForRecorder timeTask;
     private TextView cronometro;
@@ -82,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView multText;
     private static final int minValueMult = 3;
 
+
+    private Gson gson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,12 +104,14 @@ public class MainActivity extends AppCompatActivity {
         int readyColor = ResourcesCompat.getColor(getResources(), R.color.activePerform, null);
         int toReccolor = ResourcesCompat.getColor(getResources(), R.color.performToRec, null);
 
-        Gson gson = new Gson();
+        gson = new Gson();
 
         try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
             String json = IOUtils.toString(inputStream, "UTF-8");
-            //container = gson.fromJson(json, ButtonsContainer.class);
+            Log.i(TAG, json);
+            container = gson.fromJson(json, ButtonsContainer.class);
             if(container != null) {
+                Log.i(TAG, container.getButtonPerformance(R.id.mouth_01).getName());
                 initializeAllButtons();
                 container.updateAllColors();
             }
@@ -486,8 +498,6 @@ public class MainActivity extends AppCompatActivity {
         if(presetInRec != null)
             presetInRec.updateColor();
         presetInRec = null;
-        container.saveMe(this);
-
         stopButton.setClickable(false);
         stopButton.setEnabled(false);
         timePresetRec = 0;
@@ -544,7 +554,7 @@ public class MainActivity extends AppCompatActivity {
         if (itemThatWasClickedId == R.id.action_undo) {
             Context context = MainActivity.this;
             String textToShow =  undoManager.undo() ? "undo done" : "There was nothing to undo";
-            container.saveMe(this);
+            container.saveMe(this, gson);
             Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -816,6 +826,39 @@ public class MainActivity extends AppCompatActivity {
             bpThread.getProgressBar().setProgress(0);
         }
 
+    }
+
+
+    public void changeName(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Change button name");
+// I'm using fragment here so I'm using getView() to provide ViewGroup
+// but you can provide here any other instance of ViewGroup from your Fragment / Activity
+        ViewGroup view = (ViewGroup) findViewById(android.R.id.content);
+        View viewInflated = LayoutInflater.from(this).inflate(R.layout.popupname, view, false);
+// Set up the input
+        final EditText input = (EditText) viewInflated.findViewById(R.id.insertName);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        builder.setView(viewInflated);
+
+// Set up the buttons
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                TextView preset = (TextView) findViewById(R.id.presetText);
+                preset.setText(input.getText().toString());
+                //m_Text = input.getText().toString();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 
 }

@@ -18,6 +18,8 @@ public abstract class AbstractPerformance {
     private int duration;
     private int activeColor;
     private int performToRecColor;
+    //TODO Add name
+    private String name = "Name";
 
     public AbstractPerformance(Button button, FaceSector faceSector, ProgressBar progressBar,
                                int activeColor, int performToRecColor)
@@ -83,7 +85,7 @@ public abstract class AbstractPerformance {
     {
         int id = button.getId();
 
-        if(id == R.id.eyebrow_01 || id == R.id.eyes_01 ||
+        if(id == R.id.eyebrow_01 || id == R.id.eyes_01 || id == R.id.eyelid_01 ||
                 id == R.id.preset_01 ||id == R.id.mouth_01 || id == R.id.nose_01)
             return;
 
@@ -97,5 +99,13 @@ public abstract class AbstractPerformance {
     {
         this.button = button;
         this.progressBar = progressBar;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
