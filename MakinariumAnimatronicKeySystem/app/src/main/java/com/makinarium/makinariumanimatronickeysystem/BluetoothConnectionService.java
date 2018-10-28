@@ -155,13 +155,10 @@ public class BluetoothConnectionService {
                 // This is a blocking call and will only return on a
                 // successful connection or an exception
                 mmSocket.connect();
-
-                Log.d(TAG, "run: ConnectThread connected.");
             } catch (IOException e) {
                 // Close the socket
                 try {
                     mmSocket.close();
-                    Log.d(TAG, "run: Closed Socket.");
                 } catch (IOException e1) {
                     Log.e(TAG, "mConnectThread: run: Unable to close connection in socket " + e1.getMessage());
                 }

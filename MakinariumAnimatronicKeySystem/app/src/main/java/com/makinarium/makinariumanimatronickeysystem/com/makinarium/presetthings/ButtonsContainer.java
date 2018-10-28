@@ -38,7 +38,6 @@ public class ButtonsContainer<T> {
 
     public void addPerformanceButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
-        Log.i("Makinarium", String.valueOf(id));
         if(performanceHashMap.containsKey(button.getId()))
             setButtonAndProgressBarPerformance(button, progressBar);
         else
@@ -48,7 +47,10 @@ public class ButtonsContainer<T> {
     public void addPresetButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
         if(presetHashMap.containsKey(button.getId()))
+        {
             setButtonAndProgressBarPreset(button, progressBar);
+            return;
+        }
         if(sector == FaceSector.PRESET)
             presetHashMap.put(id, new PresetPerformance(button,sector, progressBar, activeColor, performToRecColor));
     }
@@ -117,7 +119,6 @@ public class ButtonsContainer<T> {
 
     public void saveMe(Context context, Gson gson)
     {
-        Log.i("gson", gson.toJson(this));
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(context.getFilesDir() + Constants.SaveFileName), "utf-8"))) {
             writer.write(gson.toJson(this));

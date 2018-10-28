@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.customgraphics.VerticalSeekBar;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonPerformance;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonsContainer;
@@ -41,7 +42,9 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -108,12 +111,17 @@ public class MainActivity extends AppCompatActivity {
 
         try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
             String json = IOUtils.toString(inputStream, "UTF-8");
+            Log.i(TAG, String.valueOf(json.length()));
             Log.i(TAG, json);
-            container = gson.fromJson(json, ButtonsContainer.class);
+            Log.i(TAG, json.substring(4001));
+            Log.i(TAG, json.substring(8001));
+            Log.i(TAG, json.substring(12001));
+            Type containerType = new TypeToken<ButtonsContainer<byte[]>>(){}.getType();
+            container = gson.fromJson(json, containerType);
             if(container != null) {
-                Log.i(TAG, container.getButtonPerformance(R.id.mouth_01).getName());
                 initializeAllButtons();
                 container.updateAllColors();
+
             }
             else
             {
@@ -346,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
         container.addPresetButton(id, b, FaceSector.PRESET, pb);
     }
 
-    private void testButton()//pnly for debug
+    private void testButton()//only for debug
     {
 
         byte[] arrayTest = {50,20,70};
@@ -502,6 +510,7 @@ public class MainActivity extends AppCompatActivity {
         stopButton.setEnabled(false);
         timePresetRec = 0;
         Toast.makeText(this, Constants.stopRecording, Toast.LENGTH_LONG).show();
+        container.saveMe(this, gson);
 
     }
 
@@ -567,7 +576,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Log.i(TAG, "ok");
         }
 
         @Override
@@ -649,7 +657,6 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             int id = intent.getIntExtra(Constants.intentIDProp, 0);
             String text = intent.getStringExtra("Message");
-            Log.i(TAG,text);
             if(text.contains("ALI"))
                 return;
             byte[] bytes;
@@ -739,6 +746,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(currentTime > doPerfomance)
                 {
+
                     mBluetoothConnectionHead.write(currentPiece.getAction());
                     currentIndex++;
 
@@ -780,7 +788,7 @@ public class MainActivity extends AppCompatActivity {
             bpThread = presetPerformances[0];
             int duration = (int)(bpThread.getDuration() / multiplicator);
             List<Integer> buttonToPress = bpThread.getButtonsToPress();
-            publishProgress(buttonToPress.toArray(new Integer[buttonToPress.size()]));
+            publishProgress(buttonToPress.toArray(new Integer[buttonToPress.size() + 1]));//Trucchetto se ho solo un bottone da premere
             long startTime = System.currentTimeMillis();
             long time = startTime;
             long endTime = time + duration;
@@ -807,7 +815,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(values.length > 1)
             {
-                for(int i = 0; i < values.length; i++)
+                for(int i = 0; i < values.length - 1; i++)//Trucchetto se ho solo un bottone da premere
                 {
                     Button b = container.getButtonPerformance(values[i]).getButton();
                     b.performClick();

@@ -69,15 +69,15 @@ public class PresetPerformance <T> extends AbstractPerformance{
         List result = new ArrayList<>();
 
         if(eyebrowns != null)
-            result.add(eyebrowns.getButton().getId());
+            result.add(eyebrowns.getId());
         if(eyelids != null)
-            result.add(eyelids.getButton().getId());
+            result.add(eyelids.getId());
         if(eyes != null)
-            result.add(eyes.getButton().getId());
+            result.add(eyes.getId());
         if(nose != null)
-            result.add(nose.getButton().getId());
+            result.add(nose.getId());
         if(mouth != null)
-            result.add(mouth.getButton().getId());
+            result.add(mouth.getId());
 
         return result;
     }
