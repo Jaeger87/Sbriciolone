@@ -53,11 +53,11 @@ void setup()
   pinMode(closeEyesButtonPin, INPUT);
 
   listaMotori[0].sector = 'E';//OcchioDXY
-  listaMotori[0].port = A0;//
+  listaMotori[0].port = A1;//
   listaMotori[0].pinH = 17;
 
   listaMotori[1].sector = 'E';//OcchioDXX
-  listaMotori[1].port = A1;
+  listaMotori[1].port = A0;
   listaMotori[1].pinH = 16;
 
   listaMotori[2].sector = 'L';//PalpebraSinistra
