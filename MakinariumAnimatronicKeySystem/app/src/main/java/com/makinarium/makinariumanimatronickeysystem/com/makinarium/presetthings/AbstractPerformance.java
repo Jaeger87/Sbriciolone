@@ -5,6 +5,7 @@ import android.graphics.PorterDuff;
 import android.support.v4.content.res.ResourcesCompat;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 import com.makinarium.makinariumanimatronickeysystem.R;
@@ -13,6 +14,7 @@ public abstract class AbstractPerformance {
 
     private transient Button button;
     private transient ProgressBar progressBar;
+    private transient TextView textView;
     private FaceSector faceSector;
     private boolean canPerform;
     private int duration;
