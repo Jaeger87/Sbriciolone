@@ -157,8 +157,8 @@ void readButtonLed(ButtonLed& button)
 int parlataConversion(int value, int distanza)
 {
   if (value < 612)
-    return value - map(value,0,611,0,distanza);
-  return value - map(value,612,1023,distanza,0);
+    return value - map(value, 0, 611, 0, distanza);
+  return value - map(value, 612, 1023, distanza, 0);
 }
 
 

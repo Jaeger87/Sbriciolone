@@ -17,7 +17,7 @@ const int maxOcchiValue = 80;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
-statiOcchi sitOcchi = APERTI;
+statiOcchi sitOcchi = MANUAL;
 
 
 

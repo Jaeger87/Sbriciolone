@@ -17,7 +17,7 @@ const int maxOcchiValue = 80;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
-statiOcchi sitOcchi = APERTI;
+statiOcchi sitOcchi = MANUAL;
 
 
 
@@ -52,118 +52,118 @@ void setup() {
   maestroSerial.begin(9600);
   Serial.setTimeout(20);
 
-  servoList[0].minValue = 4180;
-  servoList[0].maxValue = 8650;
+  servoList[0].minValue = 2400;
+  servoList[0].maxValue = 7300;
   servoList[0].channel = 5;
   servoList[0].servoName = "BoccaDX";
   servoList[0].mirror = false;
 
-  servoList[1].minValue = 4180;
-  servoList[1].maxValue = 8650;
+  servoList[1].minValue = 4400;
+  servoList[1].maxValue = 9300;
   servoList[1].channel = 6;
   servoList[1].servoName = "BoccaCDX";
   servoList[1].mirror = false;
 
-  servoList[2].minValue = 4180;
-  servoList[2].maxValue = 8650;
+  servoList[2].minValue = 3500;
+  servoList[2].maxValue = 8000;
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
   servoList[2].mirror = false;
 
-  servoList[3].minValue = 4180;
-  servoList[3].maxValue = 8650;
+  servoList[3].minValue = 3000;
+  servoList[3].maxValue = 5900;
   servoList[3].channel = 8;
   servoList[3].servoName = "BoccaCSX";//
   servoList[3].mirror = false;
 
-  servoList[4].minValue = 4180;
-  servoList[4].maxValue = 8650;//
+  servoList[4].minValue = 4500;
+  servoList[4].maxValue = 8200;//
   servoList[4].channel = 9;
   servoList[4].servoName = "BoccaSX";//
   servoList[4].mirror = false;
 
-  servoList[5].minValue = 4180;
-  servoList[5].maxValue = 8650;
+  servoList[5].minValue = 5300;
+  servoList[5].maxValue = 7500;
   servoList[5].channel = 10;
-  servoList[5].servoName = "NasoCS";
+  servoList[5].servoName = "NasoCD";
   servoList[5].mirror = false;
 
-  servoList[6].minValue = 4180;
-  servoList[6].maxValue = 8650;//
+  servoList[6].minValue = 3500;
+  servoList[6].maxValue = 5400;//
   servoList[6].channel = 11;
-  servoList[6].servoName = "NasoS";
+  servoList[6].servoName = "NasoD";
   servoList[6].mirror = false;
 
-  servoList[7].minValue = 4180;
-  servoList[7].maxValue = 8650;
+  servoList[7].minValue = 6000;
+  servoList[7].maxValue = 6600;
   servoList[7].channel = 12;
-  servoList[7].servoName = "NasoCD";
+  servoList[7].servoName = "NasoCS";
   servoList[7].mirror = false;
 
-  servoList[8].minValue = 5820;
-  servoList[8].maxValue = 7590;
+  servoList[8].minValue = 5700;
+  servoList[8].maxValue = 7700;
   servoList[8].channel = 13;
-  servoList[8].servoName = "NasoD";
+  servoList[8].servoName = "NasoS";
   servoList[8].mirror = false;
 
-  servoList[9].minValue = 4180;
-  servoList[9].maxValue = 8650;
+  servoList[9].minValue = 5000;
+  servoList[9].maxValue = 8000;
   servoList[9].channel = 14;
   servoList[9].servoName = "SopraciglioCD";
   servoList[9].mirror = false;
 
-  servoList[10].minValue = 4180;
-  servoList[10].maxValue = 8650;
+  servoList[10].minValue = 4500;
+  servoList[10].maxValue = 7800;
   servoList[10].channel = 15;
   servoList[10].servoName = "SopraciglioDX";
   servoList[10].mirror = false;
 
-  servoList[11].minValue = 4180;
-  servoList[11].maxValue = 8650;
+  servoList[11].minValue = 3700;
+  servoList[11].maxValue = 5400;
   servoList[11].channel = 16;
   servoList[11].servoName = "SopraciglioCS";
   servoList[11].mirror = false;
 
-  servoList[12].minValue = 4180;
-  servoList[12].maxValue = 8650;
+  servoList[12].minValue = 4000;
+  servoList[12].maxValue = 7500;
   servoList[12].channel = 17;
   servoList[12].servoName = "SopraciglioSX";
   servoList[12].mirror = false;
 
-  servoList[13].minValue = 4180;
-  servoList[13].maxValue = 8650;
+  servoList[13].minValue = 3900;
+  servoList[13].maxValue = 8600;
   servoList[13].channel = 18;
-  servoList[13].servoName = "OcchioSXX";
+  servoList[13].servoName = "OcchioDX";
   servoList[13].mirror = false;
 
-  servoList[14].minValue = 4180;
-  servoList[14].maxValue = 8650;
+  servoList[14].minValue = 2400;
+  servoList[14].maxValue = 5500;
   servoList[14].channel = 19;
-  servoList[14].servoName = "OcchioSXY";
+  servoList[14].servoName = "OcchioDY";
   servoList[14].mirror = false;
 
-  servoList[15].minValue = 2600;
-  servoList[15].maxValue = 8450;
+  servoList[15].minValue = 2450;
+  servoList[15].maxValue = 6800;
   servoList[15].channel = 20;
-  servoList[15].servoName = "PalpebraDX";
+  servoList[15].servoName = "PalpebraD";
   servoList[15].mirror = true;
 
-  servoList[16].minValue = 4180;
-  servoList[16].maxValue = 8650;
+  servoList[16].minValue = 3600;
+  servoList[16].maxValue = 8800;
   servoList[16].channel = 21;
-  servoList[16].servoName = "OcchioDXX";
+  servoList[16].servoName = "OcchioSX";
   servoList[16].mirror = false;
 
-  servoList[17].minValue = 4180;
-  servoList[17].maxValue = 8650;
+  servoList[17].minValue = 5100;
+  servoList[17].maxValue = 9000;
   servoList[17].channel = 22;
-  servoList[17].servoName = "OcchioDXY";
+  servoList[17].servoName = "OcchioSY";
   servoList[17].mirror = false;
 
-  servoList[18].minValue = 3400;
-  servoList[18].maxValue = 8530;
+  servoList[18].minValue = 5850;
+  servoList[18].maxValue = 9200;
   servoList[18].channel = 23;
-  servoList[18].servoName = "PalpebraSX";
+  servoList[18].servoName = "PalpebraS";
   servoList[18].mirror = false;
 
 
