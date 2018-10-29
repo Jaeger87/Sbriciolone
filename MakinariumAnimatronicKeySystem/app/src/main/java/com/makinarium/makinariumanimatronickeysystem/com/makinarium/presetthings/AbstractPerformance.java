@@ -22,16 +22,16 @@ public abstract class AbstractPerformance {
     private String name = "Name";
     private int id;
 
-    public AbstractPerformance(Button button, FaceSector faceSector, ProgressBar progressBar,
+    public AbstractPerformance(int id, Button button, FaceSector faceSector, ProgressBar progressBar,
                                int activeColor, int performToRecColor)
     {
+        this.id = id;
         this.button = button;
         this.faceSector = faceSector;
         canPerform = false;
         this.progressBar = progressBar;
         this.activeColor = activeColor;
         this.performToRecColor = performToRecColor;
-        this.id = button.getId();
     }
 
     public void deactivatesButton()

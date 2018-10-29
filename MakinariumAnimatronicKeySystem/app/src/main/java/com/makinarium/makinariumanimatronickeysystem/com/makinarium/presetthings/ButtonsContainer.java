@@ -1,16 +1,15 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
-import com.makinarium.makinariumanimatronickeysystem.Constants;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.Constants;
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.IDFactory;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,21 +37,22 @@ public class ButtonsContainer<T> {
 
     public void addPerformanceButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
-        if(performanceHashMap.containsKey(button.getId()))
+
+        if(performanceHashMap.containsKey(IDFactory.getLogicID(id)))
             setButtonAndProgressBarPerformance(button, progressBar);
         else
-            performanceHashMap.put(id, new ButtonPerformance(button,sector, progressBar, activeColor, performToRecColor));
+            performanceHashMap.put(IDFactory.getLogicID(id), new ButtonPerformance(IDFactory.getLogicID(id), button,sector, progressBar, activeColor, performToRecColor));
     }
 
     public void addPresetButton(int id, Button button, FaceSector sector, ProgressBar progressBar)
     {
-        if(presetHashMap.containsKey(button.getId()))
+        if(presetHashMap.containsKey(IDFactory.getLogicID(id)))
         {
             setButtonAndProgressBarPreset(button, progressBar);
             return;
         }
         if(sector == FaceSector.PRESET)
-            presetHashMap.put(id, new PresetPerformance(button,sector, progressBar, activeColor, performToRecColor));
+            presetHashMap.put(IDFactory.getLogicID(id), new PresetPerformance(IDFactory.getLogicID(id), button,sector, progressBar, activeColor, performToRecColor));
     }
 
     public void deactivatesButtonSectorButton(FaceSector sector)
@@ -92,15 +92,15 @@ public class ButtonsContainer<T> {
 
     public ButtonPerformance<T> getButtonPerformance(int id)
     {
-        if(performanceHashMap.containsKey(id))
-            return performanceHashMap.get(id);
+        if(performanceHashMap.containsKey(IDFactory.getLogicID(id)))
+            return performanceHashMap.get(IDFactory.getLogicID(id));
         return null;
     }
 
     public PresetPerformance<T> getPresetPerformance(int id)
     {
-        if(presetHashMap.containsKey(id))
-            return presetHashMap.get(id);
+        if(presetHashMap.containsKey(IDFactory.getLogicID(id)))
+            return presetHashMap.get(IDFactory.getLogicID(id));
         return null;
     }
 
@@ -152,12 +152,12 @@ public class ButtonsContainer<T> {
 
     private void setButtonAndProgressBarPreset(Button button, ProgressBar progressBar)
     {
-        presetHashMap.get(button.getId()).setButtonAndProgressBar(button, progressBar);
+        presetHashMap.get(IDFactory.getLogicID(button.getId())).setButtonAndProgressBar(button, progressBar);
     }
 
     private void setButtonAndProgressBarPerformance(Button button, ProgressBar progressBar)
     {
-        performanceHashMap.get(button.getId()).setButtonAndProgressBar(button, progressBar);
+        performanceHashMap.get(IDFactory.getLogicID(button.getId())).setButtonAndProgressBar(button, progressBar);
     }
 
 

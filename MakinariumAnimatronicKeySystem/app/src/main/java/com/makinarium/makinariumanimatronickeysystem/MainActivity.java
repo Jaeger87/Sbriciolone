@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -37,6 +38,8 @@ import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.PerformancePiece;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.PresetPerformance;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.undo.UndoManager;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.Constants;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.IDFactory;
 
 import org.apache.commons.io.IOUtils;
 
@@ -44,12 +47,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,9 +63,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean presetRegistrationMode = false;
     private boolean mouthActiveController = true;
     private boolean eyesActiveController = true;
+    private boolean canIChangeNames = true;
 
     private Switch mouthSwitch;
     private Switch eyesSwitch;
+    private Switch nameSwitch;
 
     private ButtonsContainer<byte[]> container;
     private UndoManager<byte[]> undoManager;
@@ -98,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        IDFactory.initializeButtons();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         setContentView(R.layout.activity_main);
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter((Constants.incomingMessageIntent)));
 
@@ -111,11 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
         try (FileInputStream inputStream = new FileInputStream(this.getFilesDir() + Constants.SaveFileName)) {
             String json = IOUtils.toString(inputStream, "UTF-8");
-            Log.i(TAG, String.valueOf(json.length()));
-            Log.i(TAG, json);
-            Log.i(TAG, json.substring(4001));
-            Log.i(TAG, json.substring(8001));
-            Log.i(TAG, json.substring(12001));
             Type containerType = new TypeToken<ButtonsContainer<byte[]>>(){}.getType();
             container = gson.fromJson(json, containerType);
             if(container != null) {
@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         mouthSwitch = (Switch)findViewById(R.id.mouthSwitch);
         eyesSwitch = (Switch)findViewById(R.id.eyesSwitch);
+        nameSwitch = (Switch)findViewById(R.id.nameSwitch);
 
         mouthSwitch.setChecked(true);
         eyesSwitch.setChecked(true);
@@ -163,6 +164,12 @@ public class MainActivity extends AppCompatActivity {
         eyesSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 onCheckEyes(buttonView,isChecked);
+            }
+        });
+
+        nameSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                onCheckNames(buttonView,isChecked);
             }
         });
 
@@ -651,6 +658,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onCheckNames(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked) {
+            canIChangeNames = true;
+            Toast.makeText(this, Constants.controllerActived, Toast.LENGTH_LONG).show();
+        } else {
+            canIChangeNames = false;
+            Toast.makeText(this, Constants.controllerDisactived, Toast.LENGTH_LONG).show();
+        }
+    }
+
 
     BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -837,7 +854,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void changeName(View v) {
+    public void changeName(final View v) {
+
+        if(!canIChangeNames)
+            return;
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Change button name");
 // I'm using fragment here so I'm using getView() to provide ViewGroup
@@ -854,9 +875,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                TextView preset = (TextView) findViewById(R.id.presetText);
-                preset.setText(input.getText().toString());
-                //m_Text = input.getText().toString();
+                TextView textButton = (TextView) v;
+                textButton.setText(input.getText().toString());
             }
         });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

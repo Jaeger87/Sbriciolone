@@ -16,10 +16,10 @@ public class PresetPerformance <T> extends AbstractPerformance{
     private ButtonPerformance<T> mouth;
 
 
-    public PresetPerformance(Button button, FaceSector faceSector, ProgressBar progressBar,
+    public PresetPerformance(int id, Button button, FaceSector faceSector, ProgressBar progressBar,
                              int activeColor, int performToRecColor)
     {
-        super(button,faceSector,progressBar, activeColor, performToRecColor);
+        super(id, button,faceSector,progressBar, activeColor, performToRecColor);
     }
 
 

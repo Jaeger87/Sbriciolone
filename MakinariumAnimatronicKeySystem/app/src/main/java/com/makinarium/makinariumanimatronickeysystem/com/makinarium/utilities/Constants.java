@@ -1,4 +1,4 @@
-package com.makinarium.makinariumanimatronickeysystem;
+package com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities;
 
 public class Constants {
 

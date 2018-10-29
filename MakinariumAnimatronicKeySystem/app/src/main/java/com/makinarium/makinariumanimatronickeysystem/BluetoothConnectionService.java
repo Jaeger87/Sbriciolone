@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.Constants;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
