@@ -140,10 +140,10 @@ void readWriteMotor(Motor& m)
 
   if (abs(m.oldValue - sensorValue) > Analogfilter)
   {
-    if (m.pinH == 22)
+    if (m.pinH == listaMotori[0].pinH)
       sendMotor(eyeSXY, sensorValue);
 
-    if (m.pinH == 21)
+    if (m.pinH == listaMotori[1].pinH)
     {
       if (mirrorButton.value)
         sendMotor(eyeSXX, mirrorEye(sensorValue));
