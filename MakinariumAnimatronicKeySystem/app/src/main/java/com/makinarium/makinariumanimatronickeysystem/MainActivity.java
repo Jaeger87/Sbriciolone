@@ -424,6 +424,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //TODO: Toast con nome, occhio ai preset
     public void performclick(View v)
     {
 
@@ -879,9 +880,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                TextView textButton = (TextView) v;
-                textButton.setText(input.getText().toString());
-                AbstractPerformance ap;
+                AbstractPerformance ap = container.getButtonPerformance(IDFactory.convertTextToButton(v.getId()));
+                undoManager.addLastEdit(ap, ap.getName());
+                ap.setName(input.getText().toString());
             }
         });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

@@ -1,6 +1,7 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.undo;
 
 
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.AbstractPerformance;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonPerformance;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.ButtonsContainer;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings.PresetPerformance;
@@ -28,6 +29,10 @@ public class UndoManager <T>{
         stack.push(new EditPreset<T>(preset, container));
     }
 
+    public void addLastEdit(AbstractPerformance ap, String name)
+    {
+        stack.push(new EditName(name, ap));
+    }
 
     public boolean undo()
     {
