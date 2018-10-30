@@ -55,31 +55,31 @@ void setup() {
   servoList[0].minValue = 2400;
   servoList[0].maxValue = 7300;
   servoList[0].channel = 5;
-  servoList[0].servoName = "BoccaDX";
-  servoList[0].mirror = false;
+  servoList[0].servoName = "BoccaD";
+  servoList[0].mirror = true;
 
   servoList[1].minValue = 4400;
   servoList[1].maxValue = 9300;
   servoList[1].channel = 6;
-  servoList[1].servoName = "BoccaCDX";
+  servoList[1].servoName = "BoccaCD";
   servoList[1].mirror = false;
 
   servoList[2].minValue = 3500;
   servoList[2].maxValue = 8000;
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
-  servoList[2].mirror = false;
+  servoList[2].mirror = true;
 
   servoList[3].minValue = 3000;
   servoList[3].maxValue = 5900;
   servoList[3].channel = 8;
-  servoList[3].servoName = "BoccaCSX";//
-  servoList[3].mirror = false;
+  servoList[3].servoName = "BoccaCS";//
+  servoList[3].mirror = true;
 
   servoList[4].minValue = 4500;
   servoList[4].maxValue = 8200;//
   servoList[4].channel = 9;
-  servoList[4].servoName = "BoccaSX";//
+  servoList[4].servoName = "BoccaS";//
   servoList[4].mirror = false;
 
   servoList[5].minValue = 5300;
@@ -98,13 +98,13 @@ void setup() {
   servoList[7].maxValue = 6600;
   servoList[7].channel = 12;
   servoList[7].servoName = "NasoCS";
-  servoList[7].mirror = false;
+  servoList[7].mirror = true;
 
   servoList[8].minValue = 5700;
   servoList[8].maxValue = 7700;
   servoList[8].channel = 13;
   servoList[8].servoName = "NasoS";
-  servoList[8].mirror = false;
+  servoList[8].mirror = true;
 
   servoList[9].minValue = 5000;
   servoList[9].maxValue = 8000;
@@ -134,7 +134,7 @@ void setup() {
   servoList[13].maxValue = 8600;
   servoList[13].channel = 18;
   servoList[13].servoName = "OcchioDX";
-  servoList[13].mirror = false;
+  servoList[13].mirror = true;
 
   servoList[14].minValue = 2400;
   servoList[14].maxValue = 5500;
@@ -158,7 +158,7 @@ void setup() {
   servoList[17].maxValue = 9000;
   servoList[17].channel = 22;
   servoList[17].servoName = "OcchioSY";
-  servoList[17].mirror = false;
+  servoList[17].mirror = true;
 
   servoList[18].minValue = 5850;
   servoList[18].maxValue = 9200;

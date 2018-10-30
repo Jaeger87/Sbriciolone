@@ -25,7 +25,7 @@ public abstract class AbstractPerformance {
     private int id;
 
     public AbstractPerformance(int id, Button button, FaceSector faceSector, ProgressBar progressBar,
-                               int activeColor, int performToRecColor)
+                               TextView textView, int activeColor, int performToRecColor)
     {
         this.id = id;
         this.button = button;
@@ -34,6 +34,7 @@ public abstract class AbstractPerformance {
         this.progressBar = progressBar;
         this.activeColor = activeColor;
         this.performToRecColor = performToRecColor;
+        this.textView = textView;
     }
 
     public void deactivatesButton()
@@ -89,6 +90,11 @@ public abstract class AbstractPerformance {
         return id;
     }
 
+    public void updateTextName()
+    {
+        textView.setText(name);
+    }
+
     public void updateColor()
     {
 
@@ -103,17 +109,21 @@ public abstract class AbstractPerformance {
             button.getBackground().setColorFilter(performToRecColor, PorterDuff.Mode.SRC_ATOP);
     }
 
-    public void setButtonAndProgressBar(Button button, ProgressBar progressBar)
+    public void setButtonProgressBarAndTextView(Button button, ProgressBar progressBar, TextView textView)
     {
         this.button = button;
         this.progressBar = progressBar;
+        this.textView = textView;
+
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
+        textView.setText(this.name);
     }
 }

@@ -2,6 +2,7 @@ package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthing
 
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 
@@ -12,9 +13,9 @@ public class ButtonPerformance<T> extends AbstractPerformance{
 
     private List<PerformancePiece<T>> performance;
 
-    public ButtonPerformance(int id, Button button, FaceSector faceSector, ProgressBar progressBar, int activeColor, int performToRecColor)
+    public ButtonPerformance(int id, Button button, FaceSector faceSector, ProgressBar progressBar, TextView textView, int activeColor, int performToRecColor)
     {
-        super(id, button,faceSector,progressBar, activeColor, performToRecColor);
+        super(id, button,faceSector,progressBar, textView, activeColor, performToRecColor);
         performance = new ArrayList<>();
     }
 
