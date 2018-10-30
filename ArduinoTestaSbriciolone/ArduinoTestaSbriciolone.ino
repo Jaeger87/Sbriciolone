@@ -15,6 +15,9 @@ const byte limiteOcchi = 4;
 const int minOcchiValue = 920;
 const int maxOcchiValue = 80;
 
+const byte shutDownEyesEvery = 5;
+int shutDownEyesCounter = 0;
+
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
 statiOcchi sitOcchi = MANUAL;
@@ -205,6 +208,7 @@ void loop() {
 
   gestisciOcchi();
   deadManButton();
+  shutdownEyes();
   delay(25);
 }
 
@@ -262,6 +266,7 @@ void mouthMessage(String message)
 
 void eyesMotorMessage(String message)
 {
+  shutDownEyesCounter = 0;
   String indexString = getValueStringSplitter(message, ';', 1);
   int index = indexString.toInt();
   String valueString = getValueStringSplitter(message, ';', 2);
@@ -373,6 +378,20 @@ String getValueStringSplitter(String data, char separator, int index)
   }
 
   return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
+void shutdownEyes()
+{
+  if(shutDownEyesCounter > shutDownEyesEvery)
+    {
+      maestro.setTarget(servoList[14].channel,0);//Occhio DY
+      maestro.setTarget(servoList[13].channel ,0);//Occhio DX
+      maestro.setTarget(servoList[16].channel,0);//Occhio SX
+      maestro.setTarget(servoList[17].channel,0);//OcchioSY
+
+      return;
+    }
+  shutDownEyesCounter++;
 }
 
 
