@@ -142,8 +142,7 @@ void readWriteMotor(Motor& m)
   {
     if (m.pinH == listaMotori[0].pinH)
       sendMotor(eyeSXY, sensorValue);
-
-    if (m.pinH == listaMotori[1].pinH)
+    else if (m.pinH == listaMotori[1].pinH)
     {
       if (mirrorButton.value)
         sendMotor(eyeSXX, mirrorEye(sensorValue));
@@ -164,16 +163,16 @@ void readButtonLed(ButtonLed& button)
   int lettura = digitalRead(button.pin);
 
 
-    if (lettura == HIGH)
-    {
-      button.value = true;
-      digitalWrite(button.led, HIGH);
-    }
-    else
-    {
-      button.value = false;
-      digitalWrite(button.led, LOW);
-    }
+  if (lettura == HIGH)
+  {
+    button.value = true;
+    digitalWrite(button.led, HIGH);
+  }
+  else
+  {
+    button.value = false;
+    digitalWrite(button.led, LOW);
+  }
 }
 
 
@@ -191,7 +190,7 @@ void readButtonLedAndSend(ButtonLed& button)
     Serial.println('1');
     delay(delayLettura);
   }
-  else if(lettura == LOW && button.value != false)
+  else if (lettura == LOW && button.value != false)
   {
     button.value = false;
     digitalWrite(button.led, LOW);

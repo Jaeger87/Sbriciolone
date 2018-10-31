@@ -2554,4 +2554,66 @@
     android:textSize="30sp"
     app:layout_constraintBottom_toTopOf="@+id/seekBar"
     app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/mouthStatus"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:text="O"
+        android:textColor="@color/activePerform"
+        app:layout_constraintStart_toEndOf="@+id/stopButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/eyesStatus"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="36dp"
+        android:text="O"
+        android:textColor="@color/activePerform"
+        app:layout_constraintStart_toEndOf="@+id/stopButton"
+        app:layout_constraintTop_toBottomOf="@+id/mouthStatus" />
+
+
+    <TextView
+        android:id="@+id/headStatus"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="36dp"
+        android:text="O"
+        android:textColor="@color/activePerform"
+        app:layout_constraintStart_toEndOf="@+id/stopButton"
+        app:layout_constraintTop_toBottomOf="@+id/eyesStatus" />
+
+
+    <TextView
+        android:id="@+id/mouthTextS"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="8dp"
+        android:text="Mouth"
+        app:layout_constraintStart_toEndOf="@+id/mouthStatus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/eyesTextS"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="7dp"
+        android:text="Eyes"
+        app:layout_constraintStart_toEndOf="@+id/eyesStatus"
+        app:layout_constraintTop_toBottomOf="@+id/mouthTextS" />
+
+    <TextView
+        android:id="@+id/headTextS"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="7dp"
+        android:text="Head"
+        app:layout_constraintStart_toEndOf="@+id/headStatus"
+        app:layout_constraintTop_toBottomOf="@+id/eyesTextS" />
+
 </android.support.constraint.ConstraintLayout>

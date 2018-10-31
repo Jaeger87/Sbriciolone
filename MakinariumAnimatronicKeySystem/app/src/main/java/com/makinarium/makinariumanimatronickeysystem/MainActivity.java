@@ -95,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView multText;
     private static final int minValueMult = 3;
 
+    private TextView mouthStatus;
+    private TextView eyesStatus;
+    private TextView headStatus;
 
     private Gson gson;
 
@@ -201,6 +204,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        mouthStatus = (TextView) findViewById(R.id.mouthStatus);
+        eyesStatus = (TextView) findViewById(R.id.eyesStatus);
+        headStatus = (TextView) findViewById(R.id.headStatus);
 
         connectionBluetooth();
         //testButton();

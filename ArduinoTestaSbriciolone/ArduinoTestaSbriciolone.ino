@@ -15,8 +15,8 @@ const byte limiteOcchi = 4;
 const int minOcchiValue = 920;
 const int maxOcchiValue = 80;
 
-const byte shutDownEyesEvery = 5;
-int shutDownEyesCounter = 0;
+const byte shutDownEyesBrownEvery = 5;
+int shutDownEyesBrownCounter = 0;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
@@ -58,92 +58,92 @@ void setup() {
   servoList[0].minValue = 2400;
   servoList[0].maxValue = 7300;
   servoList[0].channel = 5;
-  servoList[0].servoName = "BoccaD";
-  servoList[0].mirror = true;
+  servoList[0].servoName = "BoccaS";
+  servoList[0].mirror = false;
 
   servoList[1].minValue = 4400;
   servoList[1].maxValue = 9300;
   servoList[1].channel = 6;
-  servoList[1].servoName = "BoccaCD";
-  servoList[1].mirror = false;
+  servoList[1].servoName = "BoccaCS";
+  servoList[1].mirror = true;
 
   servoList[2].minValue = 3500;
   servoList[2].maxValue = 8000;
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
-  servoList[2].mirror = true;
+  servoList[2].mirror = false;
 
   servoList[3].minValue = 3000;
   servoList[3].maxValue = 5900;
   servoList[3].channel = 8;
-  servoList[3].servoName = "BoccaCS";//
+  servoList[3].servoName = "BoccaCD";//
   servoList[3].mirror = true;
 
   servoList[4].minValue = 4500;
   servoList[4].maxValue = 8200;//
   servoList[4].channel = 9;
-  servoList[4].servoName = "BoccaS";//
-  servoList[4].mirror = false;
+  servoList[4].servoName = "BoccaD";//
+  servoList[4].mirror = true;
 
   servoList[5].minValue = 5300;
   servoList[5].maxValue = 7500;
   servoList[5].channel = 10;
-  servoList[5].servoName = "NasoCD";
+  servoList[5].servoName = "NasoS";
   servoList[5].mirror = false;
 
   servoList[6].minValue = 3500;
   servoList[6].maxValue = 5400;//
   servoList[6].channel = 11;
-  servoList[6].servoName = "NasoD";
-  servoList[6].mirror = false;
+  servoList[6].servoName = "GuanciaS";
+  servoList[6].mirror = true;
 
   servoList[7].minValue = 6000;
   servoList[7].maxValue = 6600;
   servoList[7].channel = 12;
-  servoList[7].servoName = "NasoCS";
+  servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
 
   servoList[8].minValue = 5700;
   servoList[8].maxValue = 7700;
   servoList[8].channel = 13;
-  servoList[8].servoName = "NasoS";
+  servoList[8].servoName = "GuanciaD";
   servoList[8].mirror = true;
 
   servoList[9].minValue = 5000;
   servoList[9].maxValue = 8000;
   servoList[9].channel = 14;
   servoList[9].servoName = "SopraciglioCD";
-  servoList[9].mirror = false;
+  servoList[9].mirror = true;
 
   servoList[10].minValue = 4500;
   servoList[10].maxValue = 7800;
   servoList[10].channel = 15;
   servoList[10].servoName = "SopraciglioDX";
-  servoList[10].mirror = false;
+  servoList[10].mirror = true;
 
   servoList[11].minValue = 3700;
   servoList[11].maxValue = 5400;
   servoList[11].channel = 16;
   servoList[11].servoName = "SopraciglioCS";
-  servoList[11].mirror = false;
+  servoList[11].mirror = true;
 
   servoList[12].minValue = 4000;
   servoList[12].maxValue = 7500;
   servoList[12].channel = 17;
   servoList[12].servoName = "SopraciglioSX";
-  servoList[12].mirror = false;
+  servoList[12].mirror = true;
 
   servoList[13].minValue = 3900;
   servoList[13].maxValue = 8600;
   servoList[13].channel = 18;
-  servoList[13].servoName = "OcchioDX";
+  servoList[13].servoName = "OcchioSX";
   servoList[13].mirror = true;
 
   servoList[14].minValue = 2400;
   servoList[14].maxValue = 5500;
-  servoList[14].channel = 19;
-  servoList[14].servoName = "OcchioDY";
-  servoList[14].mirror = false;
+  servoList[14].channel = 4;
+  servoList[14].servoName = "OcchioSY";
+  servoList[14].mirror = true;
 
   servoList[15].minValue = 2450;
   servoList[15].maxValue = 6800;
@@ -154,14 +154,14 @@ void setup() {
   servoList[16].minValue = 3600;
   servoList[16].maxValue = 8800;
   servoList[16].channel = 21;
-  servoList[16].servoName = "OcchioSX";
-  servoList[16].mirror = false;
+  servoList[16].servoName = "OcchioDX";
+  servoList[16].mirror = true;
 
   servoList[17].minValue = 5100;
   servoList[17].maxValue = 9000;
   servoList[17].channel = 22;
-  servoList[17].servoName = "OcchioSY";
-  servoList[17].mirror = true;
+  servoList[17].servoName = "OcchioDY";
+  servoList[17].mirror = false;
 
   servoList[18].minValue = 5850;
   servoList[18].maxValue = 9200;
@@ -243,6 +243,7 @@ void eyeBrowMessage(String message)
 {
   if (message.charAt(1) == 'M')
   {
+    shutDownEyesBrownCounter = 0;
     String indexString = getValueStringSplitter(message, ';', 1);
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
@@ -266,7 +267,6 @@ void mouthMessage(String message)
 
 void eyesMotorMessage(String message)
 {
-  shutDownEyesCounter = 0;
   String indexString = getValueStringSplitter(message, ';', 1);
   int index = indexString.toInt();
   String valueString = getValueStringSplitter(message, ';', 2);
@@ -382,16 +382,16 @@ String getValueStringSplitter(String data, char separator, int index)
 
 void shutdownEyes()
 {
-  if(shutDownEyesCounter > shutDownEyesEvery)
+  if(shutDownEyesBrownCounter > shutDownEyesBrownEvery)
     {
-      maestro.setTarget(servoList[14].channel,0);//Occhio DY
-      maestro.setTarget(servoList[13].channel ,0);//Occhio DX
-      maestro.setTarget(servoList[16].channel,0);//Occhio SX
-      maestro.setTarget(servoList[17].channel,0);//OcchioSY
+      maestro.setTarget(servoList[9].channel,0);//
+      maestro.setTarget(servoList[10].channel ,0);//
+      maestro.setTarget(servoList[11].channel,0);//
+      maestro.setTarget(servoList[12].channel,0);//
 
       return;
     }
-  shutDownEyesCounter++;
+  shutDownEyesBrownCounter++;
 }
 
 
