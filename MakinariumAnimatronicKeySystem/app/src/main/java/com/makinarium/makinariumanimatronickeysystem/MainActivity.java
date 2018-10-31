@@ -890,6 +890,7 @@ public class MainActivity extends AppCompatActivity {
                 AbstractPerformance ap = container.getButtonPerformance(IDFactory.convertTextToButton(v.getId()));
                 undoManager.addLastEdit(ap, ap.getName());
                 ap.setName(input.getText().toString());
+                container.saveMe(getBaseContext() ,gson);
             }
         });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
