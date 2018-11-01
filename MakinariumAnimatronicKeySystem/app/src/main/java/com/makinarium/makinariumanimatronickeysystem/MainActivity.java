@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Gson gson;
 
+    private int readyColor = 0;
+    private int toReccolor = 0;
+    private int presetColor = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,12 +113,17 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter((Constants.incomingMessageIntent)));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mDeathOrAlive, new IntentFilter((Constants.deathBT)));
+
 
         Intent headIntent = getIntent();
         headMac = headIntent.getStringExtra(Intent.EXTRA_TEXT);
 
-        int readyColor = ResourcesCompat.getColor(getResources(), R.color.activePerform, null);
-        int toReccolor = ResourcesCompat.getColor(getResources(), R.color.performToRec, null);
+        readyColor = ResourcesCompat.getColor(getResources(), R.color.activePerform, null);
+
+        toReccolor = ResourcesCompat.getColor(getResources(), R.color.performToRec, null);
+
+        presetColor = ResourcesCompat.getColor(getResources(), R.color.firstcolumn, null);
 
         gson = new Gson();
 
@@ -680,6 +689,46 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    BroadcastReceiver mDeathOrAlive = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean status = intent.getBooleanExtra(Constants.valueStatus, true);
+            String who = intent.getStringExtra(Constants.changeStatus);
+
+            if(who.equals(Constants.mouthStatus))
+            {
+                setTextViewStatus(mouthStatus, status);
+                return;
+            }
+
+            if(who.equals(Constants.eyesStatus))
+            {
+                setTextViewStatus(eyesStatus,status);
+                return;
+            }
+
+            if(who.equals(Constants.headStatus))
+            {
+                setTextViewStatus(headStatus,status);
+                return;
+            }
+        }
+
+
+        private void setTextViewStatus(TextView tView, boolean status)
+        {
+            if(status)
+            {
+                tView.setText(Constants.connectionOK);
+                tView.setTextColor(readyColor);
+                return;
+            }
+
+            tView.setText(Constants.connectionNO);
+            tView.setTextColor(presetColor);
+        }
+    };
 
     BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
