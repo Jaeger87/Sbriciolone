@@ -23,7 +23,7 @@ ServoValues servoList[howmanyservo];
 unsigned long nextPalpebre = 0;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
-const int minOcchiValue = 995;
+const int minOcchiValue = 920;
 const int maxOcchiValue = 80;
 
 const byte shutDownEyesBrownEvery = 5;
@@ -33,7 +33,7 @@ enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
 statiOcchi sitOcchi = MANUAL;
 
-const int eyeLidsSpeed = 72;
+
 
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
@@ -185,57 +185,40 @@ void setup() {
 
 }
 
+
 void loop() {
   String message = Serial.readStringUntil('\n');
   if (message.length() > 0)
   {
-    int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
-    int numberSeparators = homManySeparator(message, ';');
-    int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
-
-    char bufferChar[lenghtMessage];
-    message.toCharArray(bufferChar, lenghtMessage);
-
-    int sum = 0;
-    for (int i = 0; i <  lenghtMessage; i++)
+    if (message.charAt(0) == eyesC)
     {
-      sum += bufferChar[i];
+      eyesMotorMessage(message);
+    }
+    else if (message.charAt(0) == eyeLidsC)
+    {
+      eyelidsMessage(message);
     }
 
-
-    int myCheckSum = sum % 100;
-
-    if (myCheckSum == checksum)
+    else if (message.charAt(0) == eyebrownsC)
     {
-      if (message.charAt(0) == eyesC)
-      {
-        eyesMotorMessage(message);
-      }
-      else if (message.charAt(0) == eyeLidsC)
-      {
-        eyelidsMessage(message);
-      }
+      eyeBrowMessage(message);
+    }
 
-      else if (message.charAt(0) == eyebrownsC)
-      {
-        eyeBrowMessage(message);
-      }
+    else if (message.charAt(0) == noseC)
+    {
+      noseMessage(message);
+    }
 
-      else if (message.charAt(0) == noseC)
-      {
-        noseMessage(message);
-      }
-
-      else if (message.charAt(0) == mouthC)
-      {
-        mouthMessage(message);
-      }
+    else if (message.charAt(0) == mouthC)
+    {
+      mouthMessage(message);
     }
   }
+
   gestisciOcchi();
   deadManButton();
   shutdownEyes();
-  delay(20);
+  delay(25);
 }
 
 void noseMessage(String message)
@@ -323,10 +306,6 @@ void eventoPalpebre()
   {
     sitOcchi = CHIUSMANUAL;
     contatoreOcchi = 0;
-    maestro.setSpeed(servoList[15].channel, 0);
-    maestro.setSpeed(servoList[18].channel, 0);
-    maestro.setAcceleration(servoList[15].channel, 0);
-    maestro.setAcceleration(servoList[18].channel, 0);
     maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
     maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
   }
@@ -340,24 +319,17 @@ void gestisciOcchi()
 {
   if (sitOcchi == MANUAL)
   {
-    maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
-    maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
+
     return;
   }
 
   if (sitOcchi == APERTI)
   {
-    maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
-    maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
     if (millis() > nextPalpebre)
     {
       nextPalpebre = random(2000, 10000) + millis();
       sitOcchi = INCHIUSURA;
       contatoreOcchi = 0;
-      maestro.setSpeed(servoList[15].channel, 0);
-      maestro.setSpeed(servoList[18].channel, 0);
-      maestro.setAcceleration(servoList[15].channel, 0);
-      maestro.setAcceleration(servoList[18].channel, 0);
       maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
     }
@@ -402,26 +374,6 @@ int analogServoConversion(int analogValue, ServoValues& servo)
   return map(analogValue, 0, 1023, servo.minValue, servo.maxValue);
 }
 
-int homManySeparator(String data, char separator)
-{
-  int s = 0;
-  for (int i = 0; i < data.length(); i++)
-    if (data.charAt(i) == separator)
-      s++;
-  return s;
-}
-
-
-int getLenghtBeforeCheckSum(String data, char separator)
-{
-  int l = -1;
-
-  for (int i = 0; i < data.length(); i++)
-    if (data.charAt(i) == separator)
-      l = i;
-  return (l + 1);
-}
-
 
 String getValueStringSplitter(String data, char separator, int index)
 {
@@ -462,3 +414,4 @@ void deadManButton()
 
   aliveCounter++;
 }
+

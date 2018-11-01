@@ -70,19 +70,19 @@ void setup() {
   servoList[0].maxValue = 7200;
   servoList[0].channel = 5;
   servoList[0].servoName = "BoccaS";
-  servoList[0].mirror = false;
+  servoList[0].mirror = true;
 
   servoList[1].minValue = 4300;
   servoList[1].maxValue = 9400;
   servoList[1].channel = 6;
   servoList[1].servoName = "BoccaCS";
-  servoList[1].mirror = true;
+  servoList[1].mirror = false;
 
   servoList[2].minValue = 3500;
   servoList[2].maxValue = 8000;
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
-  servoList[2].mirror = false;
+  servoList[2].mirror = true;
 
   servoList[3].minValue = 2400;
   servoList[3].maxValue = 6000;
@@ -94,24 +94,24 @@ void setup() {
   servoList[4].maxValue = 8100;//
   servoList[4].channel = 9;
   servoList[4].servoName = "BoccaD";//
-  servoList[4].mirror = true;
+  servoList[4].mirror = false;
 
   servoList[5].minValue = 5300;
   servoList[5].maxValue = 7500;
   servoList[5].channel = 10;
-  servoList[5].servoName = "NasoD";
-  servoList[5].mirror = false;
+  servoList[5].servoName = "NasoS";
+  servoList[5].mirror = true;
 
   servoList[6].minValue = 3500;
   servoList[6].maxValue = 5400;//
   servoList[6].channel = 11;
   servoList[6].servoName = "GuanciaS";
-  servoList[6].mirror = true;
+  servoList[6].mirror = false;
 
   servoList[7].minValue = 4000;
   servoList[7].maxValue = 6800;
   servoList[7].channel = 12;
-  servoList[7].servoName = "NasoS";
+  servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
 
   servoList[8].minValue = 4800;
@@ -190,35 +190,53 @@ void loop() {
   String message = Serial.readStringUntil('\n');
   if (message.length() > 0)
   {
-    if (message.charAt(0) == eyesC)
+    int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
+    int numberSeparators = homManySeparator(message, ';');
+    int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
+
+    char bufferChar[lenghtMessage];
+    message.toCharArray(bufferChar, lenghtMessage);
+
+    int sum = 0;
+    for (int i = 0; i <  lenghtMessage; i++)
     {
-      eyesMotorMessage(message);
-    }
-    else if (message.charAt(0) == eyeLidsC)
-    {
-      eyelidsMessage(message);
+      sum += bufferChar[i];
     }
 
-    else if (message.charAt(0) == eyebrownsC)
-    {
-      eyeBrowMessage(message);
-    }
 
-    else if (message.charAt(0) == noseC)
+    int myCheckSum = sum % 100;
+    
+    if (myCheckSum == checksum)
     {
-      noseMessage(message);
-    }
+      if (message.charAt(0) == eyesC)
+      {
+        eyesMotorMessage(message);
+      }
+      else if (message.charAt(0) == eyeLidsC)
+      {
+        eyelidsMessage(message);
+      }
 
-    else if (message.charAt(0) == mouthC)
-    {
-      mouthMessage(message);
+      else if (message.charAt(0) == eyebrownsC)
+      {
+        eyeBrowMessage(message);
+      }
+
+      else if (message.charAt(0) == noseC)
+      {
+        noseMessage(message);
+      }
+
+      else if (message.charAt(0) == mouthC)
+      {
+        mouthMessage(message);
+      }
     }
   }
-
   gestisciOcchi();
   deadManButton();
   shutdownEyes();
-  delay(25);
+  delay(20);
 }
 
 void noseMessage(String message)
@@ -385,15 +403,24 @@ int analogServoConversion(int analogValue, ServoValues& servo)
   return map(analogValue, 0, 1023, servo.minValue, servo.maxValue);
 }
 
+int homManySeparator(String data, char separator)
+{
+  int s = 0;
+  for (int i = 0; i < data.length(); i++)
+    if (data.charAt(i) == separator)
+      s++;
+  return s;
+}
+
+
 int getLenghtBeforeCheckSum(String data, char separator)
 {
   int l = -1;
 
   for (int i = 0; i < data.length(); i++)
-    if(data.charAt(i) == separator)
+    if (data.charAt(i) == separator)
       l = i;
-   return (l + 1);
-  
+  return (l + 1);
 }
 
 

@@ -81,19 +81,19 @@ void setup()
   listaMotori[4].port = A4;
   listaMotori[4].pinH = 4;
 
-  listaMotori[5].sector = noseC;//NasoD
-  listaMotori[5].port = A5;
+  listaMotori[5].sector = noseC;//NasoS
+  listaMotori[5].port = A7;
   listaMotori[5].pinH = 5;
 
-  listaMotori[6].sector = noseC;//NasoCD
+  listaMotori[6].sector = noseC;//GuanciaS
   listaMotori[6].port = A6;
   listaMotori[6].pinH = 6;
 
-  listaMotori[7].sector = noseC;//NasoCS
-  listaMotori[7].port = A7;
+  listaMotori[7].sector = noseC;//NasoD
+  listaMotori[7].port = A5;
   listaMotori[7].pinH = 7;
 
-  listaMotori[8].sector = noseC;//NasoS
+  listaMotori[8].sector = noseC;//GuanciaD
   listaMotori[8].port = A8;
   listaMotori[8].pinH = 8;
 
@@ -133,7 +133,7 @@ void readWriteMotor(Motor& m, int index)
   if (abs(m.oldValue - sensorValue) > Analogfilter)
   {
     sendMotor(m, sensorValue);
-    if (parlataButton.value)
+    if (parlataButton.value && m.pinH == listaMotori[2].pinH)
     {
       sendMotor(listaMotori[0], parlataConversion(sensorValue, parlataDistanceLaterali));
       sendMotor(listaMotori[1], parlataConversion(sensorValue, parlataDistanceCentrali));
@@ -177,7 +177,13 @@ int parlataConversion(int value, int distanza)
 void sendMotor(Motor& m, int sensorValue)
 {
   String SCS = "";
-  SCS += m.sector + m.event + ';' + m.pinH + ';' + sensorValue + ';';
+  SCS += m.sector;
+  SCS +=  m.event;
+  SCS +=  ';';
+  SCS +=  m.pinH;
+  SCS +=  ';';
+  SCS += sensorValue;
+  SCS += ';';
 
   char bufferChar[SCS.length()];
   SCS.toCharArray(bufferChar, SCS.length());

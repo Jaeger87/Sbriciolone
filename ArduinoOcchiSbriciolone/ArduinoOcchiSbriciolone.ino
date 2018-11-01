@@ -46,15 +46,31 @@ ButtonLed palpebreButton;
 int checkSumForEvent1;
 int checkSumForEvent0;
 
-int checksumEyelid = ('L' + 'e' + ';') % 100;
+int checksumEyelid = (eyeLidsC + eventsC + ';') % 100;
+
+int checkSumFunction(String SCS)
+{
+  char bufferChar[SCS.length()];
+  SCS.toCharArray(bufferChar, SCS.length());
+
+  int sum = 0;
+  for (int i = 0; i <  SCS.length(); i++)
+  {
+    sum += bufferChar[i];
+  }
+
+  return sum % 100;
+}
+
 
 void setup()
 {
-  checkSumForEvent1 = eyeLidsC + statusChangeC + ';' + ';' + '1';
-  checkSumForEvent0 = eyeLidsC + statusChangeC + ';' + ';' + '0';
 
-  checkSumForEvent1 %= 100;
-  checkSumForEvent0 %= 100;
+
+  checkSumForEvent1 = checkSumFunction("LC;1;");
+  checkSumForEvent0 = checkSumFunction("LC;0;");
+  checksumEyelid = checkSumFunction("Le;");
+  
 
   mirrorButton.pin = 3;
   mirrorButton.led = 4;
@@ -237,7 +253,15 @@ int mirrorEye(int value)
 void sendMotor(Motor& m, int sensorValue)
 {
   String SCS = "";
-  SCS += m.sector + m.event + ';' + m.pinH + ';' + sensorValue + ';';
+  SCS += m.sector;
+  SCS +=  m.event;
+  SCS +=  ';';
+  SCS +=  m.pinH;
+  SCS +=  ';';
+  SCS += sensorValue;
+  SCS += ';';
+
+  //Serial.println(SCS);
 
   char bufferChar[SCS.length()];
   SCS.toCharArray(bufferChar, SCS.length());
