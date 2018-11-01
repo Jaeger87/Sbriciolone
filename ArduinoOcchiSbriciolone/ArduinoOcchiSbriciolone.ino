@@ -20,7 +20,7 @@ struct ButtonLed {
   int pin;
   int led;
   char sector;
-  char event = servoC;
+  char event = statusChangeC;
   boolean value;
 };
 
@@ -71,7 +71,7 @@ void setup()
   listaMotori[1].pinH = 16;
 
   listaMotori[2].sector = eyeLidsC;//PalpebraSinistra
-  listaMotori[2].port = A2;
+  listaMotori[2].port = A3;
   listaMotori[2].pinH = 18;
 
   listaMotori[3].sector = eyebrownsC;//Sopraciglio DXD
@@ -91,7 +91,7 @@ void setup()
   listaMotori[6].pinH = 11;
 
   listaMotori[7].sector = eyeLidsC;//PalpebraDestra
-  listaMotori[7].port = A3;
+  listaMotori[7].port = A2;
   listaMotori[7].pinH = 15;
 
   eyeSXX.sector = eyesC;
@@ -114,7 +114,7 @@ void loop() {
   for (int i = 0; i < howmanyanalog; i++)
   {
     if (listaMotori[i].sector == eyeLidsC)
-      if (!palpebreButton.value)
+      if (palpebreButton.value)
         continue;
 
     readWriteMotor(listaMotori[i]);

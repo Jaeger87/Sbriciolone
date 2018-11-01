@@ -23,7 +23,7 @@ ServoValues servoList[howmanyservo];
 unsigned long nextPalpebre = 0;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
-const int minOcchiValue = 920;
+const int minOcchiValue = 995;
 const int maxOcchiValue = 80;
 
 const byte shutDownEyesBrownEvery = 5;
@@ -33,7 +33,7 @@ enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
 statiOcchi sitOcchi = MANUAL;
 
-
+const int eyeLidsSpeed = 72;
 
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
@@ -306,6 +306,10 @@ void eventoPalpebre()
   {
     sitOcchi = CHIUSMANUAL;
     contatoreOcchi = 0;
+    maestro.setSpeed(servoList[15].channel, 0);
+    maestro.setSpeed(servoList[18].channel, 0);
+    maestro.setAcceleration(servoList[15].channel, 0);
+    maestro.setAcceleration(servoList[18].channel, 0);
     maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
     maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
   }
@@ -330,6 +334,10 @@ void gestisciOcchi()
       nextPalpebre = random(2000, 10000) + millis();
       sitOcchi = INCHIUSURA;
       contatoreOcchi = 0;
+      maestro.setSpeed(servoList[15].channel, 0);
+      maestro.setSpeed(servoList[18].channel, 0);
+      maestro.setAcceleration(servoList[15].channel, 0);
+      maestro.setAcceleration(servoList[18].channel, 0);
       maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
     }
@@ -340,6 +348,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
+      maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
+      maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = APERTI;
@@ -352,6 +362,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
+      maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
+      maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = MANUAL;

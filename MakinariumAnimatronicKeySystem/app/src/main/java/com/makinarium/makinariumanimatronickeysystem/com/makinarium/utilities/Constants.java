@@ -19,6 +19,7 @@ public class Constants {
     public static final String emptyPerformance = "Please rec before performance";
     public static final String performing = "Performing";
     public static final String SaveFileName = "save.json";
+    public static final String MACFileName = "mac.json";
     public static final String mouthStatus = "MouthStatus";
     public static final String eyesStatus = "eyesStatus";
     public static final String headStatus = "headStatus";

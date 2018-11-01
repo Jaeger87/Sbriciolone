@@ -5,14 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.Constants;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.MacAddressFactory;
 
 public class headActivity extends AppCompatActivity {
 
     private Button continueButton;
     private String headMac;
+    private MacAddressFactory macFactory;
+    private EditText mouthEdit;
+    private EditText eyesEdit;
+    private EditText headEdit;
 
 
     @Override

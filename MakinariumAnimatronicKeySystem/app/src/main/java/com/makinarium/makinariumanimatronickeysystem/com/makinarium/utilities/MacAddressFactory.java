@@ -47,4 +47,14 @@ public class MacAddressFactory {
     public void setHead02(String head02) {
         this.head02 = head02;
     }
+
+    public boolean checkMac(String mac)
+    {
+        if(mac.length() != Constants.macHead01BT.length())
+            return false;
+        if(!mac.startsWith("98:D3"))
+            return false;
+
+        return true;
+    }
 }
