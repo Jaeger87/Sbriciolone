@@ -6,6 +6,17 @@ struct ServoValues {
   bool mirror;
 };
 
+const char eventsC = 'e';
+const char statusChangeC = 'C';
+const char servoC = 'S';
+
+const char eyesC = 'E';
+const char eyeLidsC = 'L';
+const char eyebrownsC = 'B';
+const char mouthC = 'M';
+const char noseC = 'N';
+
+
 const byte howmanyservo = 19;//Sono 8 invero
 ServoValues servoList[howmanyservo];
 #include <PololuMaestro.h>
@@ -179,28 +190,26 @@ void loop() {
   String message = Serial.readStringUntil('\n');
   if (message.length() > 0)
   {
-    if (message.charAt(0) == 'E')
+    if (message.charAt(0) == eyesC)
     {
-      if (message.charAt(1) == 'M')
-        eyesMotorMessage(message);
-
+      eyesMotorMessage(message);
     }
-    else if (message.charAt(0) == 'L')
+    else if (message.charAt(0) == eyeLidsC)
     {
       eyelidsMessage(message);
     }
 
-    else if (message.charAt(0) == 'B')
+    else if (message.charAt(0) == eyebrownsC)
     {
       eyeBrowMessage(message);
     }
 
-    else if (message.charAt(0) == 'N')
+    else if (message.charAt(0) == noseC)
     {
       noseMessage(message);
     }
 
-    else if (message.charAt(0) == 'M')
+    else if (message.charAt(0) == mouthC)
     {
       mouthMessage(message);
     }
@@ -214,7 +223,7 @@ void loop() {
 
 void noseMessage(String message)
 {
-  if (message.charAt(1) == 'M')
+  if (message.charAt(1) == servoC)
   {
     String indexString = getValueStringSplitter(message, ';', 1);
     int index = indexString.toInt();
@@ -226,13 +235,13 @@ void noseMessage(String message)
 
 void eyelidsMessage(String message)
 {
-  if (message.charAt(1) == 'M')
+  if (message.charAt(1) == servoC)
     palpebraMotorMessage(message);
 
-  else if (message.charAt(1) == 'E')
+  else if (message.charAt(1) == eventsC)
     eventoPalpebre();
 
-  else if (message.charAt(1) == 'S')
+  else if (message.charAt(1) == statusChangeC)
     if (message.charAt(3) == '0')
       sitOcchi = MANUAL;
     else if (message.charAt(3) == '1')
@@ -241,7 +250,7 @@ void eyelidsMessage(String message)
 
 void eyeBrowMessage(String message)
 {
-  if (message.charAt(1) == 'M')
+  if (message.charAt(1) == servoC)
   {
     shutDownEyesBrownCounter = 0;
     String indexString = getValueStringSplitter(message, ';', 1);
@@ -255,7 +264,7 @@ void eyeBrowMessage(String message)
 
 void mouthMessage(String message)
 {
-  if (message.charAt(1) == 'M')
+  if (message.charAt(1) == servoC)
   {
     String indexString = getValueStringSplitter(message, ';', 1);
     int index = indexString.toInt();
@@ -267,11 +276,14 @@ void mouthMessage(String message)
 
 void eyesMotorMessage(String message)
 {
-  String indexString = getValueStringSplitter(message, ';', 1);
-  int index = indexString.toInt();
-  String valueString = getValueStringSplitter(message, ';', 2);
-  int value = valueString.toInt();
-  maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
+  if (message.charAt(1) == servoC)
+  {
+    String indexString = getValueStringSplitter(message, ';', 1);
+    int index = indexString.toInt();
+    String valueString = getValueStringSplitter(message, ';', 2);
+    int value = valueString.toInt();
+    maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
+  }
 }
 
 
@@ -382,15 +394,15 @@ String getValueStringSplitter(String data, char separator, int index)
 
 void shutdownEyes()
 {
-  if(shutDownEyesBrownCounter > shutDownEyesBrownEvery)
-    {
-      maestro.setTarget(servoList[9].channel,0);//
-      maestro.setTarget(servoList[10].channel ,0);//
-      maestro.setTarget(servoList[11].channel,0);//
-      maestro.setTarget(servoList[12].channel,0);//
+  if (shutDownEyesBrownCounter > shutDownEyesBrownEvery)
+  {
+    maestro.setTarget(servoList[9].channel, 0); //
+    maestro.setTarget(servoList[10].channel , 0); //
+    maestro.setTarget(servoList[11].channel, 0); //
+    maestro.setTarget(servoList[12].channel, 0); //
 
-      return;
-    }
+    return;
+  }
   shutDownEyesBrownCounter++;
 }
 

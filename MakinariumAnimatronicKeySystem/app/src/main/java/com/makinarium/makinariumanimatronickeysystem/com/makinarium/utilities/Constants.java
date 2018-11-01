@@ -19,4 +19,12 @@ public class Constants {
     public static final String emptyPerformance = "Please rec before performance";
     public static final String performing = "Performing";
     public static final String SaveFileName = "save.json";
+    public static final String mouthStatus = "MouthStatus";
+    public static final String eyesStatus = "eyesStatus";
+    public static final String headStatus = "headStatus";
+    public static final String changeStatus = "changeStatus";
+    public static final String valueStatus = "valueStatus";
+    public static final String deathBT = "deathBT";
+    public static final String connectionOK = "✓";
+    public static final String connectionNO = "X";
 }

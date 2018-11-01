@@ -1,3 +1,14 @@
+const char eventsC = 'e';
+const char statusChangeC = 'C';
+const char servoC = 'S';
+
+const char eyesC = 'E';
+const char eyeLidsC = 'L';
+const char eyebrownsC = 'B';
+const char mouthC = 'M';
+const char noseC = 'N';
+
+
 const byte Analogfilter = 6;
 const byte delayLettura = 5;
 const byte delayLoop = 50;
@@ -11,7 +22,7 @@ struct Motor {
   int port;
   char sector;
   int pinH;
-  char event = 'M';
+  char event = servoC;
   int oldValue = 0;
 };
 
@@ -19,7 +30,7 @@ struct ButtonLed {
   int pin;
   int led;
   char sector;
-  char event = 'S';
+  char event = servoC;
   boolean value;
 };
 
@@ -35,13 +46,13 @@ void setup()
 
   mirrorButton.pin = 5;
   mirrorButton.led = 4;
-  mirrorButton.sector = 'M';
+  mirrorButton.sector = mouthC;
   mirrorButton.value = false;
 
 
   parlataButton.pin = 7;
   parlataButton.led = 6;
-  parlataButton.sector = 'M';
+  parlataButton.sector = mouthC;
   parlataButton.value = false;
 
   pinMode(mirrorButton.pin, INPUT);
@@ -50,39 +61,39 @@ void setup()
   pinMode(parlataButton.led, OUTPUT);
 
 
-  listaMotori[0].sector = 'M';//BoccaDX
+  listaMotori[0].sector = mouthC;//BoccaDX
   listaMotori[0].port = A0;//
   listaMotori[0].pinH = 0;
 
-  listaMotori[1].sector = 'M';//BoccaCDX
+  listaMotori[1].sector = mouthC;//BoccaCDX
   listaMotori[1].port = A1;
   listaMotori[1].pinH = 1;
 
-  listaMotori[2].sector = 'M';//BoccaC
+  listaMotori[2].sector = mouthC;//BoccaC
   listaMotori[2].port = A2;
   listaMotori[2].pinH = 2;
 
-  listaMotori[3].sector = 'M';//BoccaCSX
+  listaMotori[3].sector = mouthC;//BoccaCSX
   listaMotori[3].port = A3;
   listaMotori[3].pinH = 3;
 
-  listaMotori[4].sector = 'M';//BoccaSX
+  listaMotori[4].sector = mouthC;//BoccaSX
   listaMotori[4].port = A4;
   listaMotori[4].pinH = 4;
 
-  listaMotori[5].sector = 'N';//NasoD
+  listaMotori[5].sector = noseC;//NasoD
   listaMotori[5].port = A5;
   listaMotori[5].pinH = 5;
 
-  listaMotori[6].sector = 'N';//NasoCD
+  listaMotori[6].sector = noseC;//NasoCD
   listaMotori[6].port = A6;
   listaMotori[6].pinH = 6;
 
-  listaMotori[7].sector = 'N';//NasoCS
+  listaMotori[7].sector = noseC;//NasoCS
   listaMotori[7].port = A7;
   listaMotori[7].pinH = 7;
 
-  listaMotori[8].sector = 'N';//NasoS
+  listaMotori[8].sector = noseC;//NasoS
   listaMotori[8].port = A8;
   listaMotori[8].pinH = 8;
 
@@ -100,7 +111,7 @@ void loop() {
       if (i == 0 || i == 1 || i == 3 || i == 4)
         continue;
     if (mirrorButton.value)
-      if (i == 3 || i == 4)
+      if (i == 0 || i == 1)
         continue;
     readWriteMotor(listaMotori[i], i);
   }
@@ -130,7 +141,7 @@ void readWriteMotor(Motor& m, int index)
       sendMotor(listaMotori[4], parlataConversion(sensorValue, parlataDistanceLaterali));
     }
     else if (mirrorButton.value)
-      if (index == 0 || index == 1)
+      if (index == 3|| index == 4)
         sendMotor(listaMotori[4 - index], sensorValue);
   }
 
@@ -156,9 +167,9 @@ void readButtonLed(ButtonLed& button)
 
 int parlataConversion(int value, int distanza)
 {
-  if (value < 612)
-    return value - map(value, 0, 611, 0, distanza);
-  return value - map(value, 612, 1023, distanza, 0);
+  if (value < 512)
+    return value - map(value, 0, 511, 0, distanza);
+  return value - map(value, 512, 1023, distanza, 0);
 }
 
 

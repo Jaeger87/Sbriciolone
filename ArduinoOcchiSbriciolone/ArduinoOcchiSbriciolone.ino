@@ -1,8 +1,18 @@
+const char eventsC = 'e';
+const char statusChangeC = 'C';
+const char servoC = 'S';
+
+const char eyesC = 'E';
+const char eyeLidsC = 'L';
+const char eyebrownsC = 'B';
+const char mouthC = 'M';
+const char noseC = 'N';
+
 struct Motor {
   int port;
   char sector;
   int pinH;
-  char event = 'M';
+  char event = servoC;
   int oldValue = 0;
 };
 
@@ -10,7 +20,7 @@ struct ButtonLed {
   int pin;
   int led;
   char sector;
-  char event = 'S';
+  char event = servoC;
   boolean value;
 };
 
@@ -37,13 +47,13 @@ void setup()
 {
   mirrorButton.pin = 3;
   mirrorButton.led = 4;
-  mirrorButton.sector = 'E';
+  mirrorButton.sector = eyesC;
   mirrorButton.value = false;
 
 
   palpebreButton.pin = 5;
   palpebreButton.led = 6;
-  palpebreButton.sector = 'L';
+  palpebreButton.sector = eyeLidsC;
   palpebreButton.value = false;
 
   pinMode(mirrorButton.pin, INPUT);
@@ -52,43 +62,43 @@ void setup()
   pinMode(palpebreButton.led, OUTPUT);
   pinMode(closeEyesButtonPin, INPUT);
 
-  listaMotori[0].sector = 'E';//OcchioDXY
+  listaMotori[0].sector = eyesC;//OcchioDXY
   listaMotori[0].port = A1;//
   listaMotori[0].pinH = 17;
 
-  listaMotori[1].sector = 'E';//OcchioDXX
+  listaMotori[1].sector = eyesC;//OcchioDXX
   listaMotori[1].port = A0;
   listaMotori[1].pinH = 16;
 
-  listaMotori[2].sector = 'L';//PalpebraSinistra
+  listaMotori[2].sector = eyeLidsC;//PalpebraSinistra
   listaMotori[2].port = A2;
   listaMotori[2].pinH = 18;
 
-  listaMotori[3].sector = 'B';//Sopraciglio DXD
+  listaMotori[3].sector = eyebrownsC;//Sopraciglio DXD
   listaMotori[3].port = A4;//
   listaMotori[3].pinH = 10;
 
-  listaMotori[4].sector = 'B';//Sopraciglio DXC
+  listaMotori[4].sector = eyebrownsC;//Sopraciglio DXC
   listaMotori[4].port = A5;
   listaMotori[4].pinH = 9;
 
-  listaMotori[5].sector = 'B';//Sopraciglio SXS
+  listaMotori[5].sector = eyebrownsC;//Sopraciglio SXS
   listaMotori[5].port = A6;//
   listaMotori[5].pinH = 12;
 
-  listaMotori[6].sector = 'B';//Sopraciglio SXC
+  listaMotori[6].sector = eyebrownsC;//Sopraciglio SXC
   listaMotori[6].port = A7;
   listaMotori[6].pinH = 11;
 
-  listaMotori[7].sector = 'L';//PalpebraDestra
+  listaMotori[7].sector = eyeLidsC;//PalpebraDestra
   listaMotori[7].port = A3;
   listaMotori[7].pinH = 15;
 
-  eyeSXX.sector = 'E';
+  eyeSXX.sector = eyesC;
   eyeSXX.port = -1;
   eyeSXX.pinH = 13;
 
-  eyeSXY.sector = 'E';
+  eyeSXY.sector = eyesC;
   eyeSXY.port = -1;
   eyeSXY.pinH = 14;
 
@@ -103,7 +113,7 @@ void loop() {
 
   for (int i = 0; i < howmanyanalog; i++)
   {
-    if (listaMotori[i].sector == 'L')
+    if (listaMotori[i].sector == eyeLidsC)
       if (!palpebreButton.value)
         continue;
 
@@ -128,7 +138,7 @@ void readCloseEyesButton()
   if (closeEyesState != oldCloseEyesState)
     if (closeEyesState == LOW)
     {
-      Serial.println("LE");
+      Serial.println("Le");
     }
 
   oldCloseEyesState = closeEyesState;
