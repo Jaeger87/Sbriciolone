@@ -10,7 +10,7 @@ const char noseC = 'N';
 
 
 const byte Analogfilter = 6;
-const byte delayLettura = 5;
+const byte delayLettura = 7;
 const byte delayLoop = 50;
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
@@ -141,7 +141,7 @@ void readWriteMotor(Motor& m, int index)
       sendMotor(listaMotori[4], parlataConversion(sensorValue, parlataDistanceLaterali));
     }
     else if (mirrorButton.value)
-      if (index == 3|| index == 4)
+      if (index == 3 || index == 4)
         sendMotor(listaMotori[4 - index], sensorValue);
   }
 
@@ -152,6 +152,7 @@ void readWriteMotor(Motor& m, int index)
 
 void readButtonLed(ButtonLed& button)
 {
+
   int lettura = digitalRead(button.pin);
   if (lettura == HIGH)
   {
@@ -175,12 +176,29 @@ int parlataConversion(int value, int distanza)
 
 void sendMotor(Motor& m, int sensorValue)
 {
+  String SCS = "";
+  SCS += m.sector + m.event + ';' + m.pinH + ';' + sensorValue + ';';
+
+  char bufferChar[SCS.length()];
+  SCS.toCharArray(bufferChar, SCS.length());
+
+  int sum = 0;
+  for (int i = 0; i <  SCS.length(); i++)
+  {
+    sum += bufferChar[i];
+  }
+
+  int checkSum = sum % 100;
+
+
   Serial.print(m.sector);
   Serial.print(m.event);
   Serial.print(';');
   Serial.print(m.pinH);
   Serial.print(';');
-  Serial.println(sensorValue);
+  Serial.print(sensorValue);
+  Serial.print(';');
+  Serial.println(checkSum);
   delay(delayLettura);
 
 }

@@ -385,6 +385,17 @@ int analogServoConversion(int analogValue, ServoValues& servo)
   return map(analogValue, 0, 1023, servo.minValue, servo.maxValue);
 }
 
+int getLenghtBeforeCheckSum(String data, char separator)
+{
+  int l = -1;
+
+  for (int i = 0; i < data.length(); i++)
+    if(data.charAt(i) == separator)
+      l = i;
+   return (l + 1);
+  
+}
+
 
 String getValueStringSplitter(String data, char separator, int index)
 {

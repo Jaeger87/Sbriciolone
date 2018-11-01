@@ -185,40 +185,55 @@ void setup() {
 
 }
 
-
 void loop() {
   String message = Serial.readStringUntil('\n');
   if (message.length() > 0)
   {
-    if (message.charAt(0) == eyesC)
+    int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
+    int numberSeparators = homManySeparator(message, ';');
+    int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
+
+    char bufferChar[lenghtMessage];
+    message.toCharArray(bufferChar, lenghtMessage);
+
+    int sum = 0;
+    for (int i = 0; i <  lenghtMessage; i++)
     {
-      eyesMotorMessage(message);
-    }
-    else if (message.charAt(0) == eyeLidsC)
-    {
-      eyelidsMessage(message);
+      sum += bufferChar[i];
     }
 
-    else if (message.charAt(0) == eyebrownsC)
+    int myCheckSum = sum % 100;
+    if (myCheckSum == checksum)
     {
-      eyeBrowMessage(message);
-    }
+      if (message.charAt(0) == eyesC)
+      {
+        eyesMotorMessage(message);
+      }
+      else if (message.charAt(0) == eyeLidsC)
+      {
+        eyelidsMessage(message);
+      }
 
-    else if (message.charAt(0) == noseC)
-    {
-      noseMessage(message);
-    }
+      else if (message.charAt(0) == eyebrownsC)
+      {
+        eyeBrowMessage(message);
+      }
 
-    else if (message.charAt(0) == mouthC)
-    {
-      mouthMessage(message);
+      else if (message.charAt(0) == noseC)
+      {
+        noseMessage(message);
+      }
+
+      else if (message.charAt(0) == mouthC)
+      {
+        mouthMessage(message);
+      }
     }
   }
-
   gestisciOcchi();
   deadManButton();
   shutdownEyes();
-  delay(25);
+  delay(20);
 }
 
 void noseMessage(String message)
@@ -323,12 +338,15 @@ void gestisciOcchi()
 {
   if (sitOcchi == MANUAL)
   {
-
+    maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
+    maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
     return;
   }
 
   if (sitOcchi == APERTI)
   {
+    maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
+    maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
     if (millis() > nextPalpebre)
     {
       nextPalpebre = random(2000, 10000) + millis();
@@ -348,8 +366,6 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
-      maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
-      maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = APERTI;
@@ -362,8 +378,6 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
-      maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
-      maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = MANUAL;
@@ -384,6 +398,26 @@ int analogServoConversion(int analogValue, ServoValues& servo)
   if (servo.mirror)
     return map(analogValue, 1023, 0, servo.minValue, servo.maxValue);
   return map(analogValue, 0, 1023, servo.minValue, servo.maxValue);
+}
+
+int homManySeparator(String data, char separator)
+{
+  int s = 0;
+  for (int i = 0; i < data.length(); i++)
+    if (data.charAt(i) == separator)
+      s++;
+  return s;
+}
+
+
+int getLenghtBeforeCheckSum(String data, char separator)
+{
+  int l = -1;
+
+  for (int i = 0; i < data.length(); i++)
+    if (data.charAt(i) == separator)
+      l = i;
+  return (l + 1);
 }
 
 

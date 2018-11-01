@@ -43,8 +43,19 @@ Motor eyeSXY;
 ButtonLed mirrorButton;
 ButtonLed palpebreButton;
 
+int checkSumForEvent1;
+int checkSumForEvent0;
+
+int checksumEyelid = ('L' + 'e' + ';') % 100;
+
 void setup()
 {
+  checkSumForEvent1 = eyeLidsC + statusChangeC + ';' + ';' + '1';
+  checkSumForEvent0 = eyeLidsC + statusChangeC + ';' + ';' + '0';
+
+  checkSumForEvent1 %= 100;
+  checkSumForEvent0 %= 100;
+
   mirrorButton.pin = 3;
   mirrorButton.led = 4;
   mirrorButton.sector = eyesC;
@@ -138,7 +149,8 @@ void readCloseEyesButton()
   if (closeEyesState != oldCloseEyesState)
     if (closeEyesState == LOW)
     {
-      Serial.println("Le");
+      Serial.print("Le;");
+      Serial.println(checksumEyelid);
     }
 
   oldCloseEyesState = closeEyesState;
@@ -166,7 +178,6 @@ void readWriteMotor(Motor& m)
 
   m.oldValue = sensorValue;
 }
-
 
 void readButtonLed(ButtonLed& button)
 {
@@ -197,7 +208,9 @@ void readButtonLedAndSend(ButtonLed& button)
     Serial.print(button.sector);
     Serial.print(button.event);
     Serial.print(';');
-    Serial.println('1');
+    Serial.print('1');
+    Serial.print(';');
+    Serial.println(checkSumForEvent1);
     delay(delayLettura);
   }
   else if (lettura == LOW && button.value != false)
@@ -207,7 +220,9 @@ void readButtonLedAndSend(ButtonLed& button)
     Serial.print(button.sector);
     Serial.print(button.event);
     Serial.print(';');
-    Serial.println('0');
+    Serial.print('0');
+    Serial.print(';');
+    Serial.println(checkSumForEvent0);
     delay(delayLettura);
   }
 }
@@ -221,13 +236,31 @@ int mirrorEye(int value)
 
 void sendMotor(Motor& m, int sensorValue)
 {
+  String SCS = "";
+  SCS += m.sector + m.event + ';' + m.pinH + ';' + sensorValue + ';';
+
+  char bufferChar[SCS.length()];
+  SCS.toCharArray(bufferChar, SCS.length());
+
+  int sum = 0;
+  for (int i = 0; i <  SCS.length(); i++)
+  {
+    sum += bufferChar[i];
+  }
+
+  int checkSum = sum % 100;
+
   Serial.print(m.sector);
   Serial.print(m.event);
   Serial.print(';');
   Serial.print(m.pinH);
   Serial.print(';');
-  Serial.println(sensorValue);
+  Serial.print(sensorValue);
+  Serial.print(';');
+  Serial.println(checkSum);
   delay(delayLettura);
+
+
 
 }
 
