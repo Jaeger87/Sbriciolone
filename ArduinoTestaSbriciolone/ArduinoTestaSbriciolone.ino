@@ -72,7 +72,7 @@ void setup() {
   servoList[0].servoName = "BoccaS";
   servoList[0].mirror = true;
 
-  servoList[1].minValue = 4300;
+  servoList[1].minValue = 3200;
   servoList[1].maxValue = 9400;
   servoList[1].channel = 6;
   servoList[1].servoName = "BoccaCS";
@@ -96,25 +96,25 @@ void setup() {
   servoList[4].servoName = "BoccaD";//
   servoList[4].mirror = false;
 
-  servoList[5].minValue = 5300;
-  servoList[5].maxValue = 7500;
+  servoList[5].minValue = 5600;
+  servoList[5].maxValue = 7200;
   servoList[5].channel = 10;
   servoList[5].servoName = "NasoS";
   servoList[5].mirror = true;
 
   servoList[6].minValue = 3500;
-  servoList[6].maxValue = 5400;//
+  servoList[6].maxValue = 5100;//
   servoList[6].channel = 11;
   servoList[6].servoName = "GuanciaS";
   servoList[6].mirror = false;
 
-  servoList[7].minValue = 4000;
+  servoList[7].minValue = 5200;
   servoList[7].maxValue = 6800;
   servoList[7].channel = 12;
   servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
 
-  servoList[8].minValue = 4800;
+  servoList[8].minValue = 5600;
   servoList[8].maxValue = 7700;
   servoList[8].channel = 13;
   servoList[8].servoName = "GuanciaD";
@@ -123,53 +123,53 @@ void setup() {
   servoList[9].minValue = 3200;
   servoList[9].maxValue = 8000;
   servoList[9].channel = 14;
-  servoList[9].servoName = "SopraciglioCD";
+  servoList[9].servoName = "SopraciglioCS";
   servoList[9].mirror = true;
 
   servoList[10].minValue = 4000;
   servoList[10].maxValue = 8000;
   servoList[10].channel = 15;
-  servoList[10].servoName = "SopraciglioDX";
+  servoList[10].servoName = "SopraciglioS";
   servoList[10].mirror = true;
 
   servoList[11].minValue = 4000;
   servoList[11].maxValue = 8000;
   servoList[11].channel = 16;
-  servoList[11].servoName = "SopraciglioCS";
+  servoList[11].servoName = "SopraciglioCD";
   servoList[11].mirror = true;
 
-  servoList[12].minValue = 4000;
-  servoList[12].maxValue = 8500;
+  servoList[12].minValue = 4200;
+  servoList[12].maxValue = 8300;
   servoList[12].channel = 17;
-  servoList[12].servoName = "SopraciglioSX";
+  servoList[12].servoName = "SopraciglioD";
   servoList[12].mirror = true;
 
-  servoList[13].minValue = 3500;
+  servoList[13].minValue = 3200;
   servoList[13].maxValue = 10000;
   servoList[13].channel = 18;
   servoList[13].servoName = "OcchioSX";
   servoList[13].mirror = true;
 
-  servoList[14].minValue = 3800;
+  servoList[14].minValue = 3300;
   servoList[14].maxValue = 10000;
   servoList[14].channel = 19;
   servoList[14].servoName = "OcchioSY";
   servoList[14].mirror = true;
 
-  servoList[15].minValue = 3400;
-  servoList[15].maxValue = 9000;
+  servoList[15].minValue = 3200;
+  servoList[15].maxValue = 9200;
   servoList[15].channel = 20;
-  servoList[15].servoName = "PalpebraD";
+  servoList[15].servoName = "PalpebraS";
   servoList[15].mirror = true;
 
-  servoList[16].minValue = 3600;
+  servoList[16].minValue = 3500;
   servoList[16].maxValue = 10000;
   servoList[16].channel = 21;
   servoList[16].servoName = "OcchioDX";
   servoList[16].mirror = true;
 
-  servoList[17].minValue = 4500;
-  servoList[17].maxValue = 9000;
+  servoList[17].minValue = 3200;
+  servoList[17].maxValue = 1000;
   servoList[17].channel = 22;
   servoList[17].servoName = "OcchioDY";
   servoList[17].mirror = false;
@@ -177,7 +177,7 @@ void setup() {
   servoList[18].minValue = 4000;
   servoList[18].maxValue = 9200;
   servoList[18].channel = 23;
-  servoList[18].servoName = "PalpebraS";
+  servoList[18].servoName = "PalpebraD";
   servoList[18].mirror = false;
 
 
