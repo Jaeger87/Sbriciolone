@@ -1,7 +1,7 @@
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   for (int i = 0; i < 1024; i++)
   {
     Serial.println(i);

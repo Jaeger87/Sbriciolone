@@ -42,7 +42,7 @@ ButtonLed mirrorButton; //non deve mai inviare alla testa
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   mirrorButton.pin = 5;
   mirrorButton.led = 4;

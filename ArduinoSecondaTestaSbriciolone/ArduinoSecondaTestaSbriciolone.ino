@@ -4,6 +4,7 @@ struct ServoValues {
   int channel;
   String servoName;
   bool mirror;
+  int lastPosition;
 };
 
 const char eventsC = 'e';
@@ -62,7 +63,7 @@ void setup() {
     ms (8000). */
 
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   maestroSerial.begin(9600);
   Serial.setTimeout(20);
 

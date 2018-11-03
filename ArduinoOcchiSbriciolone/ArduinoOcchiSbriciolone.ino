@@ -132,7 +132,7 @@ void setup()
   readButtonLed(mirrorButton);
   readButtonLedAndSend(palpebreButton);
 
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 

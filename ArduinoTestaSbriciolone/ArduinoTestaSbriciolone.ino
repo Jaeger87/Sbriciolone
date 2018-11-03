@@ -62,8 +62,8 @@ void setup() {
     ms (8000). */
 
 
-  Serial.begin(9600);
-  maestroSerial.begin(9600);
+  Serial.begin(115200);
+  maestroSerial.begin(115200);
   Serial.setTimeout(20);
 
   servoList[0].minValue = 2400;

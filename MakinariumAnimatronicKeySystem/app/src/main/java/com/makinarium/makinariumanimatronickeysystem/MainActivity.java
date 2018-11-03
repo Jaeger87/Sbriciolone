@@ -735,6 +735,8 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             int id = intent.getIntExtra(Constants.intentIDProp, 0);
             String text = intent.getStringExtra("Message");
+            if(id == Constants.HeadID)
+                Log.i("BTHead",text);
             if(text.contains("ALI"))
                 return;
             byte[] bytes;
@@ -743,7 +745,7 @@ public class MainActivity extends AppCompatActivity {
             if(performanceFilter.contains(f))
                 return;
 
-
+            Log.i("BT15",text);
             switch (id){
                 case Constants.MouthID:
                     if(!mouthActiveController)

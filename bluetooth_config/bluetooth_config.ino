@@ -3,7 +3,7 @@ Serial.begin(9600);
 delay(2000); 
 
 // AT+NAMEXXX where XXX is the new name
-Serial.print("AT+Mouth");
+Serial.print("AT+NAME=Mouth\n\r");
 delay(2000);
 
 // AT+BAUDX where X from 1 to 8
@@ -15,7 +15,7 @@ delay(2000);
 // 6 -> 38400 Bauds
 // 7 -> 57600 Bauds
 // 8 -> 115200 Bauds
-Serial.print("AT+BAUD8"); 
+//Serial.print("AT+BAUD8\n\r"); 
 }
 
 void loop() {
