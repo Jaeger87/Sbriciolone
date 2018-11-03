@@ -93,15 +93,32 @@ public class ButtonsContainer<T> {
 
     public ButtonPerformance<T> getButtonPerformance(int id)
     {
-        if(performanceHashMap.containsKey(IDFactory.getLogicID(id)))
-            return performanceHashMap.get(IDFactory.getLogicID(id));
+        int logicID = IDFactory.getLogicID(id);
+        if(performanceHashMap.containsKey(logicID))
+            return performanceHashMap.get(logicID);
         return null;
     }
 
     public PresetPerformance<T> getPresetPerformance(int id)
     {
-        if(presetHashMap.containsKey(IDFactory.getLogicID(id)))
-            return presetHashMap.get(IDFactory.getLogicID(id));
+        int logicID = IDFactory.getLogicID(id);
+        if(presetHashMap.containsKey(logicID))
+            return presetHashMap.get(logicID);
+        return null;
+    }
+
+
+    public ButtonPerformance<T> getButtonPerformanceFromLogic(int logicID)
+    {
+        if(performanceHashMap.containsKey(logicID))
+            return performanceHashMap.get(logicID);
+        return null;
+    }
+
+    public PresetPerformance<T> getPresetPerformanceFromLogic(int logicID)
+    {
+        if(presetHashMap.containsKey(logicID))
+            return presetHashMap.get(logicID);
         return null;
     }
 

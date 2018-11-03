@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean presetRegistrationMode = false;
     private boolean mouthActiveController = true;
     private boolean eyesActiveController = true;
-    private boolean canIChangeNames = true;
+    private boolean canIChangeNames = false;
 
     private Switch mouthSwitch;
     private Switch eyesSwitch;
@@ -682,10 +682,10 @@ public class MainActivity extends AppCompatActivity {
     public void onCheckNames(CompoundButton buttonView, boolean isChecked) {
         if(isChecked) {
             canIChangeNames = true;
-            Toast.makeText(this, Constants.controllerActived, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, Constants.YesICAN, Toast.LENGTH_LONG).show();
         } else {
             canIChangeNames = false;
-            Toast.makeText(this, Constants.controllerDisactived, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, Constants.NOICAN, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -892,7 +892,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 for(int i = 0; i < values.length - 1; i++)//Trucchetto se ho solo un bottone da premere
                 {
-                    Button b = container.getButtonPerformance(values[i]).getButton();
+                    Button b = container.getButtonPerformanceFromLogic(values[i]).getButton();
                     b.performClick();
                 }
                 return;
@@ -933,7 +933,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                AbstractPerformance ap = container.getButtonPerformance(IDFactory.convertTextToButton(v.getId()));
+                AbstractPerformance ap = container.getGenericAbstractPerformance(IDFactory.convertTextToButton(v.getId()));
                 undoManager.addLastEdit(ap, ap.getName());
                 ap.setName(input.getText().toString());
                 container.saveMe(getBaseContext() ,gson);

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 import com.makinarium.makinariumanimatronickeysystem.R;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.IDFactory;
 
 public abstract class AbstractPerformance {
 
@@ -98,9 +99,9 @@ public abstract class AbstractPerformance {
     public void updateColor()
     {
 
-
-        if(id == R.id.eyebrow_01 || id == R.id.eyes_01 || id == R.id.eyelid_01 ||
-                id == R.id.preset_01 ||id == R.id.mouth_01 || id == R.id.nose_01)
+        if(id == IDFactory.getLogicID(R.id.eyebrow_01) || id == IDFactory.getLogicID(R.id.eyes_01) ||
+                id == IDFactory.getLogicID(R.id.eyelid_01) || id == IDFactory.getLogicID(R.id.preset_01) ||
+                id == IDFactory.getLogicID(R.id.mouth_01) || id == IDFactory.getLogicID(R.id.nose_01))
             return;
 
         if(canPerform)
