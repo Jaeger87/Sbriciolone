@@ -4,7 +4,7 @@ struct ServoValues {
   int channel;
   String servoName;
   bool mirror;
-  int lastPosition;
+  int lastPosition = 512;
   int counterShutDown;
 };
 
@@ -28,22 +28,12 @@ const byte limiteOcchi = 4;
 const int minOcchiValue = 995;
 const int maxOcchiValue = 190;
 
+const int rangeBoccaMediani = 300;
+
 const byte shutDownServoEvery = 3;
 
 const byte shutDownEyesBrownEvery = 3;
 int shutDownEyesBrownCounter = 0;
-
-const byte shutDownEyeLidsEvery = 3;
-int shutDownEyeLidsCounter = 0;
-
-const byte shutDownEyesEvery = 3;
-int shutDownEyesCounter = 0;
-
-const byte shutDownNoseEvery = 3;
-int shutDownEyesNoseCounter = 0;
-
-const byte shutDownEyesMouthEvery = 3;
-int shutDownEyesMouthCounter = 0;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
@@ -199,7 +189,9 @@ void setup() {
 
   nextPalpebre = random(2000, 10000) + millis();
 
-}
+  for (int i = 0; i < howmanyservo; i++)
+    maestro.setTarget(servoList[i].channel, analogServoConversion(servoList[i].lastPosition, servoList[i]));
+  }
 
 void loop() {
   String message = Serial.readStringUntil('\n');
@@ -326,6 +318,11 @@ void mouthMessage(String message)
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
+
+    if (index == 1 || index == 3)
+      if (abs(servoList[2].lastPosition - value) > rangeBoccaMediani)
+        return;
+
     servoList[index].lastPosition = value;
 
     maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
