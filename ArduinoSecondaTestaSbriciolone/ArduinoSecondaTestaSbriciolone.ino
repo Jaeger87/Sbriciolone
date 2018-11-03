@@ -5,6 +5,7 @@ struct ServoValues {
   String servoName;
   bool mirror;
   int lastPosition;
+  int counterShutDown;
 };
 
 const char eventsC = 'e';
@@ -25,10 +26,22 @@ unsigned long nextPalpebre = 0;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
 const int minOcchiValue = 995;
-const int maxOcchiValue = 80;
+const int maxOcchiValue = 190;
 
-const byte shutDownEyesBrownEvery = 5;
+const byte shutDownEyesBrownEvery = 3;
 int shutDownEyesBrownCounter = 0;
+
+const byte shutDownEyeLidsEvery = 3;
+int shutDownEyeLidsCounter = 0;
+
+const byte shutDownEyesEvery = 3;
+int shutDownEyesCounter = 0;
+
+const byte shutDownNoseEvery = 3;
+int shutDownEyesNoseCounter = 0;
+
+const byte shutDownEyesMouthEvery = 3;
+int shutDownEyesMouthCounter = 0;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
@@ -235,7 +248,7 @@ void loop() {
   }
   gestisciOcchi();
   deadManButton();
-  shutdownEyes();
+  shutdownEyesBrowns();
   delay(20);
 }
 
@@ -243,10 +256,12 @@ void noseMessage(String message)
 {
   if (message.charAt(1) == servoC)
   {
+    
     String indexString = getValueStringSplitter(message, ';', 1);
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
+    servoList[index].lastPosition = value;
     maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
   }
 }
@@ -275,6 +290,7 @@ void eyeBrowMessage(String message)
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
+    servoList[index].lastPosition = value;
     maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
   }
 }
@@ -288,6 +304,7 @@ void mouthMessage(String message)
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
+    servoList[index].lastPosition = value;
     maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
   }
 }
@@ -300,6 +317,7 @@ void eyesMotorMessage(String message)
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
     int value = valueString.toInt();
+    servoList[index].lastPosition = value;
     maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
   }
 }
@@ -314,6 +332,7 @@ void palpebraMotorMessage(String message)
   int index = indexString.toInt();
   String valueString = getValueStringSplitter(message, ';', 2);
   int value = valueString.toInt();
+  servoList[index].lastPosition = value;
   maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
 }
 
@@ -441,7 +460,7 @@ String getValueStringSplitter(String data, char separator, int index)
   return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
 
-void shutdownEyes()
+void shutdownEyesBrowns()
 {
   if (shutDownEyesBrownCounter > shutDownEyesBrownEvery)
   {

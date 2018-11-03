@@ -4,6 +4,8 @@ struct ServoValues {
   int channel;
   String servoName;
   bool mirror;
+  int lastPosition;
+  int counterShutDown;
 };
 
 const char eventsC = 'e';
@@ -24,7 +26,7 @@ unsigned long nextPalpebre = 0;
 byte contatoreOcchi = 0;
 const byte limiteOcchi = 4;
 const int minOcchiValue = 995;
-const int maxOcchiValue = 80;
+const int maxOcchiValue = 190;
 
 const byte shutDownEyesBrownEvery = 5;
 int shutDownEyesBrownCounter = 0;
@@ -205,7 +207,7 @@ void loop() {
 
 
     int myCheckSum = sum % 100;
-    
+
     if (myCheckSum == checksum)
     {
       if (message.charAt(0) == eyesC)
