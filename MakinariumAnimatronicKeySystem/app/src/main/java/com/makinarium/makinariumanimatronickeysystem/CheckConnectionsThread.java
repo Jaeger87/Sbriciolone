@@ -3,6 +3,7 @@ package com.makinarium.makinariumanimatronickeysystem;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.Constants;
 
@@ -15,9 +16,9 @@ public class CheckConnectionsThread extends Thread {
     private long lastTimeMouthAlive;
     private long lastTimeEyesAlive;
     private long lastTimeHeadAlive;
-    private boolean mouthStatus;
-    private boolean eyesStatus;
-    private boolean headStatus;
+    private boolean mouthStatus = true;
+    private boolean eyesStatus = true;
+    private boolean headStatus = true;
 
     private boolean threadAlive = true;
 
@@ -61,7 +62,6 @@ public class CheckConnectionsThread extends Thread {
         {
             if(status)
             {
-
                 status = false;
                 sendNews(who, status);
                 updateStatus(who, status);

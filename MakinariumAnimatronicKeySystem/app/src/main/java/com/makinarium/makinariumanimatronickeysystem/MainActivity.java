@@ -102,8 +102,10 @@ public class MainActivity extends AppCompatActivity {
     private Gson gson;
 
     private int readyColor = 0;
-    private int toReccolor = 0;
     private int presetColor = 0;
+
+
+    private CheckConnectionsThread checkThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
         readyColor = ResourcesCompat.getColor(getResources(), R.color.activePerform, null);
 
-        toReccolor = ResourcesCompat.getColor(getResources(), R.color.performToRec, null);
+        int toReccolor = ResourcesCompat.getColor(getResources(), R.color.performToRec, null);
 
         presetColor = ResourcesCompat.getColor(getResources(), R.color.firstcolumn, null);
 
@@ -218,7 +220,11 @@ public class MainActivity extends AppCompatActivity {
         eyesStatus = (TextView) findViewById(R.id.eyesStatus);
         headStatus = (TextView) findViewById(R.id.headStatus);
 
+        checkThread = new CheckConnectionsThread(this);
+
         connectionBluetooth();
+
+        checkThread.start();
         //testButton();
     }
 
@@ -434,6 +440,8 @@ public class MainActivity extends AppCompatActivity {
 
         unregisterReceiver(mBroadcastReceiver1);
         unregisterReceiver(mReceiver);
+        unregisterReceiver(mDeathOrAlive);
+        checkThread.stopChecking();
         mBluetoothConnectionEyes.stopClient();
         mBluetoothConnectionMouth.stopClient();
         mBluetoothConnectionHead.stopClient();
@@ -735,8 +743,21 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             int id = intent.getIntExtra(Constants.intentIDProp, 0);
             String text = intent.getStringExtra("Message");
-            if(id == Constants.HeadID)
-                Log.i("BTHead",text);
+            long currentTime = System.currentTimeMillis();
+            switch (id){
+                case Constants.MouthID:
+                    checkThread.setLastTimeMouthAlive(currentTime);
+                    break;
+                case Constants.eyesID:
+                    checkThread.setLastTimeEyesAlive(currentTime);
+                    break;
+                case Constants.HeadID:
+                    checkThread.setLastTimeHeadAlive(currentTime);
+                    break;
+                default:
+                    break;
+            }
+
             if(text.contains("ALI"))
                 return;
             byte[] bytes;
