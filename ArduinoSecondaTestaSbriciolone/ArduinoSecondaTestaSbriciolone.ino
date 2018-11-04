@@ -6,6 +6,8 @@ struct ServoValues {
   bool mirror;
   int lastPosition = 512;
   int counterShutDown;
+  bool stopAndGo;
+  int shutDownWhen;
 };
 
 const char eventsC = 'e';
@@ -28,12 +30,8 @@ const byte limiteOcchi = 4;
 const int minOcchiValue = 995;
 const int maxOcchiValue = 190;
 
-const int rangeBoccaMediani = 300;
+const int rangeBoccaMediani = 350;
 
-const byte shutDownServoEvery = 3;
-
-const byte shutDownEyesBrownEvery = 3;
-int shutDownEyesBrownCounter = 0;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
@@ -77,121 +75,159 @@ void setup() {
   servoList[0].channel = 5;
   servoList[0].servoName = "BoccaS";
   servoList[0].mirror = false;
+  servoList[0].stopAndGo = false;
+  servoList[0].shutDownWhen = 4;
 
   servoList[1].minValue = 4300;
   servoList[1].maxValue = 9400;
   servoList[1].channel = 6;
   servoList[1].servoName = "BoccaCS";
-  servoList[1].mirror = true;
+  servoList[1].mirror = false;
+  servoList[1].stopAndGo = false;
+  servoList[1].shutDownWhen = 4;
 
   servoList[2].minValue = 3500;
   servoList[2].maxValue = 8000;
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
   servoList[2].mirror = false;
+  servoList[2].stopAndGo = false;
+  servoList[2].shutDownWhen = 4;
 
   servoList[3].minValue = 4000;
   servoList[3].maxValue = 8000;
   servoList[3].channel = 8;
   servoList[3].servoName = "BoccaCD";//
   servoList[3].mirror = true;
+  servoList[3].stopAndGo = false;
+  servoList[3].shutDownWhen = 4;
 
   servoList[4].minValue = 4400;
   servoList[4].maxValue = 8100;//
   servoList[4].channel = 9;
   servoList[4].servoName = "BoccaD";//
   servoList[4].mirror = true;
+  servoList[4].stopAndGo = false;
+  servoList[4].shutDownWhen = 4;
 
   servoList[5].minValue = 5300;
   servoList[5].maxValue = 7400;
-  servoList[5].channel = 10;
+  servoList[5].channel = 12;
   servoList[5].servoName = "NasoS";
   servoList[5].mirror = false;
+  servoList[5].stopAndGo = false;
+  servoList[5].shutDownWhen = 4;
 
   servoList[6].minValue = 3800;
   servoList[6].maxValue = 6600;//
   servoList[6].channel = 11;
   servoList[6].servoName = "GuanciaS";
   servoList[6].mirror = true;
+  servoList[6].stopAndGo = false;
+  servoList[6].shutDownWhen = 4;
 
   servoList[7].minValue = 5000;
   servoList[7].maxValue = 7000;
-  servoList[7].channel = 12;
+  servoList[7].channel = 10;
   servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
+  servoList[7].stopAndGo = false;
+  servoList[7].shutDownWhen = 4;
 
   servoList[8].minValue = 4800;
   servoList[8].maxValue = 6800;
   servoList[8].channel = 13;
   servoList[8].servoName = "GuanciaD";
   servoList[8].mirror = true;
+  servoList[8].stopAndGo = false;
+  servoList[8].shutDownWhen = 4;
 
   servoList[9].minValue = 4000;
   servoList[9].maxValue = 8400;
   servoList[9].channel = 14;
   servoList[9].servoName = "SopraciglioCS";
   servoList[9].mirror = true;
+  servoList[9].stopAndGo = true;
+  servoList[9].shutDownWhen = 3;
 
   servoList[10].minValue = 3900;
   servoList[10].maxValue = 8400;
   servoList[10].channel = 15;
   servoList[10].servoName = "SopraciglioS";
   servoList[10].mirror = true;
+  servoList[10].stopAndGo = true;
+  servoList[10].shutDownWhen = 3;
 
   servoList[11].minValue = 3700;
   servoList[11].maxValue = 8300;
   servoList[11].channel = 16;
   servoList[11].servoName = "SopraciglioCD";
   servoList[11].mirror = true;
+  servoList[11].stopAndGo = true;
+  servoList[11].shutDownWhen = 3;
 
   servoList[12].minValue = 3900;
   servoList[12].maxValue = 8300;
   servoList[12].channel = 17;
   servoList[12].servoName = "SopraciglioD";
   servoList[12].mirror = true;
+  servoList[12].stopAndGo = true;
+  servoList[12].shutDownWhen = 3;
 
   servoList[13].minValue = 3900;
   servoList[13].maxValue = 8800;
   servoList[13].channel = 18;
   servoList[13].servoName = "OcchioSX";
   servoList[13].mirror = true;
+  servoList[13].stopAndGo = true;
+  servoList[13].shutDownWhen = 3;
 
   servoList[14].minValue = 2700;
   servoList[14].maxValue = 9600;
   servoList[14].channel = 4;
   servoList[14].servoName = "OcchioSY";
   servoList[14].mirror = true;
+  servoList[14].stopAndGo = true;
+  servoList[14].shutDownWhen = 3;
 
   servoList[15].minValue = 3200;
   servoList[15].maxValue = 9600;
   servoList[15].channel = 20;
   servoList[15].servoName = "PalpebraS";
   servoList[15].mirror = true;
+  servoList[15].stopAndGo = true;
+  servoList[15].shutDownWhen = 6;
 
   servoList[16].minValue = 3700;
   servoList[16].maxValue = 8000;
   servoList[16].channel = 21;
   servoList[16].servoName = "OcchioDX";
   servoList[16].mirror = true;
+  servoList[16].stopAndGo = true;
+  servoList[16].shutDownWhen = 3;
 
   servoList[17].minValue = 2000;
   servoList[17].maxValue = 9200;
   servoList[17].channel = 22;
   servoList[17].servoName = "OcchioDY";
   servoList[17].mirror = false;
+  servoList[17].stopAndGo = true;
+  servoList[17].shutDownWhen = 3;
 
   servoList[18].minValue = 4800;
   servoList[18].maxValue = 9200;
   servoList[18].channel = 23;
   servoList[18].servoName = "PalpebraD";
   servoList[18].mirror = false;
+  servoList[18].stopAndGo = true;
+  servoList[18].shutDownWhen = 6;
 
 
   nextPalpebre = random(2000, 10000) + millis();
 
   for (int i = 0; i < howmanyservo; i++)
     maestro.setTarget(servoList[i].channel, analogServoConversion(servoList[i].lastPosition, servoList[i]));
-  }
+}
 
 void loop() {
   String message = Serial.readStringUntil('\n');
@@ -288,7 +324,6 @@ void eyeBrowMessage(String message)
     servoList[10].counterShutDown = 0;
     servoList[11].counterShutDown = 0;
     servoList[12].counterShutDown = 0;
-    shutDownEyesBrownCounter = 0;
     String indexString = getValueStringSplitter(message, ';', 1);
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
@@ -304,16 +339,19 @@ void mouthMessage(String message)
 {
   if (message.charAt(1) == servoC)
   {
-    maestro.setTarget(servoList[0].channel, analogServoConversion(servoList[0].lastPosition, servoList[0]));
-    maestro.setTarget(servoList[1].channel, analogServoConversion(servoList[1].lastPosition, servoList[1]));
-    maestro.setTarget(servoList[2].channel, analogServoConversion(servoList[2].lastPosition, servoList[2]));
-    maestro.setTarget(servoList[3].channel, analogServoConversion(servoList[3].lastPosition, servoList[3]));
-    maestro.setTarget(servoList[4].channel, analogServoConversion(servoList[4].lastPosition, servoList[4]));
-    servoList[0].counterShutDown = 0;
-    servoList[1].counterShutDown = 0;
-    servoList[2].counterShutDown = 0;
-    servoList[3].counterShutDown = 0;
-    servoList[4].counterShutDown = 0;
+    if (servoList[2].stopAndGo)
+    {
+      maestro.setTarget(servoList[0].channel, analogServoConversion(servoList[0].lastPosition, servoList[0]));
+      maestro.setTarget(servoList[1].channel, analogServoConversion(servoList[1].lastPosition, servoList[1]));
+      maestro.setTarget(servoList[2].channel, analogServoConversion(servoList[2].lastPosition, servoList[2]));
+      maestro.setTarget(servoList[3].channel, analogServoConversion(servoList[3].lastPosition, servoList[3]));
+      maestro.setTarget(servoList[4].channel, analogServoConversion(servoList[4].lastPosition, servoList[4]));
+      servoList[0].counterShutDown = 0;
+      servoList[1].counterShutDown = 0;
+      servoList[2].counterShutDown = 0;
+      servoList[3].counterShutDown = 0;
+      servoList[4].counterShutDown = 0;
+    }
     String indexString = getValueStringSplitter(message, ';', 1);
     int index = indexString.toInt();
     String valueString = getValueStringSplitter(message, ';', 2);
@@ -323,6 +361,44 @@ void mouthMessage(String message)
       if (abs(servoList[2].lastPosition - value) > rangeBoccaMediani)
         return;
 
+    if (index == 2)
+    {
+      if (abs(servoList[1].lastPosition - value) > rangeBoccaMediani)
+      {
+        int diff = servoList[1].lastPosition - value;
+        if (diff > 0)
+        {
+          int correction = diff - rangeBoccaMediani + 1;
+          servoList[1].lastPosition = servoList[1].lastPosition - correction;
+          maestro.setTarget(servoList[1].channel, analogServoConversion(servoList[1].lastPosition, servoList[1]));
+        }
+        else
+        {
+          int correction = diff + rangeBoccaMediani + 1;
+          servoList[1].lastPosition = servoList[1].lastPosition + correction;
+          maestro.setTarget(servoList[1].channel, analogServoConversion(servoList[1].lastPosition, servoList[1]));
+        }
+      }
+
+      if (abs(servoList[3].lastPosition - value) > rangeBoccaMediani)
+      {
+
+        int diff = servoList[3].lastPosition - value;
+        if (diff > 0)
+        {
+          int correction = diff - rangeBoccaMediani + 1;
+          servoList[3].lastPosition = servoList[3].lastPosition - correction;
+          maestro.setTarget(servoList[3].channel, analogServoConversion(servoList[3].lastPosition, servoList[3]));
+        }
+        else
+        {
+          int correction = diff + rangeBoccaMediani + 1;
+          servoList[3].lastPosition = servoList[3].lastPosition + correction;
+          maestro.setTarget(servoList[3].channel, analogServoConversion(servoList[3].lastPosition, servoList[3]));
+        }
+
+      }
+    }
     servoList[index].lastPosition = value;
 
     maestro.setTarget(servoList[index].channel, analogServoConversion(value, servoList[index]));
@@ -365,6 +441,8 @@ void eventoPalpebre()
   {
     sitOcchi = CHIUSMANUAL;
     contatoreOcchi = 0;
+    servoList[15].counterShutDown = 0;
+    servoList[18].counterShutDown = 0;
     maestro.setSpeed(servoList[15].channel, 0);
     maestro.setSpeed(servoList[18].channel, 0);
     maestro.setAcceleration(servoList[15].channel, 0);
@@ -400,6 +478,8 @@ void gestisciOcchi()
       maestro.setSpeed(servoList[18].channel, 0);
       maestro.setAcceleration(servoList[15].channel, 0);
       maestro.setAcceleration(servoList[18].channel, 0);
+      servoList[15].counterShutDown = 0;
+      servoList[18].counterShutDown = 0;
       maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
     }
@@ -410,6 +490,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
+      servoList[15].counterShutDown = 0;
+      servoList[18].counterShutDown = 0;
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = APERTI;
@@ -422,6 +504,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
+      servoList[15].counterShutDown = 0;
+      servoList[18].counterShutDown = 0;
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = MANUAL;
@@ -437,7 +521,7 @@ void gestisciOcchi()
   }
 */
 
-int analogServoConversion(int analogValue, ServoValues& servo)
+int analogServoConversion(int analogValue, ServoValues & servo)
 {
   if (servo.mirror)
     return map(analogValue, 1023, 0, servo.minValue, servo.maxValue);
@@ -482,25 +566,13 @@ String getValueStringSplitter(String data, char separator, int index)
   return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
 
-void shutdownEyesBrowns()
-{
-  if (shutDownEyesBrownCounter > shutDownEyesBrownEvery)
-  {
-    maestro.setTarget(servoList[9].channel, 0); //
-    maestro.setTarget(servoList[10].channel , 0); //
-    maestro.setTarget(servoList[11].channel, 0); //
-    maestro.setTarget(servoList[12].channel, 0); //
-
-    return;
-  }
-  shutDownEyesBrownCounter++;
-}
-
 void shutDownMotors()
 {
   for (int i = 0; i < howmanyservo; i++)
   {
-    if (servoList[i].counterShutDown > shutDownServoEvery)
+    if (!servoList[i].stopAndGo)
+      continue;
+    if (servoList[i].counterShutDown > servoList[i].shutDownWhen)
       maestro.setTarget(servoList[i].channel, 0);
     else
       servoList[i].counterShutDown = servoList[i].counterShutDown + 1;
