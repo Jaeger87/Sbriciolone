@@ -66,9 +66,9 @@ void setup() {
     ms (8000). */
 
 
-  Serial2.begin(115200);
+  Serial3.begin(115200);
   maestroSerial.begin(115200);
-  Serial2.setTimeout(20);
+  Serial3.setTimeout(20);
 
   servoList[0].minValue = 3900;
   servoList[0].maxValue = 8000;
@@ -230,7 +230,7 @@ void setup() {
 }
 
 void loop() {
-  String message = Serial2.readStringUntil('\n');
+  String message = Serial3.readStringUntil('\n');
   if (message.length() > 0)
   {
     int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
@@ -583,7 +583,7 @@ void shutDownMotors()
 void deadManButton()
 {
   if (aliveCounter % aliveTrigger == 0)
-    Serial2.println("ALIVE");
+    Serial3.println("ALIVE");
 
   aliveCounter++;
 }
