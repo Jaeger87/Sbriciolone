@@ -35,7 +35,7 @@ const int rangeBoccaMediani = 350;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
-statiOcchi sitOcchi = MANUAL;
+statiOcchi sitOcchi = APERTI;
 
 const int eyeLidsSpeed = 72;
 
@@ -75,7 +75,7 @@ void setup() {
   servoList[0].channel = 5;
   servoList[0].servoName = "BoccaS";
   servoList[0].mirror = true;
-  servoList[0].stopAndGo = false;
+  servoList[0].stopAndGo = true;
   servoList[0].shutDownWhen = 4;
 
   servoList[1].minValue = 3200;
@@ -83,7 +83,7 @@ void setup() {
   servoList[1].channel = 6;
   servoList[1].servoName = "BoccaCS";
   servoList[1].mirror = false;
-  servoList[1].stopAndGo = false;
+  servoList[1].stopAndGo = true;
   servoList[1].shutDownWhen = 4;
 
   servoList[2].minValue = 3500;
@@ -91,7 +91,7 @@ void setup() {
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
   servoList[2].mirror = true;
-  servoList[2].stopAndGo = false;
+  servoList[2].stopAndGo = true;
   servoList[2].shutDownWhen = 4;
 
   servoList[3].minValue = 2400;
@@ -99,7 +99,7 @@ void setup() {
   servoList[3].channel = 8;
   servoList[3].servoName = "BoccaCD";//
   servoList[3].mirror = true;
-  servoList[3].stopAndGo = false;
+  servoList[3].stopAndGo = true;
   servoList[3].shutDownWhen = 4;
 
   servoList[4].minValue = 4400;
@@ -107,7 +107,7 @@ void setup() {
   servoList[4].channel = 9;
   servoList[4].servoName = "BoccaD";//
   servoList[4].mirror = false;
-  servoList[4].stopAndGo = false;
+  servoList[4].stopAndGo = true;
   servoList[4].shutDownWhen = 4;
 
   servoList[5].minValue = 5600;
