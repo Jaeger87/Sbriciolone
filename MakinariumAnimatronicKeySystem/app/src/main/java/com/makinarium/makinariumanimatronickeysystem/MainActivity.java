@@ -51,6 +51,8 @@ import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
     private int readyColor = 0;
     private int presetColor = 0;
 
+    private Executor myExecutor;
 
     private CheckConnectionsThread checkThread;
 
@@ -223,6 +226,8 @@ public class MainActivity extends AppCompatActivity {
         checkThread = new CheckConnectionsThread(this);
 
         connectionBluetooth();
+
+        myExecutor = Executors.newFixedThreadPool(7);
 
         checkThread.start();
         //testButton();
@@ -466,9 +471,11 @@ public class MainActivity extends AppCompatActivity {
             presetInRec.setButtonPerformance(container.getButtonPerformance(id));
             timePresetRec = System.currentTimeMillis();
         }
+
         performanceFilter.add(bp.getFaceSector());
         performanceThread pt = new performanceThread();
-        pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
+        pt.executeOnExecutor(myExecutor,bp);
+        //pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
 
     }
 
@@ -480,7 +487,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, Constants.RegistrationString, Toast.LENGTH_LONG).show();
         timeTask = new TimerForRecorder();
-        timeTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        timeTask.executeOnExecutor(myExecutor);
+        //timeTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         stopButton.setClickable(true);
         stopButton.setEnabled(true);
 
@@ -496,7 +504,8 @@ public class MainActivity extends AppCompatActivity {
     {
         Toast.makeText(this, Constants.RegistrationString, Toast.LENGTH_LONG).show();
         timeTask = new TimerForRecorder();
-        timeTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        timeTask.executeOnExecutor(myExecutor);
+        //timeTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         stopButton.setClickable(true);
         stopButton.setEnabled(true);
         timePresetRec = System.currentTimeMillis();
@@ -520,7 +529,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, Constants.performing, Toast.LENGTH_SHORT).show();
         container.deactivatesButtonSectorButton(bp.getFaceSector());
         preSetThread pt = new preSetThread();
-        pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
+        pt.executeOnExecutor(myExecutor, bp);
+        //pt.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, bp);
     }
 
     public void resetSBButton()
