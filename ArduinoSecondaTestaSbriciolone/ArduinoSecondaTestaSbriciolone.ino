@@ -191,7 +191,7 @@ void setup() {
 
   for (int i = 0; i < howmanyservo; i++)
     maestro.setTarget(servoList[i].channel, analogServoConversion(servoList[i].lastPosition, servoList[i]));
-  }
+}
 
 void loop() {
   String message = Serial.readStringUntil('\n');
@@ -365,6 +365,8 @@ void eventoPalpebre()
   {
     sitOcchi = CHIUSMANUAL;
     contatoreOcchi = 0;
+    servoList[15].counterShutDown = 0;
+    servoList[18].counterShutDown = 0;
     maestro.setSpeed(servoList[15].channel, 0);
     maestro.setSpeed(servoList[18].channel, 0);
     maestro.setAcceleration(servoList[15].channel, 0);
@@ -400,6 +402,8 @@ void gestisciOcchi()
       maestro.setSpeed(servoList[18].channel, 0);
       maestro.setAcceleration(servoList[15].channel, 0);
       maestro.setAcceleration(servoList[18].channel, 0);
+      servoList[15].counterShutDown = 0;
+      servoList[18].counterShutDown = 0;
       maestro.setTarget(servoList[15].channel, analogServoConversion(minOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(minOcchiValue, servoList[18]));
     }
@@ -410,6 +414,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
+      servoList[15].counterShutDown = 0;
+      servoList[18].counterShutDown = 0;
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = APERTI;
@@ -422,6 +428,8 @@ void gestisciOcchi()
     contatoreOcchi++;
     if (contatoreOcchi == limiteOcchi)
     {
+      servoList[15].counterShutDown = 0;
+      servoList[18].counterShutDown = 0;
       maestro.setTarget(servoList[15].channel, analogServoConversion(maxOcchiValue, servoList[15]));
       maestro.setTarget(servoList[18].channel, analogServoConversion(maxOcchiValue, servoList[18]));
       sitOcchi = MANUAL;
