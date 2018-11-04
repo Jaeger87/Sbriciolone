@@ -35,7 +35,7 @@ const int rangeBoccaMediani = 350;
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
-statiOcchi sitOcchi = APERTI;
+statiOcchi sitOcchi = MANUAL;
 
 const int eyeLidsSpeed = 72;
 
@@ -66,9 +66,9 @@ void setup() {
     ms (8000). */
 
 
-  Serial2.begin(115200);
+  Serial3.begin(115200);
   maestroSerial.begin(115200);
-  Serial2.setTimeout(20);
+  Serial3.setTimeout(20);
 
   servoList[0].minValue = 2400;
   servoList[0].maxValue = 7200;
@@ -115,7 +115,7 @@ void setup() {
   servoList[5].channel = 10;
   servoList[5].servoName = "NasoS";
   servoList[5].mirror = true;
-  servoList[5].stopAndGo = false;
+  servoList[5].stopAndGo = true;
   servoList[5].shutDownWhen = 4;
 
   servoList[6].minValue = 3500;
@@ -123,7 +123,7 @@ void setup() {
   servoList[6].channel = 11;
   servoList[6].servoName = "GuanciaS";
   servoList[6].mirror = false;
-  servoList[6].stopAndGo = false;
+  servoList[6].stopAndGo = true;
   servoList[6].shutDownWhen = 4;
 
   servoList[7].minValue = 5200;
@@ -131,7 +131,7 @@ void setup() {
   servoList[7].channel = 12;
   servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
-  servoList[7].stopAndGo = false;
+  servoList[7].stopAndGo = true;
   servoList[7].shutDownWhen = 4;
 
   servoList[8].minValue = 5600;
@@ -139,7 +139,7 @@ void setup() {
   servoList[8].channel = 13;
   servoList[8].servoName = "GuanciaD";
   servoList[8].mirror = true;
-  servoList[8].stopAndGo = false;
+  servoList[8].stopAndGo = true;
   servoList[8].shutDownWhen = 4;
 
   servoList[9].minValue = 3200;
@@ -231,7 +231,7 @@ void setup() {
 
 
 void loop() {
-  String message = Serial2.readStringUntil('\n');
+  String message = Serial3.readStringUntil('\n');
   if (message.length() > 0)
   {
     int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
@@ -584,7 +584,7 @@ void shutDownMotors()
 void deadManButton()
 {
   if (aliveCounter % aliveTrigger == 0)
-    Serial2.println("ALIVE");
+    Serial3.println("ALIVE");
 
   aliveCounter++;
 }
