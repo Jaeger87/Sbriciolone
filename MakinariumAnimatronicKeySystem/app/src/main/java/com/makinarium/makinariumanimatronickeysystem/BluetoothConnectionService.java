@@ -298,7 +298,7 @@ public class BluetoothConnectionService {
         }
 
         //Call this from the main activity to send data to the remote device
-        public void write(byte[] bytes) {
+        public synchronized void write(byte[] bytes) {
 
             try {
                 mmOutStream.write(bytes);

@@ -545,8 +545,10 @@ public class MainActivity extends AppCompatActivity {
         timeTask = null;
         performRegistrationMode = false;
         presetRegistrationMode = false;
-        if(bInRec != null)
+        if(bInRec != null) {
             bInRec.updateColor();
+            bInRec.compressMessage();
+        }
         bInRec = null;
 
         if(presetInRec != null)

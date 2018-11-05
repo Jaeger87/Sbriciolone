@@ -191,7 +191,7 @@ void setup() {
   servoList[14].shutDownWhen = 3;
 
   servoList[15].minValue = 3200;
-  servoList[15].maxValue = 9200;
+  servoList[15].maxValue = 8000;
   servoList[15].channel = 20;
   servoList[15].servoName = "PalpebraS";
   servoList[15].mirror = true;
@@ -207,14 +207,14 @@ void setup() {
   servoList[16].shutDownWhen = 3;
 
   servoList[17].minValue = 3200;
-  servoList[17].maxValue = 1000;
+  servoList[17].maxValue = 10000;
   servoList[17].channel = 22;
   servoList[17].servoName = "OcchioDY";
   servoList[17].mirror = false;
   servoList[17].stopAndGo = true;
   servoList[17].shutDownWhen = 3;
 
-  servoList[18].minValue = 4000;
+  servoList[18].minValue = 4400;
   servoList[18].maxValue = 9200;
   servoList[18].channel = 23;
   servoList[18].servoName = "PalpebraD";

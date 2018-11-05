@@ -9,7 +9,7 @@ const char mouthC = 'M';
 const char noseC = 'N';
 
 
-const byte Analogfilter = 6;
+const byte Analogfilter = 18;
 const byte delayLettura = 7;
 const byte delayLoop = 50;
 int aliveCounter = 0;

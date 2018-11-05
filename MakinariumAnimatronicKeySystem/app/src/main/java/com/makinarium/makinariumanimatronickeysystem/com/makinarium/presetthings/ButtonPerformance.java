@@ -41,4 +41,9 @@ public class ButtonPerformance<T> extends AbstractPerformance{
         return new ArrayList<>(performance);
     }
 
+
+    public void compressMessage()
+    {
+
+    }
 }

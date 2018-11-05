@@ -1,0 +1,64 @@
+<!--Pololu Maestro servo controller settings file, http://www.pololu.com/catalog/product/1350-->
+<UscSettings version="1">
+  <NeverSuspend>false</NeverSuspend>
+  <SerialMode>UART_FIXED_BAUD_RATE</SerialMode>
+  <FixedBaudRate>115385</FixedBaudRate>
+  <SerialTimeout>0</SerialTimeout>
+  <EnableCrc>false</EnableCrc>
+  <SerialDeviceNumber>12</SerialDeviceNumber>
+  <SerialMiniSscOffset>0</SerialMiniSscOffset>
+  <EnablePullups>false</EnablePullups>
+  <Channels MiniMaestroServoPeriod="80000" ServoMultiplier="1">
+    <!--Period = 20 ms-->
+    <!--Channel 0-->
+    <Channel name="Test" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="0" acceleration="0" neutral="3968" range="635" />
+    <!--Channel 1-->
+    <Channel name="" mode="Servo" min="2496" max="9536" homemode="Off" home="2496" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 2-->
+    <Channel name="" mode="Servo" min="2496" max="9536" homemode="Off" home="2496" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 3-->
+    <Channel name="" mode="Servo" min="2496" max="9536" homemode="Off" home="2496" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 4-->
+    <Channel name="" mode="Servo" min="2496" max="9536" homemode="Off" home="2496" speed="0" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 5-->
+    <Channel name="BoccaS" mode="Servo" min="2432" max="7232" homemode="Off" home="2432" speed="200" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 6-->
+    <Channel name="BoccaCS" mode="Servo" min="3200" max="9408" homemode="Off" home="3200" speed="200" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 7-->
+    <Channel name="BoccaC" mode="Servo" min="3520" max="8000" homemode="Off" home="3520" speed="200" acceleration="0" neutral="3968" range="1905" />
+    <!--Channel 8-->
+    <Channel name="BoccaCD" mode="Servo" min="2496" max="6016" homemode="Off" home="2496" speed="200" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 9-->
+    <Channel name="BoccaD" mode="Servo" min="4416" max="8128" homemode="Off" home="4416" speed="200" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 10-->
+    <Channel name="NasoD" mode="Servo" min="5632" max="7232" homemode="Off" home="5632" speed="200" acceleration="0" neutral="5632" range="1905" />
+    <!--Channel 11-->
+    <Channel name="GuanciaS" mode="Servo" min="3520" max="5184" homemode="Off" home="3520" speed="200" acceleration="0" neutral="5184" range="1905" />
+    <!--Channel 12-->
+    <Channel name="NasoS" mode="Servo" min="5184" max="6784" homemode="Off" home="5184" speed="200" acceleration="0" neutral="6016" range="1905" />
+    <!--Channel 13-->
+    <Channel name="GuanciaD" mode="Servo" min="5632" max="7680" homemode="Off" home="5632" speed="200" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 14-->
+    <Channel name="SopraciglioCS" mode="Servo" min="3200" max="8000" homemode="Off" home="3200" speed="152" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 15-->
+    <Channel name="SopraciglioS" mode="Servo" min="3968" max="8000" homemode="Off" home="3968" speed="152" acceleration="0" neutral="3968" range="1905" />
+    <!--Channel 16-->
+    <Channel name="SopraciglioCD" mode="Servo" min="4032" max="8000" homemode="Off" home="4032" speed="152" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 17-->
+    <Channel name="SopraciglioD" mode="Servo" min="4224" max="8384" homemode="Off" home="4224" speed="152" acceleration="0" neutral="4224" range="1905" />
+    <!--Channel 18-->
+    <Channel name="OcchioSX" mode="Servo" min="3200" max="9984" homemode="Off" home="3200" speed="152" acceleration="0" neutral="3968" range="1905" />
+    <!--Channel 19-->
+    <Channel name="OcchioSY" mode="Servo" min="3392" max="9984" homemode="Off" home="3392" speed="152" acceleration="0" neutral="5504" range="1905" />
+    <!--Channel 20-->
+    <Channel name="PalpebraS" mode="Servo" min="3200" max="8000" homemode="Off" home="3200" speed="72" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 21-->
+    <Channel name="OcchioDX" mode="Servo" min="3520" max="9984" homemode="Off" home="3520" speed="152" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 22-->
+    <Channel name="OcchioDY" mode="Servo" min="3200" max="9984" homemode="Off" home="3200" speed="152" acceleration="0" neutral="6000" range="1905" />
+    <!--Channel 23-->
+    <Channel name="PalpebraD" mode="Servo" min="4416" max="9216" homemode="Off" home="5632" speed="72" acceleration="0" neutral="6016" range="1905" />
+  </Channels>
+  <Sequences />
+  <Script ScriptDone="true" />
+</UscSettings>
