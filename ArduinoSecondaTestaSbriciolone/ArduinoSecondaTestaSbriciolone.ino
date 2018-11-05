@@ -75,7 +75,7 @@ void setup() {
   servoList[0].channel = 5;
   servoList[0].servoName = "BoccaS";
   servoList[0].mirror = false;
-  servoList[0].stopAndGo = false;
+  servoList[0].stopAndGo = true;
   servoList[0].shutDownWhen = 4;
 
   servoList[1].minValue = 4300;
@@ -83,7 +83,7 @@ void setup() {
   servoList[1].channel = 6;
   servoList[1].servoName = "BoccaCS";
   servoList[1].mirror = false;
-  servoList[1].stopAndGo = false;
+  servoList[1].stopAndGo = true;
   servoList[1].shutDownWhen = 4;
 
   servoList[2].minValue = 3500;
@@ -91,7 +91,7 @@ void setup() {
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
   servoList[2].mirror = false;
-  servoList[2].stopAndGo = false;
+  servoList[2].stopAndGo = true;
   servoList[2].shutDownWhen = 4;
 
   servoList[3].minValue = 4000;
@@ -99,7 +99,7 @@ void setup() {
   servoList[3].channel = 8;
   servoList[3].servoName = "BoccaCD";//
   servoList[3].mirror = true;
-  servoList[3].stopAndGo = false;
+  servoList[3].stopAndGo = true;
   servoList[3].shutDownWhen = 4;
 
   servoList[4].minValue = 4400;
@@ -107,7 +107,7 @@ void setup() {
   servoList[4].channel = 9;
   servoList[4].servoName = "BoccaD";//
   servoList[4].mirror = true;
-  servoList[4].stopAndGo = false;
+  servoList[4].stopAndGo = true;
   servoList[4].shutDownWhen = 4;
 
   servoList[5].minValue = 5300;
@@ -115,32 +115,32 @@ void setup() {
   servoList[5].channel = 12;
   servoList[5].servoName = "NasoS";
   servoList[5].mirror = false;
-  servoList[5].stopAndGo = false;
-  servoList[5].shutDownWhen = 4;
+  servoList[5].stopAndGo = true;
+  servoList[5].shutDownWhen = 100;
 
   servoList[6].minValue = 3800;
   servoList[6].maxValue = 6600;//
   servoList[6].channel = 11;
   servoList[6].servoName = "GuanciaS";
   servoList[6].mirror = true;
-  servoList[6].stopAndGo = false;
-  servoList[6].shutDownWhen = 4;
+  servoList[6].stopAndGo = true;
+  servoList[6].shutDownWhen = 100;
 
   servoList[7].minValue = 5000;
   servoList[7].maxValue = 7000;
   servoList[7].channel = 10;
   servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
-  servoList[7].stopAndGo = false;
-  servoList[7].shutDownWhen = 4;
+  servoList[7].stopAndGo = true;
+  servoList[7].shutDownWhen = 100;
 
   servoList[8].minValue = 4800;
   servoList[8].maxValue = 6800;
   servoList[8].channel = 13;
   servoList[8].servoName = "GuanciaD";
   servoList[8].mirror = true;
-  servoList[8].stopAndGo = false;
-  servoList[8].shutDownWhen = 4;
+  servoList[8].stopAndGo = true;
+  servoList[8].shutDownWhen = 100;
 
   servoList[9].minValue = 4000;
   servoList[9].maxValue = 8400;
@@ -152,7 +152,7 @@ void setup() {
 
   servoList[10].minValue = 3900;
   servoList[10].maxValue = 8400;
-  servoList[10].channel = 15;
+  servoList[10].channel = 3;
   servoList[10].servoName = "SopraciglioS";
   servoList[10].mirror = true;
   servoList[10].stopAndGo = true;

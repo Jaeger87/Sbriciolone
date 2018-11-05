@@ -21,7 +21,7 @@ const char mouthC = 'M';
 const char noseC = 'N';
 
 
-const byte howmanyservo = 19;//Sono 8 invero
+const byte howmanyservo = 19;
 ServoValues servoList[howmanyservo];
 #include <PololuMaestro.h>
 unsigned long nextPalpebre = 0;
@@ -37,7 +37,7 @@ enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
 statiOcchi sitOcchi = MANUAL;
 
-const int eyeLidsSpeed = 72;
+const int eyeLidsSpeed = 50;
 
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
@@ -116,7 +116,7 @@ void setup() {
   servoList[5].servoName = "NasoS";
   servoList[5].mirror = true;
   servoList[5].stopAndGo = true;
-  servoList[5].shutDownWhen = 4;
+  servoList[5].shutDownWhen = 100;
 
   servoList[6].minValue = 3500;
   servoList[6].maxValue = 5100;//
@@ -124,7 +124,7 @@ void setup() {
   servoList[6].servoName = "GuanciaS";
   servoList[6].mirror = false;
   servoList[6].stopAndGo = true;
-  servoList[6].shutDownWhen = 4;
+  servoList[6].shutDownWhen = 100;
 
   servoList[7].minValue = 5200;
   servoList[7].maxValue = 6800;
@@ -132,15 +132,15 @@ void setup() {
   servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
   servoList[7].stopAndGo = true;
-  servoList[7].shutDownWhen = 4;
+  servoList[7].shutDownWhen = 100;
 
   servoList[8].minValue = 5600;
   servoList[8].maxValue = 7700;
   servoList[8].channel = 13;
   servoList[8].servoName = "GuanciaD";
-  servoList[8].mirror = true;
+  servoList[8].mirror = false;
   servoList[8].stopAndGo = true;
-  servoList[8].shutDownWhen = 4;
+  servoList[8].shutDownWhen = 100;
 
   servoList[9].minValue = 3200;
   servoList[9].maxValue = 8000;
