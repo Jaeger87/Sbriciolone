@@ -31,4 +31,5 @@ public class Constants {
     public static final String YesICAN = "I can change names";
     public static final String NOICAN = "I can not change names";
     public static final char SEPARATOR = ';';
+    public static final int DELAYTOERASEFORBTE = 250;
 }
