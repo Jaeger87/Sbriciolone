@@ -1,11 +1,13 @@
 package com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings;
 
+import android.icu.text.RelativeDateTimeFormatter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.makinarium.makinariumanimatronickeysystem.FaceSector;
 import com.makinarium.makinariumanimatronickeysystem.MessageTypes;
+import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.AnalogDirection;
 import com.makinarium.makinariumanimatronickeysystem.com.makinarium.utilities.Constants;
 
 import java.util.ArrayList;
@@ -55,6 +57,7 @@ public class ButtonPerformance<T> extends AbstractPerformance{
             PerformancePiece<T> z = null;
             int pChannel = p.getChannelPin();
             int millisFuture = 0;
+            AnalogDirection direction = AnalogDirection.UP;
             for(int i = pIndex + 1; i < performance.size(); i++)
             {
                 millisFuture += performance.get(i).getMillisToAction();
@@ -67,6 +70,7 @@ public class ButtonPerformance<T> extends AbstractPerformance{
                 if(y == null)
                 {
                     y = performance.get(i);
+
                 }
                 else
                 {
