@@ -96,4 +96,35 @@ public class PerformancePiece <T>{
     public MessageTypes getType() {
         return type;
     }
+
+
+    public void setAction(T action) {
+        this.action = action;
+    }
+
+    protected void setAnalogValue(int analogValue)
+    {
+        this.analogValue = analogValue;
+        updateStringVersion();
+
+    }
+
+
+    private void updateStringVersion()
+    {
+        this.stringVersion = "" + stringVersion.charAt(0) + stringVersion.charAt(1) + Constants.SEPARATOR +
+                channelPin + Constants.SEPARATOR + analogValue + Constants.SEPARATOR;
+
+        byte[] beforeCheckSum = stringVersion.getBytes();
+        int sum = 0;
+        for (byte b : beforeCheckSum)
+            sum += b;
+        int checksum = sum % 100;
+        this.stringVersion += checksum;
+    }
+
+    protected byte[] getBytes()
+    {
+        return stringVersion.getBytes();
+    }
 }

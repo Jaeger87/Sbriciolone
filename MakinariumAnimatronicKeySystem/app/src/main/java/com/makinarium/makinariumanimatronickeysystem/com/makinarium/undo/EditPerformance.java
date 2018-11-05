@@ -5,13 +5,13 @@ import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings
 
 import java.util.List;
 
-public class EditPerformance<T> implements EditForUndo {
+public class EditPerformance implements EditForUndo {
 
-    private ButtonPerformance<T> buttonPerformance;
-    private List<PerformancePiece<T>> pieces;
+    private ButtonPerformance buttonPerformance;
+    private List<PerformancePiece<byte[]>> pieces;
 
 
-    public EditPerformance(ButtonPerformance<T> buttonPerformance) {
+    public EditPerformance(ButtonPerformance buttonPerformance) {
         this.buttonPerformance = buttonPerformance;
         this.pieces = buttonPerformance.getPerformance();
     }
@@ -20,7 +20,7 @@ public class EditPerformance<T> implements EditForUndo {
     public void applyUndo() {
 
         buttonPerformance.deletePerformance();
-        for (PerformancePiece<T> piece : pieces)
+        for (PerformancePiece<byte[]> piece : pieces)
             buttonPerformance.addPerformancePiece(piece.getAction(), piece.getMillisToAction());
 
         buttonPerformance.updateColor();

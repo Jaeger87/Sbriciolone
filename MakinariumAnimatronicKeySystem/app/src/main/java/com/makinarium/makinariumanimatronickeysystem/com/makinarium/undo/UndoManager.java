@@ -19,12 +19,12 @@ public class UndoManager <T>{
         this.container = container;
     }
 
-    public void addLastEdit(ButtonPerformance<T> buttonPerformance)
+    public void addLastEdit(ButtonPerformance buttonPerformance)
     {
-        stack.push(new EditPerformance<T>(buttonPerformance));
+        stack.push(new EditPerformance(buttonPerformance));
     }
 
-    public void addLastEdit(PresetPerformance<T> preset)
+    public void addLastEdit(PresetPerformance preset)
     {
         stack.push(new EditPreset<T>(preset, container));
     }

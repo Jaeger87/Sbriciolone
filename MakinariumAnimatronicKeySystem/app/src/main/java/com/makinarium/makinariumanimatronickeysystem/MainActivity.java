@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ButtonsContainer<byte[]> container;
     private UndoManager<byte[]> undoManager;
-    private ButtonPerformance<byte[]> bInRec;
-    private PresetPerformance<byte[]> presetInRec;
+    private ButtonPerformance bInRec;
+    private PresetPerformance presetInRec;
     private long timePresetRec = 0;
     private HashSet<FaceSector> performanceFilter;
 
@@ -458,7 +458,7 @@ public class MainActivity extends AppCompatActivity {
     {
 
         int id = v.getId();
-        ButtonPerformance<byte[]> bp = container.getButtonPerformance(id);
+        ButtonPerformance bp = container.getButtonPerformance(id);
         if(!bp.canPerform())
         {
             Toast.makeText(this, Constants.emptyPerformance, Toast.LENGTH_SHORT).show();
@@ -520,7 +520,7 @@ public class MainActivity extends AppCompatActivity {
     public void presetPerformClick(View v)
     {
         int id = v.getId();
-        PresetPerformance<byte[]> bp = container.getPresetPerformance(id);
+        PresetPerformance bp = container.getPresetPerformance(id);
         if(!bp.canPerform())
         {
             Toast.makeText(this, Constants.emptyPerformance, Toast.LENGTH_SHORT).show();
@@ -820,9 +820,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    public class performanceThread extends AsyncTask<ButtonPerformance<byte[]>, Integer, ButtonPerformance<byte[]>> {
+    public class performanceThread extends AsyncTask<ButtonPerformance, Integer, ButtonPerformance> {
 
-        private ButtonPerformance<byte[]> bpThread;
+        private ButtonPerformance bpThread;
 
         @Override
         protected void onPreExecute() {
@@ -830,7 +830,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected ButtonPerformance<byte[]> doInBackground(ButtonPerformance<byte[]>... params) {
+        protected ButtonPerformance doInBackground(ButtonPerformance... params) {
 
             bpThread = params[0];
             List<PerformancePiece<byte[]>> performance = bpThread.getPerformance();
@@ -881,7 +881,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(ButtonPerformance<byte[]> bp) {
+        protected void onPostExecute(ButtonPerformance bp) {
 
             container.activatesButtonSectorButton(bp.getFaceSector());
             performanceFilter.remove(bp.getFaceSector());
@@ -890,11 +890,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class preSetThread extends AsyncTask<PresetPerformance<byte[]>, Integer, PresetPerformance<byte[]>> {
+    public class preSetThread extends AsyncTask<PresetPerformance, Integer, PresetPerformance> {
 
-        private PresetPerformance<byte[]> bpThread;
+        private PresetPerformance bpThread;
         @Override
-        protected PresetPerformance<byte[]> doInBackground(PresetPerformance<byte[]>... presetPerformances) {
+        protected PresetPerformance doInBackground(PresetPerformance... presetPerformances) {
             bpThread = presetPerformances[0];
             int duration = (int)(bpThread.getDuration() / multiplicator);
             List<Integer> buttonToPress = bpThread.getButtonsToPress();
@@ -939,7 +939,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         @Override
-        protected void onPostExecute(PresetPerformance<byte[]> p) {
+        protected void onPostExecute(PresetPerformance p) {
             container.activatesButtonSectorButton(bpThread.getFaceSector());
             bpThread.getProgressBar().setProgress(0);
         }

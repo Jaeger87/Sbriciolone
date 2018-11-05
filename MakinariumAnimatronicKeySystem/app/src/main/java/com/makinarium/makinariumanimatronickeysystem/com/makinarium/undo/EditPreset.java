@@ -5,13 +5,13 @@ import com.makinarium.makinariumanimatronickeysystem.com.makinarium.presetthings
 
 import java.util.List;
 
-public class EditPreset <T> implements EditForUndo {
+public class EditPreset<T> implements EditForUndo {
 
-    private PresetPerformance<T> preset;
+    private PresetPerformance preset;
     private List<Integer> exButtons;
-    private ButtonsContainer<T> container;
+    private ButtonsContainer container;
 
-    public EditPreset(PresetPerformance<T> preset, ButtonsContainer<T> container) {
+    public EditPreset(PresetPerformance preset, ButtonsContainer<T> container) {
         this.preset = preset;
         this.exButtons = preset.getButtonsToPress();
         this.container = container;

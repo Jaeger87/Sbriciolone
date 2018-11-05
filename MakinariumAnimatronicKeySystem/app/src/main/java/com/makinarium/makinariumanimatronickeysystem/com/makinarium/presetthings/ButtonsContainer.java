@@ -21,8 +21,8 @@ import java.util.HashMap;
 
 public class ButtonsContainer<T> {
 
-    private HashMap<Integer,ButtonPerformance<T>> performanceHashMap;
-    private HashMap<Integer,PresetPerformance<T>> presetHashMap;
+    private HashMap<Integer,ButtonPerformance> performanceHashMap;
+    private HashMap<Integer,PresetPerformance> presetHashMap;
 
     private int activeColor;
     private int performToRecColor;
@@ -91,7 +91,7 @@ public class ButtonsContainer<T> {
     }
 
 
-    public ButtonPerformance<T> getButtonPerformance(int id)
+    public ButtonPerformance getButtonPerformance(int id)
     {
         int logicID = IDFactory.getLogicID(id);
         if(performanceHashMap.containsKey(logicID))
@@ -99,7 +99,7 @@ public class ButtonsContainer<T> {
         return null;
     }
 
-    public PresetPerformance<T> getPresetPerformance(int id)
+    public PresetPerformance getPresetPerformance(int id)
     {
         int logicID = IDFactory.getLogicID(id);
         if(presetHashMap.containsKey(logicID))
@@ -108,14 +108,14 @@ public class ButtonsContainer<T> {
     }
 
 
-    public ButtonPerformance<T> getButtonPerformanceFromLogic(int logicID)
+    public ButtonPerformance getButtonPerformanceFromLogic(int logicID)
     {
         if(performanceHashMap.containsKey(logicID))
             return performanceHashMap.get(logicID);
         return null;
     }
 
-    public PresetPerformance<T> getPresetPerformanceFromLogic(int logicID)
+    public PresetPerformance getPresetPerformanceFromLogic(int logicID)
     {
         if(presetHashMap.containsKey(logicID))
             return presetHashMap.get(logicID);
