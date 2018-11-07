@@ -26,7 +26,7 @@ struct ButtonLed {
 
 const byte delayLettura = 7;
 const byte delayLoop = 52;
-const byte Analogfilter = 18;
+const byte Analogfilter = 6;
 const byte closeEyesButtonPin = 7;
 int closeEyesState = 0;
 int oldCloseEyesState = 0;

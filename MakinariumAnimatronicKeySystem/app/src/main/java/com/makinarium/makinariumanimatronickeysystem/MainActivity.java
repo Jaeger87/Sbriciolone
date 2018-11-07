@@ -670,12 +670,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addPerforamancePieceToRec(byte[] action)
+    private void addPerforamancePieceToRec(byte[] action, String text)
     {
         int time = (int) (System.currentTimeMillis() - previousPerformancePieceTime);
         previousPerformancePieceTime = System.currentTimeMillis();
 
-        bInRec.addPerformancePiece(action, time);
+        bInRec.addPerformancePiece(action, time, text);
     }
 
 
@@ -789,7 +789,7 @@ public class MainActivity extends AppCompatActivity {
                     if(performRegistrationMode)
                     {
                         if(f == bInRec.getFaceSector()) {
-                            addPerforamancePieceToRec(bytes);
+                            addPerforamancePieceToRec(bytes, text);
                         }
                     }
 
@@ -805,7 +805,7 @@ public class MainActivity extends AppCompatActivity {
                     if(performRegistrationMode)
                     {
                         if(f == bInRec.getFaceSector())
-                            addPerforamancePieceToRec(bytes);
+                            addPerforamancePieceToRec(bytes, text);
                     }
 
                     mBluetoothConnectionHead.write(bytes);

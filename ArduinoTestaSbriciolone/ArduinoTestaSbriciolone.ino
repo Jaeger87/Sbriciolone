@@ -67,7 +67,7 @@ void setup() {
 
 
   Serial3.begin(115200);
-  maestroSerial.begin(115200);
+  maestroSerial.begin(19200);
   Serial3.setTimeout(20);
 
   servoList[0].minValue = 2400;
@@ -76,7 +76,7 @@ void setup() {
   servoList[0].servoName = "BoccaS";
   servoList[0].mirror = true;
   servoList[0].stopAndGo = true;
-  servoList[0].shutDownWhen = 4;
+  servoList[0].shutDownWhen = 60;
 
   servoList[1].minValue = 3200;
   servoList[1].maxValue = 9400;
@@ -84,7 +84,7 @@ void setup() {
   servoList[1].servoName = "BoccaCS";
   servoList[1].mirror = false;
   servoList[1].stopAndGo = true;
-  servoList[1].shutDownWhen = 4;
+  servoList[1].shutDownWhen = 60;
 
   servoList[2].minValue = 3500;
   servoList[2].maxValue = 8000;
@@ -92,7 +92,7 @@ void setup() {
   servoList[2].servoName = "BoccaC";
   servoList[2].mirror = true;
   servoList[2].stopAndGo = true;
-  servoList[2].shutDownWhen = 4;
+  servoList[2].shutDownWhen = 60;
 
   servoList[3].minValue = 2400;
   servoList[3].maxValue = 6000;
@@ -100,7 +100,7 @@ void setup() {
   servoList[3].servoName = "BoccaCD";//
   servoList[3].mirror = true;
   servoList[3].stopAndGo = true;
-  servoList[3].shutDownWhen = 4;
+  servoList[3].shutDownWhen = 60;
 
   servoList[4].minValue = 4400;
   servoList[4].maxValue = 8100;//
@@ -108,7 +108,7 @@ void setup() {
   servoList[4].servoName = "BoccaD";//
   servoList[4].mirror = false;
   servoList[4].stopAndGo = true;
-  servoList[4].shutDownWhen = 4;
+  servoList[4].shutDownWhen = 60;
 
   servoList[5].minValue = 5600;
   servoList[5].maxValue = 7200;
@@ -116,7 +116,7 @@ void setup() {
   servoList[5].servoName = "NasoS";
   servoList[5].mirror = true;
   servoList[5].stopAndGo = true;
-  servoList[5].shutDownWhen = 100;
+  servoList[5].shutDownWhen = 150;
 
   servoList[6].minValue = 3500;
   servoList[6].maxValue = 5100;//
@@ -124,7 +124,7 @@ void setup() {
   servoList[6].servoName = "GuanciaS";
   servoList[6].mirror = false;
   servoList[6].stopAndGo = true;
-  servoList[6].shutDownWhen = 100;
+  servoList[6].shutDownWhen = 150;
 
   servoList[7].minValue = 5200;
   servoList[7].maxValue = 6800;
@@ -132,7 +132,7 @@ void setup() {
   servoList[7].servoName = "NasoD";
   servoList[7].mirror = true;
   servoList[7].stopAndGo = true;
-  servoList[7].shutDownWhen = 100;
+  servoList[7].shutDownWhen = 150;
 
   servoList[8].minValue = 5600;
   servoList[8].maxValue = 7700;
@@ -140,7 +140,7 @@ void setup() {
   servoList[8].servoName = "GuanciaD";
   servoList[8].mirror = false;
   servoList[8].stopAndGo = true;
-  servoList[8].shutDownWhen = 100;
+  servoList[8].shutDownWhen = 150;
 
   servoList[9].minValue = 3200;
   servoList[9].maxValue = 8000;
@@ -148,7 +148,7 @@ void setup() {
   servoList[9].servoName = "SopraciglioCS";
   servoList[9].mirror = true;
   servoList[9].stopAndGo = true;
-  servoList[9].shutDownWhen = 3;
+  servoList[9].shutDownWhen = 35;
 
   servoList[10].minValue = 4000;
   servoList[10].maxValue = 8000;
@@ -156,7 +156,7 @@ void setup() {
   servoList[10].servoName = "SopraciglioS";
   servoList[10].mirror = true;
   servoList[10].stopAndGo = true;
-  servoList[10].shutDownWhen = 3;
+  servoList[10].shutDownWhen = 35;
 
   servoList[11].minValue = 4000;
   servoList[11].maxValue = 8000;
@@ -164,7 +164,7 @@ void setup() {
   servoList[11].servoName = "SopraciglioCD";
   servoList[11].mirror = true;
   servoList[11].stopAndGo = true;
-  servoList[11].shutDownWhen = 3;
+  servoList[11].shutDownWhen = 35;
 
   servoList[12].minValue = 4200;
   servoList[12].maxValue = 8300;
@@ -172,7 +172,7 @@ void setup() {
   servoList[12].servoName = "SopraciglioD";
   servoList[12].mirror = true;
   servoList[12].stopAndGo = true;
-  servoList[12].shutDownWhen = 3;
+  servoList[12].shutDownWhen = 35;
 
   servoList[13].minValue = 3200;
   servoList[13].maxValue = 10000;
@@ -180,7 +180,7 @@ void setup() {
   servoList[13].servoName = "OcchioSX";
   servoList[13].mirror = true;
   servoList[13].stopAndGo = true;
-  servoList[13].shutDownWhen = 3;
+  servoList[13].shutDownWhen = 35;
 
   servoList[14].minValue = 3300;
   servoList[14].maxValue = 10000;
@@ -188,7 +188,7 @@ void setup() {
   servoList[14].servoName = "OcchioSY";
   servoList[14].mirror = true;
   servoList[14].stopAndGo = true;
-  servoList[14].shutDownWhen = 3;
+  servoList[14].shutDownWhen = 35;
 
   servoList[15].minValue = 3200;
   servoList[15].maxValue = 8000;
@@ -196,7 +196,7 @@ void setup() {
   servoList[15].servoName = "PalpebraS";
   servoList[15].mirror = true;
   servoList[15].stopAndGo = true;
-  servoList[15].shutDownWhen = 6;
+  servoList[15].shutDownWhen = 120;
 
   servoList[16].minValue = 3500;
   servoList[16].maxValue = 10000;
@@ -204,7 +204,7 @@ void setup() {
   servoList[16].servoName = "OcchioDX";
   servoList[16].mirror = true;
   servoList[16].stopAndGo = true;
-  servoList[16].shutDownWhen = 3;
+  servoList[16].shutDownWhen = 35;
 
   servoList[17].minValue = 3200;
   servoList[17].maxValue = 10000;
@@ -212,7 +212,7 @@ void setup() {
   servoList[17].servoName = "OcchioDY";
   servoList[17].mirror = false;
   servoList[17].stopAndGo = true;
-  servoList[17].shutDownWhen = 3;
+  servoList[17].shutDownWhen = 35;
 
   servoList[18].minValue = 4400;
   servoList[18].maxValue = 9200;
@@ -220,7 +220,7 @@ void setup() {
   servoList[18].servoName = "PalpebraD";
   servoList[18].mirror = false;
   servoList[18].stopAndGo = true;
-  servoList[18].shutDownWhen = 6;
+  servoList[18].shutDownWhen = 120 ;
 
 
   nextPalpebre = random(2000, 10000) + millis();
