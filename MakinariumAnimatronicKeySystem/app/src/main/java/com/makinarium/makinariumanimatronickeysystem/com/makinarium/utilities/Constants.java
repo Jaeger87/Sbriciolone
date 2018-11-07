@@ -31,6 +31,6 @@ public class Constants {
     public static final String YesICAN = "I can change names";
     public static final String NOICAN = "I can not change names";
     public static final char SEPARATOR = ';';
-    public static final int DELAYTOERASEFORBTE = 350;
-    public static final int LITTLEDELAY = 95;
+    public static final int DELAYTOERASEFORBTE = 400;
+    public static final int LITTLEDELAY = 120;
 }
