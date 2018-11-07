@@ -778,7 +778,7 @@ public class MainActivity extends AppCompatActivity {
             if(performanceFilter.contains(f))
                 return;
 
-            Log.i("BT15",text);
+            //Log.i("BT15",text);
             switch (id){
                 case Constants.MouthID:
                     if(!mouthActiveController)
@@ -856,8 +856,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if(currentTime > doPerfomance)
                 {
-
-                    mBluetoothConnectionHead.write(currentPiece.getAction());
+                    byte[] bytes = currentPiece.getAction();
+                    byte[] bytesToSend;
+                    String messageToSend = new String(bytes);
+                    messageToSend = "r" + messageToSend;
+                    bytesToSend = messageToSend.getBytes(Charset.defaultCharset());
+                    mBluetoothConnectionHead.write(bytesToSend);
                     currentIndex++;
 
                     if(currentIndex >= performance.size())

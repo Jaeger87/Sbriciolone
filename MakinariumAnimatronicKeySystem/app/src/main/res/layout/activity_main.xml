@@ -92,7 +92,7 @@
     <TextView
         android:id="@+id/eyelidText01"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/firstleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -124,7 +124,7 @@
     <TextView
         android:id="@+id/noseText01"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/firstleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -156,7 +156,7 @@
     <TextView
         android:id="@+id/mouthText01"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/firstleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -221,7 +221,7 @@
     <TextView
         android:id="@+id/eyelidText02"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -245,7 +245,7 @@
     <TextView
         android:id="@+id/eyesText02"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -278,7 +278,7 @@
     <TextView
         android:id="@+id/noseText02"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -409,7 +409,7 @@
     <TextView
         android:id="@+id/noseText03"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -466,7 +466,7 @@
     <TextView
         android:id="@+id/eyesText01"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/firstleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -491,7 +491,7 @@
     <TextView
         android:id="@+id/mouthText02"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -525,7 +525,7 @@
     <TextView
         android:id="@+id/mouthText03"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -592,7 +592,7 @@
     <TextView
         android:id="@+id/eyebrowText02"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -833,7 +833,7 @@
     <TextView
         android:id="@+id/presetText07"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -929,7 +929,7 @@
     <TextView
         android:id="@+id/presetText10"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1020,7 +1020,7 @@
     <TextView
         android:id="@+id/eyebrowText04"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1042,7 +1042,7 @@
     <TextView
         android:id="@+id/eyelidText04"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1118,7 +1118,7 @@
     <TextView
         android:id="@+id/noseText04"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1151,7 +1151,7 @@
     <TextView
         android:id="@+id/mouthText04"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1250,7 +1250,7 @@
     <TextView
         android:id="@+id/eyesText05"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1283,7 +1283,7 @@
     <TextView
         android:id="@+id/noseText05"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1350,7 +1350,7 @@
     <TextView
         android:id="@+id/eyebrowText06"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1384,7 +1384,7 @@
     <TextView
         android:id="@+id/eyelidText06"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1417,7 +1417,7 @@
     <TextView
         android:id="@+id/eyesText06"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1450,7 +1450,7 @@
     <TextView
         android:id="@+id/noseText06"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1584,7 +1584,7 @@
     <TextView
         android:id="@+id/eyesText07"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1617,7 +1617,7 @@
     <TextView
         android:id="@+id/noseText07"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1716,7 +1716,7 @@
     <TextView
         android:id="@+id/eyelidText08"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1749,7 +1749,7 @@
     <TextView
         android:id="@+id/eyesText08"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1783,7 +1783,7 @@
     <TextView
         android:id="@+id/noseText08"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1916,7 +1916,7 @@
     <TextView
         android:id="@+id/eyesText09"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -1950,7 +1950,7 @@
     <TextView
         android:id="@+id/noseText09"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -2017,7 +2017,7 @@
     <TextView
         android:id="@+id/eyebrowText10"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"
@@ -2084,7 +2084,7 @@
     <TextView
         android:id="@+id/eyesText10"
         android:layout_width="@dimen/bwidth"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/mleft"
         android:text="Name"
         android:textSize="@dimen/textsize"

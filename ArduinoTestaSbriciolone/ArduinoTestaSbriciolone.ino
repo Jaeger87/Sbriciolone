@@ -234,47 +234,67 @@ void loop() {
   String message = Serial3.readStringUntil('\n');
   if (message.length() > 0)
   {
-    //delay(30);
-    int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
-    int numberSeparators = homManySeparator(message, ';');
-    int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
 
-    char bufferChar[lenghtMessage];
-    message.toCharArray(bufferChar, lenghtMessage);
-
-    int sum = 0;
-    for (int i = 0; i <  lenghtMessage; i++)
+    bool doIt = true;
+    if (message.charAt(0) != 'r')
     {
-      sum += bufferChar[i];
+      
+      long randNumber = random(100);
+
+      if (randNumber > 20)
+      {
+        doIt = false;
+      }
     }
-
-
-    int myCheckSum = sum % 100;
-
-    if (myCheckSum == checksum)
+    else
     {
-      if (message.charAt(0) == eyesC)
+      message = message.substring(1);
+    }
+    if (doIt)
+    {
+
+      //delay(30);
+      int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
+      int numberSeparators = homManySeparator(message, ';');
+      int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
+
+      char bufferChar[lenghtMessage];
+      message.toCharArray(bufferChar, lenghtMessage);
+
+      int sum = 0;
+      for (int i = 0; i <  lenghtMessage; i++)
       {
-        eyesMotorMessage(message);
-      }
-      else if (message.charAt(0) == eyeLidsC)
-      {
-        eyelidsMessage(message);
+        sum += bufferChar[i];
       }
 
-      else if (message.charAt(0) == eyebrownsC)
-      {
-        eyeBrowMessage(message);
-      }
 
-      else if (message.charAt(0) == noseC)
-      {
-        noseMessage(message);
-      }
+      int myCheckSum = sum % 100;
 
-      else if (message.charAt(0) == mouthC)
+      if (myCheckSum == checksum)
       {
-        mouthMessage(message);
+        if (message.charAt(0) == eyesC)
+        {
+          eyesMotorMessage(message);
+        }
+        else if (message.charAt(0) == eyeLidsC)
+        {
+          eyelidsMessage(message);
+        }
+
+        else if (message.charAt(0) == eyebrownsC)
+        {
+          eyeBrowMessage(message);
+        }
+
+        else if (message.charAt(0) == noseC)
+        {
+          noseMessage(message);
+        }
+
+        else if (message.charAt(0) == mouthC)
+        {
+          mouthMessage(message);
+        }
       }
     }
   }

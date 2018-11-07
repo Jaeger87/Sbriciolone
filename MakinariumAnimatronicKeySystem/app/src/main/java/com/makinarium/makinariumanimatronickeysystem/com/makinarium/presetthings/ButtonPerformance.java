@@ -155,28 +155,23 @@ public class ButtonPerformance extends AbstractPerformance{
 
         int timeToAddToOthers = 0;
 
-        for(PerformancePiece<byte[]> p : performance)
-        {
-            Log.i("MILLIS", String.valueOf(p.getMillisToAction()));
-        }
-
-        Log.i("MILLIS", "AHUAHSUGFHKDKGFHSGSF \n\n");
+        //Log.i("MILLIS", "AHUAHSUGFHKDKGFHSGSF \n\n");
 
         for(PerformancePiece<byte[]> p : performance)
         {
             if(p.isToErase())
             {
                 timeToAddToOthers += p.getMillisToAction();
-                Log.i("timezz","-----");
-                Log.i("timezz", String.valueOf(p.getMillisToAction()));
-                Log.i("timezz","-----");
+                //Log.i("timezz","-----");
+                //Log.i("timezz", String.valueOf(p.getMillisToAction()));
+                //Log.i("timezz","-----");
                 continue;
             }
 
-            Log.i("timezz", String.valueOf(timeToAddToOthers));
-            Log.i("timezz", String.valueOf(p.getMillisToAction()));
+            //Log.i("timezz", String.valueOf(timeToAddToOthers));
+            //Log.i("timezz", String.valueOf(p.getMillisToAction()));
             p.addMillis(timeToAddToOthers);
-            Log.i("timezz", String.valueOf(p.getMillisToAction()));
+            //Log.i("timezz", String.valueOf(p.getMillisToAction()));
             timeToAddToOthers = 0;
         }
 
@@ -186,9 +181,11 @@ public class ButtonPerformance extends AbstractPerformance{
         performance.removeIf(p -> p.isToErase());
         Log.i("ZIP", String.valueOf(performance.size()));
 
+        /*
         for(PerformancePiece<byte[]> p : performance) {
             Log.i("ZIP", p.toString());
         }
+        */
 
         int duration = 0;
         for(PerformancePiece<byte[]> p : performance)
@@ -204,7 +201,7 @@ public class ButtonPerformance extends AbstractPerformance{
             Log.i("MILLIS", String.valueOf(p.getMillisToAction()));
         }
 
-        Log.i("duration " , String.valueOf(super.getDuration()));
+        //Log.i("duration " , String.valueOf(super.getDuration()));
     }
 
 
