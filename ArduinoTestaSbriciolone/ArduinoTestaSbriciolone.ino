@@ -234,6 +234,7 @@ void loop() {
   String message = Serial3.readStringUntil('\n');
   if (message.length() > 0)
   {
+    //delay(30);
     int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
     int numberSeparators = homManySeparator(message, ';');
     int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
@@ -280,7 +281,7 @@ void loop() {
   gestisciOcchi();
   deadManButton();
   shutDownMotors();
-  delay(20);
+  //delay(20);
 }
 
 void noseMessage(String message)
