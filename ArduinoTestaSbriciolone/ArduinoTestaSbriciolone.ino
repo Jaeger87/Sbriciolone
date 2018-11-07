@@ -30,7 +30,7 @@ const byte limiteOcchi = 4;
 const int minOcchiValue = 995;
 const int maxOcchiValue = 190;
 
-const int rangeBoccaMediani = 350;
+const int rangeBoccaMediani = 300;
 
 
 enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
@@ -67,7 +67,7 @@ void setup() {
 
 
   Serial3.begin(115200);
-  maestroSerial.begin(19200);
+  maestroSerial.begin(115200);
   Serial3.setTimeout(20);
 
   servoList[0].minValue = 2400;
@@ -76,7 +76,7 @@ void setup() {
   servoList[0].servoName = "BoccaS";
   servoList[0].mirror = true;
   servoList[0].stopAndGo = true;
-  servoList[0].shutDownWhen = 60;
+  servoList[0].shutDownWhen = 50;
 
   servoList[1].minValue = 3200;
   servoList[1].maxValue = 9400;
@@ -84,7 +84,7 @@ void setup() {
   servoList[1].servoName = "BoccaCS";
   servoList[1].mirror = false;
   servoList[1].stopAndGo = true;
-  servoList[1].shutDownWhen = 60;
+  servoList[1].shutDownWhen = 50;
 
   servoList[2].minValue = 3500;
   servoList[2].maxValue = 8000;
@@ -92,7 +92,7 @@ void setup() {
   servoList[2].servoName = "BoccaC";
   servoList[2].mirror = true;
   servoList[2].stopAndGo = true;
-  servoList[2].shutDownWhen = 60;
+  servoList[2].shutDownWhen = 50;
 
   servoList[3].minValue = 2400;
   servoList[3].maxValue = 6000;
@@ -100,7 +100,7 @@ void setup() {
   servoList[3].servoName = "BoccaCD";//
   servoList[3].mirror = true;
   servoList[3].stopAndGo = true;
-  servoList[3].shutDownWhen = 60;
+  servoList[3].shutDownWhen = 50;
 
   servoList[4].minValue = 4400;
   servoList[4].maxValue = 8100;//
@@ -108,7 +108,7 @@ void setup() {
   servoList[4].servoName = "BoccaD";//
   servoList[4].mirror = false;
   servoList[4].stopAndGo = true;
-  servoList[4].shutDownWhen = 60;
+  servoList[4].shutDownWhen = 50;
 
   servoList[5].minValue = 5600;
   servoList[5].maxValue = 7200;
