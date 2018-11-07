@@ -26,7 +26,7 @@ ServoValues servoList[howmanyservo];
 #include <PololuMaestro.h>
 unsigned long nextPalpebre = 0;
 byte contatoreOcchi = 0;
-const byte limiteOcchi = 4;
+const byte limiteOcchi = 8;
 const int minOcchiValue = 995;
 const int maxOcchiValue = 190;
 
@@ -241,7 +241,7 @@ void loop() {
       
       long randNumber = random(100);
 
-      if (randNumber > 20)
+      if (randNumber < 20)
       {
         doIt = false;
       }
