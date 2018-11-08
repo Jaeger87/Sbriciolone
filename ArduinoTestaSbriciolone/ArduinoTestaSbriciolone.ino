@@ -1,4 +1,4 @@
-struct ServoValues {
+iarestruct ServoValues {
   int minValue;
   int maxValue;
   int channel;
@@ -242,7 +242,7 @@ void loop() {
       
       long randNumber = random(100);
 
-      if (randNumber < 20)
+      if (randNumber < 18)
       {
         doIt = false;
       }
