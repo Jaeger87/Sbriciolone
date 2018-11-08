@@ -242,7 +242,7 @@ void loop() {
       
       long randNumber = random(100);
 
-      if (randNumber < 18)
+      if (randNumber < 20)
       {
         doIt = false;
       }

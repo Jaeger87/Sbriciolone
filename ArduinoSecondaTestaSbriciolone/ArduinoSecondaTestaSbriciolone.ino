@@ -26,7 +26,7 @@ ServoValues servoList[howmanyservo];
 #include <PololuMaestro.h>
 unsigned long nextPalpebre = 0;
 byte contatoreOcchi = 0;
-const byte limiteOcchi = 4;
+const byte limiteOcchi = 8;
 const int minOcchiValue = 995;
 const int maxOcchiValue = 190;
 
@@ -37,7 +37,7 @@ enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 
 statiOcchi sitOcchi = MANUAL;
 
-const int eyeLidsSpeed = 50;
+const int eyeLidsSpeed = 64;
 
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
@@ -70,15 +70,15 @@ void setup() {
   maestroSerial.begin(115200);
   Serial3.setTimeout(20);
 
-  servoList[0].minValue = 3900;
-  servoList[0].maxValue = 8000;
+  servoList[0].minValue = 5800;
+  servoList[0].maxValue = 9600;
   servoList[0].channel = 5;
   servoList[0].servoName = "BoccaS";
   servoList[0].mirror = false;
   servoList[0].stopAndGo = true;
   servoList[0].shutDownWhen = 50;
 
-  servoList[1].minValue = 4300;
+  servoList[1].minValue = 5600;
   servoList[1].maxValue = 9400;
   servoList[1].channel = 6;
   servoList[1].servoName = "BoccaCS";
@@ -86,16 +86,16 @@ void setup() {
   servoList[1].stopAndGo = true;
   servoList[1].shutDownWhen = 50;
 
-  servoList[2].minValue = 3500;
-  servoList[2].maxValue = 8000;
+  servoList[2].minValue = 5600;
+  servoList[2].maxValue = 9600;
   servoList[2].channel = 7;
   servoList[2].servoName = "BoccaC";
   servoList[2].mirror = false;
   servoList[2].stopAndGo = true;
   servoList[2].shutDownWhen = 50;
 
-  servoList[3].minValue = 4000;
-  servoList[3].maxValue = 8000;
+  servoList[3].minValue = 3200;
+  servoList[3].maxValue = 8200;
   servoList[3].channel = 8;
   servoList[3].servoName = "BoccaCD";
   servoList[3].mirror = true;
@@ -110,15 +110,15 @@ void setup() {
   servoList[4].stopAndGo = true;
   servoList[4].shutDownWhen = 50;
 
-  servoList[5].minValue = 5300;
-  servoList[5].maxValue = 7200;
+  servoList[5].minValue = 5000;
+  servoList[5].maxValue = 6800;
   servoList[5].channel = 12;
-  servoList[5].servoName = "NasoS";
+  servoList[5].servoName = "NasoD";
   servoList[5].mirror = false;
   servoList[5].stopAndGo = true;
   servoList[5].shutDownWhen = 150;
 
-  servoList[6].minValue = 3800;
+  servoList[6].minValue = 3700;
   servoList[6].maxValue = 6600;//
   servoList[6].channel = 11;
   servoList[6].servoName = "GuanciaS";
@@ -126,10 +126,10 @@ void setup() {
   servoList[6].stopAndGo = true;
   servoList[6].shutDownWhen = 150;
 
-  servoList[7].minValue = 5000;
-  servoList[7].maxValue = 6800;
+  servoList[7].minValue = 5300;
+  servoList[7].maxValue = 7200;
   servoList[7].channel = 10;
-  servoList[7].servoName = "NasoD";
+  servoList[7].servoName = "NasoS";
   servoList[7].mirror = true;
   servoList[7].stopAndGo = true;
   servoList[7].shutDownWhen = 150;
@@ -180,7 +180,7 @@ void setup() {
   servoList[13].servoName = "OcchioSX";
   servoList[13].mirror = true;
   servoList[13].stopAndGo = true;
-  servoList[13].shutDownWhen = 35;
+  servoList[13].shutDownWhen = 60;
 
   servoList[14].minValue = 2700;
   servoList[14].maxValue = 9600;
@@ -188,7 +188,7 @@ void setup() {
   servoList[14].servoName = "OcchioSY";
   servoList[14].mirror = true;
   servoList[14].stopAndGo = true;
-  servoList[14].shutDownWhen = 35;
+  servoList[14].shutDownWhen = 60;
 
   servoList[15].minValue = 3200;
   servoList[15].maxValue = 9200;
@@ -204,7 +204,7 @@ void setup() {
   servoList[16].servoName = "OcchioDX";
   servoList[16].mirror = true;
   servoList[16].stopAndGo = true;
-  servoList[16].shutDownWhen = 35;
+  servoList[16].shutDownWhen = 60;
 
   servoList[17].minValue = 3200;
   servoList[17].maxValue = 9600;
@@ -212,7 +212,7 @@ void setup() {
   servoList[17].servoName = "OcchioDY";
   servoList[17].mirror = false;
   servoList[17].stopAndGo = true;
-  servoList[17].shutDownWhen = 35;
+  servoList[17].shutDownWhen = 60;
 
   servoList[18].minValue = 3200;
   servoList[18].maxValue = 8000;
@@ -229,51 +229,72 @@ void setup() {
     maestro.setTarget(servoList[i].channel, analogServoConversion(servoList[i].lastPosition, servoList[i]));
 }
 
+
 void loop() {
   String message = Serial3.readStringUntil('\n');
   if (message.length() > 0)
   {
-    //delay(30);
-    int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
-    int numberSeparators = homManySeparator(message, ';');
-    int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
 
-    char bufferChar[lenghtMessage];
-    message.toCharArray(bufferChar, lenghtMessage);
-
-    int sum = 0;
-    for (int i = 0; i <  lenghtMessage; i++)
+    bool doIt = true;
+    if (message.charAt(0) != 'r')
     {
-      sum += bufferChar[i];
+      
+      long randNumber = random(100);
+
+      if (randNumber < 20)
+      {
+        doIt = false;
+      }
     }
-
-
-    int myCheckSum = sum % 100;
-
-    if (myCheckSum == checksum)
+    else
     {
-      if (message.charAt(0) == eyesC)
+      message = message.substring(1);
+    }
+    if (doIt)
+    {
+
+      //delay(30);
+      int lenghtMessage = getLenghtBeforeCheckSum(message, ';');
+      int numberSeparators = homManySeparator(message, ';');
+      int checksum = getValueStringSplitter(message, ';', numberSeparators).toInt();
+
+      char bufferChar[lenghtMessage];
+      message.toCharArray(bufferChar, lenghtMessage);
+
+      int sum = 0;
+      for (int i = 0; i <  lenghtMessage; i++)
       {
-        eyesMotorMessage(message);
-      }
-      else if (message.charAt(0) == eyeLidsC)
-      {
-        eyelidsMessage(message);
+        sum += bufferChar[i];
       }
 
-      else if (message.charAt(0) == eyebrownsC)
-      {
-        eyeBrowMessage(message);
-      }
 
-      else if (message.charAt(0) == noseC)
-      {
-        noseMessage(message);
-      }
+      int myCheckSum = sum % 100;
 
-      else if (message.charAt(0) == mouthC)
+      if (myCheckSum == checksum)
       {
-        mouthMessage(message);
+        if (message.charAt(0) == eyesC)
+        {
+          eyesMotorMessage(message);
+        }
+        else if (message.charAt(0) == eyeLidsC)
+        {
+          eyelidsMessage(message);
+        }
+
+        else if (message.charAt(0) == eyebrownsC)
+        {
+          eyeBrowMessage(message);
+        }
+
+        else if (message.charAt(0) == noseC)
+        {
+          noseMessage(message);
+        }
+
+        else if (message.charAt(0) == mouthC)
+        {
+          mouthMessage(message);
+        }
       }
     }
   }
