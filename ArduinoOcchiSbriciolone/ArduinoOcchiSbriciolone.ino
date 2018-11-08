@@ -70,7 +70,7 @@ void setup()
   checkSumForEvent1 = checkSumFunction("LC;1;");
   checkSumForEvent0 = checkSumFunction("LC;0;");
   checksumEyelid = checkSumFunction("Le;");
-  
+
 
   mirrorButton.pin = 3;
   mirrorButton.led = 4;
@@ -142,7 +142,9 @@ void loop() {
   {
     if (listaMotori[i].sector == eyeLidsC)
       if (palpebreButton.value)
-        continue;
+        if (i == 2)
+          continue;
+
 
     readWriteMotor(listaMotori[i]);
   }
@@ -188,7 +190,9 @@ void readWriteMotor(Motor& m)
         sendMotor(eyeSXX, sensorValue);
     }
 
-
+    if (m.pinH == listaMotori[7].pinH && palpebreButton.value)
+      sendMotor(listaMotori[2], sensorValue);
+      
     sendMotor(m, sensorValue);
   }
 
@@ -221,25 +225,29 @@ void readButtonLedAndSend(ButtonLed& button)
   {
     button.value = true;
     digitalWrite(button.led, HIGH);
-    Serial.print(button.sector);
-    Serial.print(button.event);
-    Serial.print(';');
-    Serial.print('1');
-    Serial.print(';');
-    Serial.println(checkSumForEvent1);
-    delay(delayLettura);
+    /*
+      Serial.print(button.sector);
+      Serial.print(button.event);
+      Serial.print(';');
+      Serial.print('1');
+      Serial.print(';');
+      Serial.println(checkSumForEvent1);
+      delay(delayLettura);
+    */
   }
   else if (lettura == LOW && button.value != false)
   {
     button.value = false;
     digitalWrite(button.led, LOW);
-    Serial.print(button.sector);
-    Serial.print(button.event);
-    Serial.print(';');
-    Serial.print('0');
-    Serial.print(';');
-    Serial.println(checkSumForEvent0);
-    delay(delayLettura);
+    /*
+      Serial.print(button.sector);
+      Serial.print(button.event);
+      Serial.print(';');
+      Serial.print('0');
+      Serial.print(';');
+      Serial.println(checkSumForEvent0);
+      delay(delayLettura);
+    */
   }
 }
 

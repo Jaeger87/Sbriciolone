@@ -38,6 +38,7 @@ enum  statiOcchi {APERTI, INCHIUSURA, MANUAL, CHIUSMANUAL};
 statiOcchi sitOcchi = MANUAL;
 
 const int eyeLidsSpeed = 50;
+const int eyeLidsSpeedD = 50;
 
 int aliveCounter = 0;
 const byte aliveTrigger = 10;
@@ -483,14 +484,14 @@ void gestisciOcchi()
   if (sitOcchi == MANUAL)
   {
     maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
-    maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
+    maestro.setSpeed(servoList[18].channel, eyeLidsSpeedD);
     return;
   }
 
   if (sitOcchi == APERTI)
   {
     maestro.setSpeed(servoList[15].channel, eyeLidsSpeed);
-    maestro.setSpeed(servoList[18].channel, eyeLidsSpeed);
+    maestro.setSpeed(servoList[18].channel, eyeLidsSpeedD);
     if (millis() > nextPalpebre)
     {
       nextPalpebre = random(2000, 10000) + millis();
