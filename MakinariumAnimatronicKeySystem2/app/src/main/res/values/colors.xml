@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="firstcolumn">#ff3d00</color>
+    <color name="activePerform">#2e7d32</color>
+    <color name="performToRec">#616161</color>
+    <color name="whiteText">#F5F5F5</color>
+    <color name="disablePerformToRec">#bdbdbd</color>
+    <color name="disablePreset">#ff9e80</color>
+    <color name="disablePerform">#81c784</color>
+</resources>

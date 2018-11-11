@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/change_head"
+        android:id="@+id/action_changehead"
+        android:orderInCategory="1" />
+    <item
+        android:title="@string/Undo"
+        android:id="@+id/action_undo"
+        android:orderInCategory="2" />
+</menu>
